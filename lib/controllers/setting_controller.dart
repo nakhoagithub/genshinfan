@@ -34,6 +34,7 @@ class SettingController extends GetxController {
       await launchUrl(Uri.parse(Config.linkJoinDiscord),
           mode: LaunchMode.externalApplication);
     } else {
+      // Fluttertoast.showToast(msg: "Error: Unable to open link!");
       log("Không thể mở liên kết ${Config.linkJoinDiscord}",
           name: "joinDiscord");
     }
@@ -45,7 +46,7 @@ class SettingController extends GetxController {
     dialogConfirm("notification".tr, "check_update".tr, () async {
       dialogProgress("checking".tr);
       await Future.delayed(const Duration(milliseconds: 500));
-      List<Object?> result = await AppService().checkUpdateData() ;
+      List<Object?> result = await AppService().checkUpdateData();
       Get.back();
       if (result[0] as bool) {
         await dialogConfirm("notification".tr, "update_new_data".tr, () async {
