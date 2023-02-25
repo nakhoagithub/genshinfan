@@ -18,12 +18,12 @@ import '../resources/widgets/slide_layout.dart';
 
 class HomeController extends GetxController {
   StreamController<ScreenPosition> homeStream = StreamController();
+  RxBool haveNewVesion = false.obs;
   Rx<Traffic?> traffic = Rx(null);
   RxInt today = 0.obs;
   RxInt day = 0.obs;
   RxInt month = 0.obs;
   RxBool hasBirthday = false.obs;
-
   RxList<Domain> domainToday = <Domain>[].obs;
 
   void pageLeft() {
@@ -122,7 +122,6 @@ class HomeController extends GetxController {
     List<Character> characterUpToday = characters.where((element) {
       if (element.association == "MAINACTOR") {
         // nhà lữ hành
-        
       } else {
         if (element.talent != null) {
           for (var key in element.talent!.costs.keys) {
@@ -208,6 +207,17 @@ class HomeController extends GetxController {
     month.value = dateTime.month;
 
     traffic.value = await AppService().getTraffic();
+  }
+
+  void checkDataVersion() {}
+
+  @override
+  void onReady() async {
+    List<Object?> results = await AppService().checkUpdateData();
+    if (results[0] == true) {
+      haveNewVesion.value = true;
+    }
+    super.onReady();
   }
 
   @override

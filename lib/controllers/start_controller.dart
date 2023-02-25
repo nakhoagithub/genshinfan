@@ -76,6 +76,7 @@ class StartController extends GetxController {
     // tải dữ liệu
     bool resultDownload = await startService.downloadData();
     if (resultDownload) {
+      setProgress(1, 1, DataAppStatus.extract);
       bool resultExtract =
           await startService.extractDataLocal(Localization.language);
       if (resultExtract) {
@@ -86,6 +87,8 @@ class StartController extends GetxController {
           await Future.delayed(const Duration(milliseconds: 1500));
           Get.offAllNamed("/home");
         }
+      } else {
+        setProgress(1, 0, DataAppStatus.failure);
       }
     }
   }

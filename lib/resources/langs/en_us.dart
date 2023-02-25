@@ -19,6 +19,8 @@ const Map<String, String> en = {
   "decompressing": "Decompressing...",
   "processing": "Processing",
   "checking": "checking",
+  "no_data_version": "There is no new data version.",
+  "update_new_data": "Update new data.",
   "complete": "Complete!",
   "wait_a_minute": "Wait a minute",
   "data_failure": "Unable to load data! Please turn on the network.",

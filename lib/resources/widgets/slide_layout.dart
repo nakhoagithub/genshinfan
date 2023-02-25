@@ -162,6 +162,10 @@ class SlideLayoutState extends State<SlideLayout>
   }
 
   void onTranslate(double delta) {
+    // ở màn hình home thì không được vuốt
+    if (selected == 0) {
+      return;
+    }
     double width = MediaQuery.of(context).size.width;
     setState(() {
       final translate = this.translate + delta;

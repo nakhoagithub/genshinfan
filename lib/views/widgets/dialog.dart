@@ -4,7 +4,7 @@ import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
 dialogConfirm(String title, String message, Function accept) async {
-  Get.bottomSheet(
+  await Get.bottomSheet(
     Container(
       margin: const EdgeInsets.all(10),
       width: Get.mediaQuery.size.width,
@@ -87,8 +87,8 @@ dialogConfirm(String title, String message, Function accept) async {
   );
 }
 
-dialogInfo(String message) {
-  Get.bottomSheet(
+dialogInfo(String message) async {
+  await Get.bottomSheet(
     Container(
       margin: const EdgeInsets.all(10),
       width: Get.mediaQuery.size.width,
@@ -145,6 +145,16 @@ dialogInfo(String message) {
 }
 
 dialogProgress(String message) async {
+  await Get.dialog(
+    AlertDialog(
+      title: Text(message),
+      content: LinearProgressIndicator(color: ThemeApp.theme.primaryColor),
+    ),
+    useSafeArea: true,
+  );
+}
+
+dialogUpdateData(String message) async {
   await Get.dialog(
     AlertDialog(
       title: Text(message),

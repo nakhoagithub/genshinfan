@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -7,6 +8,7 @@ import 'package:genshinfan/models/traffic.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 class AppService {
   static Future<bool> checkInternetConnection() async {
@@ -49,22 +51,43 @@ class AppService {
   }
 
   /// trả về `true` nếu có dữ liệu mới.
-  Future<bool> checkUpdateData() async {
+  Future<List<Object?>> checkUpdateData() async {
     try {
       var response = await http.get(Uri.parse(Config.apiData));
-      var json = jsonDecode(response.body);
+      dynamic json = jsonDecode(response.body);
       int? size = json['size'];
 
       GetStorage box = GetStorage();
       int length = box.read(Config.storageDataContentLength) ?? 0;
-      print("$size $length");
+      log("$size $length", name: "Update");
       if (size == length) {
-        return false;
+        return [false, json];
       } else {
-        return true;
+        return [true, json];
       }
     } catch (e) {
       log("$e", name: "checkUpdateData");
+    }
+    return [false, null];
+  }
+
+  /// xóa file data.gzip
+  ///
+  /// xóa GetStorage
+  Future<bool> deleteFileData() async {
+    Directory? directory = await getExternalStorageDirectory();
+    if (directory != null) {
+      try {
+        File file = File("${directory.path}/data.gzip");
+        await file.delete();
+        GetStorage box = GetStorage();
+        await box.remove(Config.storageContentSHA512);
+        await box.remove(Config.storageDataContentLength);
+        return true;
+      } catch (e) {
+        log("$e", name: "deleteFileData");
+        return false;
+      }
     }
     return false;
   }

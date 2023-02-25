@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/setting_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/views/setting/widgets/change_language.dart';
 import 'package:genshinfan/views/setting/widgets/change_theme.dart';
 import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
@@ -35,6 +38,8 @@ class SettingPage extends StatelessWidget {
               title: "dark_theme".tr,
               child: const SwitchThemeApp(),
             ),
+
+            // change language
             ItemSetting(
               icon: const Icon(Icons.language_rounded),
               title: "change_language".tr,
@@ -43,17 +48,21 @@ class SettingPage extends StatelessWidget {
                 Get.bottomSheet(const DialogLanguage());
               },
             ),
-            ItemSetting(
-              icon: const Icon(Icons.update_rounded, size: 20),
-              title: "update".tr,
-              description: "description_update_setting".tr,
-              onTap: () {
-                dialogConfirm("notification".tr, "check_update".tr, () async {
-                  dialogProgress("checking".tr);
-                  await Future.delayed(const Duration(milliseconds: 500));
-                  await Get.find<SettingController>().checkUpdateData();
-                  Get.back();
-                });
+
+            // update
+            Obx(
+              () {
+                bool haveNewVersion =
+                    Get.find<HomeController>().haveNewVesion.value;
+                return ItemSetting(
+                  icon: const Icon(Icons.update_rounded, size: 20),
+                  title: "update".tr,
+                  description: "description_update_setting".tr,
+                  notification: haveNewVersion,
+                  onTap: () {
+                    Get.find<SettingController>().updateData();
+                  },
+                );
               },
             ),
 

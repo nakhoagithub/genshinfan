@@ -19,6 +19,8 @@ const Map<String, String> vi = {
   "decompressing": "Đang giải nén...",
   "processing": "Đang xử lý",
   "checking": "Đang kiểm tra",
+  "no_data_version": "Không có phiên bản dữ liệu mới.",
+  "update_new_data": "Cập nhật dữ liệu mới.",
   "complete": "Hoàn thành!",
   "wait_a_minute": "Đợi tí",
   "data_failure": "Không thể tải dữ liệu! Vui lòng bật mạng.",

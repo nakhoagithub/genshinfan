@@ -7,6 +7,7 @@ class ItemSetting extends StatelessWidget {
   final String title;
   final Widget? child;
   final String? description;
+  final bool? notification;
   final VoidCallback? onTap;
   const ItemSetting({
     super.key,
@@ -14,6 +15,7 @@ class ItemSetting extends StatelessWidget {
     required this.title,
     this.child,
     this.description,
+    this.notification,
     this.onTap,
   });
 
@@ -47,11 +49,26 @@ class ItemSetting extends StatelessWidget {
                             child: icon,
                           ),
                     Expanded(
-                      child: Text(
-                        title,
-                        style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            title,
+                            style: ThemeApp.textStyle(
+                              isDark: Get.isDarkMode,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          notification == null || notification == false
+                              ? const SizedBox()
+                              : Container(
+                                  height: 8,
+                                  width: 8,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                        ],
                       ),
                     ),
                     child ?? const Icon(Icons.keyboard_arrow_right_rounded),

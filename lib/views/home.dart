@@ -85,12 +85,14 @@ class Home extends StatelessWidget {
           color: ThemeApp.colorText(isDark: Get.isDarkMode),
         ),
       ),
-      IconApp(
-        onTap: () {
-          Get.toNamed("/setting");
-        },
-        notification: true,
-        icon: const Icon(Icons.settings),
+      Obx(
+        () => IconApp(
+          onTap: () {
+            Get.toNamed("/setting");
+          },
+          notification: Get.find<HomeController>().haveNewVesion.value,
+          icon: const Icon(Icons.settings),
+        ),
       ),
     ];
 

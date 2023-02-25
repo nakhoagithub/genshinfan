@@ -141,13 +141,15 @@ class StartService {
   Future<bool> checkInitData(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
+      File data = File("${directory.path}/data.gzip");
       File fCharacter = File("${directory.path}/$language/characters.json");
       File fResource = File("${directory.path}/$language/materials.json");
       File fWeapon = File("${directory.path}/$language/weapons.json");
       File fArtifact = File("${directory.path}/$language/artifacts.json");
       File fDomain = File("${directory.path}/$language/domains.json");
       File fEnemy = File("${directory.path}/$language/enemies.json");
-      if (await fCharacter.exists() &&
+      if (await data.exists() &&
+          await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
           await fArtifact.exists() &&
@@ -179,7 +181,7 @@ class StartService {
 
   Future<bool> extractDataLocal(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    startController.setProgress(1, 1, DataAppStatus.extract);
+
     if (directory != null) {
       try {
         File file = File("${directory.path}/data.gzip");
@@ -193,7 +195,7 @@ class StartService {
         return true;
       } catch (e) {
         log("$e", name: "extractDataLocal");
-        startController.setProgress(1, 0, DataAppStatus.failure);
+        return false;
       }
     }
     return false;
