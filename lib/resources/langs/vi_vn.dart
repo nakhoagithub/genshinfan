@@ -63,10 +63,7 @@ const Map<String, String> vi = {
   "ascend": "Đột phá",
   "resource": "Nguyên liệu",
   "skill_ascension": "Nguyên liệu nâng cấp kỹ năng",
-  "stats": "Chỉ số nhân vật",
-  "attack": "Tấn công",
-  "hp": "HP",
-  "def": "Phòng thủ",
+  "stats": "Chỉ số",
   "talent_stats": "Chỉ số kỹ năng",
   "weapon_information": "Thông tin Vũ khí",
   "choose_weapon": "Vui lòng chọn Vũ khí",
@@ -124,13 +121,15 @@ const Map<String, String> vi = {
   "month11": "Tháng 11",
   "month12": "Tháng 12",
 
+  "not": "Không",
   "note": "Lưu ý",
   "daily_reset_time":
       "<b>Thiết Lập Lại Hằng Ngày</b> diễn ra vào mỗi 04:00 (4 giờ sáng), dựa vào thời gian múi giờ của máy chủ.\n\n - Máy chủ Asia (AS): GMT+8\n - Máy chủ Europe (EU): GMT+1\n - Máy chủ America (NA): GMT-5",
   "character_up_today": "Nhân vật có thể tìm nguyên liệu nâng cấp trong ngày.",
   "weapon_up_today": "Vũ khí có thể tìm nguyên liệu nâng cấp trong ngày.",
   "genshin_map": "Genshin Map",
-  "notification_open_genshin_map": "Bạn có muốn mở <b>Genshin Map</b> trong trình duyệt?",
+  "notification_open_genshin_map":
+      "Bạn có muốn mở <b>Genshin Map</b> trong trình duyệt?",
   "update": "Cập nhật",
   "check_update": "Kiểm tra cập nhật dữ liệu.",
   "description_update_setting": "Kiểm tra và cập nhật dữ liệu cho ứng dụng.",
@@ -145,6 +144,12 @@ const Map<String, String> vi = {
   "access_throughput": "Thông lượng truy cập",
   "total": "Tổng",
   "this_month": "Tháng này",
+  "set2_artifact": "Bộ 2 món thánh di vật",
+  "set4_artifact": "Bộ 4 món thánh di vật",
+  "sands_effect": "Chỉ số Đồng hồ",
+  "goblet_effect": "Chỉ số Ly",
+  "circlet_effect": "Chỉ số Nón",
+
 
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
   "FIGHT_PROP_ROCK_ADD_HURT": "Tăng ST Nguyên Tố Nham (%)",
@@ -162,6 +167,18 @@ const Map<String, String> vi = {
   "FIGHT_PROP_HP_PERCENT": "HP (%)",
   "FIGHT_PROP_CRITICAL": "Tỉ lệ Bạo Kích (%)",
   "FIGHT_PROP_CRITICAL_HURT": "ST Bạo Kích (%)",
+
+  // các loại chỉ số
+  "attack": "Tấn công",
+  "hp": "HP",
+  "def": "Phòng thủ",
+  "energy_recharge": "Hiệu Quả Nạp Nguyên Tố",
+  "elemental_mastery": "Tinh Thông Nguyên Tố",
+  "crit_rate": "Tỷ Lệ Bạo Kích",
+  "crit_dame": "ST Bạo Kích",
+  "dame_physical": "Tăng Sát Thương Vật Lý",
+  "dame_element": "Tăng Sát Thương (Nguyên Tố)",
+  "healing_bonus": "Tăng Trị Tiệu",
 
   // category material
   //WEAPON_EXP_STONE, ADSORBATE, CONSUME, ITEM_VIRTUAL, AVATAR_MATERIAL, EXP_FRUIT, EXCHANGE, WOOD, FISH_BAIT, FISH_ROD, NOTICE_ADD_HP

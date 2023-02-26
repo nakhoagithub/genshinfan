@@ -8,6 +8,8 @@ class Config {
   static const String mailDeveloper = 'dev.nakhoa@gmail.com';
 
   static const String linkJoinDiscord = 'https://discord.gg/C8PZaRFsTq';
+  static const String keyLinkDiscord = 'link_discord';
+  static const String keyLinkContributeTranslation = 'link_contribute_translation';
 
   static String urlData =
       "https://github.com/theBowja/genshin-db/raw/main/src/min/data.min.json.gzip";

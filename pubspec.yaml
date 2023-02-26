@@ -33,6 +33,8 @@ dependencies:
   url_launcher: ^6.1.10
   flutter_mailer: ^2.0.2
   data_table_2: ^2.3.10
+  dropdown_button2: ^1.9.4
+  rounded_loading_button: ^2.1.0
 
   firebase_remote_config: ^3.0.13
   firebase_analytics: ^10.1.4

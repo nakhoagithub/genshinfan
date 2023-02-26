@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
 import 'package:get/get.dart';
 
 class InformationItemArtifact extends StatelessWidget {
@@ -19,29 +20,34 @@ class InformationItemArtifact extends StatelessWidget {
           artifact.flower == null
               ? const SizedBox()
               : _ArtifactItem(
-                  item: artifact.flower,
+                  artifact: artifact,
+                  type: 1,
                   linkImage: artifact.images?.flower,
                 ),
           artifact.plume == null
               ? const SizedBox()
               : _ArtifactItem(
-                  item: artifact.plume,
+                  artifact: artifact,
+                  type: 2,
                   linkImage: artifact.images?.plume,
                 ),
           artifact.sands == null
               ? const SizedBox()
               : _ArtifactItem(
-                  item: artifact.sands,
+                  artifact: artifact,
+                  type: 3,
                   linkImage: artifact.images?.sands,
                 ),
           artifact.goblet == null
               ? const SizedBox()
               : _ArtifactItem(
-                  item: artifact.goblet,
+                  artifact: artifact,
+                  type: 4,
                   linkImage: artifact.images?.goblet,
                 ),
           _ArtifactItem(
-            item: artifact.circlet,
+            artifact: artifact,
+            type: 5,
             linkImage: artifact.images?.circlet,
           ),
         ],
@@ -51,12 +57,30 @@ class InformationItemArtifact extends StatelessWidget {
 }
 
 class _ArtifactItem extends StatelessWidget {
-  final ArtifactItem? item;
+  final Artifact artifact;
+  final int type;
   final String? linkImage;
   const _ArtifactItem({
-    required this.item,
+    required this.artifact,
+    required this.type,
     required this.linkImage,
   });
+
+  ArtifactItem? artifactItemWithType() {
+    switch (type) {
+      case 1:
+        return artifact.flower;
+      case 2:
+        return artifact.plume;
+      case 3:
+        return artifact.sands;
+      case 4:
+        return artifact.goblet;
+      case 5:
+        return artifact.circlet;
+    }
+    return artifact.flower ?? artifact.circlet;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,86 +94,55 @@ class _ArtifactItem extends StatelessWidget {
           color: ThemeApp.colorText(isDark: Get.isDarkMode),
         ),
       ),
-      child: Column(
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // image artifact
-              Container(
-                margin: const EdgeInsets.all(10),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                padding: const EdgeInsets.all(5),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: linkImage ?? "",
-                  fit: BoxFit.cover,
-                  height: 60,
-                  width: 60,
-                  progressIndicatorBuilder: (context, url, progress) {
-                    return const Center(
-                      child: SizedBox(
-                        height: 15,
-                        width: 15,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1,
-                        ),
-                      ),
-                    );
-                  },
-                  errorWidget: (context, url, error) {
-                    return const Center(
-                      child: Icon(
-                        Icons.image_not_supported_rounded,
-                        color: Colors.black54,
-                        size: 20,
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Text(
-                      "${item?.name}",
-                      textAlign: TextAlign.center,
-                      style: ThemeApp.textStyle(
-                        fontSize: 18,
-                        isDark: Get.isDarkMode,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "${item?.relictype}",
-                      textAlign: TextAlign.center,
-                      style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          // description
-          item?.description == null
-              ? const SizedBox()
-              : Container(
-                  margin: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
-                  child: Text(
-                    "${item?.description}",
-                    textAlign: TextAlign.start,
-                    style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode,
-                      fontSize: 14,
-                      fontStyle: FontStyle.italic,
-                    ),
+          Container(
+              margin: const EdgeInsets.all(10),
+              child: ItemArtifact(
+                artifact: artifact,
+                onTap: () {},
+                viewType: type,
+              )),
+          Expanded(
+            child: Column(
+              children: [
+                Text(
+                  "${artifactItemWithType()?.name}",
+                  textAlign: TextAlign.center,
+                  style: ThemeApp.textStyle(
+                    fontSize: 18,
+                    isDark: Get.isDarkMode,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+                Text(
+                  "${artifactItemWithType()?.relictype}",
+                  textAlign: TextAlign.center,
+                  style: ThemeApp.textStyle(
+                    isDark: Get.isDarkMode,
+                  ),
+                ),
+                // description
+                artifactItemWithType()?.description == null
+                    ? const SizedBox()
+                    : Container(
+                        margin: const EdgeInsets.only(
+                            left: 5, right: 5, bottom: 10),
+                        child: Text(
+                          "${artifactItemWithType()?.description}",
+                          textAlign: TextAlign.start,
+                          style: ThemeApp.textStyle(
+                            isDark: Get.isDarkMode,
+                            fontSize: 14,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+              ],
+            ),
+          ),
         ],
       ),
     );

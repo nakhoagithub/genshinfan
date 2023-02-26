@@ -22,6 +22,7 @@ dialogConfirm(String title, String message, Function accept) async {
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
             ),
           ),
@@ -32,7 +33,6 @@ dialogConfirm(String title, String message, Function accept) async {
               message,
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                fontSize: 14,
               ),
             ),
           ),
@@ -106,6 +106,7 @@ dialogInfo(String message) async {
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
             ),
           ),
@@ -116,7 +117,6 @@ dialogInfo(String message) async {
               message,
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                fontSize: 14,
               ),
             ),
           ),
@@ -151,14 +151,5 @@ dialogProgress(String message) async {
       content: LinearProgressIndicator(color: ThemeApp.theme.primaryColor),
     ),
     useSafeArea: true,
-  );
-}
-
-dialogUpdateData(String message) async {
-  await Get.dialog(
-    AlertDialog(
-      title: Text(message),
-      content: LinearProgressIndicator(color: ThemeApp.theme.primaryColor),
-    ),
   );
 }

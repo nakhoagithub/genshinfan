@@ -29,40 +29,58 @@ class Home extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
 
     List<ItemSlide> menus = [
-      const ItemSlide(
-        linkImageAsset: "assets/images/1024.png",
-        left: HomePage(),
+      ItemSlide(
+        iconMenu: Image.asset("assets/images/play_store_512.png"),
+        left: const HomePage(),
       ),
-      const ItemSlide(
-        linkImageAsset: "assets/images/ic_character.png",
-        left: CharacterPage(),
-        center: CharacterScreen(),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_character.png",
+          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+        ),
+        left: const CharacterPage(),
+        center: const CharacterScreen(),
         // right: SizedBox(),
       ),
-      const ItemSlide(
-        linkImageAsset: "assets/images/ic_weapon.png",
-        left: WeaponPage(),
-        center: WeaponScreen(),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_weapon.png",
+          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+        ),
+        left: const WeaponPage(),
+        center: const WeaponScreen(),
       ),
-      const ItemSlide(
-        linkImageAsset: "assets/images/ic_material.png",
-        left: ResourcePage(),
-        center: ResourceScreen(),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_material.png",
+          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+        ),
+        left: const ResourcePage(),
+        center: const ResourceScreen(),
       ),
-      const ItemSlide(
-        linkImageAsset: "assets/images/ic_artifact.png",
-        left: ArtifactPage(),
-        center: ArtifactScreen(),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_artifact.png",
+          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+        ),
+        left: const ArtifactPage(),
+        center: const ArtifactScreen(),
       ),
-      const ItemSlide(
-        linkImageAsset: "assets/images/ic_dungeon.png",
-        left: DomainPage(),
-        center: DomainScreen(),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_dungeon.png",
+          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+        ),
+        left: const DomainPage(),
+        center: const DomainScreen(),
       ),
-      const ItemSlide(
-        linkImageAsset: "assets/images/ic_enemy.png",
-        left: EnemyPage(),
-        center: EnemyScreen(),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_enemy.png",
+          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+        ),
+        left: const EnemyPage(),
+        center: const EnemyScreen(),
       ),
     ];
 

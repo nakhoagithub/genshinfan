@@ -27,14 +27,6 @@ class Artifact {
   ArtifactItem circlet;
   ImageArtifact? images;
 
-  static Artifact init() {
-    return Artifact(
-      name: "",
-      rarity: [],
-      circlet: ArtifactItem(name: "", relictype: "", description: ""),
-    );
-  }
-
   factory Artifact.fromJson(Map<String, dynamic> json) => Artifact(
         name: json["name"],
         rarity: List<String>.from(json["rarity"].map((x) => x)),

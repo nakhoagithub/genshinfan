@@ -19,9 +19,9 @@ class InformationEnemy extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     EnemyController enemyController = Get.find<EnemyController>();
-
-    Enemy enemy = enemyController.enemy.value!;
-    return SingleChildScrollView(
+    return Obx((){
+      Enemy enemy = enemyController.enemy.value!;
+      return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(
         margin: const EdgeInsets.all(4),
@@ -50,6 +50,7 @@ class InformationEnemy extends StatelessWidget {
         ),
       ),
     );
+    });
   }
 }
 

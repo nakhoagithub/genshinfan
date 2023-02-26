@@ -118,6 +118,25 @@ class Tools {
     return null;
   }
 
+  static String? getKeyWeaponType(String? weapon) {
+    if (weapon == "sword".tr) {
+      return "sword";
+    }
+    if (weapon == "bow".tr) {
+      return "bow";
+    }
+    if (weapon == "claymore".tr) {
+      return "claymore";
+    }
+    if (weapon == "catalyst".tr) {
+      return "catalyst";
+    }
+    if (weapon == "polearm".tr) {
+      return "pole";
+    }
+    return null;
+  }
+
   static String? getElementFromName(String? element) {
     if (element == "anemo".tr || element == "Anemo") {
       return "assets/images/element_anemo.png";

@@ -14,93 +14,87 @@ class EnemyStats extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     EnemyController enemyController = Get.find<EnemyController>();
-    
-    return GetBuilder<EnemyController>(
-        init: enemyController,
-        builder: (_) {
-          List<Stat>? stats = enemyController.enemy.value!.stats;
-          return Column(
-            children: [
-              // title
-              TitleOfContent(title: "stats".tr),
 
-              // content
-              Container(
-                margin: const EdgeInsets.all(5),
-                padding: const EdgeInsets.all(5),
-                child: Table(
-                  border: TableBorder.all(
-                    color: ThemeApp.colorText(isDark: Get.isDarkMode),
+    return Obx(() {
+      Enemy enemy = enemyController.enemy.value!;
+      List<Stat>? stats = enemy.stats;
+      return Column(
+        children: [
+          // title
+          TitleOfContent(title: "stats".tr),
+
+          // content
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            child: Table(
+              border: TableBorder.all(
+                color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              ),
+              children: [
+                TableRow(
+                  decoration: BoxDecoration(
+                    color: ThemeApp.colorPrimary(isDark: Get.isDarkMode)
+                        .withOpacity(0.3),
                   ),
                   children: [
-                    TableRow(
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: ItemTable(title: "level".tr),
+                    ),
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: ItemTable(title: "attack".tr),
+                    ),
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: ItemTable(title: "hp".tr),
+                    ),
+                    TableCell(
+                      verticalAlignment: TableCellVerticalAlignment.middle,
+                      child: ItemTable(title: "def".tr),
+                    ),
+                  ],
+                ),
+                ...?stats?.asMap().entries.map(
+                  (e) {
+                    int index = e.key;
+                    Stat value = e.value;
+                    return TableRow(
                       decoration: BoxDecoration(
-                        color: ThemeApp.colorPrimary(isDark: Get.isDarkMode)
-                            .withOpacity(0.3),
+                        color: index % 2 == 1
+                            ? ThemeApp.colorText(isDark: !Get.isDarkMode)
+                                .withOpacity(0.5)
+                            : null,
                       ),
                       children: [
                         TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
-                          child: ItemTable(title: "level".tr),
+                          child: ItemTable(title: "${value.level}"),
                         ),
                         TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
-                          child: ItemTable(title: "attack".tr),
+                          child:
+                              ItemTable(title: value.attack.toStringAsFixed(0)),
                         ),
                         TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
-                          child: ItemTable(title: "hp".tr),
+                          child: ItemTable(title: value.hp.toStringAsFixed(0)),
                         ),
                         TableCell(
                           verticalAlignment: TableCellVerticalAlignment.middle,
-                          child: ItemTable(title: "def".tr),
+                          child: ItemTable(
+                              title: value.defense.toStringAsFixed(0)),
                         ),
                       ],
-                    ),
-                    ...?stats?.asMap().entries.map(
-                      (e) {
-                        int index = e.key;
-                        Stat value = e.value;
-                        return TableRow(
-                          decoration: BoxDecoration(
-                            color: index % 2 == 1
-                                ? ThemeApp.colorText(isDark: !Get.isDarkMode)
-                                    .withOpacity(0.5)
-                                : null,
-                          ),
-                          children: [
-                            TableCell(
-                              verticalAlignment:
-                                  TableCellVerticalAlignment.middle,
-                              child: ItemTable(title: "${value.level}"),
-                            ),
-                            TableCell(
-                              verticalAlignment:
-                                  TableCellVerticalAlignment.middle,
-                              child: ItemTable(
-                                  title: value.attack.toStringAsFixed(0)),
-                            ),
-                            TableCell(
-                              verticalAlignment:
-                                  TableCellVerticalAlignment.middle,
-                              child:
-                                  ItemTable(title: value.hp.toStringAsFixed(0)),
-                            ),
-                            TableCell(
-                              verticalAlignment:
-                                  TableCellVerticalAlignment.middle,
-                              child: ItemTable(
-                                  title: value.defense.toStringAsFixed(0)),
-                            ),
-                          ],
-                        );
-                      },
-                    ).toList(),
-                  ],
-                ),
-              ),
-            ],
-          );
-        });
+                    );
+                  },
+                ).toList(),
+              ],
+            ),
+          ),
+        ],
+      );
+    });
   }
 }

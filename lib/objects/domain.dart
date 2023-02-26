@@ -18,10 +18,6 @@ class Domain {
   String description;
   List<DomainLv>? domainLvs;
 
-  static Domain init() {
-    return Domain(name: "", region: "", domaintype: "", description: "");
-  }
-
   factory Domain.fromJson(Map<String, dynamic> json) => Domain(
         name: json["name"],
         region: json["region"],

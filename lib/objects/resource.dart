@@ -27,11 +27,6 @@ class Resource {
   List<String> source;
   ImageResource? images;
 
-  static Resource init() {
-    return Resource(
-        name: "", description: "", sortorder: 0, category: "", source: []);
-  }
-
   void setImage(dynamic json) {
     images = ImageResource.fromJson(json);
   }

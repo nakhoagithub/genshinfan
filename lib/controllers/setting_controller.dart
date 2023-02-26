@@ -1,13 +1,12 @@
 import 'dart:developer';
-import 'dart:io';
 
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
@@ -30,8 +29,12 @@ class SettingController extends GetxController {
   }
 
   void joinDiscord() async {
-    if (await canLaunchUrl(Uri.parse(Config.linkJoinDiscord))) {
-      await launchUrl(Uri.parse(Config.linkJoinDiscord),
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.fetchAndActivate();
+    String link = remoteConfig.getString(Config.keyLinkDiscord);
+
+    if (await canLaunchUrl(Uri.parse(link))) {
+      await launchUrl(Uri.parse(link),
           mode: LaunchMode.externalApplication);
     } else {
       // Fluttertoast.showToast(msg: "Error: Unable to open link!");
@@ -40,7 +43,20 @@ class SettingController extends GetxController {
     }
   }
 
-  void contributeTranslate() async {}
+  void contributeTranslate() async {
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.fetchAndActivate();
+    String link = remoteConfig.getString(Config.keyLinkContributeTranslation);
+
+    if (await canLaunchUrl(Uri.parse(link))) {
+      await launchUrl(Uri.parse(link),
+          mode: LaunchMode.externalApplication);
+    } else {
+      // Fluttertoast.showToast(msg: "Error: Unable to open link!");
+      log("Không thể mở liên kết ${Config.linkJoinDiscord}",
+          name: "joinDiscord");
+    }
+  }
 
   void updateData() {
     dialogConfirm("notification".tr, "check_update".tr, () async {

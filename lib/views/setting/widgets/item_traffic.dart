@@ -52,19 +52,16 @@ class TrafficApplication extends StatelessWidget {
                       "...",
                       style: ThemeApp.textStyle(
                         isDark: Get.isDarkMode,
-                        fontSize: 14,
                       ),
                     )
                   : Text(
                       "${"total".tr}: ${traffic.totalTraffic}\n${"this_month".tr}: ${traffic.trafficInMonth}\n${"today".tr}: ${traffic.trafficInDay}",
                       style: ThemeApp.textStyle(
                         isDark: Get.isDarkMode,
-                        fontSize: 14,
                       ),
                     ),
             ),
           ],
-          
         ),
       ),
     );

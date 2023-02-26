@@ -41,7 +41,7 @@ class SlideLayout extends StatefulWidget {
 }
 
 class SlideLayoutState extends State<SlideLayout>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   AnimationController? controller;
   double translate = 0;
   double screenPaddingTop = 24;
@@ -271,6 +271,7 @@ class SlideLayoutState extends State<SlideLayout>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     double autoPaddingTop = 24;
@@ -334,9 +335,7 @@ class SlideLayoutState extends State<SlideLayout>
                                 index: 0,
                                 currentIndex: selected,
                                 onTap: () => _onTap(0),
-                                child: Image.asset(
-                                  widget.items[0].linkImageAsset,
-                                ),
+                                child: widget.items[0].iconMenu,
                               ),
                             ),
                             const _DividerApp(),
@@ -355,10 +354,7 @@ class SlideLayoutState extends State<SlideLayout>
                                     index: i,
                                     currentIndex: selected,
                                     onTap: () => _onTap(i),
-                                    child: Image.asset(
-                                      widget.items[i].linkImageAsset,
-                                      color: widget.iconColor,
-                                    ),
+                                    child: widget.items[i].iconMenu,
                                   );
                                 },
                               ),
@@ -482,9 +478,12 @@ class SlideLayoutState extends State<SlideLayout>
     widget.streamChangeScreen?.close();
     super.dispose();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
-class _IconApp extends StatelessWidget {
+class _IconApp extends StatefulWidget {
   final int index;
   final int currentIndex;
   final VoidCallback onTap;
@@ -503,46 +502,57 @@ class _IconApp extends StatelessWidget {
   });
 
   @override
+  State<_IconApp> createState() => _IconAppState();
+}
+
+class _IconAppState extends State<_IconApp> with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     Duration duration = const Duration(milliseconds: 200);
     double width = 60;
     return Container(
       margin: const EdgeInsets.only(top: 10),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: widget.onTap,
         child: Row(
           children: [
             AnimatedContainer(
               duration: duration,
               decoration: BoxDecoration(
-                color: indicatorColor ?? iconColor,
+                color: widget.indicatorColor,
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(2),
                   bottomRight: Radius.circular(2),
                 ),
               ),
-              height: index == currentIndex ? width * 0.5 : 0,
+              height: widget.index == widget.currentIndex ? width * 0.5 : 0,
               width: 4,
             ),
             AnimatedContainer(
               duration: duration,
               margin: const EdgeInsets.only(left: 8),
-              padding: index == 0 ? null : const EdgeInsets.all(5),
+              padding: widget.index == 0 ? null : const EdgeInsets.all(5),
               clipBehavior: Clip.antiAliasWithSaveLayer,
               decoration: BoxDecoration(
-                color: iconBackgroundColor,
+                color: widget.iconBackgroundColor,
                 borderRadius: BorderRadius.circular(
-                    index == currentIndex ? width / 5 : width / 2),
+                    widget.index == widget.currentIndex
+                        ? width / 5
+                        : width / 2),
               ),
               height: 42,
               width: 42,
-              child: child,
+              child: widget.child,
             ),
           ],
         ),
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _DividerApp extends StatelessWidget {
@@ -561,12 +571,12 @@ class _DividerApp extends StatelessWidget {
 }
 
 class ItemSlide {
-  final String linkImageAsset;
+  final Widget iconMenu;
   final Widget left;
   final Widget? center;
   final Widget? right;
   const ItemSlide({
-    required this.linkImageAsset,
+    required this.iconMenu,
     required this.left,
     this.center,
     this.right,

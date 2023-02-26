@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/views/artifact/artifact_info_page.dart';
 import 'package:genshinfan/views/character/character_info_page.dart';
+import 'package:genshinfan/views/contribute/contribute_character_building_page.dart';
 import 'package:genshinfan/views/domain/domain_info_page.dart';
 import 'package:genshinfan/views/enemy/enemy_info_page.dart';
 import 'package:genshinfan/views/home.dart';
@@ -18,7 +18,6 @@ import 'resources/utils/theme.dart';
 import 'views/setting/setting_page.dart';
 
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([
@@ -29,13 +28,6 @@ void main() async {
     statusBarColor: Colors.transparent,
   ));
   await init();
-
-  final remoteConfig = FirebaseRemoteConfig.instance;
-  await remoteConfig.setConfigSettings(RemoteConfigSettings(
-    fetchTimeout: const Duration(minutes: 1),
-    minimumFetchInterval: const Duration(hours: 1),
-  ));
-
   runApp(const App());
 }
 
@@ -106,6 +98,11 @@ class App extends GetView<AppController> {
             GetPage(
               name: '/setting',
               page: () => const SettingPage(),
+              transition: Transition.native,
+            ),
+            GetPage(
+              name: '/contribute_character_building',
+              page: () => const ContributeCharacterBuildingPage(),
               transition: Transition.native,
             ),
           ],

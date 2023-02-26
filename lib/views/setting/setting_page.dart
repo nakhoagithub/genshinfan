@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/setting_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/widgets/backbutton.dart';
-import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/views/setting/widgets/change_language.dart';
 import 'package:genshinfan/views/setting/widgets/change_theme.dart';
 import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
@@ -66,13 +63,16 @@ class SettingPage extends StatelessWidget {
               },
             ),
 
-            // contribute
+            // đóng góp build nhân vật
             TitleSetting(title: "contribute".tr),
             ItemSetting(
               icon: const Icon(Icons.person_outline_rounded),
               title: "contribute_character_building".tr,
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/contribute_character_building');
+              },
             ),
+            // đóng góp bản dịch
             ItemSetting(
               icon: const Icon(Icons.g_translate_rounded),
               title: "contribute_translation".tr,
@@ -86,6 +86,8 @@ class SettingPage extends StatelessWidget {
 
             // other
             TitleSetting(title: "other".tr),
+
+            // gửi mail
             ItemSetting(
               icon: const Icon(Icons.mail_outline_rounded),
               title: "send_feedback".tr,
@@ -96,12 +98,12 @@ class SettingPage extends StatelessWidget {
                 });
               },
             ),
+            // tham gia Discord
             ItemSetting(
               icon: Image.asset(
                 "assets/images/ic_discord.png",
                 height: 24,
                 width: 24,
-                color: ThemeApp.colorText(isDark: Get.isDarkMode),
               ),
               title: "join_discord".tr,
               onTap: () async {

@@ -80,6 +80,17 @@ class AppController extends GetxController {
       artifacts.value =
           await ArtifactService().getArtifacts(Localization.language) ?? [];
 
+      artifacts.sort(
+        (a, b) {
+          int rarity = b.rarity[b.rarity.length - 1]
+              .compareTo(a.rarity[a.rarity.length - 1]);
+          if (rarity != 0) {
+            return rarity;
+          }
+          return a.name.compareTo(b.name);
+        },
+      );
+
       domains.value =
           await DomainService().getDomains(Localization.language) ?? [];
 

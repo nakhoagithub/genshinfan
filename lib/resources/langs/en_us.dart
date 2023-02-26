@@ -64,9 +64,6 @@ const Map<String, String> en = {
   "resource": "Resource",
   "skill_ascension": "Skill Ascension",
   "stats": "Stats",
-  "attack": "Attack",
-  "hp": "HP",
-  "def": "Defense",
   "weapon_information": "Weapon Information",
   "talent_stats": "Skill stats",
   "choose_weapon": "Please choose Weapon",
@@ -125,6 +122,7 @@ const Map<String, String> en = {
   "month10": "October",
   "month11": "November",
   "month12": "December",
+  "not": "Not",
   "note": "Note",
   "daily_reset_time":
       "<b>Daily Reset</b> takes place every 04:00 (4AM), based on the server time zone time.\n\n - Server Asia (AS): GMT+8\n - Server Europe (EU): GMT+1\n - Server America (NA): GMT-5",
@@ -147,6 +145,11 @@ const Map<String, String> en = {
   "access_throughput": "Access throughput",
   "total": "Total",
   "this_month": "This month",
+  "set2_artifact": "Set of 2 artifact",
+  "set4_artifact": "Set of 4 artifact",
+  "sands_effect": "Sands effect",
+  "goblet_effect": "Goblet effect",
+  "circlet_effect": "Circlet effect",
   // game
   // stat character
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",
@@ -165,6 +168,18 @@ const Map<String, String> en = {
   "FIGHT_PROP_HP_PERCENT": "HP (%)",
   "FIGHT_PROP_CRITICAL": "CRIT Rate (%)",
   "FIGHT_PROP_CRITICAL_HURT": "CRIT DMG (%)",
+
+  // các loại chỉ số
+  "attack": "Attack",
+  "hp": "HP",
+  "def": "Defense",
+  "energy_recharge": "Energy Recharge",
+  "elemental_mastery": "Elemental Mastery",
+  "crit_rate": "CRIT Rate",
+  "crit_dame": "CRIT Dame",
+  "dame_physical": "Dame Physical",
+  "dame_element": "Dame Element",
+  "healing_bonus": "Healing Bonus",
 
   // element
   "anemo": "Anemo",
