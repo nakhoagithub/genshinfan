@@ -3,7 +3,7 @@ import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
-import 'package:genshinfan/resources/widgets/title_of_content.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 

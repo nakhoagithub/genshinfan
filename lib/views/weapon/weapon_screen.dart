@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_ascension.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_info.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_refinement.dart';

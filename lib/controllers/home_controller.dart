@@ -11,10 +11,9 @@ import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/app_service.dart';
+import 'package:genshinfan/views/widgets/slide_layout.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../resources/widgets/slide_layout.dart';
 
 class HomeController extends GetxController {
   StreamController<ScreenPosition> homeStream = StreamController();
@@ -208,8 +207,6 @@ class HomeController extends GetxController {
 
     traffic.value = await AppService().getTraffic();
   }
-
-  void checkDataVersion() {}
 
   @override
   void onReady() async {

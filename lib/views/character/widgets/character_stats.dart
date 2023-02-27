@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/character_controller.dart';
+import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/title_of_content.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/item_table.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
-
-import '../../../controllers/character_controller.dart';
-import '../../../objects/character.dart';
-import '../../../resources/utils/tools.dart';
-import '../../../resources/widgets/item_table.dart';
 
 class CharacterStats extends StatelessWidget {
   const CharacterStats({super.key});

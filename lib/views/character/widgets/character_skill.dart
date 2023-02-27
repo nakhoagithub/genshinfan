@@ -1,17 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
+import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/objects/talent.dart';
 import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/widgets/icon_app.dart';
+import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:genshinfan/views/character/widgets/talent_stat.dart';
+import 'package:genshinfan/views/widgets/text_css.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
-
-import '../../../objects/character.dart';
-import '../../../objects/talent.dart';
-import '../../../resources/utils/theme.dart';
-import '../../../resources/utils/tools.dart';
-import '../../widgets/text_css.dart';
-import '../../../resources/widgets/title_of_content.dart';
 import 'skill_ascension.dart';
 
 class SkillCharacterView extends StatelessWidget {

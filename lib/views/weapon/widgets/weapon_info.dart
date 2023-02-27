@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_rarity_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
 import '../../../objects/weapon.dart';
-import '../../../resources/widgets/gradient.dart';
 
 class InformationWeapon extends StatelessWidget {
   const InformationWeapon({super.key});

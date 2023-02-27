@@ -1,4 +1,3 @@
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
@@ -80,7 +79,7 @@ class ContributeCharacterController extends GetxController {
   }
 
   Future<void> contribute() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     buttonController.success();
   }
 

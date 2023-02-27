@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/resources/widgets/title_of_content.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:genshinfan/views/weapon/widgets/item_ascend_weapon.dart';
 import 'package:get/get.dart';
 

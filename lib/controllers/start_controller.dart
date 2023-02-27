@@ -104,7 +104,7 @@ class StartController extends GetxController {
     version.value = packageApp.version;
 
     // tạo thông lượng truy cập
-    await AppService().openApplication();
+    await AppService().setTraffic();
 
     bool hasData = await startService.checkInitData(Localization.language);
     if (hasData) {

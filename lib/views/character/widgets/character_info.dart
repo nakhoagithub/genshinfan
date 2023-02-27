@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
+import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_element_widget.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
@@ -9,8 +11,6 @@ import 'package:genshinfan/views/widgets/info_rarity_widget.dart';
 import 'package:genshinfan/views/widgets/info_weapon_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
-import '../../../objects/character.dart';
-import '../../../resources/widgets/gradient.dart';
 
 class InformationCharacter extends StatelessWidget {
   const InformationCharacter({super.key});

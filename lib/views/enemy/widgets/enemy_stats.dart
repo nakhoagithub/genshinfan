@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/title_of_content.dart';
+import 'package:genshinfan/views/widgets/item_table.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
-
-import '../../../controllers/enemy_controller.dart';
-import '../../../objects/enemy.dart';
-import '../../../resources/widgets/item_table.dart';
-
 class EnemyStats extends StatelessWidget {
   const EnemyStats({super.key});
 

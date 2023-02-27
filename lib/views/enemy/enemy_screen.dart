@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
 import 'package:get/get.dart';

@@ -192,6 +192,9 @@ class SlideLayoutState extends State<SlideLayout>
   }
 
   void _quickSwipe(Velocity velocity) {
+    if (selected == 0) {
+      return;
+    }
     if (velocity.pixelsPerSecond.dx < -1200) {
       if (statusScreen == 2 && widget.items[selected].right != null) {
         reveal(ScreenPosition.left);

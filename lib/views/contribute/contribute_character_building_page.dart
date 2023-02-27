@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/contribute/widgets/button_contribute.dart';
 import 'package:genshinfan/views/contribute/widgets/select_character.dart';
 import 'package:genshinfan/views/contribute/widgets/select_circlet.dart';

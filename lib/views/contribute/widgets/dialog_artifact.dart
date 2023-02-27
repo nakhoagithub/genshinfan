@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
 import 'package:get/get.dart';
 

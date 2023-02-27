@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/reward_preview.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_reward_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
-import '../../../objects/enemy.dart';
-import '../../../resources/widgets/gradient.dart';
 
 class InformationEnemy extends StatelessWidget {
   const InformationEnemy({super.key});

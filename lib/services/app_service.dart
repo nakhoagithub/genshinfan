@@ -3,10 +3,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:genshinfan/models/traffic.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
@@ -20,7 +22,33 @@ class AppService {
     }
   }
 
-  Future<bool> openApplication() async {
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      log("$e", name: "login");
+    }
+    return null;
+  }
+
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut();
+    try {
+      await GoogleSignIn().disconnect();
+    } catch (e) {
+      log("$e", name: "logout");
+    }
+  }
+
+  Future<bool> setTraffic() async {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     try {
       await db.set({
@@ -33,7 +61,7 @@ class AppService {
         return true;
       });
     } catch (e) {
-      log("$e", name: "openApplication");
+      log("$e", name: "setTraffic");
     }
 
     return false;

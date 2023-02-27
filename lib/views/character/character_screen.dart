@@ -4,9 +4,8 @@ import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:get/get.dart';
-
-import '../../resources/widgets/backbutton.dart';
 import 'widgets/character_ascension.dart';
 import 'widgets/character_info.dart';
 import 'widgets/character_skill.dart';

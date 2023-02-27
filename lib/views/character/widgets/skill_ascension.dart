@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/objects/resource.dart';
+import 'package:genshinfan/objects/talent.dart';
+import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/character/widgets/item_ascend_character.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
-
-import '../../../objects/talent.dart';
-import '../../../resources/utils/theme.dart';
-import '../../../resources/utils/tools.dart';
-import '../../../resources/widgets/title_of_content.dart';
 
 class SkillAscensionView extends StatelessWidget {
   final Map<String, List<Cost>> costs;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:get/get.dart';
-
-import '../utils/theme.dart';
 
 class TitleOfContent extends StatelessWidget {
   final String title;

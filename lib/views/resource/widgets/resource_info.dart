@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
+import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_daysofweek_widget.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_rarity_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_multiline_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
-import '../../../objects/resource.dart';
-import '../../../resources/widgets/gradient.dart';
 
 class InformationResource extends StatelessWidget {
   const InformationResource({super.key});

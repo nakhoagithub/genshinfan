@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/setting_controller.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/setting/widgets/change_language.dart';
 import 'package:genshinfan/views/setting/widgets/change_theme.dart';
 import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
+import 'package:genshinfan/views/setting/widgets/info_user.dart';
 import 'package:genshinfan/views/setting/widgets/item_setting.dart';
 import 'package:genshinfan/views/setting/widgets/item_traffic.dart';
 import 'package:genshinfan/views/setting/widgets/title_setting.dart';
@@ -28,6 +29,8 @@ class SettingPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            TitleSetting(title: "user_information".tr),
+            const InfoUser(),
             // setting
             TitleSetting(title: "setting".tr),
             ItemSetting(

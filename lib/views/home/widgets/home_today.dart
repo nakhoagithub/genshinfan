@@ -24,7 +24,7 @@ class HomeToday extends StatelessWidget {
           child: Row(
             children: [
               TextCSS(
-                "<b>${"today".tr}</b>: <orange>${"day${homeController.today}".tr}</orange>",
+                "<b>${"today".tr}</b>: <b><orange>${"day${homeController.today}".tr}</orange></b>",
                 style: ThemeApp.textStyle(isDark: Get.isDarkMode, fontSize: 18),
               ),
               Container(

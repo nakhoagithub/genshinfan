@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -10,6 +11,9 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
+  RxString nameUser = "".obs;
+  RxString imageUser = "".obs;
+
   void sendMail() async {
     final bool gmailinstalled =
         await FlutterMailer.isAppInstalled(Config.gmailSchema);
@@ -34,8 +38,7 @@ class SettingController extends GetxController {
     String link = remoteConfig.getString(Config.keyLinkDiscord);
 
     if (await canLaunchUrl(Uri.parse(link))) {
-      await launchUrl(Uri.parse(link),
-          mode: LaunchMode.externalApplication);
+      await launchUrl(Uri.parse(link), mode: LaunchMode.externalApplication);
     } else {
       // Fluttertoast.showToast(msg: "Error: Unable to open link!");
       log("Không thể mở liên kết ${Config.linkJoinDiscord}",
@@ -49,8 +52,7 @@ class SettingController extends GetxController {
     String link = remoteConfig.getString(Config.keyLinkContributeTranslation);
 
     if (await canLaunchUrl(Uri.parse(link))) {
-      await launchUrl(Uri.parse(link),
-          mode: LaunchMode.externalApplication);
+      await launchUrl(Uri.parse(link), mode: LaunchMode.externalApplication);
     } else {
       // Fluttertoast.showToast(msg: "Error: Unable to open link!");
       log("Không thể mở liên kết ${Config.linkJoinDiscord}",

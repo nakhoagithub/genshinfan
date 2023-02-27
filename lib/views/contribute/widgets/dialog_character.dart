@@ -4,7 +4,7 @@ import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/character/widgets/item_character.dart';
 import 'package:get/get.dart';
 

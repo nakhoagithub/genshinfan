@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
@@ -15,12 +16,14 @@ import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/localization.dart';
+import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
 import 'package:genshinfan/services/resource_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
+import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
 import '../resources/utils/theme.dart';
@@ -29,6 +32,9 @@ import 'character_controller.dart';
 class AppController extends GetxController {
   // theme app
   Rx<ThemeData> themeData = ThemeData().obs;
+
+  // user
+  Rx<User?> user = Rx(null);
 
   // internet
   Connectivity connectivity = Connectivity();
@@ -48,6 +54,8 @@ class AppController extends GetxController {
     super.onInit();
     // init theme
     themeData.value = ThemeApp.theme;
+
+    user.value = FirebaseAuth.instance.currentUser;
 
     // init internet stream
     _streamConnect = connectivity.onConnectivityChanged.listen((value) async {
@@ -120,6 +128,21 @@ class AppController extends GetxController {
       Get.back();
       Get.back();
     }
+  }
+
+  Future<void> login() async {
+    UserCredential? userCredential = await AppService().signInWithGoogle();
+    User? user = userCredential?.user;
+    if (user != null) {
+      this.user.value = user;
+    }
+  }
+
+  Future<void> logout() async {
+    await dialogConfirm("confirm".tr, "logout_question".tr, () async {
+      await AppService().logout();
+      user.value = null;
+    });
   }
 
   @override

@@ -9,7 +9,7 @@ import 'package:genshinfan/objects/reward_preview.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
-import 'package:genshinfan/resources/widgets/gradient.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:get/get.dart';
 
 class ListDomainToday extends StatelessWidget {

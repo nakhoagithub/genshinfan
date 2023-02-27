@@ -14,7 +14,6 @@ import 'package:genshinfan/services/weapon_service.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/package_app.dart';
 import '../resources/utils/config.dart';

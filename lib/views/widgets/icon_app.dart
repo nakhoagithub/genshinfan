@@ -25,7 +25,7 @@ class IconApp extends StatelessWidget {
         width: 40,
         child: Stack(
           children: [
-            icon,
+            Center(child: icon),
             notification != null && notification == true
                 ? Align(
                     alignment: Alignment.topRight,

@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/views/character/widgets/item_character.dart';
+import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:get/get.dart';
-
-import '../../resources/widgets/app_bar.dart';
 
 class CharacterPage extends StatelessWidget {
   const CharacterPage({super.key});

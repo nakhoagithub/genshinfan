@@ -2,9 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/views/resource/widgets/item_resource.dart';
+import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:get/get.dart';
-
-import '../../resources/widgets/app_bar.dart';
 
 class ResourcePage extends StatelessWidget {
   const ResourcePage({super.key});

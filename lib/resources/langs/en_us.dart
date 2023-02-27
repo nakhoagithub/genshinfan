@@ -150,6 +150,9 @@ const Map<String, String> en = {
   "sands_effect": "Sands effect",
   "goblet_effect": "Goblet effect",
   "circlet_effect": "Circlet effect",
+  "user_information": "User information",
+  "login": "Login",
+  "logout_question": "Do you want to sign out?",
   // game
   // stat character
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",

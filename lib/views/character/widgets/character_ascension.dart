@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/resources/widgets/title_of_content.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:genshinfan/views/character/widgets/item_ascend_character.dart';
 import 'package:get/get.dart';
 

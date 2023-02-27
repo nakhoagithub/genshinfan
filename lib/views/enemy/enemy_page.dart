@@ -1,10 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
-import 'package:genshinfan/resources/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/enemy/widgets/item_enemy.dart';
 import 'package:get/get.dart';
-
 
 class EnemyPage extends StatelessWidget {
   const EnemyPage({super.key});
@@ -27,7 +26,6 @@ class EnemyPage extends StatelessWidget {
     );
   }
 }
-
 
 class _ListEnemy extends StatelessWidget {
   const _ListEnemy();

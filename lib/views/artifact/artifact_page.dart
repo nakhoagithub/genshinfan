@@ -5,8 +5,8 @@ import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/app_bar.dart';
-import 'package:genshinfan/resources/widgets/gradient.dart';
+import 'package:genshinfan/views/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
 import 'package:get/get.dart';
 

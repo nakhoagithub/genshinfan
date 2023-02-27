@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/title_of_content.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/item_table.dart';
+import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
-
-import '../../../controllers/weapon_controller.dart';
-import '../../../objects/weapon.dart';
-import '../../../resources/utils/tools.dart';
-import '../../../resources/widgets/item_table.dart';
 
 class WeaponStats extends StatelessWidget {
   const WeaponStats({super.key});

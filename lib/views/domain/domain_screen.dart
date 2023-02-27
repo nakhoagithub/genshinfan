@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/domain/widgets/domain_info.dart';
 import 'package:genshinfan/views/domain/widgets/domain_lv.dart';
 import 'package:get/get.dart';

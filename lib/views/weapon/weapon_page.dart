@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
+import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:get/get.dart';
-
-import '../../resources/widgets/app_bar.dart';
 
 class WeaponPage extends StatelessWidget {
   const WeaponPage({super.key});

@@ -149,6 +149,9 @@ const Map<String, String> vi = {
   "sands_effect": "Chỉ số Đồng hồ",
   "goblet_effect": "Chỉ số Ly",
   "circlet_effect": "Chỉ số Nón",
+  "user_information": "Thông tin người dùng",
+  "login": "Đăng nhập",
+  "logout_question": "Bạn có muốn đăng xuất?",
 
 
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
