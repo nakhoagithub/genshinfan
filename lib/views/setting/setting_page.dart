@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/setting_controller.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/setting/widgets/change_language.dart';
 import 'package:genshinfan/views/setting/widgets/change_theme.dart';
 import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
 import 'package:genshinfan/views/setting/widgets/info_user.dart';
-import 'package:genshinfan/views/setting/widgets/item_setting.dart';
+import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/setting/widgets/item_traffic.dart';
-import 'package:genshinfan/views/setting/widgets/title_setting.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
+import 'package:genshinfan/views/widgets/title_of_menu.dart';
 import 'package:get/get.dart';
 
 class SettingPage extends StatelessWidget {
@@ -29,18 +31,35 @@ class SettingPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TitleSetting(title: "user_information".tr),
+            TitleApp(title: "user_information".tr),
             const InfoUser(),
+            Obx(
+              () {
+                int role = Get.find<AppController>().userApp.value?.role ?? 10;
+                // nếu thuộc Config.roleAdmins thì có quyền vào menu admin
+                return !Tools.getRoleMenuAdmin(role)
+                    ? const SizedBox()
+                    : ItemMenu(
+                        icon: const Icon(Icons.admin_panel_settings_rounded,
+                            size: 20),
+                        title: "admin".tr,
+                        description: "admin_description".tr,
+                        onTap: () {
+                          Get.toNamed('/admin');
+                        },
+                      );
+              },
+            ),
             // setting
-            TitleSetting(title: "setting".tr),
-            ItemSetting(
+            TitleApp(title: "setting".tr),
+            ItemMenu(
               icon: const Icon(Icons.dark_mode_outlined),
               title: "dark_theme".tr,
               child: const SwitchThemeApp(),
             ),
 
             // change language
-            ItemSetting(
+            ItemMenu(
               icon: const Icon(Icons.language_rounded),
               title: "change_language".tr,
               child: const ChangeLanguage(),
@@ -54,7 +73,7 @@ class SettingPage extends StatelessWidget {
               () {
                 bool haveNewVersion =
                     Get.find<HomeController>().haveNewVesion.value;
-                return ItemSetting(
+                return ItemMenu(
                   icon: const Icon(Icons.update_rounded, size: 20),
                   title: "update".tr,
                   description: "description_update_setting".tr,
@@ -67,16 +86,21 @@ class SettingPage extends StatelessWidget {
             ),
 
             // đóng góp build nhân vật
-            TitleSetting(title: "contribute".tr),
-            ItemSetting(
+            TitleApp(title: "contribute".tr),
+            ItemMenu(
               icon: const Icon(Icons.person_outline_rounded),
               title: "contribute_character_building".tr,
               onTap: () {
-                Get.toNamed('/contribute_character_building');
+                if (Get.find<AppController>().userApp.value != null ||
+                    Get.find<AppController>().user.value != null) {
+                  Get.toNamed('/contribute_character_building');
+                } else {
+                  dialogInfo("required_login".tr);
+                }
               },
             ),
             // đóng góp bản dịch
-            ItemSetting(
+            ItemMenu(
               icon: const Icon(Icons.g_translate_rounded),
               title: "contribute_translation".tr,
               onTap: () async {
@@ -88,10 +112,10 @@ class SettingPage extends StatelessWidget {
             ),
 
             // other
-            TitleSetting(title: "other".tr),
+            TitleApp(title: "other".tr),
 
             // gửi mail
-            ItemSetting(
+            ItemMenu(
               icon: const Icon(Icons.mail_outline_rounded),
               title: "send_feedback".tr,
               onTap: () async {
@@ -102,7 +126,7 @@ class SettingPage extends StatelessWidget {
               },
             ),
             // tham gia Discord
-            ItemSetting(
+            ItemMenu(
               icon: Image.asset(
                 "assets/images/ic_discord.png",
                 height: 24,

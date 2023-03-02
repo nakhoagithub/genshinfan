@@ -9,7 +9,8 @@ class Config {
 
   static const String linkJoinDiscord = 'https://discord.gg/C8PZaRFsTq';
   static const String keyLinkDiscord = 'link_discord';
-  static const String keyLinkContributeTranslation = 'link_contribute_translation';
+  static const String keyLinkContributeTranslation =
+      'link_contribute_translation';
 
   static String urlData =
       "https://github.com/theBowja/genshin-db/raw/main/src/min/data.min.json.gzip";
@@ -25,4 +26,6 @@ class Config {
       "https://act.hoyolab.com/ys/app/interactive-map/index.html";
 
   static const double marginText = 4;
+
+  static const List<int> roleAdmins = [1, 2, 3, 4, 5];
 }

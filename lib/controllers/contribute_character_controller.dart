@@ -1,7 +1,11 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/objects/app/contribute_character.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/services/contribute_service.dart';
+import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -16,9 +20,9 @@ class ContributeCharacterController extends GetxController {
   Rx<Artifact?> a1 = Rx(null);
   Rx<Artifact?> a2 = Rx(null);
   RxInt type = 0.obs;
-  Rx<String?> sandsEffect = 'not'.obs;
-  Rx<String?> gobletEffect = 'not'.obs;
-  Rx<String?> circletEffect = 'not'.obs;
+  Rx<String> sandsEffect = 'option'.obs;
+  Rx<String> gobletEffect = 'option'.obs;
+  Rx<String> circletEffect = 'option'.obs;
 
   void selectCharacter(Character value) {
     character.value = value;
@@ -36,16 +40,19 @@ class ContributeCharacterController extends GetxController {
         return a.name.compareTo(b.name);
       },
     );
+    buttonController.reset();
   }
 
   void selectWeapon(Weapon value) {
     weapon.value = value;
+    buttonController.reset();
   }
 
   void selectTypeSet(int value) {
     type.value = value;
     a1.value = null;
     a2.value = null;
+    buttonController.reset();
   }
 
   void selectA1(Artifact value) {
@@ -55,6 +62,7 @@ class ContributeCharacterController extends GetxController {
       a1.value = value;
       a2.value = null;
     }
+    buttonController.reset();
   }
 
   void selectA2(Artifact value) {
@@ -64,23 +72,65 @@ class ContributeCharacterController extends GetxController {
       a1.value = value;
       a2.value = null;
     }
+    buttonController.reset();
   }
 
   void selectSandsEffect(String value) {
     sandsEffect.value = value;
+    buttonController.reset();
   }
 
   void selectGobletEffect(String value) {
     gobletEffect.value = value;
+    buttonController.reset();
   }
 
   void selectCircletEffect(String value) {
     circletEffect.value = value;
+    buttonController.reset();
   }
 
   Future<void> contribute() async {
-    await Future.delayed(const Duration(seconds: 2));
-    buttonController.success();
+    String? character = this.character.value?.id;
+    String? weapon = this.weapon.value?.id;
+    String? a1 = this.a1.value?.id;
+    String? a2 = this.a2.value?.id;
+    String sand = sandsEffect.value;
+    String goblet = gobletEffect.value;
+    String circlet = circletEffect.value;
+    if ((character != null &&
+            weapon != null &&
+            a1 != null &&
+            a2 != null &&
+            type.value == 0) ||
+        (character != null &&
+            weapon != null &&
+            a1 != null &&
+            type.value == 1)) {
+      ContributeCharacter contributeCharacter = ContributeCharacter(
+        character: character,
+        weapon: weapon,
+        typeSet: type.value,
+        a1: a1,
+        a2: a2,
+        sands: sand,
+        goblet: goblet,
+        circlet: circlet,
+      );
+
+      bool result =
+            await ContributeCharacterService().contribute(contributeCharacter);
+        if (result) {
+          buttonController.success();
+          Fluttertoast.showToast(msg: "success".tr);
+          Get.back();
+        } else {
+          buttonController.error();
+        }
+    } else {
+      dialogInfo("choose_full_info".tr);
+      buttonController.error();
+    }
   }
 
   @override

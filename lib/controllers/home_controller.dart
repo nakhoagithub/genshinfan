@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/models/traffic.dart';
+import 'package:genshinfan/objects/app/traffic.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/resource.dart';
@@ -197,6 +197,10 @@ class HomeController extends GetxController {
     }
   }
 
+  Future<void> getTraffic() async {
+    traffic.value = await AppService().getTraffic();
+  }
+
   @override
   void onInit() async {
     super.onInit();
@@ -205,7 +209,7 @@ class HomeController extends GetxController {
     day.value = dateTime.day;
     month.value = dateTime.month;
 
-    traffic.value = await AppService().getTraffic();
+    await getTraffic();
   }
 
   @override

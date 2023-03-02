@@ -1,4 +1,4 @@
-import '../resources/utils/enum.dart';
+import 'package:genshinfan/resources/utils/enum.dart';
 
 class DataApp {
   final int total;

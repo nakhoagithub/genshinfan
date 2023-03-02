@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
@@ -25,11 +26,7 @@ class InformationWeapon extends StatelessWidget {
           margin: const EdgeInsets.all(4),
           child: Column(
             children: [
-              _ImageWeapon(
-                linkImage: weapon.images?.icon,
-                rarity: weapon.rarity,
-                size: 150,
-              ),
+              const _ImageWeapon(),
               Center(
                 child: Text(
                   weapon.name,
@@ -53,51 +50,50 @@ class InformationWeapon extends StatelessWidget {
 }
 
 class _ImageWeapon extends StatelessWidget {
-  final String? linkImage;
-  final String? rarity;
-  final double size;
-  const _ImageWeapon({
-    required this.linkImage,
-    required this.rarity,
-    required this.size,
-  });
+  const _ImageWeapon();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      margin: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: GradientApp.getBackgroundRarity(rarity),
-      ),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: CachedNetworkImage(
-        imageUrl: linkImage ?? "",
-        fit: BoxFit.cover,
-        progressIndicatorBuilder: (context, url, progress) {
-          return const Center(
-            child: SizedBox(
-              height: 15,
-              width: 15,
-              child: CircularProgressIndicator(
-                strokeWidth: 1,
+    WeaponController weaponController = Get.find<WeaponController>();
+    double size = 150;
+    return Obx(() {
+      Weapon weapon = weaponController.weapon.value!;
+      return Container(
+        width: size,
+        height: size,
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: GradientApp.getBackgroundRarity(weapon.rarity),
+        ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: CachedNetworkImage(
+          imageUrl:
+              weapon.images?.icon ?? Config.urlImage(weapon.images?.namegacha),
+          fit: BoxFit.cover,
+          progressIndicatorBuilder: (context, url, progress) {
+            return const Center(
+              child: SizedBox(
+                height: 15,
+                width: 15,
+                child: CircularProgressIndicator(
+                  strokeWidth: 1,
+                ),
               ),
-            ),
-          );
-        },
-        errorWidget: (context, url, error) {
-          return const Center(
-            child: Icon(
-              Icons.image_not_supported_rounded,
-              color: Colors.black54,
-              size: 20,
-            ),
-          );
-        },
-      ),
-    );
+            );
+          },
+          errorWidget: (context, url, error) {
+            return const Center(
+              child: Icon(
+                Icons.image_not_supported_rounded,
+                color: Colors.black54,
+                size: 20,
+              ),
+            );
+          },
+        ),
+      );
+    });
   }
 }
 

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:get/get.dart';
 
@@ -104,35 +105,35 @@ class _NoLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return Container(
-      margin: const EdgeInsets.all(10),
-      child: Row(
-        children: [
-          Container(
-            height: 50,
-            width: 50,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
+    return InkWell(
+      onTap: () async {
+        dialogProgress("loading".tr);
+        await Get.find<AppController>().login();
+        Get.back();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        child: Row(
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: Image.asset(
+                "assets/images/ic_user.png",
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Image.asset(
-              "assets/images/ic_user.png",
-              fit: BoxFit.cover,
+            const SizedBox(width: 10),
+            Text(
+              "login".tr,
+              style: ThemeApp.textStyle(isDark: Get.isDarkMode, fontSize: 18),
             ),
-          ),
-          const SizedBox(width: 10),
-          Text(
-            "login".tr,
-            style: ThemeApp.textStyle(isDark: Get.isDarkMode, fontSize: 18),
-          ),
-          const Spacer(),
-          IconApp(
-            onTap: () async {
-              await Get.find<AppController>().login();
-            },
-            icon: const Icon(Icons.login_outlined),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

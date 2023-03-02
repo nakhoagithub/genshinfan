@@ -15,7 +15,7 @@ class SelectCircletEffect extends StatelessWidget {
     ContributeCharacterController contributeCharacterController =
         Get.find<ContributeCharacterController>();
     List<DropdownMenuItem<String>> items = [
-      DropdownMenuItem<String>(value: 'not', child: Text('not'.tr)),
+      DropdownMenuItem<String>(value: 'option', child: Text('option'.tr)),
       DropdownMenuItem<String>(value: 'hp', child: Text('hp'.tr)),
       DropdownMenuItem<String>(value: 'def', child: Text('def'.tr)),
       DropdownMenuItem<String>(value: 'attack', child: Text('attack'.tr)),

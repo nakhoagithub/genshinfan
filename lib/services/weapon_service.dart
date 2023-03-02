@@ -19,6 +19,7 @@ class WeaponService {
     dynamic curveWeapon = curve['weapons'];
     for (var k in jsonData.keys) {
       Weapon obj = Weapon.fromJson(jsonData[k]);
+      obj.id = k;
       // hình ảnh
       obj.setImage(img[k]);
       obj.setStat(statWeapon[k], curveWeapon);
@@ -34,8 +35,9 @@ class WeaponService {
     if (directory != null) {
       File file = File("${directory.path}/$language/weapons.json");
       String json = await file.readAsString();
-      List<Weapon> weapons = List<Weapon>.from(
-          jsonDecode(json).map((e) => Weapon.fromJson(e))).toList();
+      List<Weapon> weapons =
+          List<Weapon>.from(jsonDecode(json).map((e) => Weapon.fromJson(e)))
+              .toList();
       return weapons;
     }
     return null;

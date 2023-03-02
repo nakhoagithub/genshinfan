@@ -2,6 +2,7 @@ import 'image_artifact.dart';
 
 class Artifact {
   Artifact({
+    this.id,
     required this.name,
     required this.rarity,
     this.set1,
@@ -15,6 +16,7 @@ class Artifact {
     this.images,
   });
 
+  String? id;
   String name;
   List<String> rarity;
   String? set1;
@@ -28,6 +30,7 @@ class Artifact {
   ImageArtifact? images;
 
   factory Artifact.fromJson(Map<String, dynamic> json) => Artifact(
+        id: json['id'],
         name: json["name"],
         rarity: List<String>.from(json["rarity"].map((x) => x)),
         set1: json["1pc"],
@@ -50,6 +53,7 @@ class Artifact {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "rarity": List<dynamic>.from(rarity.map((x) => x)),
         "1pc": set1,

@@ -26,6 +26,7 @@ List<int> levels = [
 
 class Weapon {
   Weapon({
+    this.id,
     required this.name,
     this.dupealias,
     required this.description,
@@ -49,6 +50,7 @@ class Weapon {
     this.specialized,
   });
 
+  String? id;
   String name;
   String? dupealias;
   String description;
@@ -72,6 +74,7 @@ class Weapon {
   String? specialized;
 
   factory Weapon.fromJson(Map<String, dynamic> json) => Weapon(
+        id: json['id'],
         name: json["name"],
         description: json["description"],
         weapontype: json["weapontype"],
@@ -99,6 +102,7 @@ class Weapon {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "description": description,
         "weapontype": weapontype,

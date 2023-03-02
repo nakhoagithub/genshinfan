@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 
 class ItemWeapon extends StatelessWidget {
@@ -51,7 +52,8 @@ class ItemWeapon extends StatelessWidget {
                       ),
                     ),
                     child: CachedNetworkImage(
-                      imageUrl: weapon.images?.icon ?? "",
+                      imageUrl: weapon.images?.icon ??
+                          Config.urlImage(weapon.images?.namegacha),
                       fit: BoxFit.cover,
                       progressIndicatorBuilder: (context, url, progress) {
                         return const Center(

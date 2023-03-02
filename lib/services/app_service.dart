@@ -5,8 +5,11 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:genshinfan/models/traffic.dart';
+import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/objects/app/traffic.dart';
+import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/resources/utils/config.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
@@ -31,7 +34,10 @@ class AppService {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      return await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      Get.find<AppController>().userApp.value = await checkAndInitUser();
+      return userCredential;
     } catch (e) {
       log("$e", name: "login");
     }
@@ -39,6 +45,7 @@ class AppService {
   }
 
   Future<void> logout() async {
+    Get.find<AppController>().userApp.value = null;
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
     try {
@@ -48,16 +55,35 @@ class AppService {
     }
   }
 
+  Future<UserApp?> checkAndInitUser() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null && await AppService.checkInternetConnection()) {
+      DatabaseReference db = FirebaseDatabase.instance.ref("users");
+      DataSnapshot dataSnapshot =
+          await db.child(user.uid).get().then((value) {
+        return value;
+      });
+      if (dataSnapshot.value == null) {
+        UserApp userApp = UserApp(
+            uid: user.uid, name: user.displayName, email: user.email, linkImage: user.photoURL, role: 10);
+        await db
+            .child(user.uid)
+            .update(userApp.toJson());
+      } else {
+        return UserApp.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
+      }
+    }
+    return null;
+  }
+
   Future<bool> setTraffic() async {
-    DatabaseReference db = FirebaseDatabase.instance.ref();
+    DatabaseReference db = FirebaseDatabase.instance.ref("analytics");
     try {
-      await db.set({
-        "analytics": {
+      await db.update({
           "totalTraffic": ServerValue.increment(1),
           "trafficInDay": ServerValue.increment(1),
           "trafficInMonth": ServerValue.increment(1),
-        }
-      }).then((value) {
+        }).then((value) {
         return true;
       });
     } catch (e) {
@@ -71,10 +97,15 @@ class AppService {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     Traffic traffic =
         Traffic(totalTraffic: 0, trafficInDay: 0, trafficInMonth: 0);
-    await db.child("analytics").get().then((value) {
-      DataSnapshot dataSnapshot = value;
-      traffic = Traffic.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
-    });
+    try {
+      await db.child("analytics").get().then((value) {
+        DataSnapshot dataSnapshot = value;
+        traffic = Traffic.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
+      });
+    } catch (e) {
+      log("$e", name: "getTraffic");
+    }
+
     return traffic;
   }
 

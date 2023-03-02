@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:genshinfan/models/language.dart';
+import 'package:genshinfan/objects/app/language.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

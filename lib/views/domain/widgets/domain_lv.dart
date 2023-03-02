@@ -20,18 +20,20 @@ class InformationDomainLv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DomainController domainController = Get.find<DomainController>();
-    Domain domain = domainController.domain.value!;
-    return domain.domainLvs == null
-        ? const SizedBox()
-        : Column(
-            children: [
-              ...domain.domainLvs!.map((e) {
-                return _ItemDomain(
-                  domainLv: e,
-                );
-              }),
-            ],
-          );
+    return Obx(() {
+      Domain domain = domainController.domain.value!;
+      return domain.domainLvs == null
+          ? const SizedBox()
+          : Column(
+              children: [
+                ...domain.domainLvs!.map((e) {
+                  return _ItemDomain(
+                    domainLv: e,
+                  );
+                }),
+              ],
+            );
+    });
   }
 }
 

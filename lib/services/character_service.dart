@@ -6,7 +6,6 @@ import 'package:path_provider/path_provider.dart';
 import '../objects/character.dart';
 
 class CharacterService {
-
   Future<void> getCharacterFromGzip(
       Directory directory, String language, dynamic json) async {
     List<dynamic> characters = [];
@@ -26,6 +25,7 @@ class CharacterService {
     dynamic curveCharacter = curve['characters'];
     for (var k in jsonData.keys) {
       Character obj = Character.fromJson(jsonData[k]);
+      obj.id = k;
       // hình ảnh
       obj.setImage(img[k]);
       obj.setTalent(k, talent, imgTalent, statTalent);

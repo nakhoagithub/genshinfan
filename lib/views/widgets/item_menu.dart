@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:get/get.dart';
 
-class ItemSetting extends StatelessWidget {
+class ItemMenu extends StatelessWidget {
   final Widget? icon;
   final String title;
   final Widget? child;
   final String? description;
   final bool? notification;
   final VoidCallback? onTap;
-  const ItemSetting({
+  const ItemMenu({
     super.key,
     this.icon,
     required this.title,

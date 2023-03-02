@@ -5,6 +5,7 @@ import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 
 class Tools {
@@ -18,6 +19,20 @@ class Tools {
     } else {
       return "${(value * 100).toStringAsFixed(1)}%";
     }
+  }
+
+  static String getRole(int role) {
+    switch (role) {
+      case 1:
+        return 'admin';
+      case 10:
+        return 'member';
+    }
+    return 'member';
+  }
+
+  static bool getRoleMenuAdmin(int role) {
+    return Config.roleAdmins.contains(role);
   }
 
   static Color colorDendro = const Color(0xffa6c938);

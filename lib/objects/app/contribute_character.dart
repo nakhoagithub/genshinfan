@@ -1,7 +1,9 @@
 class ContributeCharacter {
-  final String name;
+  final String character;
   final String weapon;
   final int typeSet;
+  final String a1;
+  final String? a2;
   final String sands; // đồng hồ
   final String goblet; // ly
   final String circlet; // nón
@@ -11,9 +13,11 @@ class ContributeCharacter {
   final int? view;
 
   const ContributeCharacter({
-    required this.name,
+    required this.character,
     required this.weapon,
     required this.typeSet,
+    required this.a1,
+    this.a2,
     required this.sands,
     required this.goblet,
     required this.circlet,
@@ -23,9 +27,11 @@ class ContributeCharacter {
 
   factory ContributeCharacter.fromJson(Map<String, dynamic> json) {
     return ContributeCharacter(
-      name: json['name'],
+      character: json['name'],
       weapon: json['weapon'],
       typeSet: json['type_set'],
+      a1: json['a1'],
+      a2: json['a2'],
       sands: json['sands'],
       goblet: json['goblet'],
       circlet: json['circlet'],
@@ -36,9 +42,11 @@ class ContributeCharacter {
 
   Map<String, dynamic> toJson() {
     return {
-      "name": name,
+      "name": character,
       "weapon": weapon,
       "type_set": typeSet,
+      "a1": a1,
+      "a2": a2,
       "sands": sands,
       "goblet": goblet,
       "circlet": circlet,

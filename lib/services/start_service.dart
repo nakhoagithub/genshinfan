@@ -7,6 +7,7 @@ import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
+import 'package:genshinfan/objects/app/package_app.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
@@ -15,7 +16,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../models/package_app.dart';
 import '../resources/utils/config.dart';
 import '../resources/utils/enum.dart';
 import 'character_service.dart';

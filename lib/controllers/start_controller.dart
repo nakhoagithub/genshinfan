@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/models/package_app.dart';
-import 'package:genshinfan/models/traffic.dart';
+import 'package:genshinfan/objects/app/package_app.dart';
 import 'package:genshinfan/resources/utils/localization.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/start_service.dart';

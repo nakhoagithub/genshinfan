@@ -2,6 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/views/admin/admin_page.dart';
+import 'package:genshinfan/views/admin/manage_user.dart';
+import 'package:genshinfan/views/admin/manage_user_character_contribution.dart';
 import 'package:genshinfan/views/artifact/artifact_info_page.dart';
 import 'package:genshinfan/views/character/character_info_page.dart';
 import 'package:genshinfan/views/contribute/contribute_character_building_page.dart';
@@ -101,8 +104,23 @@ class App extends GetView<AppController> {
               transition: Transition.native,
             ),
             GetPage(
+              name: '/admin',
+              page: () => const AdminPage(),
+              transition: Transition.native,
+            ),
+            GetPage(
               name: '/contribute_character_building',
               page: () => const ContributeCharacterBuildingPage(),
+              transition: Transition.native,
+            ),
+            GetPage(
+              name: '/manage_user_character_contribution',
+              page: () => const ManageUserCharacterContribution(),
+              transition: Transition.native,
+            ),
+            GetPage(
+              name: '/manage_user',
+              page: () => const ManageUser(),
               transition: Transition.native,
             ),
           ],

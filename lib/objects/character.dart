@@ -63,6 +63,7 @@ class Character {
   String? specialized;
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
+        id: json['id'],
         name: json["name"],
         fullname: json["fullname"],
         title: json["title"],
@@ -101,6 +102,7 @@ class Character {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "fullname": fullname,
         "title": title,

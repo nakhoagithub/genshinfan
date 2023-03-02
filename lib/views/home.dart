@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
 
     List<ItemSlide> menus = [
       ItemSlide(
-        iconMenu: Image.asset("assets/images/play_store_512.png"),
+        iconMenu: Image.asset("assets/icon/play_store_512.png"),
         left: const HomePage(),
       ),
       ItemSlide(

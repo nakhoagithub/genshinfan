@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import '../../models/language.dart';
+import 'package:genshinfan/objects/app/language.dart';
 
 const vietnamese = Language(
   languageCode: "Vietnamese",
@@ -121,6 +121,8 @@ const Map<String, String> vi = {
   "month11": "Tháng 11",
   "month12": "Tháng 12",
 
+  "option": "Tùy chọn",
+  "success": "Thành công",
   "not": "Không",
   "note": "Lưu ý",
   "daily_reset_time":
@@ -152,7 +154,18 @@ const Map<String, String> vi = {
   "user_information": "Thông tin người dùng",
   "login": "Đăng nhập",
   "logout_question": "Bạn có muốn đăng xuất?",
-
+  "refresh_traffic": "Làm mới lưu lượng truy cập?",
+  "required_login": "Bạn cần đăng nhập để thực hiện chức năng này.",
+  "admin": "Admin",
+  "admin_description": "Quản lý ứng dụng",
+  "user_management": "Quản lý người dùng",
+  "data_management": "Quản lý dữ liệu",
+  "manager": "Quản lý",
+  "contribution_character": "Đóng góp xây dựng Nhân Vật",
+  "role_and_data_user": "Quyền và dữ liệu người dùng.",
+  "manage_user_character_contribution":
+      "Quản lý đóng góp xây dựng Nhân Vật của người dùng.",
+  "choose_full_info": "Bạn phải chọn đầy đủ các thông tin.",
 
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
   "FIGHT_PROP_ROCK_ADD_HURT": "Tăng ST Nguyên Tố Nham (%)",

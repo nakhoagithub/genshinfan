@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import '../../models/language.dart';
+import 'package:genshinfan/objects/app/language.dart';
 
 const english = Language(
   languageCode: "English",
@@ -122,6 +122,8 @@ const Map<String, String> en = {
   "month10": "October",
   "month11": "November",
   "month12": "December",
+  "option":"Option",
+  "success":"Successfully",
   "not": "Not",
   "note": "Note",
   "daily_reset_time":
@@ -153,6 +155,17 @@ const Map<String, String> en = {
   "user_information": "User information",
   "login": "Login",
   "logout_question": "Do you want to sign out?",
+  "refresh_traffic": "Refresh traffic?",
+  "required_login": "You need to login to perform this function.",
+  "admin": "Admin",
+  "admin_description": "Application management",
+  "user_management": "User management",
+  "data_management": "Data management",
+  "manager": "Manager",
+  "contribution_character": "Contribution Character",
+  "role_and_data_user": "User rights and data.",
+  "manage_user_character_contribution": "Manage user's Character contribution.",
+  "choose_full_info": "You must select full the information.",
   // game
   // stat character
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",

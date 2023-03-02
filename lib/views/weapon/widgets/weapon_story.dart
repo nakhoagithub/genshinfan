@@ -16,39 +16,41 @@ class WeaponStory extends StatelessWidget {
 
     return Obx(() {
       Weapon weapon = weaponController.weapon.value!;
-      return Column(
-        children: [
-          // title
-          TitleOfContent(title: "story".tr),
-          // content
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                strokeAlign: 1,
-                color: ThemeApp.colorText(isDark: Get.isDarkMode),
-              ),
-            ),
-            child: Column(
+      return weapon.story == ""
+          ? const SizedBox()
+          : Column(
               children: [
-                // refinement
+                // title
+                TitleOfContent(title: "story".tr),
+                // content
                 Container(
-                  margin: const EdgeInsets.all(4),
-                  child: Text(
-                    weapon.story,
-                    style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode,
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      strokeAlign: 1,
+                      color: ThemeApp.colorText(isDark: Get.isDarkMode),
                     ),
+                  ),
+                  child: Column(
+                    children: [
+                      // refinement
+                      Container(
+                        margin: const EdgeInsets.all(4),
+                        child: Text(
+                          weapon.story,
+                          style: ThemeApp.textStyle(
+                            isDark: Get.isDarkMode,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
-            ),
-          ),
-        ],
-      );
+            );
     });
   }
 }

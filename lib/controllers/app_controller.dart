@@ -9,6 +9,7 @@ import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/domain.dart';
@@ -35,6 +36,7 @@ class AppController extends GetxController {
 
   // user
   Rx<User?> user = Rx(null);
+  Rx<UserApp?> userApp = Rx(null);
 
   // internet
   Connectivity connectivity = Connectivity();
@@ -48,26 +50,6 @@ class AppController extends GetxController {
   RxList<Artifact> artifacts = <Artifact>[].obs;
   RxList<Domain> domains = <Domain>[].obs;
   RxList<Enemy> enemies = <Enemy>[].obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    // init theme
-    themeData.value = ThemeApp.theme;
-
-    user.value = FirebaseAuth.instance.currentUser;
-
-    // init internet stream
-    _streamConnect = connectivity.onConnectivityChanged.listen((value) async {
-      if (value == ConnectivityResult.none) {
-        // không có kết nối
-        hasInternet.value = false;
-      } else {
-        // có kết nối
-        hasInternet.value = true;
-      }
-    });
-  }
 
   Future<bool> getData() async {
     try {
@@ -142,6 +124,27 @@ class AppController extends GetxController {
     await dialogConfirm("confirm".tr, "logout_question".tr, () async {
       await AppService().logout();
       user.value = null;
+    });
+  }
+
+  @override
+  void onInit() async {
+    super.onInit();
+    // init theme
+    themeData.value = ThemeApp.theme;
+
+    user.value = FirebaseAuth.instance.currentUser;
+    userApp.value = await AppService().checkAndInitUser();
+
+    // init internet stream
+    _streamConnect = connectivity.onConnectivityChanged.listen((value) async {
+      if (value == ConnectivityResult.none) {
+        // không có kết nối
+        hasInternet.value = false;
+      } else {
+        // có kết nối
+        hasInternet.value = true;
+      }
     });
   }
 

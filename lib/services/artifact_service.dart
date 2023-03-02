@@ -5,14 +5,14 @@ import 'package:genshinfan/objects/artifact.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ArtifactService {
-
   Future<List<Artifact>?> getArtifacts(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
       File file = File("${directory.path}/$language/artifacts.json");
       String json = await file.readAsString();
-      List<Artifact> artifacts = List<Artifact>.from(
-          jsonDecode(json).map((e) => Artifact.fromJson(e))).toList();
+      List<Artifact> artifacts =
+          List<Artifact>.from(jsonDecode(json).map((e) => Artifact.fromJson(e)))
+              .toList();
       return artifacts;
     }
     return null;
@@ -28,6 +28,7 @@ class ArtifactService {
     dynamic img = image['artifacts'];
     for (var k in jsonData.keys) {
       Artifact obj = Artifact.fromJson(jsonData[k]);
+      obj.id = k;
       // hình ảnh
       obj.setImage(img[k]);
       artifacts.add(obj.toJson());
