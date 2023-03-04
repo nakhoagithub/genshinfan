@@ -34,7 +34,7 @@ class HomeToday extends StatelessWidget {
                     dialogInfo("daily_reset_time".tr);
                   },
                   child: const Icon(
-                    Icons.info_outline_rounded,
+                    Icons.help_outline_rounded,
                     size: 18,
                   ),
                 ),

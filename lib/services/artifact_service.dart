@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ArtifactService {
@@ -36,5 +38,15 @@ class ArtifactService {
     File fileCharacter = File("${directory.path}/$language/artifacts.json");
     await fileCharacter.create(recursive: true);
     await fileCharacter.writeAsString(jsonEncode(artifacts).toString());
+  }
+
+  Artifact? getArtifactFromId(String? id) {
+    if (id == null) {
+      return null;
+    }
+    List<Artifact> artifacts = Get.find<AppController>().artifacts;
+    return artifacts.firstWhereOrNull((element) {
+      return element.id == id;
+    });
   }
 }

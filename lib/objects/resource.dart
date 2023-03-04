@@ -2,6 +2,7 @@ import 'image_resource.dart';
 
 class Resource {
   Resource({
+    this.id,
     required this.name,
     this.dupealias,
     required this.description,
@@ -15,6 +16,7 @@ class Resource {
     this.images,
   });
 
+  String? id;
   String name;
   String? dupealias;
   String description;
@@ -32,6 +34,7 @@ class Resource {
   }
 
   factory Resource.fromJson(Map<String, dynamic> json) => Resource(
+        id: json['id'],
         name: json["name"],
         dupealias: json["dupealias"],
         description: json["description"],
@@ -50,6 +53,7 @@ class Resource {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "name": name,
         "dupealias": dupealias,
         "description": description,

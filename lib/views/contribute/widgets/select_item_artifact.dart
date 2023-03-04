@@ -113,39 +113,3 @@ class _ItemImage extends StatelessWidget {
     });
   }
 }
-
-class _ItemInfoSet extends StatelessWidget {
-  final int type;
-  const _ItemInfoSet({
-    required this.type,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    ContributeCharacterController contributeCharacterController =
-        Get.find<ContributeCharacterController>();
-    return Obx(() {
-      Artifact? a1 = contributeCharacterController.a1.value;
-      Artifact? a2 = contributeCharacterController.a2.value;
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextCSS(
-            type == 0 ? a1?.set2 ?? "" : a2?.set2 ?? "",
-            style: ThemeApp.textStyle(isDark: Get.isDarkMode, fontSize: 15),
-          ),
-          const SizedBox(height: 4),
-          type == 0
-              ? const SizedBox()
-              : FadeInRight(
-                  child: TextCSS(
-                    type == 0 ? a1?.set4 ?? "" : a2?.set4 ?? "",
-                    style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode, fontSize: 15),
-                  ),
-                ),
-        ],
-      );
-    });
-  }
-}

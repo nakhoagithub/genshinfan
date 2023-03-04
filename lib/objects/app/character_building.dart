@@ -1,5 +1,7 @@
-class ContributeCharacter {
-  final String character;
+class CharacterBuilding {
+  String? key;
+  final String characterName;
+  final String? element;
   final String weapon;
   final int typeSet;
   final String a1;
@@ -7,13 +9,13 @@ class ContributeCharacter {
   final String sands; // đồng hồ
   final String goblet; // ly
   final String circlet; // nón
+  final String author;
+  final String uidAuthor;
 
-  // social
-  final int? like;
-  final int? view;
-
-  const ContributeCharacter({
-    required this.character,
+  CharacterBuilding({
+    this.key,
+    required this.characterName,
+    this.element,
     required this.weapon,
     required this.typeSet,
     required this.a1,
@@ -21,13 +23,14 @@ class ContributeCharacter {
     required this.sands,
     required this.goblet,
     required this.circlet,
-    this.like,
-    this.view,
+    required this.author,
+    required this.uidAuthor,
   });
 
-  factory ContributeCharacter.fromJson(Map<String, dynamic> json) {
-    return ContributeCharacter(
-      character: json['name'],
+  factory CharacterBuilding.fromJson(Map<dynamic, dynamic> json) {
+    return CharacterBuilding(
+      characterName: json['name'],
+      element: json['element'],
       weapon: json['weapon'],
       typeSet: json['type_set'],
       a1: json['a1'],
@@ -35,14 +38,15 @@ class ContributeCharacter {
       sands: json['sands'],
       goblet: json['goblet'],
       circlet: json['circlet'],
-      like: json['like'],
-      view: json['view'],
+      author: json['author'],
+      uidAuthor: json['uid_author'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "name": character,
+      "name": characterName,
+      "element": element,
       "weapon": weapon,
       "type_set": typeSet,
       "a1": a1,
@@ -50,8 +54,8 @@ class ContributeCharacter {
       "sands": sands,
       "goblet": goblet,
       "circlet": circlet,
-      "like": like,
-      "view": view,
+      "author": author,
+      "uid_author": uidAuthor,
     };
   }
 }

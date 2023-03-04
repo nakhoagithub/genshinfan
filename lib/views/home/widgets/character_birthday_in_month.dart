@@ -4,6 +4,7 @@ import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/views/character/widgets/item_character.dart';
 import 'package:get/get.dart';
 
@@ -13,11 +14,10 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    HomeController homeController = Get.find<HomeController>();
     List<Character> characters =
-        homeController.getCharacterBirthdayInMonth() ?? [];
+        CharacterService().getCharacterBirthdayInMonth() ?? [];
     List<Character> characterToday =
-        homeController.getCharacterBirthdayToday() ?? [];
+        CharacterService().getCharacterBirthdayToday() ?? [];
 
     double sizeItem = 94;
     return Container(

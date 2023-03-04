@@ -12,25 +12,27 @@ class WaitAMinute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Center(
-          child: SizedBox(
-            height: sizeProgressIndicator ?? 30,
-            width: sizeProgressIndicator ?? 30,
-            child: CircularProgressIndicator(
-              strokeWidth: strokeWidth ?? 2,
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Center(
+            child: SizedBox(
+              height: sizeProgressIndicator ?? 30,
+              width: sizeProgressIndicator ?? 30,
+              child: CircularProgressIndicator(
+                strokeWidth: strokeWidth ?? 2,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "wait_a_minute".tr,
-          ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "wait_a_minute".tr,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

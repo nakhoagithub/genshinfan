@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/domain.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
 List<String> levels = [
@@ -82,5 +85,18 @@ class DomainService {
     File fileCharacter = File("${directory.path}/$language/domains.json");
     await fileCharacter.create(recursive: true);
     await fileCharacter.writeAsString(jsonEncode(domains).toString());
+  }
+
+  List<Domain>? getDomainToday(String today) {
+    AppController appController = Get.find<AppController>();
+    List<Domain> domains = appController.domains;
+    List<Domain> domainToday = domains.where((element) {
+      List<String>? daysofweeks = element.daysofweek?.where((element) {
+        return element == today;
+      }).toList();
+      return daysofweeks != null && daysofweeks.isNotEmpty;
+    }).toList();
+    Get.find<HomeController>().domainToday.value = domainToday;
+    return domainToday;
   }
 }

@@ -3,7 +3,8 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
-dialogConfirm(String title, String message, Function accept) async {
+dialogConfirm(String title, String message, Function accept,
+    {Function? cancel}) async {
   await Get.bottomSheet(
     Container(
       margin: const EdgeInsets.all(10),
@@ -44,7 +45,10 @@ dialogConfirm(String title, String message, Function accept) async {
                 children: [
                   Expanded(
                     child: InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        if (cancel != null) {
+                          await cancel();
+                        }
                         Get.back();
                       },
                       borderRadius: BorderRadius.circular(50),

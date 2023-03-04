@@ -3,6 +3,7 @@ import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/views/character/widgets/item_character.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
@@ -14,8 +15,7 @@ class ListCharacterUpToday extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     double sizeItem = 94;
-    HomeController homeController = Get.find<HomeController>();
-    List<Character>? characterUpToday = homeController.getCharacterUpToday();
+    List<Character>? characterUpToday = CharacterService().getCharacterUpToday();
     return characterUpToday == null
         ? const SizedBox()
         : Container(
@@ -40,7 +40,7 @@ class ListCharacterUpToday extends StatelessWidget {
                           dialogInfo("character_up_today".tr);
                         },
                         child: const Icon(
-                          Icons.info_outline_rounded,
+                          Icons.help_outline_rounded,
                           size: 18,
                         ),
                       ),

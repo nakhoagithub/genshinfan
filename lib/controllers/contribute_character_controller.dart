@@ -1,6 +1,7 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/objects/app/contribute_character.dart';
+import 'package:genshinfan/controllers/home_controller.dart';
+import 'package:genshinfan/objects/app/character_building.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/weapon.dart';
@@ -13,7 +14,9 @@ class ContributeCharacterController extends GetxController {
   RoundedLoadingButtonController buttonController =
       RoundedLoadingButtonController();
   RxList<Character> characters = Get.find<AppController>().characters;
+  RxString author = "".obs;
   Rx<Character?> character = Rx(null);
+  RxString elementOfTraveler = "".obs;
   RxList<Weapon> weapons = <Weapon>[].obs;
   Rx<Weapon?> weapon = Rx(null);
   RxList<Artifact> artifacts = <Artifact>[].obs;
@@ -23,6 +26,11 @@ class ContributeCharacterController extends GetxController {
   Rx<String> sandsEffect = 'option'.obs;
   Rx<String> gobletEffect = 'option'.obs;
   Rx<String> circletEffect = 'option'.obs;
+
+  void changeAuthor(String value) {
+    author.value = value;
+    buttonController.reset();
+  }
 
   void selectCharacter(Character value) {
     character.value = value;
@@ -92,23 +100,23 @@ class ContributeCharacterController extends GetxController {
 
   Future<void> contribute() async {
     String? character = this.character.value?.id;
+
     String? weapon = this.weapon.value?.id;
     String? a1 = this.a1.value?.id;
     String? a2 = this.a2.value?.id;
     String sand = sandsEffect.value;
     String goblet = gobletEffect.value;
     String circlet = circletEffect.value;
-    if ((character != null &&
-            weapon != null &&
-            a1 != null &&
-            a2 != null &&
-            type.value == 0) ||
-        (character != null &&
-            weapon != null &&
-            a1 != null &&
-            type.value == 1)) {
-      ContributeCharacter contributeCharacter = ContributeCharacter(
-        character: character,
+
+    String uid = Get.find<AppController>().userApp.value?.uid ?? "";
+    String author = this.author.value;
+
+    if ((author.length >= 3 && author.length <= 30) &&
+        (character != null && weapon != null && a1 != null) &&
+        (type.value == 1 || (type.value == 0 && a2 != null))) {
+      CharacterBuilding characterBuilding = CharacterBuilding(
+        characterName: character,
+        element: elementOfTraveler.value,
         weapon: weapon,
         typeSet: type.value,
         a1: a1,
@@ -116,17 +124,19 @@ class ContributeCharacterController extends GetxController {
         sands: sand,
         goblet: goblet,
         circlet: circlet,
+        author: author,
+        uidAuthor: uid,
       );
 
       bool result =
-            await ContributeCharacterService().contribute(contributeCharacter);
-        if (result) {
-          buttonController.success();
-          Fluttertoast.showToast(msg: "success".tr);
-          Get.back();
-        } else {
-          buttonController.error();
-        }
+          await ContributeCharacterService().contribute(characterBuilding);
+      if (result) {
+        buttonController.success();
+        Fluttertoast.showToast(msg: "success".tr);
+        Get.back();
+      } else {
+        buttonController.error();
+      }
     } else {
       dialogInfo("choose_full_info".tr);
       buttonController.error();

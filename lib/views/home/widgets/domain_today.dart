@@ -9,6 +9,7 @@ import 'package:genshinfan/objects/reward_preview.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,7 @@ class ListDomainToday extends StatelessWidget {
     context.theme;
     HomeController homeController = Get.find<HomeController>();
     List<Domain> domains =
-        homeController.getDomainToday("day${homeController.today}".tr) ?? [];
+        DomainService().getDomainToday("day${homeController.today}".tr) ?? [];
     return Container(
       margin: const EdgeInsets.all(4),
       height: (132 * 1.215) + 20,

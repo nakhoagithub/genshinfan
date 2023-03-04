@@ -187,7 +187,7 @@ class _ItemDomain extends StatelessWidget {
                             children: [
                               ...domainLv.recommendedelements.map((e) {
                                 return Image.asset(
-                                  Tools.getElementFromName(e) ?? "",
+                                  Tools.getAssetElementFromName(e) ?? "",
                                   height: 30,
                                   width: 30,
                                 );

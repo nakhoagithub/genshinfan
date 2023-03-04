@@ -4,8 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/views/admin/admin_page.dart';
 import 'package:genshinfan/views/admin/manage_user.dart';
-import 'package:genshinfan/views/admin/manage_user_character_contribution.dart';
+import 'package:genshinfan/views/admin/manage_character_contribution.dart';
 import 'package:genshinfan/views/artifact/artifact_info_page.dart';
+import 'package:genshinfan/views/character/character_building_page.dart';
 import 'package:genshinfan/views/character/character_info_page.dart';
 import 'package:genshinfan/views/contribute/contribute_character_building_page.dart';
 import 'package:genshinfan/views/domain/domain_info_page.dart';
@@ -112,6 +113,11 @@ class App extends GetView<AppController> {
               name: '/contribute_character_building',
               page: () => const ContributeCharacterBuildingPage(),
               transition: Transition.native,
+            ),
+            GetPage(
+              name: '/character_building',
+              page: () => const CharacterBuildingPage(),
+              transition: Transition.rightToLeftWithFade,
             ),
             GetPage(
               name: '/manage_user_character_contribution',

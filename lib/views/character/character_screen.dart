@@ -26,6 +26,14 @@ class CharacterScreen extends StatelessWidget {
           title: Text(
             "character_information".tr,
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.toNamed("/character_building");
+              },
+              icon: const Icon(Icons.build_circle_outlined),
+            )
+          ],
         ),
         body: characterController.character.value == null
             ? Center(

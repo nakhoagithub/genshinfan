@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/artifact/artifact_page.dart';
 import 'package:genshinfan/views/artifact/artifact_screen.dart';
+import 'package:genshinfan/views/character/character_building_page.dart';
 import 'package:genshinfan/views/domain/domain_page.dart';
 import 'package:genshinfan/views/domain/domain_screen.dart';
 import 'package:genshinfan/views/enemy/enemy_page.dart';

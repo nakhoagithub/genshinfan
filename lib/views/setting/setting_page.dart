@@ -89,7 +89,7 @@ class SettingPage extends StatelessWidget {
             TitleApp(title: "contribute".tr),
             ItemMenu(
               icon: const Icon(Icons.person_outline_rounded),
-              title: "contribute_character_building".tr,
+              title: "character_building".tr,
               onTap: () {
                 if (Get.find<AppController>().userApp.value != null ||
                     Get.find<AppController>().user.value != null) {

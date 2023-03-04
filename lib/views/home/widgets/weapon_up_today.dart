@@ -3,6 +3,8 @@ import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/services/character_service.dart';
+import 'package:genshinfan/services/weapon_service.dart';
 import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
@@ -14,8 +16,7 @@ class ListWeaponUpToday extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     double sizeItem = 94;
-    HomeController homeController = Get.find<HomeController>();
-    List<Weapon>? weaponUpToday = homeController.getWeaponUpToday();
+    List<Weapon>? weaponUpToday = WeaponService().getWeaponUpToday();
     return weaponUpToday == null
         ? const SizedBox()
         : Container(
@@ -40,7 +41,7 @@ class ListWeaponUpToday extends StatelessWidget {
                           dialogInfo("weapon_up_today".tr);
                         },
                         child: const Icon(
-                          Icons.info_outline_rounded,
+                          Icons.help_outline_rounded,
                           size: 18,
                         ),
                       ),

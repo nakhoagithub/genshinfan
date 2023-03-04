@@ -21,6 +21,8 @@ class ItemWeapon extends StatelessWidget {
       borderRadius: BorderRadius.circular(4),
       child: Container(
         margin: const EdgeInsets.all(2),
+        width: sizeItem,
+        height: sizeItem * 1.215,
         child: Stack(
           children: [
             // background

@@ -1,7 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/controllers/home_controller.dart';
+import 'package:genshinfan/objects/domain.dart';
+import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
 class WeaponService {
@@ -41,5 +47,55 @@ class WeaponService {
       return weapons;
     }
     return null;
+  }
+
+  List<Weapon>? getWeaponUpToday() {
+    AppController appController = Get.find<AppController>();
+    List<Weapon> weapons = appController.weapons;
+    List<Domain> domains = Get.find<HomeController>().domainToday;
+    List<String> nameResourceToday = [];
+    for (var domain in domains) {
+      if (domain.domainLvs != null) {
+        for (var lv in domain.domainLvs!) {
+          for (var rw in lv.rewardpreview) {
+            Resource? resource = Tools.getResourceFromName(rw.name);
+            if (resource != null && resource.category == "AVATAR_MATERIAL") {
+              nameResourceToday.add(rw.name);
+            }
+          }
+        }
+      }
+    }
+    List<Weapon> weaponUpToday = weapons.where((element) {
+      if (element.costs != null) {
+        List<AscendWeapon> ascendAll = [];
+        ascendAll.addAll(element.costs!.ascend1);
+        ascendAll.addAll(element.costs!.ascend2);
+        ascendAll.addAll(element.costs!.ascend3);
+        ascendAll.addAll(element.costs!.ascend4);
+        ascendAll.addAll(element.costs!.ascend5 ?? []);
+        ascendAll.addAll(element.costs!.ascend6 ?? []);
+
+        for (var ascend in ascendAll) {
+          if (nameResourceToday.contains(ascend.name)) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }).toList();
+    weaponUpToday.sort(
+      (a, b) {
+        return b.rarity.compareTo(a.rarity);
+      },
+    );
+    return weaponUpToday;
+  }
+
+  Weapon? getWeaponFromId(String id) {
+    List<Weapon> weapons = Get.find<AppController>().weapons;
+    return weapons.firstWhereOrNull((element) {
+      return element.id == id;
+    });
   }
 }

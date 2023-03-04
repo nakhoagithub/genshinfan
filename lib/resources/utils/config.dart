@@ -1,3 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+/// config role
+/// 1: Admin
+/// 2:
+/// 3:
+/// 4:
+/// 5: Duyệt đóng góp
+
 class Config {
   static const String darkMode = 'darkMode';
   static const String languageApp = 'languageApp';
@@ -27,5 +37,16 @@ class Config {
 
   static const double marginText = 4;
 
+  // quản lý ứng dụng và quyền
+  static const List<int> roleAdminLV1 = [1, 2];
+  // quản lý khác
+  static const List<int> roleAdminLV2 = [3, 4];
   static const List<int> roleAdmins = [1, 2, 3, 4, 5];
+  
+
+  static List<DropdownMenuItem> menuRole = [
+    DropdownMenuItem(value: 1, child: Text("admin".tr)),
+    DropdownMenuItem(value: 5, child: Text("censor".tr)),
+    DropdownMenuItem(value: 10, child: Text("member".tr)),
+  ];
 }

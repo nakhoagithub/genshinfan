@@ -25,6 +25,8 @@ class Tools {
     switch (role) {
       case 1:
         return 'admin';
+      case 5:
+        return 'censor';
       case 10:
         return 'member';
     }
@@ -152,7 +154,7 @@ class Tools {
     return null;
   }
 
-  static String? getElementFromName(String? element) {
+  static String? getAssetElementFromName(String? element) {
     if (element == "anemo".tr || element == "Anemo") {
       return "assets/images/element_anemo.png";
     }

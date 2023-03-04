@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:get/get.dart';
@@ -14,7 +13,7 @@ class SelectTypeSet extends StatelessWidget {
         Get.find<ContributeCharacterController>();
     return Center(
       child: Container(
-        margin: const EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 10),
         height: 50,
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
