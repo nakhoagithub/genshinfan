@@ -1,10 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/management_contribute_character_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
+import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
@@ -80,6 +83,9 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserApp? user = Get.find<AppController>().userApp.value;
+    int roleCurrentUser = user?.role ?? 10;
+    String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
     Weapon? weapon = WeaponService().getWeaponFromId(characterBuilding.weapon);
@@ -202,14 +208,14 @@ class _Browse extends StatelessWidget {
                   await dialogConfirm("delete".tr, "delete_contribute".tr,
                       () async {
                     await managementContributeCharacterController
-                        .addContribution(characterBuilding);
+                        .deleteContribution(characterBuilding, index);
                   });
                 },
                 borderRadius: BorderRadius.circular(50),
                 child: Center(
                   child: Container(
                     margin: const EdgeInsets.only(top: 8, bottom: 8),
-                    child: Text("cancel".tr),
+                    child: Text("delete".tr),
                   ),
                 ),
               ),
@@ -226,7 +232,7 @@ class _Browse extends StatelessWidget {
                   await dialogConfirm(
                       "confirm".tr, "add_contribute_to_database".tr, () async {
                     await managementContributeCharacterController
-                        .deleteContribution(characterBuilding, index);
+                        .addContribution(characterBuilding, index);
                   });
                 },
                 borderRadius: BorderRadius.circular(50),

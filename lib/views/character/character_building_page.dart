@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_building_controller.dart';
+import 'package:genshinfan/controllers/management_contribute_character_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
@@ -14,6 +15,7 @@ import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
 import 'package:genshinfan/views/character/widgets/item_character.dart';
 import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';
@@ -25,7 +27,6 @@ class CharacterBuildingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(CharacterBuildingController());
     return Scaffold(
-      backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
       appBar: AppBar(
         leading: const BackButtonApp(),
         centerTitle: true,
@@ -100,7 +101,6 @@ class _Item extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   character == null
                       ? const SizedBox()
@@ -129,7 +129,7 @@ class _Item extends StatelessWidget {
               onSelected: (value) {},
             ),
             // nguyên tố đối với nhà lữ hành
-            characterBuilding.element == null
+            characterBuilding.element == null || characterBuilding.element == ""
                 ? const SizedBox()
                 : Row(
                     children: [
@@ -162,13 +162,49 @@ class _Item extends StatelessWidget {
               "${"author".tr}: <b>${characterBuilding.author}</b>",
               style: ThemeApp.textStyle(isDark: Get.isDarkMode),
             ),
-            Container(
-              height: 1,
-              width: double.infinity,
-              margin: const EdgeInsets.only(top: 10),
-              color: ThemeApp.colorTextSecond(isDark: Get.isDarkMode),
+
+            _Browse(
+              characterBuilding: characterBuilding,
+              index: index,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Browse extends StatelessWidget {
+  final CharacterBuilding characterBuilding;
+  final int index;
+  const _Browse({
+    required this.characterBuilding,
+    required this.index,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    CharacterBuildingController characterBuildingController =
+        Get.find<CharacterBuildingController>();
+    return Material(
+      color: Colors.transparent,
+      child: Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: InkWell(
+          onTap: () async {
+            await dialogConfirm("delete".tr, "delete_contribute_to_database".tr,
+                () async {
+              await characterBuildingController.deleteContributionForManager(
+                  characterBuilding, index);
+            });
+          },
+          borderRadius: BorderRadius.circular(50),
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
+              child: Text("delete".tr),
+            ),
+          ),
         ),
       ),
     );

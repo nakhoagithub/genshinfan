@@ -1,14 +1,17 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/talent.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
@@ -179,8 +182,12 @@ class CharacterService {
             characters.add(characterBuilding);
           }
         }
-      });
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
     } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+        return [];
+      }
       log("$e", name: "getCharacterBuilding");
     }
     return characters;

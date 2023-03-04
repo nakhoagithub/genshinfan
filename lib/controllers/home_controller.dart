@@ -52,7 +52,7 @@ class HomeController extends GetxController {
     day.value = dateTime.day;
     month.value = dateTime.month;
 
-    await getTraffic();
+    unawaited(getTraffic());
   }
 
   @override

@@ -171,12 +171,15 @@ const Map<String, String> en = {
   "delete": "Delete",
   "delete_contribute": "Delete this user contribution?",
   "add_contribute_to_database": "Add this contribution to the database?",
+  "delete_contribute_to_database": "Delete this contribution?",
   "contribute_manage_empty": "No contributions yet",
   "censor": "Censor",
   "member": "Member",
   "permission": "Permission",
   "permission_denied": "Permission denied",
   "error": "Error",
+  "note_contribute_character_building": "This contributed data will be reviewed and approved by moderators.",
+  "timeout_exception": "Timeout exception",
   // game
   // stat character
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",

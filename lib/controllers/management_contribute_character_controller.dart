@@ -7,12 +7,20 @@ class ManagementContributeCharacterController extends GetxController {
   RxInt status = 0.obs;
   RxList<CharacterBuilding> contributeCharacters = <CharacterBuilding>[].obs;
 
-  Future<void> addContribution(CharacterBuilding characterBuilding) async {}
+  Future<void> addContribution(CharacterBuilding characterBuilding, int index) async {
+    bool result =
+        await ContributeCharacterService().addContribute(characterBuilding);
+    if (result) {
+      contributeCharacters.removeAt(index);
+    } else {
+      Fluttertoast.showToast(msg: "Error: Permission denied");
+    }
+  }
 
   Future<void> deleteContribution(
       CharacterBuilding characterBuilding, int index) async {
     bool result =
-        await ContributeCharacterService().addContribute(characterBuilding);
+        await ContributeCharacterService().deleteContribute(characterBuilding);
     if (result) {
       contributeCharacters.removeAt(index);
     } else {

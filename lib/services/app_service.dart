@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
@@ -5,6 +6,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/app/traffic.dart';
 import 'package:genshinfan/objects/app/user.dart';
@@ -57,36 +59,45 @@ class AppService {
 
   Future<UserApp?> checkAndInitUser() async {
     User? user = FirebaseAuth.instance.currentUser;
-    if (user != null && await AppService.checkInternetConnection()) {
-      DatabaseReference db = FirebaseDatabase.instance.ref("users");
-      DataSnapshot dataSnapshot =
-          await db.child(user.uid).get().then((value) {
-        return value;
-      });
-      if (dataSnapshot.value == null) {
-        UserApp userApp = UserApp(
-            uid: user.uid, name: user.displayName, email: user.email, linkImage: user.photoURL, role: 10);
-        await db
-            .child(user.uid)
-            .update(userApp.toJson());
-      } else {
-        return UserApp.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
+    try {
+      if (user != null && await AppService.checkInternetConnection()) {
+        DatabaseReference db = FirebaseDatabase.instance.ref("users");
+        DataSnapshot dataSnapshot =
+            await db.child(user.uid).get().then((value) {
+          return value;
+        });
+        if (dataSnapshot.value == null) {
+          UserApp userApp = UserApp(
+              uid: user.uid,
+              name: user.displayName,
+              email: user.email,
+              linkImage: user.photoURL,
+              role: 10);
+          await db.child(user.uid).update(userApp.toJson());
+        } else {
+          return UserApp.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
+        }
       }
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
     }
     return null;
   }
 
   Future<bool> setTraffic() async {
-    DatabaseReference db = FirebaseDatabase.instance.ref("analytics");
     try {
+      DatabaseReference db = FirebaseDatabase.instance.ref("analytics");
       await db.update({
-          "totalTraffic": ServerValue.increment(1),
-          "trafficInDay": ServerValue.increment(1),
-          "trafficInMonth": ServerValue.increment(1),
-        }).then((value) {
+        "totalTraffic": ServerValue.increment(1),
+        "trafficInDay": ServerValue.increment(1),
+        "trafficInMonth": ServerValue.increment(1),
+      }).then((value) {
         return true;
-      });
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
     } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
       log("$e", name: "setTraffic");
     }
 

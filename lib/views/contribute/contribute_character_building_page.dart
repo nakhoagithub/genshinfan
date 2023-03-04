@@ -13,6 +13,7 @@ import 'package:genshinfan/views/contribute/widgets/select_item_artifact.dart';
 import 'package:genshinfan/views/contribute/widgets/select_sands.dart';
 import 'package:genshinfan/views/contribute/widgets/select_type.dart';
 import 'package:genshinfan/views/contribute/widgets/select_weapon.dart';
+import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
 class ContributeCharacterBuildingPage extends StatelessWidget {
@@ -41,7 +42,7 @@ class ContributeCharacterBuildingPage extends StatelessWidget {
             SelectSandsEffect(),
             SelectGobletEffect(),
             SelectCircletEffect(),
-            SizedBox(height: 50),
+            _Note(),
             ButtonContributeCharacter(),
             SizedBox(height: 50),
           ],
@@ -223,6 +224,21 @@ class _SelectArtifact extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _Note extends StatelessWidget {
+  const _Note();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: TextCSS(
+        "<b><red>${"note".tr}:</red></b> ${"note_contribute_character_building".tr}",
+        style: ThemeApp.textStyle(isDark: Get.isDarkMode),
       ),
     );
   }

@@ -47,17 +47,28 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    }
-
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+        versionCode 1
+        versionName "1.0.0"
+        ndk {
+            debugSymbolLevel 'SYMBOL_TABLE'
         }
     }
+
+    signingConfigs {
+        release {
+            storeFile file("D:/_Private/GenshinFan/upload-keystore.jks")
+            storePassword "zxcvbn"
+            keyAlias "upload"
+            keyPassword "zxcvbn"
+        }
+    }
+   
+   buildTypes {
+       release {
+           signingConfig signingConfigs.release
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+       }
+   }
 }
 
 flutter {

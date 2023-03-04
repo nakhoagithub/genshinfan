@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
@@ -29,7 +30,11 @@ class CharacterInfoPage extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                Get.toNamed("/character_building");
+                if (characterController.character.value != null) {
+                  Get.toNamed("/character_building");
+                } else {
+                  Fluttertoast.showToast(msg: "choose_character".tr);
+                }
               },
               icon: const Icon(Icons.build_circle_outlined),
             )

@@ -1,17 +1,27 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:genshinfan/resources/utils/config.dart';
+import 'package:get/get.dart';
 
 class ContributeCharacterService {
   Future<bool> contribute(CharacterBuilding characterBuilding) async {
     DatabaseReference db =
         FirebaseDatabase.instance.ref("contribution_management");
     try {
-      await db.push().update(characterBuilding.toJson()).then((value) => value);
+      await db
+          .push()
+          .update(characterBuilding.toJson())
+          .then((value) => value)
+          .timeout(const Duration(seconds: Config.seccondTimeout));
       return true;
     } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
       log("$e", name: "contribute");
       return false;
     }
@@ -33,8 +43,11 @@ class ContributeCharacterService {
             contributions.add(characterBuilding);
           }
         }
-      });
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
     } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
       log("$e", name: "getContributeCharacterForManager");
     }
     return contributions;
@@ -47,9 +60,47 @@ class ContributeCharacterService {
         "contributions/${characterBuilding.characterName}/${db.push().key}":
             characterBuilding.toJson(),
         "contribution_management/${characterBuilding.key}": null,
-      });
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
       return true;
     } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
+      log("$e", name: "addContribute");
+      return false;
+    }
+  }
+
+  Future<bool> deleteContribute(CharacterBuilding characterBuilding) async {
+    DatabaseReference db = FirebaseDatabase.instance.ref();
+    try {
+      await db.update({
+        "contribution_management/${characterBuilding.key}": null,
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
+      return true;
+    } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
+      log("$e", name: "addContribute");
+      return false;
+    }
+  }
+
+  /// xóa bài đóng góp của người dùng từ màn hình xem đóng góp, chỉ dành cho admin
+  Future<bool> deleteContributeForManager(
+      CharacterBuilding characterBuilding) async {
+    DatabaseReference db = FirebaseDatabase.instance.ref();
+    try {
+      await db.update({
+        "contributions/${characterBuilding.characterName}/${characterBuilding.key}":
+            null
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
+      return true;
+    } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
       log("$e", name: "addContribute");
       return false;
     }

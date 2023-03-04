@@ -37,12 +37,13 @@ class Config {
 
   static const double marginText = 4;
 
+  static const int seccondTimeout = 8;
+
   // quản lý ứng dụng và quyền
   static const List<int> roleAdminLV1 = [1, 2];
   // quản lý khác
   static const List<int> roleAdminLV2 = [3, 4];
   static const List<int> roleAdmins = [1, 2, 3, 4, 5];
-  
 
   static List<DropdownMenuItem> menuRole = [
     DropdownMenuItem(value: 1, child: Text("admin".tr)),

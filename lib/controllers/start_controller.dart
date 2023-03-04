@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/app/package_app.dart';
@@ -103,7 +105,7 @@ class StartController extends GetxController {
     version.value = packageApp.version;
 
     // tạo thông lượng truy cập
-    await AppService().setTraffic();
+    unawaited(AppService().setTraffic());
 
     bool hasData = await startService.checkInitData(Localization.language);
     if (hasData) {
