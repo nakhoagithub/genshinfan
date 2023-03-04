@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
 import 'package:genshinfan/objects/app/package_app.dart';
 import 'package:genshinfan/services/artifact_service.dart';
@@ -73,11 +74,16 @@ class StartService {
 
   Future<bool> _download() async {
     try {
+      // get link from firebase remote
+      final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+      await remoteConfig.fetchAndActivate();
+      String link = remoteConfig.getString(Config.keyLinkUrlData);
+
       Directory? directory = await getExternalStorageDirectory();
       if (directory != null) {
         Dio dio = Dio();
         await dio.download(
-          Config.urlData,
+          link,
           "${directory.path}/data.gzip",
           onReceiveProgress: (count, total) async {
             startController.setProgress(

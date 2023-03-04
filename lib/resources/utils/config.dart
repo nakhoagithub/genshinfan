@@ -29,6 +29,9 @@ class Config {
   static const String keyLinkContributeTranslation =
       'link_contribute_translation';
 
+  static const String keyLinkUrlData = 'urlData';
+  static const String keyLinkApiData = 'apiData';
+
   static String urlData =
       "https://github.com/theBowja/genshin-db/raw/main/src/min/data.min.json.gzip";
 

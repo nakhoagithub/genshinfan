@@ -12,5 +12,7 @@ init() async {
   await remoteConfig.setDefaults(<String, dynamic>{
     Config.keyLinkDiscord: Config.linkJoinDiscord,
     Config.keyLinkContributeTranslation: "https://google.com/",
+    Config.keyLinkUrlData: Config.urlData,
+    Config.keyLinkApiData: Config.apiData,
   });
 }

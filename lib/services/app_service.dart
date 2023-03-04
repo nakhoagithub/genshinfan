@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/app/traffic.dart';
@@ -123,14 +124,20 @@ class AppService {
   /// trả về `true` nếu có dữ liệu mới.
   Future<List<Object?>> checkUpdateData() async {
     try {
-      var response = await http.get(Uri.parse(Config.apiData));
+
+      // get link from firebase remote
+      final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+      await remoteConfig.fetchAndActivate();
+      String link = remoteConfig.getString(Config.keyLinkApiData);
+
+      var response = await http.get(Uri.parse(link));
       dynamic json = jsonDecode(response.body);
       int? size = json['size'];
 
       GetStorage box = GetStorage();
       int length = box.read(Config.storageDataContentLength) ?? 0;
       log("$size $length", name: "Update");
-      if (size == length) {
+      if (size == length || size == null) {
         return [false, json];
       } else {
         return [true, json];
