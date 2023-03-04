@@ -18,7 +18,6 @@ class ResourcePage extends StatelessWidget {
           AppBarCenter(
             title: "resource".tr,
             width: double.infinity,
-            onTapAction: () {},
           ),
           const Expanded(child: _ListResource()),
         ],

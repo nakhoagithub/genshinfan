@@ -5,16 +5,16 @@ import 'package:get/get.dart';
 class AppBarCenter extends StatelessWidget {
   final double width;
   final String title;
+  final List<Widget>? actions;
   final double? elevation;
   final VoidCallback? onTap;
-  final VoidCallback? onTapAction;
   const AppBarCenter({
     Key? key,
     required this.width,
     required this.title,
+    this.actions,
     this.elevation,
     this.onTap,
-    this.onTapAction,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class AppBarCenter extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10),
           height: 55,
           width: width,
           child: Row(
@@ -43,15 +43,13 @@ class AppBarCenter extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              InkWell(
-                borderRadius: BorderRadius.circular(8),
-                onTap: onTapAction,
-                child: const SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: Icon(Icons.more_horiz_outlined),
-                ),
-              ),
+              actions == null
+                  ? const SizedBox()
+                  : Wrap(
+                      children: [
+                        ...actions!.map((e) => e),
+                      ],
+                    ),
             ],
           ),
         ),

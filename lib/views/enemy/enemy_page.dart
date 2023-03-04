@@ -18,7 +18,6 @@ class EnemyPage extends StatelessWidget {
           AppBarCenter(
             title: "enemy".tr,
             width: double.infinity,
-            onTapAction: () {},
           ),
           const Expanded(child: _ListEnemy()),
         ],

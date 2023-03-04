@@ -6,6 +6,7 @@ import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 import 'widgets/character_ascension.dart';
 import 'widgets/character_info.dart';
@@ -41,9 +42,7 @@ class CharacterInfoPage extends StatelessWidget {
           ],
         ),
         body: characterController.character.value == null
-            ? Center(
-                child: Text("choose_character".tr),
-              )
+            ? PageEmpty(title: "choose_character".tr)
             : Stack(
                 children: [
                   SizedBox(

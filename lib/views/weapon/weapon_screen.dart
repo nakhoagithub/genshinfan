@@ -9,6 +9,7 @@ import 'package:genshinfan/views/weapon/widgets/weapon_info.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_refinement.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_stats.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_story.dart';
+import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
 class WeaponScreen extends StatelessWidget {
@@ -30,9 +31,7 @@ class WeaponScreen extends StatelessWidget {
           ),
         ),
         body: weaponController.weapon.value == null
-            ? Center(
-                child: Text("choose_weapon".tr),
-              )
+            ? PageEmpty(title: "choose_weapon".tr)
             : Stack(
                 children: [
                   SizedBox(

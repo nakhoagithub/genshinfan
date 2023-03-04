@@ -1,12 +1,8 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/objects/artifact.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
-import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +19,6 @@ class ArtifactPage extends StatelessWidget {
           AppBarCenter(
             title: "artifact".tr,
             width: double.infinity,
-            onTapAction: () {},
           ),
           const Expanded(
             child: _ListArtifact(),

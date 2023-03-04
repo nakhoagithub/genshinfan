@@ -3,6 +3,7 @@ import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/resource/widgets/resource_info.dart';
+import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
 class ResourceInfoPage extends StatelessWidget {
@@ -24,9 +25,7 @@ class ResourceInfoPage extends StatelessWidget {
           ),
         ),
         body: resourceController.resource.value == null
-            ? Center(
-                child: Text("choose_resource".tr),
-              )
+            ? PageEmpty(title: "choose_resource".tr)
             : Stack(
                 children: [
                   // content

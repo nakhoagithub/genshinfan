@@ -1,11 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/character_building_controller.dart';
 import 'package:genshinfan/controllers/management_contribute_character_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
+import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
@@ -83,6 +86,9 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserApp? user = Get.find<AppController>().userApp.value;
+    int roleCurrentUser = user?.role ?? 10;
+    String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
     Weapon? weapon = WeaponService().getWeaponFromId(characterBuilding.weapon);
@@ -163,10 +169,13 @@ class _Item extends StatelessWidget {
               style: ThemeApp.textStyle(isDark: Get.isDarkMode),
             ),
 
-            _Browse(
-              characterBuilding: characterBuilding,
-              index: index,
-            ),
+            Config.roleAdminLV1.contains(roleCurrentUser) ||
+                    uidCurrentUser == characterBuilding.uidAuthor
+                ? _Browse(
+                    characterBuilding: characterBuilding,
+                    index: index,
+                  )
+                : const SizedBox()
           ],
         ),
       ),

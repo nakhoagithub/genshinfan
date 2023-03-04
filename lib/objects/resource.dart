@@ -9,7 +9,7 @@ class Resource {
     required this.sortorder,
     this.rarity,
     required this.category,
-    this.resourcetype,
+    required this.materialtype,
     this.dropdomain,
     this.daysofweek,
     required this.source,
@@ -23,7 +23,7 @@ class Resource {
   int sortorder;
   String? rarity;
   String category;
-  String? resourcetype;
+  String materialtype;
   String? dropdomain;
   List<String>? daysofweek;
   List<String> source;
@@ -41,7 +41,7 @@ class Resource {
         sortorder: json["sortorder"],
         rarity: json["rarity"],
         category: json["category"],
-        resourcetype: json["resourcetype"],
+        materialtype: json["materialtype"],
         dropdomain: json["dropdomain"],
         daysofweek: json["daysofweek"] == null
             ? null
@@ -60,7 +60,7 @@ class Resource {
         "sortorder": sortorder,
         "rarity": rarity,
         "category": category,
-        "resourcetype": resourcetype,
+        "materialtype": materialtype,
         "dropdomain": dropdomain,
         "daysofweek": daysofweek == null
             ? null

@@ -180,6 +180,18 @@ const Map<String, String> vi = {
   "error": "Lỗi",
   "note_contribute_character_building": "Dữ liệu đóng góp này sẽ được người kiểm duyệt kiểm tra lại và xét duyệt.",
   "timeout_exception": "Hết thời gian chờ",
+  "reset": "Đặt lại",
+  "filter_character": "Lọc Nhân Vật",
+  "filter_weapon": "Lọc Vũ Khí",
+  "filter_artifact": "Lọc Thánh Di Vật",
+  "filter_domain": "Lọc Bí Cảnh",
+  "filter_material": "Lọc Sản Vật Teyvat",
+  "filter_enemy": "Lọc Quái Vật",
+  "reset_filter_comfirm": "Bạn muốn đặt lại bộ lọc?",
+  "sort_name": "Sắp xếp theo tên",
+  "filter_with_rarity": "Lọc theo một độ hiếm duy nhất",
+  "empty_character": "Không có nhân vật",
+
 
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
   "FIGHT_PROP_ROCK_ADD_HURT": "Tăng ST Nguyên Tố Nham (%)",

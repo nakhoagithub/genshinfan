@@ -130,7 +130,7 @@ class _InformationMore extends StatelessWidget {
                   titleTranslate: "dupealias", data: resource.dupealias!),
 
           // loại
-          InfoTextWidget(titleTranslate: "type", data: resource.category),
+          InfoTextWidget(titleTranslate: "type", data: resource.materialtype),
 
           // Nguồn
           resource.source.isEmpty

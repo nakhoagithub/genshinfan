@@ -180,6 +180,17 @@ const Map<String, String> en = {
   "error": "Error",
   "note_contribute_character_building": "This contributed data will be reviewed and approved by moderators.",
   "timeout_exception": "Timeout exception",
+  "reset": "Reset",
+  "filter_character": "Filter Character",
+  "filter_weapon": "Filter Weapon",
+  "filter_artifact": "Filter Artifact",
+  "filter_domain": "Filter Dungeon",
+  "filter_material": "Filter Teyvat's Resources",
+  "filter_enemy": "Filter Enemy",
+  "reset_filter_comfirm": "Do you want to reset the filter?",
+  "sort_name": "Sort by name",
+  "filter_with_rarity": "Filter by a single rarity",
+  "empty_character": "No characters",
   // game
   // stat character
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",

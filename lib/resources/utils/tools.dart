@@ -117,39 +117,58 @@ class Tools {
   }
 
   static String? getAssetWeaponType(String? weapon) {
-    if (weapon == "sword".tr) {
+    if (weapon == "sword".tr || weapon == 'Sword') {
       return "assets/images/weapon_sword.png";
     }
-    if (weapon == "bow".tr) {
+    if (weapon == "bow".tr || weapon == 'Bow') {
       return "assets/images/weapon_bow.png";
     }
-    if (weapon == "claymore".tr) {
+    if (weapon == "claymore".tr || weapon == 'Claymore') {
       return "assets/images/weapon_claymore.png";
     }
-    if (weapon == "catalyst".tr) {
+    if (weapon == "catalyst".tr || weapon == 'Catalyst') {
       return "assets/images/weapon_catalyst.png";
     }
-    if (weapon == "polearm".tr) {
+    if (weapon == "polearm".tr || weapon == 'Polearm') {
       return "assets/images/weapon_pole.png";
     }
     return null;
   }
 
   static String? getKeyWeaponType(String? weapon) {
-    if (weapon == "sword".tr) {
+    if (weapon == "sword".tr || weapon == 'Sword') {
       return "sword";
     }
-    if (weapon == "bow".tr) {
+    if (weapon == "bow".tr || weapon == 'Bow') {
       return "bow";
     }
-    if (weapon == "claymore".tr) {
+    if (weapon == "claymore".tr || weapon == 'Claymore') {
       return "claymore";
     }
-    if (weapon == "catalyst".tr) {
+    if (weapon == "catalyst".tr || weapon == 'Catalyst') {
       return "catalyst";
     }
-    if (weapon == "polearm".tr) {
-      return "pole";
+    if (weapon == "polearm".tr || weapon == 'Polearm') {
+      return "polearm";
+    }
+    return null;
+  }
+
+  static String? getEnglishWeaponType(String? weapon) {
+    if (weapon == "sword".tr || weapon == 'Sword') {
+      return "Sword";
+    }
+    if (weapon == "bow".tr || weapon == 'Bow') {
+      return "Bow";
+    }
+    if (weapon == "claymore".tr || weapon == 'Claymore') {
+      return "Claymore";
+    }
+    if (weapon == "catalyst".tr || weapon == 'Catalyst') {
+      return "Catalyst";
+    }
+    if (weapon == "polearm".tr || weapon == 'Polearm') {
+      return "Polearm";
     }
     return null;
   }
@@ -208,6 +227,34 @@ class Tools {
       return const Color.fromARGB(255, 105, 48, 34);
     }
     return const Color.fromARGB(255, 105, 48, 34);
+  }
+
+  static String? getEnglishElementFromName(String? element) {
+    if (element == "anemo".tr || element == "Anemo") {
+      return "Anemo";
+    }
+    if (element == "geo".tr || element == "Geo") {
+      return "Geo";
+    }
+    if (element == "electro".tr || element == "Electro") {
+      return "Electro";
+    }
+    if (element == "dendro".tr || element == "Dendro") {
+      return "Dendro";
+    }
+    if (element == "pyro".tr || element == "Pyro") {
+      return "Pyro";
+    }
+    if (element == "hydro".tr || element == "Hydro") {
+      return "Hydro";
+    }
+    if (element == "cryo".tr || element == "Cryo") {
+      return "Cryo";
+    }
+    if (element == "none".tr || element == "None") {
+      return "None";
+    }
+    return null;
   }
 
   static String getRarityStar(String rarity) {

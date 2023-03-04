@@ -22,42 +22,40 @@ class WeaponRefinement extends StatelessWidget {
       List<String> r3 = weapon.r3;
       List<String> r4 = weapon.r4;
       List<String> r5 = weapon.r5;
-      return r1.isEmpty
-          ? const SizedBox()
-          : Column(
-              children: [
-                // title
-                TitleOfContent(title: "refinement".tr),
+      return Column(
+        children: [
+          // title
+          TitleOfContent(title: "refinement".tr),
 
-                // content
+          // content
+          Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                strokeAlign: 1,
+                color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              ),
+            ),
+            child: Column(
+              children: [
+                // refinement
                 Container(
-                  margin: const EdgeInsets.all(5),
-                  padding: const EdgeInsets.all(5),
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      strokeAlign: 1,
-                      color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                  margin: const EdgeInsets.all(4),
+                  child: TextCSS(
+                    Tools.handleEffectWeapon(effect, r1, r2, r3, r4, r5),
+                    style: ThemeApp.textStyle(
+                      isDark: Get.isDarkMode,
                     ),
-                  ),
-                  child: Column(
-                    children: [
-                      // refinement
-                      Container(
-                        margin: const EdgeInsets.all(4),
-                        child: TextCSS(
-                          Tools.handleEffectWeapon(effect, r1, r2, r3, r4, r5),
-                          style: ThemeApp.textStyle(
-                            isDark: Get.isDarkMode,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],
-            );
+            ),
+          ),
+        ],
+      );
     });
   }
 }

@@ -13,6 +13,13 @@ class Config {
   static const String languageApp = 'languageApp';
   static const String storageDataContentLength = 'dataContentLength';
   static const String storageContentSHA512 = 'contentSHA512';
+  static const String storageListElementCharacterFilter =
+      'listElementCharacterFilter';
+  static const String storageListWeaponCharacterFilter =
+      'listWeaponCharacterFilter';
+  static const String storageListRarityCharacterFilter =
+      'listRarityCharacterFilter';
+  static const String storageSortCharacterFilter = 'sortCharacterFilter';
 
   static const String gmailSchema = 'com.google.android.gm';
   static const String mailDeveloper = 'dev.nakhoa@gmail.com';
@@ -49,5 +56,23 @@ class Config {
     DropdownMenuItem(value: 1, child: Text("admin".tr)),
     DropdownMenuItem(value: 5, child: Text("censor".tr)),
     DropdownMenuItem(value: 10, child: Text("member".tr)),
+  ];
+
+  static List<String> elements = [
+    'Anemo',
+    'Geo',
+    'Electro',
+    'Dendro',
+    'Pyro',
+    'Hydro',
+    'Cryo'
+  ];
+
+  static List<String> weapons = [
+    'Sword',
+    'Bow',
+    'Claymore',
+    'Catalyst',
+    'Polearm',
   ];
 }

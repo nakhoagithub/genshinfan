@@ -4,6 +4,7 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
+import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
 class EnemyInfoPage extends StatelessWidget {
@@ -25,9 +26,7 @@ class EnemyInfoPage extends StatelessWidget {
           ),
         ),
         body: enemyController.enemy.value == null
-            ? Center(
-                child: Text("choose_enemy".tr),
-              )
+            ? PageEmpty(title: "choose_enemy".tr)
             : Stack(
                 children: [
                   // content

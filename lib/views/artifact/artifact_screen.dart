@@ -4,6 +4,7 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info_item.dart';
+import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
 class ArtifactScreen extends StatelessWidget {
@@ -25,9 +26,8 @@ class ArtifactScreen extends StatelessWidget {
           ),
         ),
         body: artifactController.artifact.value == null
-            ? Center(
-                child: Text("choose_artifact".tr),
-              )
+            ? 
+              PageEmpty(title: "choose_artifact".tr)
             : Stack(
                 children: [
                   // content

@@ -83,9 +83,6 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserApp? user = Get.find<AppController>().userApp.value;
-    int roleCurrentUser = user?.role ?? 10;
-    String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
     Weapon? weapon = WeaponService().getWeaponFromId(characterBuilding.weapon);

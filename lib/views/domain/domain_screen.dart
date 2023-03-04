@@ -4,6 +4,7 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/domain/widgets/domain_info.dart';
 import 'package:genshinfan/views/domain/widgets/domain_lv.dart';
+import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
 class DomainScreen extends StatelessWidget {
@@ -25,9 +26,7 @@ class DomainScreen extends StatelessWidget {
           ),
         ),
         body: domainController.domain.value == null
-            ? Center(
-                child: Text("choose_domain".tr),
-              )
+            ? PageEmpty(title: "choose_domain".tr)
             : Stack(
                 children: [
                   // content

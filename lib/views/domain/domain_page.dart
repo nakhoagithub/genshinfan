@@ -27,7 +27,6 @@ class DomainPage extends StatelessWidget {
           AppBarCenter(
             title: "domain".tr,
             width: double.infinity,
-            onTapAction: () {},
           ),
           const Expanded(
             child: _List(),

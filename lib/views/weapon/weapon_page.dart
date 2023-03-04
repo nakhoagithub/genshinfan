@@ -19,7 +19,6 @@ class WeaponPage extends StatelessWidget {
           AppBarCenter(
             title: "weapon".tr,
             width: double.infinity,
-            onTapAction: () {},
           ),
           const Expanded(child: _ListWeapon()),
         ],
