@@ -10,8 +10,10 @@ import 'package:genshinfan/objects/reward_preview.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/domain/widgets/item_domain.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
+import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
 class DomainPage extends StatelessWidget {
@@ -34,6 +36,49 @@ class DomainPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _ListDomain extends StatelessWidget {
+  const _ListDomain();
+
+  @override
+  Widget build(BuildContext context) {
+    HomeController homeController = Get.find<HomeController>();
+    DomainController domainController = Get.find<DomainController>();
+    double sizeItem = 94;
+    return LayoutBuilder(builder: (p0, p1) {
+      double w = p1.maxWidth;
+      return Obx(() {
+        List<Domain> domains = domainController.domains;
+        return domains.isEmpty
+            ? ListEmpty(title: "empty_domain".tr)
+            : GridView.count(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                crossAxisCount: w >= 300 ? 3 : 2,
+                childAspectRatio: sizeItem / (sizeItem * 1.215),
+                children: List.generate(
+                  domains.length,
+                  (index) => FadeInUp(
+                    child: Center(
+                      child: SizedBox(
+                        width: sizeItem,
+                        height: sizeItem * 1.215,
+                        child: ItemDomain(
+                          domain: domains[index],
+                          onTap: () {
+                            Get.find<DomainController>().selectDomain(domains[index]);
+                            homeController.pageCenter();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+      });
+    });
   }
 }
 

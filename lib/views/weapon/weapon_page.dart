@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,14 @@ class WeaponPage extends StatelessWidget {
           AppBarCenter(
             title: "weapon".tr,
             width: double.infinity,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  dialogFilterWeapon();
+                },
+                icon: const Icon(Icons.filter_alt_rounded),
+              )
+            ],
           ),
           const Expanded(child: _ListWeapon()),
         ],

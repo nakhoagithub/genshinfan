@@ -17,6 +17,7 @@ import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/localization.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
@@ -55,9 +56,28 @@ class AppController extends GetxController {
     try {
       characters.value =
           await CharacterService().getCharacters(Localization.language) ?? [];
+      characters.sort(
+        (a, b) {
+          int rarity = b.rarity.compareTo(a.rarity);
+          if (rarity != 0) {
+            return rarity;
+          }
+          return a.name.compareTo(b.name);
+        },
+      );
 
       weapons.value =
           await WeaponService().getWeapons(Localization.language) ?? [];
+      weapons.sort(
+        (a, b) {
+          int rarity = b.rarity.compareTo(a.rarity);
+          if (rarity != 0) {
+            return rarity;
+          }
+          return Tools.removeDiacritics(a.name).compareTo(Tools.removeDiacritics(b.name));
+        },
+      );
+
       resources.value =
           await ResourceService().getResources(Localization.language) ?? [];
       // sắp xếp resource
@@ -77,7 +97,7 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return a.name.compareTo(b.name);
+          return Tools.removeDiacritics(a.name).compareTo(Tools.removeDiacritics(b.name));
         },
       );
 
