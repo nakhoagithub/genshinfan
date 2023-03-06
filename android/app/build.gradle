@@ -47,8 +47,8 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 2
-        versionName "beta-1.0.0"
+        versionCode 3
+        versionName "Beta-v1.1"
         ndk {
             debugSymbolLevel 'SYMBOL_TABLE'
         }

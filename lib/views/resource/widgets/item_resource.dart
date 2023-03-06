@@ -1,39 +1,35 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
-import 'package:get/get.dart';
 
 class ItemResource extends StatelessWidget {
   final Resource resource;
+  final VoidCallback onTap;
   const ItemResource({
     super.key,
     required this.resource,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    double sizeItem = 94;
+    double sizeItem = Config.sizeItem3;
     return InkWell(
-      onTap: () {
-        ResourceController resourceController = Get.find<ResourceController>();
-        resourceController.selectResource(resource);
-        HomeController homeController = Get.find<HomeController>();
-        homeController.pageCenter();
-      },
-      borderRadius: BorderRadius.circular(4),
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(sizeItem * 0.05),
       child: Container(
         margin: const EdgeInsets.all(2),
+        width: sizeItem,
+        height: sizeItem * 1.215,
         child: Stack(
           children: [
             // background
             Container(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(sizeItem * 0.05),
               ),
               child: Image.asset(
                 Tools.getBackground(resource.rarity),
@@ -50,11 +46,11 @@ class ItemResource extends StatelessWidget {
                   // image
                   child: Container(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(20),
-                        topLeft: Radius.circular(6),
-                        topRight: Radius.circular(6),
+                        bottomRight: Radius.circular(sizeItem * 0.2),
+                        topLeft: Radius.circular(sizeItem * 0.05),
+                        topRight: Radius.circular(sizeItem * 0.05),
                       ),
                     ),
                     child: CachedNetworkImage(
@@ -63,8 +59,8 @@ class ItemResource extends StatelessWidget {
                       progressIndicatorBuilder: (context, url, progress) {
                         return const Center(
                           child: SizedBox(
-                            height: 15,
-                            width: 15,
+                            height: 16,
+                            width: 16,
                             child: CircularProgressIndicator(
                               strokeWidth: 1,
                             ),
@@ -86,12 +82,12 @@ class ItemResource extends StatelessWidget {
 
                 // name
                 Container(
-                  height: 19,
+                  height: sizeItem * 0.205,
                   width: sizeItem,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(6),
-                      bottomRight: Radius.circular(6),
+                      bottomLeft: Radius.circular(sizeItem * 0.05),
+                      bottomRight: Radius.circular(sizeItem * 0.05),
                     ),
                   ),
                   child: Center(
@@ -102,25 +98,23 @@ class ItemResource extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.grey[850],
-                        fontSize: 14,
+                        fontSize: sizeItem * 0.16,
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-
+          
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 margin: const EdgeInsets.only(bottom: 14),
-                child: resource.rarity != null
-                    ? Image.asset(
-                        Tools.getRarityStar(resource.rarity!),
-                        height: sizeItem * 1.215 * 0.18,
-                        width: sizeItem * 0.85,
-                      )
-                    : const SizedBox(),
+                child: Image.asset(
+                  Tools.getRarityStar(resource.rarity ?? "1"),
+                  height: sizeItem * 1.215 * 0.18,
+                  width: sizeItem * 0.85,
+                ),
               ),
             ),
           ],

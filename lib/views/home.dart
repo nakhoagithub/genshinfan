@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/artifact/artifact_page.dart';
 import 'package:genshinfan/views/artifact/artifact_screen.dart';
-import 'package:genshinfan/views/character/character_building_page.dart';
 import 'package:genshinfan/views/domain/domain_page.dart';
 import 'package:genshinfan/views/domain/domain_screen.dart';
 import 'package:genshinfan/views/enemy/enemy_page.dart';
@@ -98,7 +96,7 @@ class Home extends StatelessWidget {
         },
         borderRadius: BorderRadius.circular(10),
         child: Image.asset(
-          "assets/images/ic_map.png",
+          "assets/images/ic_map1.png",
           height: 40,
           width: 40,
           color: ThemeApp.colorText(isDark: Get.isDarkMode),
@@ -119,7 +117,6 @@ class Home extends StatelessWidget {
       body: SlideLayout(
         items: menus,
         streamChangeScreen: homeController.homeStream,
-        // backgroundColor: ThemeApp.colorScaffold(isDark: Get.isDarkMode),
         iconBackgroundColor:
             ThemeApp.colorBackgroundIcon(isDark: Get.isDarkMode),
         iconColor: ThemeApp.colorIcon(isDark: Get.isDarkMode),

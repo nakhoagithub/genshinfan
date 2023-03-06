@@ -15,10 +15,10 @@ class ItemWeapon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double sizeItem = 94;
+    double sizeItem = Config.sizeItem3;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(4),
+      borderRadius: BorderRadius.circular(sizeItem * 0.05),
       child: Container(
         margin: const EdgeInsets.all(2),
         width: sizeItem,
@@ -29,7 +29,7 @@ class ItemWeapon extends StatelessWidget {
             Container(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(sizeItem * 0.05),
               ),
               child: Image.asset(
                 Tools.getBackground(weapon.rarity),
@@ -46,11 +46,11 @@ class ItemWeapon extends StatelessWidget {
                   // image
                   child: Container(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(20),
-                        topLeft: Radius.circular(6),
-                        topRight: Radius.circular(6),
+                        bottomRight: Radius.circular(sizeItem * 0.2),
+                        topLeft: Radius.circular(sizeItem * 0.05),
+                        topRight: Radius.circular(sizeItem * 0.05),
                       ),
                     ),
                     child: CachedNetworkImage(
@@ -60,8 +60,8 @@ class ItemWeapon extends StatelessWidget {
                       progressIndicatorBuilder: (context, url, progress) {
                         return const Center(
                           child: SizedBox(
-                            height: 15,
-                            width: 15,
+                            height: 16,
+                            width: 16,
                             child: CircularProgressIndicator(
                               strokeWidth: 1,
                             ),
@@ -83,12 +83,12 @@ class ItemWeapon extends StatelessWidget {
 
                 // name
                 Container(
-                  height: 19,
+                  height: sizeItem * 0.205,
                   width: sizeItem,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(6),
-                      bottomRight: Radius.circular(6),
+                      bottomLeft: Radius.circular(sizeItem * 0.05),
+                      bottomRight: Radius.circular(sizeItem * 0.05),
                     ),
                   ),
                   child: Center(
@@ -99,7 +99,7 @@ class ItemWeapon extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.grey[850],
-                        fontSize: 14,
+                        fontSize: sizeItem * 0.16,
                       ),
                     ),
                   ),
@@ -108,13 +108,12 @@ class ItemWeapon extends StatelessWidget {
             ),
 
             // type
-            Positioned(
-              top: 4,
-              left: 4,
+            Align(
+              alignment: Alignment.topLeft,
               child: Container(
-                padding: const EdgeInsets.all(2),
-                height: sizeItem * 1.215 * 0.25,
-                width: sizeItem * 0.25,
+                padding: const EdgeInsets.all(4),
+                height: sizeItem * 0.3,
+                width: sizeItem * 0.3,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.grey.withOpacity(0.5),

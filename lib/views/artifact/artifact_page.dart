@@ -2,8 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
+import 'package:genshinfan/objects/artifact.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
+import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
 class ArtifactPage extends StatelessWidget {
@@ -21,7 +24,7 @@ class ArtifactPage extends StatelessWidget {
             width: double.infinity,
           ),
           const Expanded(
-            child: _ListArtifact(),
+            child: _List(),
           )
         ],
       ),
@@ -29,43 +32,45 @@ class ArtifactPage extends StatelessWidget {
   }
 }
 
-class _ListArtifact extends StatelessWidget {
-  const _ListArtifact();
+class _List extends StatelessWidget {
+  const _List();
 
   @override
   Widget build(BuildContext context) {
     ArtifactController artifactController = Get.find<ArtifactController>();
-    double sizeItem = 94;
-    return LayoutBuilder(builder: (p0, p1) {
-      double w = p1.maxWidth;
-      return GridView.count(
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.zero,
-        crossAxisCount: w >= 300 ? 3 : 2,
-        childAspectRatio: sizeItem / (sizeItem * 1.215),
-        children: List.generate(
-          artifactController.artifacts.length,
-          (index) => FadeInUp(
-            child: Center(
-              child: SizedBox(
-                width: sizeItem,
-                height: sizeItem * 1.215,
-                child: ItemArtifact(
-                  artifact: artifactController.artifacts[index],
-                  onTap: () {
-                    ArtifactController artifactController =
-                        Get.find<ArtifactController>();
-                    artifactController
-                        .selectArtifact(artifactController.artifacts[index]);
-                    HomeController homeController = Get.find<HomeController>();
-                    homeController.pageCenter();
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
+    HomeController homeController = Get.find<HomeController>();
+    double sizeItem = Config.sizeItem3;
+    return Obx(() {
+      List<Artifact> artifacts = artifactController.artifacts;
+      return SizedBox(
+          width: Config.widthCenter,
+          child: artifacts.isEmpty
+              ? ListEmpty(title: "empty_artifact".tr)
+              : GridView.count(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  crossAxisCount: 3,
+                  childAspectRatio: sizeItem / (sizeItem * 1.215),
+                  children: List.generate(
+                    artifacts.length,
+                    (index) => FadeInUp(
+                      child: Center(
+                        child: SizedBox(
+                          width: sizeItem,
+                          height: sizeItem * 1.215,
+                          child: ItemArtifact(
+                            artifact: artifacts[index],
+                            onTap: () {
+                              artifactController
+                                  .selectArtifact(artifacts[index]);
+                              homeController.pageCenter();
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ));
     });
   }
 }

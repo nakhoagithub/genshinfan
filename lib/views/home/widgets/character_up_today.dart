@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/views/character/widgets/item_character.dart';
@@ -14,8 +14,9 @@ class ListCharacterUpToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = 94;
-    List<Character>? characterUpToday = CharacterService().getCharacterUpToday();
+    double sizeItem = Config.sizeItem3;
+    List<Character>? characterUpToday =
+        CharacterService().getCharacterUpToday();
     return characterUpToday == null
         ? const SizedBox()
         : Container(

@@ -52,8 +52,6 @@ class SlideLayoutState extends State<SlideLayout>
   int statusScreen = 3;
   int selected = 0;
 
-  int test = 0;
-
   double _calculateGoal(double width, int multiplier) {
     return (multiplier * width) + (-multiplier * widget.restWidth);
   }

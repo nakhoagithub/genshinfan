@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/objects/artifact.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 
 class ItemArtifact extends StatelessWidget {
@@ -38,20 +39,21 @@ class ItemArtifact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double sizeItem = 94;
+    double sizeItem = Config.sizeItem3;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(4),
+      borderRadius: BorderRadius.circular(sizeItem * 0.05),
       child: Container(
         margin: const EdgeInsets.all(2),
         width: sizeItem,
         height: sizeItem * 1.215,
         child: Stack(
           children: [
+            // background
             Container(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(sizeItem * 0.05),
               ),
               child: Image.asset(
                 Tools.getBackground(
@@ -69,11 +71,11 @@ class ItemArtifact extends StatelessWidget {
                   // image
                   child: Container(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(20),
-                        topLeft: Radius.circular(6),
-                        topRight: Radius.circular(6),
+                        bottomRight: Radius.circular(sizeItem * 0.2),
+                        topLeft: Radius.circular(sizeItem * 0.05),
+                        topRight: Radius.circular(sizeItem * 0.05),
                       ),
                     ),
                     child: CachedNetworkImage(
@@ -105,12 +107,12 @@ class ItemArtifact extends StatelessWidget {
 
                 // name
                 Container(
-                  height: 19,
+                  height: sizeItem * 0.205,
                   width: sizeItem,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(6),
-                      bottomRight: Radius.circular(6),
+                      bottomLeft: Radius.circular(sizeItem * 0.05),
+                      bottomRight: Radius.circular(sizeItem * 0.05),
                     ),
                   ),
                   child: Center(
@@ -121,7 +123,7 @@ class ItemArtifact extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.grey[850],
-                        fontSize: 14,
+                        fontSize: sizeItem * 0.16,
                       ),
                     ),
                   ),

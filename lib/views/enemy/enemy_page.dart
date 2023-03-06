@@ -1,8 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/controllers/home_controller.dart';
+import 'package:genshinfan/objects/enemy.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/enemy/widgets/item_enemy.dart';
+import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
 class EnemyPage extends StatelessWidget {
@@ -19,42 +23,51 @@ class EnemyPage extends StatelessWidget {
             title: "enemy".tr,
             width: double.infinity,
           ),
-          const Expanded(child: _ListEnemy()),
+          const Expanded(child: _List()),
         ],
       ),
     );
   }
 }
 
-class _ListEnemy extends StatelessWidget {
-  const _ListEnemy();
+class _List extends StatelessWidget {
+  const _List();
 
   @override
   Widget build(BuildContext context) {
     EnemyController enemyController = Get.find<EnemyController>();
-    double sizeItem = 94;
-    return LayoutBuilder(builder: (p0, p1) {
-      double w = p1.maxWidth;
-      return GridView.count(
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.zero,
-        crossAxisCount: w >= 300 ? 3 : 2,
-        childAspectRatio: sizeItem / (sizeItem * 1.215),
-        children: List.generate(
-          enemyController.enemies.length,
-          (index) => FadeInUp(
-            child: Center(
-              child: SizedBox(
-                width: sizeItem,
-                height: sizeItem * 1.215,
-                child: ItemEnemy(
-                  enemy: enemyController.enemies[index],
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
+    HomeController homeController = Get.find<HomeController>();
+    double sizeItem = Config.sizeItem3;
+    return Obx(() {
+      List<Enemy> enemies = enemyController.enemies;
+      return SizedBox(
+          width: Config.widthCenter,
+          child: enemies.isEmpty
+              ? ListEmpty(title: "empty_enemy".tr)
+              : GridView.count(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  crossAxisCount: 3,
+                  childAspectRatio: sizeItem / (sizeItem * 1.215),
+                  children: List.generate(
+                    enemies.length,
+                    (index) => FadeInUp(
+                      child: Center(
+                        child: SizedBox(
+                          width: sizeItem,
+                          height: sizeItem * 1.215,
+                          child: ItemEnemy(
+                            enemy: enemies[index],
+                            onTap: () {
+                              enemyController.selectEnemy(enemies[index]);
+                              homeController.pageCenter();
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ));
     });
   }
 }

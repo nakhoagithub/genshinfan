@@ -45,6 +45,10 @@ class Config {
   static String get urlGenshinMap =>
       "https://act.hoyolab.com/ys/app/interactive-map/index.html";
 
+  static double widthCenter = Get.width - 104;
+  static double sizeItem3 = (Get.width - 104 - 12) / 3;
+  static double sizeItem2 = (Get.width - 104 - 8) / 2;
+
   static const double marginText = 4;
 
   static const int seccondTimeout = 8;

@@ -142,6 +142,22 @@ class Tools {
     return "assets/images/bg1s.png";
   }
 
+  static String getBackgroundSquare(String? rarity) {
+    switch (rarity) {
+      case "1":
+        return "assets/images/bg1s_square.png";
+      case "2":
+        return "assets/images/bg2s_square.png";
+      case "3":
+        return "assets/images/bg3s_square.png";
+      case "4":
+        return "assets/images/bg4s_square.png";
+      case "5":
+        return "assets/images/bg5s_square.png";
+    }
+    return "assets/images/bg1s_square.png";
+  }
+
   static String? getAssetWeaponType(String? weapon) {
     if (weapon == "sword".tr || weapon == 'Sword') {
       return "assets/images/weapon_sword.png";

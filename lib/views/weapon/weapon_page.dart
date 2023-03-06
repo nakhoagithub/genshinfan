@@ -2,9 +2,12 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
 class WeaponPage extends StatelessWidget {
@@ -29,49 +32,51 @@ class WeaponPage extends StatelessWidget {
               )
             ],
           ),
-          const Expanded(child: _ListWeapon()),
+          const Expanded(child: _List()),
         ],
       ),
     );
   }
 }
 
-class _ListWeapon extends StatelessWidget {
-  const _ListWeapon();
+class _List extends StatelessWidget {
+  const _List();
 
   @override
   Widget build(BuildContext context) {
     WeaponController weaponController = Get.find<WeaponController>();
-    double sizeItem = 94;
-    return LayoutBuilder(builder: (p0, p1) {
-      double w = p1.maxWidth;
-      return GridView.count(
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.zero,
-        crossAxisCount: w >= 300 ? 3 : 2,
-        childAspectRatio: sizeItem / (sizeItem * 1.215),
-        children: List.generate(
-          weaponController.weapons.length,
-          (index) => FadeInUp(
-            child: Center(
-              child: SizedBox(
-                width: sizeItem,
-                height: sizeItem * 1.215,
-                child: ItemWeapon(
-                  weapon: weaponController.weapons[index],
-                  onTap: () {
-                    WeaponController weaponController =
-                        Get.find<WeaponController>();
-                    weaponController.selectWeapon(weaponController.weapons[index]);
-                    HomeController homeController = Get.find<HomeController>();
-                    homeController.pageCenter();
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
+    HomeController homeController = Get.find<HomeController>();
+    double sizeItem = Config.sizeItem3;
+    return Obx(() {
+      List<Weapon> weapons = weaponController.weapons;
+      return SizedBox(
+          width: Config.widthCenter,
+          child: weapons.isEmpty
+              ? ListEmpty(title: "empty_weapon".tr)
+              : GridView.count(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  crossAxisCount: 3,
+                  childAspectRatio: sizeItem / (sizeItem * 1.215),
+                  children: List.generate(
+                    weapons.length,
+                    (index) => FadeInUp(
+                      child: Center(
+                        child: SizedBox(
+                          width: sizeItem,
+                          height: sizeItem * 1.215,
+                          child: ItemWeapon(
+                            weapon: weapons[index],
+                            onTap: () {
+                              weaponController.selectWeapon(weapons[index]);
+                              homeController.pageCenter();
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ));
     });
   }
 }
