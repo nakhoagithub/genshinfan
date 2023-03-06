@@ -13,6 +13,8 @@ class Config {
   static const String languageApp = 'languageApp';
   static const String storageDataContentLength = 'dataContentLength';
   static const String storageContentSHA512 = 'contentSHA512';
+
+  // character
   static const String storageListElementCharacterFilter =
       'listElementCharacterFilter';
   static const String storageListWeaponCharacterFilter =
@@ -20,6 +22,12 @@ class Config {
   static const String storageListRarityCharacterFilter =
       'listRarityCharacterFilter';
   static const String storageSortCharacterFilter = 'sortCharacterFilter';
+
+  // weapon
+  static const String storageListWeaponWeaponFilter = 'listWeaponWeaponFilter';
+  static const String storageListRarityWeaponFilter = 'listRarityWeaponFilter';
+  static const String storageListSubstatWeaponFilter = 'listSubstatWeaponFilter';
+  static const String storageSortWeaponFilter = 'sortCWeaponFilter';
 
   static const String gmailSchema = 'com.google.android.gm';
   static const String mailDeveloper = 'dev.nakhoa@gmail.com';
@@ -49,7 +57,7 @@ class Config {
   static double sizeItem3 = (Get.width - 104 - 12) / 3;
   static double sizeItem2 = (Get.width - 104 - 8) / 2;
 
-  static const double marginText = 4;
+  static const double marginText = 8;
 
   static const int seccondTimeout = 8;
 
