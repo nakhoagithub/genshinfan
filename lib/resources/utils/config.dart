@@ -27,7 +27,12 @@ class Config {
   static const String storageListWeaponWeaponFilter = 'listWeaponWeaponFilter';
   static const String storageListRarityWeaponFilter = 'listRarityWeaponFilter';
   static const String storageListSubstatWeaponFilter = 'listSubstatWeaponFilter';
-  static const String storageSortWeaponFilter = 'sortCWeaponFilter';
+  static const String storageSortWeaponFilter = 'sortWeaponFilter';
+
+  // weapon
+  static const String storageListRarityResourceFilter = 'listRarityResourceFilter';
+  static const String storageListSubstatResourceFilter = 'listSubstatResourceFilter';
+  static const String storageSortResourceFilter = 'sortResourceFilter';
 
   static const String gmailSchema = 'com.google.android.gm';
   static const String mailDeveloper = 'dev.nakhoa@gmail.com';

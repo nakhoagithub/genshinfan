@@ -105,18 +105,21 @@ class ItemResource extends StatelessWidget {
                 ),
               ],
             ),
-          
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 14),
-                child: Image.asset(
-                  Tools.getRarityStar(resource.rarity ?? "1"),
-                  height: sizeItem * 1.215 * 0.18,
-                  width: sizeItem * 0.85,
-                ),
-              ),
-            ),
+
+            // độ hiếm - rarity
+            resource.rarity == null
+                ? const SizedBox()
+                : Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 14),
+                      child: Image.asset(
+                        Tools.getRarityStar(resource.rarity!),
+                        height: sizeItem * 1.215 * 0.18,
+                        width: sizeItem * 0.85,
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),

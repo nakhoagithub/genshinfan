@@ -17,21 +17,19 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
   RxString imageGacha = "".obs;
   ScrollController scrollController = ScrollController();
 
+  // filter
   RxList<String> substatWeaponFilter = <String>[].obs;
   RxList<bool> substatWeaponFilters = <bool>[].obs;
-
+  RxBool substatAllFilter = true.obs;
   RxList<bool> checkWeaponFilters =
       List.generate(Config.weapons.length, (index) => true).obs;
-
   RxBool oneRarity = false.obs;
   RxList<bool> checkRarityFilters = List.generate(5, (index) => true).obs;
-
   RxInt sortName = 0.obs;
 
   void selectWeapon(Weapon value) {
     weapon.value = value;
     imageGacha.value = weapon.value?.images?.namegacha ?? "";
-    update();
   }
 
   void checkWeaponFilter(int index) {
@@ -42,8 +40,22 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
 
   void checkSubstatFilter(int index) {
     substatWeaponFilters[index] = !substatWeaponFilters[index];
+
+    // tất cả true thì true
+    substatAllFilter.value = substatWeaponFilters.every((element) => element);
     unawaited(
         box.write(Config.storageListSubstatWeaponFilter, substatWeaponFilters));
+  }
+
+  void checkAllSubstat() {
+    substatAllFilter.value = !substatAllFilter.value;
+    if (substatAllFilter.value) {
+      substatWeaponFilters.value =
+          List.generate(substatWeaponFilters.length, (index) => true);
+    } else {
+      substatWeaponFilters.value =
+          List.generate(substatWeaponFilters.length, (index) => false);
+    }
   }
 
   void checkRarityFilter(int index) {
@@ -110,9 +122,11 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
     weapons.sort(
       (a, b) {
         if (sortName.value == 0) {
-          return a.name.compareTo(b.name);
+          return Tools.removeDiacritics(a.name)
+              .compareTo(Tools.removeDiacritics(b.name));
         } else {
-          return b.name.compareTo(a.name);
+          return Tools.removeDiacritics(b.name)
+              .compareTo(Tools.removeDiacritics(a.name));
         }
       },
     );
@@ -130,6 +144,7 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
     // reset substat
     substatWeaponFilters.value =
         List.generate(substatWeaponFilters.length, (index) => true);
+    substatAllFilter.value = substatWeaponFilters.every((element) => element);
     unawaited(
         box.write(Config.storageListSubstatWeaponFilter, substatWeaponFilters));
 
@@ -165,6 +180,7 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
     if (substats != null) {
       substatWeaponFilters.value =
           RxList.from(substats.map((element) => element as bool));
+      substatAllFilter.value = substatWeaponFilters.every((element) => element);
     }
 
     // filter rarity

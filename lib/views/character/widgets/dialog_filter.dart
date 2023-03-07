@@ -24,16 +24,19 @@ dialogFilterCharacter() async {
         children: [
           Align(
             alignment: Alignment.center,
-            child: Text(
-              "filter_character".tr,
-              style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                "filter_character".tr,
+                style: ThemeApp.textStyle(
+                  isDark: Get.isDarkMode,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           const SingleChildScrollView(
             child: Column(
               children: [

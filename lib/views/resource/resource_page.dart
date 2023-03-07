@@ -4,6 +4,7 @@ import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/resource/widgets/item_resource.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
@@ -22,6 +23,14 @@ class ResourcePage extends StatelessWidget {
           AppBarCenter(
             title: "resource".tr,
             width: double.infinity,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  dialogFilterResource();
+                },
+                icon: const Icon(Icons.filter_alt_rounded),
+              )
+            ],
           ),
           const Expanded(child: _List()),
         ],

@@ -178,21 +178,25 @@ const Map<String, String> vi = {
   "permission": "Quyền",
   "permission_denied": "Không có quyền.",
   "error": "Lỗi",
-  "note_contribute_character_building": "Dữ liệu đóng góp này sẽ được người kiểm duyệt kiểm tra lại và xét duyệt.",
+  "note_contribute_character_building":
+      "Dữ liệu đóng góp này sẽ được người kiểm duyệt kiểm tra lại và xét duyệt.",
   "timeout_exception": "Hết thời gian chờ",
   "reset": "Đặt lại",
   "filter_character": "Lọc Nhân Vật",
   "filter_weapon": "Lọc Vũ Khí",
   "filter_artifact": "Lọc Thánh Di Vật",
   "filter_domain": "Lọc Bí Cảnh",
-  "filter_material": "Lọc Sản Vật Teyvat",
+  "filter_resource": "Lọc Sản vật Teyvat",
   "filter_enemy": "Lọc Quái Vật",
   "reset_filter_comfirm": "Bạn muốn đặt lại bộ lọc?",
   "sort_name": "Sắp xếp theo tên",
   "filter_with_rarity": "Lọc theo một độ hiếm duy nhất",
   "empty_character": "Không có nhân vật",
+  "empty_artifact": "Không có Thánh di vật",
+  "empty_resource": "Không có Sản vật Teyvat",
+  "all": "Tất cả",
 
-
+  // game
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
   "FIGHT_PROP_ROCK_ADD_HURT": "Tăng ST Nguyên Tố Nham (%)",
   "FIGHT_PROP_ICE_ADD_HURT": "Tăng ST Nguyên Tố Băng (%)",
@@ -221,9 +225,6 @@ const Map<String, String> vi = {
   "dame_physical": "Tăng Sát Thương Vật Lý",
   "dame_element": "Tăng Sát Thương (Nguyên Tố)",
   "healing_bonus": "Tăng Trị Tiệu",
-
-  // category material
-  //WEAPON_EXP_STONE, ADSORBATE, CONSUME, ITEM_VIRTUAL, AVATAR_MATERIAL, EXP_FRUIT, EXCHANGE, WOOD, FISH_BAIT, FISH_ROD, NOTICE_ADD_HP
 
   // element
   "anemo": "Phong",

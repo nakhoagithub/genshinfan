@@ -129,9 +129,11 @@ class CharacterController extends GetxController
     characters.sort(
       (a, b) {
         if (sortName.value == 0) {
-          return a.name.compareTo(b.name);
+          return Tools.removeDiacritics(a.name)
+              .compareTo(Tools.removeDiacritics(b.name));
         } else {
-          return b.name.compareTo(a.name);
+          return Tools.removeDiacritics(b.name)
+              .compareTo(Tools.removeDiacritics(a.name));
         }
       },
     );
