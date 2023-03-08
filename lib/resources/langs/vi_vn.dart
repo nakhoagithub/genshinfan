@@ -191,9 +191,10 @@ const Map<String, String> vi = {
   "reset_filter_comfirm": "Bạn muốn đặt lại bộ lọc?",
   "sort_name": "Sắp xếp theo tên",
   "filter_with_rarity": "Lọc theo một độ hiếm duy nhất",
-  "empty_character": "Không có nhân vật",
-  "empty_artifact": "Không có Thánh di vật",
+  "empty_character": "Không có Nhân Vật",
+  "empty_artifact": "Không có Thánh Di Vật",
   "empty_resource": "Không có Sản vật Teyvat",
+  "empty_weapon": "Không có Vũ Khí",
   "all": "Tất cả",
 
   // game

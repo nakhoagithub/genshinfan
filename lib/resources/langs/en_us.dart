@@ -194,6 +194,7 @@ const Map<String, String> en = {
   "empty_character": "No characters",
   "empty_artifact": "No Artifact",
   "empty_resource": "No Teyvat's Resource",
+  "empty_weapon": "No Weapon",
   "all": "All",
 
   // game
