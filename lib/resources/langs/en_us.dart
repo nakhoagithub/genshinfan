@@ -18,7 +18,7 @@ const Map<String, String> en = {
   "downloading": "@percent% Downloaded.",
   "decompressing": "Decompressing...",
   "processing": "Processing",
-  "checking": "checking",
+  "checking": "Checking",
   "no_data_version": "There is no new data version.",
   "update_new_data": "Update new data.",
   "complete": "Complete!",

@@ -1,8 +1,7 @@
 import 'dart:developer';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/services/app_service.dart';
@@ -15,21 +14,32 @@ class SettingController extends GetxController {
   RxString imageUser = "".obs;
 
   void sendMail() async {
-    final bool gmailinstalled =
-        await FlutterMailer.isAppInstalled(Config.gmailSchema);
+    final Email email = Email(
+      subject: 'GenshinFan App Feedback',
+      recipients: [Config.mailDeveloper],
+      cc: [],
+      bcc: [],
+      attachmentPaths: [],
+      isHTML: false,
+    );
 
-    if (gmailinstalled) {
-      final MailOptions mailOptions = MailOptions(
-        subject: 'GenshinFan App Feedback',
-        recipients: [Config.mailDeveloper],
-        isHTML: true,
-        bccRecipients: [],
-        ccRecipients: [],
-        attachments: [],
-        appSchema: Config.gmailSchema,
-      );
-      await FlutterMailer.send(mailOptions);
-    }
+    await FlutterEmailSender.send(email);
+
+    // final bool gmailinstalled =
+    //     await FlutterMailer.isAppInstalled(Config.gmailSchema);
+
+    // if (gmailinstalled) {
+    //   final MailOptions mailOptions = MailOptions(
+    //     subject: 'GenshinFan App Feedback',
+    //     recipients: [Config.mailDeveloper],
+    //     isHTML: true,
+    //     bccRecipients: [],
+    //     ccRecipients: [],
+    //     attachments: [],
+    //     appSchema: Config.gmailSchema,
+    //   );
+    //   await FlutterMailer.send(mailOptions);
+    // }
   }
 
   void joinDiscord() async {
