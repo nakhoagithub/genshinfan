@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:genshinfan/objects/app/language.dart';
 
 const english = Language(
-  languageCode: "English",
-  language: "English",
-  code: "en",
-  locale: Locale("en"),
+  languageCode: "ChineseTraditional",
+  language: "中國傳統的",
+  code: "zh-tw",
+  locale: Locale("zh-tw", "CHT"),
 );
 
 const Map<String, String> en = {
@@ -198,14 +198,14 @@ const Map<String, String> en = {
   "all": "All",
 
   // game
-  "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "Geo DMG Bonus (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "Cryo DMG Bonus (%)",
+  "FIGHT_PROP_ATTACK_PERCENT": "攻击力 (%)",
+  "FIGHT_PROP_ROCK_ADD_HURT": "岩元素傷害加成 (%)",
+  "FIGHT_PROP_ICE_ADD_HURT": "冰元素伤害加成 (%)",
   "FIGHT_PROP_ELEC_ADD_HURT": "Electro DMG Bonus (%)",
   "FIGHT_PROP_FIRE_ADD_HURT": "Pyro DMG Bonus (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "Hydro DMG Bonus (%)",
+  "FIGHT_PROP_WATER_ADD_HURT": "水元素伤害加成 (%)",
   "FIGHT_PROP_WIND_ADD_HURT": "Anemo DMG Bonus (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "Dendro DMG Bonus (%)",
+  "FIGHT_PROP_GRASS_ADD_HURT": "草元素伤害加成 (%)",
   "FIGHT_PROP_HEAL_ADD": "Healing Bonus (%)",
   "FIGHT_PROP_DEFENSE_PERCENT": "DEF (%)",
   "FIGHT_PROP_PHYSICAL_ADD_HURT": "Physical DMG Bonus (%)",
@@ -216,9 +216,9 @@ const Map<String, String> en = {
   "FIGHT_PROP_CRITICAL_HURT": "CRIT DMG (%)",
 
   // các loại chỉ số
-  "attack": "Attack",
-  "hp": "HP",
-  "def": "Defense",
+  "attack": "攻击力",
+  "hp": "生命值",
+  "def": "防御力",
   "energy_recharge": "Energy Recharge",
   "elemental_mastery": "Elemental Mastery",
   "crit_rate": "CRIT Rate",
@@ -229,32 +229,32 @@ const Map<String, String> en = {
 
   // element
   "anemo": "Anemo",
-  "geo": "Geo",
+  "geo": "岩",
   "electro": "Electro",
-  "dendro": "Dendro",
+  "dendro": "草",
   "pyro": "Pyro",
-  "hydro": "Hydro",
-  "cryo": "Cryo",
+  "hydro": "水",
+  "cryo": "冰",
   "none": "None",
 
-  "e_cryo": "Cryo",
-  "e_hydro": "Hydro",
-  "e_pyro": "Pyro",
-  "e_electro": "Electro",
   "e_anemo": "Anemo",
-  "e_geo": "Geo",
-  "e_dendro": "Dendro",
+  "e_geo": "岩",
+  "e_electro": "Electro",
+  "e_dendro": "草",
+  "e_pyro": "Pyro",
+  "e_hydro": "水",
+  "e_cryo": "冰",
 
   // weapon
-  "sword": "Sword",
+  "sword": "单手剑",
   "bow": "Bow",
-  "claymore": "Claymore",
-  "catalyst": "Catalyst",
-  "polearm": "Polearm",
+  "claymore": "双手剑",
+  "catalyst": "法器",
+  "polearm": "长柄武器",
 
   // region
-  "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
-  "sumeru": "Sumeru",
+  "mondstadt": "蒙德",
+  "liyue": "璃月",
+  "inazuma": "稻妻",
+  "sumeru": "须弥",
 };

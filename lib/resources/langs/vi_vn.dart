@@ -237,13 +237,13 @@ const Map<String, String> vi = {
   "cryo": "Băng",
   "none": "Không",
 
-  "e_cryo": "Nguyên Tố Băng",
-  "e_hydro": "Nguyên Tố Thủy",
-  "e_pyro": "Nguyên Tố Hỏa",
-  "e_electro": "Nguyên Tố Lôi",
   "e_anemo": "Nguyên Tố Phong",
   "e_geo": "Nguyên Tố Nham",
+  "e_electro": "Nguyên Tố Lôi",
   "e_dendro": "Nguyên Tố Thảo",
+  "e_pyro": "Nguyên Tố Hỏa",
+  "e_hydro": "Nguyên Tố Thủy",
+  "e_cryo": "Nguyên Tố Băng",
 
   // weapon
   "sword": "Kiếm Đơn",
@@ -251,4 +251,10 @@ const Map<String, String> vi = {
   "claymore": "Trọng Kiếm",
   "catalyst": "Pháp Khí",
   "polearm": "Vũ Khí Cán Dài",
+
+  // region
+  "mondstadt": "Mondstadt",
+  "liyue": "Liyue",
+  "inazuma": "Inazuma",
+  "sumeru": "Sumeru",
 };
