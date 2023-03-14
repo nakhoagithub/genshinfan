@@ -74,7 +74,8 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return Tools.removeDiacritics(a.name).compareTo(Tools.removeDiacritics(b.name));
+          return Tools.removeDiacritics(a.name)
+              .compareTo(Tools.removeDiacritics(b.name));
         },
       );
 
@@ -97,7 +98,8 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return Tools.removeDiacritics(a.name).compareTo(Tools.removeDiacritics(b.name));
+          return Tools.removeDiacritics(a.name)
+              .compareTo(Tools.removeDiacritics(b.name));
         },
       );
 
@@ -121,10 +123,11 @@ class AppController extends GetxController {
     notifyChildrens();
   }
 
-  void updateLanguage(String langCode) {
+  Future<void> updateLanguage(String languageCode, String? countryCode) async {
     // ngôn ngữ khác ngôn ngữ hiện tại mới đổi
-    if (langCode != Get.locale?.languageCode) {
-      Localization.changeLocale(langCode);
+    if (languageCode != Get.locale?.languageCode ||
+        countryCode != Get.locale?.countryCode) {
+      await Localization.changeLocale(languageCode, countryCode);
       Get.offAllNamed("/");
     } else {
       Get.back();

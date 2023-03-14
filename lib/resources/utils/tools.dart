@@ -9,7 +9,6 @@ import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 
 class Tools {
-
   static String removeDiacritics(String str) {
     const vietnamese = 'aAeEoOuUiIdDyY';
     final vietnameseRegex = <RegExp>[
@@ -215,85 +214,85 @@ class Tools {
     return null;
   }
 
-  static String? getAssetElementFromName(String? element) {
-    if (element == "anemo".tr || element == "Anemo") {
+  static String getAssetElementFromName(String? element) {
+    if ("anemo".tr.contains(element ?? "Null") || element == "Anemo") {
       return "assets/images/element_anemo.png";
     }
-    if (element == "geo".tr || element == "Geo") {
+    if ("geo".tr.contains(element ?? "Null") || element == "Geo") {
       return "assets/images/element_geo.png";
     }
-    if (element == "electro".tr || element == "Electro") {
+    if ("electro".tr.contains(element ?? "Null") || element == "Electro") {
       return "assets/images/element_electro.png";
     }
-    if (element == "dendro".tr || element == "Dendro") {
+    if ("dendro".tr.contains(element ?? "Null") || element == "Dendro") {
       return "assets/images/element_dendro.png";
     }
-    if (element == "pyro".tr || element == "Pyro") {
+    if ("pyro".tr.contains(element ?? "Null") || element == "Pyro") {
       return "assets/images/element_pyro.png";
     }
-    if (element == "hydro".tr || element == "Hydro") {
+    if ("hydro".tr.contains(element ?? "Null") || element == "Hydro") {
       return "assets/images/element_hydro.png";
     }
-    if (element == "cryo".tr || element == "Cryo") {
+    if ("cryo".tr.contains(element ?? "Null") || element == "Cryo") {
       return "assets/images/element_cryo.png";
     }
-    if (element == "none".tr || element == "None") {
-      return null;
+    if ("none".tr.contains(element ?? "Null") || element == "None") {
+      return "";
     }
-    return null;
+    return "";
   }
 
   static Color getColorElementCharacter(String? element) {
-    if (element == "anemo".tr || element == "Anemo") {
+    if ("anemo".tr.contains(element ?? "Null") || element == "Anemo") {
       return colorAnemo;
     }
-    if (element == "geo".tr || element == "Geo") {
+    if ("geo".tr.contains(element ?? "Null") || element == "Geo") {
       return colorGeo;
     }
-    if (element == "electro".tr || element == "Electro") {
+    if ("electro".tr.contains(element ?? "Null") || element == "Electro") {
       return colorElectro;
     }
-    if (element == "dendro".tr || element == "Dendro") {
+    if ("dendro".tr.contains(element ?? "Null") || element == "Dendro") {
       return colorDendro;
     }
-    if (element == "pyro".tr || element == "Pyro") {
+    if ("pyro".tr.contains(element ?? "Null") || element == "Pyro") {
       return colorPyro;
     }
-    if (element == "hydro".tr || element == "Hydro") {
+    if ("hydro".tr.contains(element ?? "Null") || element == "Hydro") {
       return colorHydro;
     }
-    if (element == "cryo".tr || element == "Cryo") {
+    if ("cryo".tr.contains(element ?? "Null") || element == "Cryo") {
       return colorCryo;
     }
-    if (element == "none".tr || element == "None") {
+    if ("none".tr.contains(element ?? "Null") || element == "None") {
       return const Color.fromARGB(255, 105, 48, 34);
     }
     return const Color.fromARGB(255, 105, 48, 34);
   }
 
   static String? getEnglishElementFromName(String? element) {
-    if (element == "anemo".tr || element == "Anemo") {
+    if ("anemo".tr.contains(element ?? "Null") || element == "Anemo") {
       return "Anemo";
     }
-    if (element == "geo".tr || element == "Geo") {
+    if ("geo".tr.contains(element ?? "Null") || element == "Geo") {
       return "Geo";
     }
-    if (element == "electro".tr || element == "Electro") {
+    if ("electro".tr.contains(element ?? "Null") || element == "Electro") {
       return "Electro";
     }
-    if (element == "dendro".tr || element == "Dendro") {
+    if ("dendro".tr.contains(element ?? "Null") || element == "Dendro") {
       return "Dendro";
     }
-    if (element == "pyro".tr || element == "Pyro") {
+    if ("pyro".tr.contains(element ?? "Null") || element == "Pyro") {
       return "Pyro";
     }
-    if (element == "hydro".tr || element == "Hydro") {
+    if ("hydro".tr.contains(element ?? "Null") || element == "Hydro") {
       return "Hydro";
     }
-    if (element == "cryo".tr || element == "Cryo") {
+    if ("cryo".tr.contains(element ?? "Null") || element == "Cryo") {
       return "Cryo";
     }
-    if (element == "none".tr || element == "None") {
+    if ("none".tr.contains(element ?? "Null") || element == "None") {
       return "None";
     }
     return null;

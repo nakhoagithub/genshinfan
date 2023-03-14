@@ -5,8 +5,7 @@ import 'package:genshinfan/objects/app/language.dart';
 const vietnamese = Language(
   languageCode: "Vietnamese",
   language: "Tiếng Việt",
-  code: "vi",
-  locale: Locale("vi"),
+  locale: Locale("vi", "VN"),
 );
 
 const Map<String, String> vi = {
@@ -101,26 +100,6 @@ const Map<String, String> vi = {
   "double_click_exit": "Nhấn một lần nữa để thoát",
   "today": "Hôm nay",
   "birthday_in_month": "Sinh nhật trong tháng",
-  "day1": "Thứ 2",
-  "day2": "Thứ 3",
-  "day3": "Thứ 4",
-  "day4": "Thứ 5",
-  "day5": "Thứ 6",
-  "day6": "Thứ 7",
-  "day7": "Chủ Nhật",
-  "month1": "Tháng 1",
-  "month2": "Tháng 2",
-  "month3": "Tháng 3",
-  "month4": "Tháng 4",
-  "month5": "Tháng 5",
-  "month6": "Tháng 6",
-  "month7": "Tháng 7",
-  "month8": "Tháng 8",
-  "month9": "Tháng 9",
-  "month10": "Tháng 10",
-  "month11": "Tháng 11",
-  "month12": "Tháng 12",
-
   "option": "Tùy chọn",
   "success": "Thành công",
   "not": "Không",
@@ -196,6 +175,30 @@ const Map<String, String> vi = {
   "empty_resource": "Không có Sản vật Teyvat",
   "empty_weapon": "Không có Vũ Khí",
   "all": "Tất cả",
+
+  "note_home":
+      "Đây là phiên bản Beta, một phiên bản thử nghiệm của Genshin Fan trước khi được phát hành chính thức. Trong phiên bản này, các tính năng mới được thêm vào và các lỗi được sửa chữa, tuy nhiên, sản phẩm vẫn chưa hoàn chỉnh và có thể gặp phải những lỗi và sự cố nhỏ.\nSự đóng góp của các bạn trong việc dịch ngôn ngữ trong phiên bản Beta rất quan trọng để giúp cải thiện chất lượng sản phẩm. Các bạn có thể giúp đỡ bằng cách cung cấp phản hồi về các thuật ngữ và cấu trúc ngôn ngữ trong sản phẩm. Điều này giúp cho sản phẩm trở nên dễ sử dụng hơn đối với người dùng và cũng giúp cho các người dùng ở các quốc gia và vùng lãnh thổ khác nhau có thể sử dụng sản phẩm một cách dễ dàng hơn. Bên cạnh các đóng góp về ngôn ngữ ứng dụng, tôi cũng rất mong muốn sự đóng góp của các bạn về cách xây dựng nhân vật. Bạn có thể vào <b>Cài đặt</b> để đóng góp.\nTôi rất mong muốn nhận được sự đóng góp của các bạn để cải thiện sản phẩm và đảm bảo rằng nó sẽ được sử dụng một cách hiệu quả nhất. Tôi sẽ tiếp tục cập nhật phiên bản Beta và lắng nghe các ý kiến ​​phản hồi từ các bạn để đảm bảo rằng sản phẩm cuối cùng sẽ đáp ứng tốt nhất nhu cầu của các bạn.",
+
+  // date
+  "day1": "Thứ 2",
+  "day2": "Thứ 3",
+  "day3": "Thứ 4",
+  "day4": "Thứ 5",
+  "day5": "Thứ 6",
+  "day6": "Thứ 7",
+  "day7": "Chủ Nhật",
+  "month1": "Tháng 1",
+  "month2": "Tháng 2",
+  "month3": "Tháng 3",
+  "month4": "Tháng 4",
+  "month5": "Tháng 5",
+  "month6": "Tháng 6",
+  "month7": "Tháng 7",
+  "month8": "Tháng 8",
+  "month9": "Tháng 9",
+  "month10": "Tháng 10",
+  "month11": "Tháng 11",
+  "month12": "Tháng 12",
 
   // game
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",

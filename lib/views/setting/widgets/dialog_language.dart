@@ -39,11 +39,12 @@ class DialogLanguage extends StatelessWidget {
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: Localization.langCodes.length,
+                itemCount: Localization.locales.length,
                 itemBuilder: (context, index) {
                   String language =
-                      Localization.mapLanguage[Localization.langCodes[index]];
-                  String langCode = Localization.langCodes[index];
+                      Localization.listLanguageView[index];
+                  String languageCode = Localization.locales[index].languageCode;
+                  String? countryCode = Localization.locales[index].countryCode;
                   return Material(
                     color: Colors.transparent,
                     child: InkWell(
@@ -53,8 +54,8 @@ class DialogLanguage extends StatelessWidget {
                         //   Get.find<AppController>().updateLanguage(langCode);
                         // }));
                         dialogConfirm("notification".tr,
-                            "notification_change_language".tr, () {
-                          Get.find<AppController>().updateLanguage(langCode);
+                            "notification_change_language".tr, () async {
+                          await Get.find<AppController>().updateLanguage(languageCode, countryCode);
                         });
                       },
                       child: Container(

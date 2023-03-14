@@ -21,19 +21,18 @@ List<String> levels = [
 ];
 
 class DomainService {
-
   Future<List<Domain>?> getDomains(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
       File file = File("${directory.path}/$language/domains.json");
       String json = await file.readAsString();
-      List<Domain> domains = List<Domain>.from(
-          jsonDecode(json).map((e) => Domain.fromJson(e))).toList();
+      List<Domain> domains =
+          List<Domain>.from(jsonDecode(json).map((e) => Domain.fromJson(e)))
+              .toList();
       return domains;
     }
     return null;
   }
-
 
   List<String> _getKey(List<String> keys) {
     List<String> keyFormat = [];
@@ -90,6 +89,15 @@ class DomainService {
   List<Domain>? getDomainToday(String today) {
     AppController appController = Get.find<AppController>();
     List<Domain> domains = appController.domains;
+
+    // for (var e in domains) {
+    //   if (e.daysofweek != null) {
+    //     for (var e1 in e.daysofweek!) {
+    //       print(e1);
+    //     }
+    //   }
+    // }
+
     List<Domain> domainToday = domains.where((element) {
       List<String>? daysofweeks = element.daysofweek?.where((element) {
         return element == today;

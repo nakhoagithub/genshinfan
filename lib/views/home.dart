@@ -84,8 +84,8 @@ class Home extends StatelessWidget {
     ];
 
     List<Widget> actionBottomLeftBar = [
-      InkWell(
-        onTap: () async {
+      IconApp(
+        onTap: () {
           dialogConfirm(
             "genshin_map".tr,
             "notification_open_genshin_map".tr,
@@ -94,8 +94,7 @@ class Home extends StatelessWidget {
             },
           );
         },
-        borderRadius: BorderRadius.circular(10),
-        child: Image.asset(
+        icon: Image.asset(
           "assets/images/ic_map1.png",
           height: 40,
           width: 40,

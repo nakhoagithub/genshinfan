@@ -111,9 +111,9 @@ class ItemCharacter extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 height: sizeItem * 0.3,
                 width: sizeItem * 0.3,
-                child: Tools.getAssetElementFromName(character.element) != null
+                child: Tools.getAssetElementFromName(character.element) != ""
                     ? Image.asset(
-                        Tools.getAssetElementFromName(character.element) ?? "")
+                        Tools.getAssetElementFromName(character.element))
                     : const SizedBox(),
               ),
             ),

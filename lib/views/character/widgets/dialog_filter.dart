@@ -108,7 +108,7 @@ class _ItemElement extends StatelessWidget {
       margin: const EdgeInsets.only(top: 8),
       child: Column(
         children: [
-          Image.asset(Tools.getAssetElementFromName(element) ?? "",
+          Image.asset(Tools.getAssetElementFromName(element),
               height: 30, width: 30),
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(

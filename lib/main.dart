@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/views/admin/admin_page.dart';
 import 'package:genshinfan/views/admin/manage_user.dart';
@@ -53,6 +54,11 @@ class App extends GetView<AppController> {
           themeMode: ThemeApp.themeMode,
 
           // locale
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           locale: Localization.locale,
           fallbackLocale: Localization.fallbackLocale,
           translations: Localization(),

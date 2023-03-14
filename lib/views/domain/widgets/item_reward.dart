@@ -1,16 +1,25 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/controllers/artifact_controller.dart';
+import 'package:genshinfan/controllers/resource_controller.dart';
+import 'package:genshinfan/objects/artifact.dart';
+import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:get/get.dart';
 
-class ItemWeapon extends StatelessWidget {
-  final Weapon weapon;
+class ItemReward extends StatelessWidget {
+  final Resource? resource;
+  final Artifact? artifact;
+  final String? rarity;
+  final String name;
   final VoidCallback onTap;
-  const ItemWeapon({
+  const ItemReward({
     super.key,
-    required this.weapon,
+    required this.resource,
+    required this.artifact,
+    this.rarity,
+    required this.name,
     required this.onTap,
   });
 
@@ -18,7 +27,16 @@ class ItemWeapon extends StatelessWidget {
   Widget build(BuildContext context) {
     double sizeItem = Config.sizeItem3;
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        if (resource != null) {
+          Get.find<ResourceController>().selectResource(resource!);
+          Get.toNamed('/resource_info');
+        } else if (artifact != null) {
+          // xem thông tin thánh di vật
+          Get.find<ArtifactController>().selectArtifact(artifact!);
+          Get.toNamed('/artifact_info');
+        }
+      },
       borderRadius: BorderRadius.circular(sizeItem * 0.05),
       child: Container(
         margin: const EdgeInsets.all(2),
@@ -33,7 +51,7 @@ class ItemWeapon extends StatelessWidget {
                 borderRadius: BorderRadius.circular(sizeItem * 0.05),
               ),
               child: Image.asset(
-                Tools.getBackground(weapon.rarity),
+                Tools.getBackground(rarity ?? resource?.rarity),
                 fit: BoxFit.cover,
                 height: sizeItem * 1.215,
                 width: sizeItem,
@@ -55,8 +73,11 @@ class ItemWeapon extends StatelessWidget {
                       ),
                     ),
                     child: CachedNetworkImage(
-                      imageUrl: weapon.images?.icon ??
-                          Config.urlImage(weapon.images?.namegacha),
+                      imageUrl: resource != null
+                          // ảnh resource
+                          ? Config.urlImage(resource?.images?.nameicon ?? "")
+                          // ảnh của artifact
+                          : artifact?.images?.flower ?? "",
                       fit: BoxFit.cover,
                       progressIndicatorBuilder: (context, url, progress) {
                         return const Center(
@@ -94,7 +115,7 @@ class ItemWeapon extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      weapon.name,
+                      name,
                       textAlign: TextAlign.center,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -108,36 +129,20 @@ class ItemWeapon extends StatelessWidget {
               ],
             ),
 
-            // type
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                margin: const EdgeInsets.all(4),
-                padding: const EdgeInsets.all(2),
-                height: sizeItem * 0.25,
-                width: sizeItem * 0.25,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey.withOpacity(0.5),
-                ),
-                child: Tools.getAssetWeaponType(weapon.weapontype) != null
-                    ? Image.asset(
-                        Tools.getAssetWeaponType(weapon.weapontype) ?? "")
-                    : const SizedBox(),
-              ),
-            ),
-
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 14),
-                child: Image.asset(
-                  Tools.getRarityStar(weapon.rarity),
-                  height: sizeItem * 1.215 * 0.18,
-                  width: sizeItem * 0.85,
-                ),
-              ),
-            ),
+            // độ hiếm - rarity
+            resource?.rarity == null
+                ? const SizedBox()
+                : Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 14),
+                      child: Image.asset(
+                        Tools.getRarityStar(resource!.rarity!),
+                        height: sizeItem * 0.2,
+                        width: sizeItem * 0.2,
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),

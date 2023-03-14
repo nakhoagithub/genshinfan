@@ -5,8 +5,7 @@ import 'package:genshinfan/objects/app/language.dart';
 const english = Language(
   languageCode: "English",
   language: "English",
-  code: "en",
-  locale: Locale("en"),
+  locale: Locale("en", 'US'),
 );
 
 const Map<String, String> en = {
@@ -76,13 +75,11 @@ const Map<String, String> en = {
   "dupealias": "More information",
   "source": "Source",
   "days_of_week": "Day of Week",
-
   "artifact_information": "Artifact Information",
   "choose_artifact": "Please choose Artifact",
   "set1": "Activate 1 item",
   "set2": "Activate set of 2",
   "set4": "Activate set of 4",
-
   "domain_information": "Domain Information",
   "choose_domain": "Please choose Dungeon",
   "domainentrance": "Entrance",
@@ -103,25 +100,6 @@ const Map<String, String> en = {
   "double_click_exit": "Press again to exit",
   "today": "Today",
   "birthday_in_month": "Birthdays of the month",
-  "day1": "Monday",
-  "day2": "Tuesday",
-  "day3": "Wednesday",
-  "day4": "Thursday",
-  "day5": "Friday",
-  "day6": "Saturday",
-  "day7": "Sunday",
-  "month1": "January",
-  "month2": "February",
-  "month3": "March",
-  "month4": "April",
-  "month5": "May",
-  "month6": "June",
-  "month7": "July",
-  "month8": "August",
-  "month9": "September",
-  "month10": "October",
-  "month11": "November",
-  "month12": "December",
   "option": "Option",
   "success": "Successfully",
   "not": "Not",
@@ -197,6 +175,30 @@ const Map<String, String> en = {
   "empty_weapon": "No Weapon",
   "all": "All",
 
+  "note_home":
+      "This is a Beta version, a test version of Genshin Fan before being officially released. In this version, new features are added and bugs are fixed, however, the product is still incomplete and may encounter minor bugs and problems.\nYour contribution in language translation in the Beta version is very important to help improve the quality of the product. You can help by providing feedback on terms and language structures in the product. This makes the product easier to use for users and also makes it easier for users in different countries and regions to use the product. In addition to the contribution of the application language, I also look forward to your contribution on how to build the character. You can go to <b>Settings</b> to contribute.\nI look forward to receiving your input to improve the product and ensure that it is used to its fullest potential. I will continue to update the Beta version and listen to your feedback to ensure that the final product will best meet your needs.",
+
+  // date
+  "day1": "Monday",
+  "day2": "Tuesday",
+  "day3": "Wednesday",
+  "day4": "Thursday",
+  "day5": "Friday",
+  "day6": "Saturday",
+  "day7": "Sunday",
+  "month1": "January",
+  "month2": "February",
+  "month3": "March",
+  "month4": "April",
+  "month5": "May",
+  "month6": "June",
+  "month7": "July",
+  "month8": "August",
+  "month9": "September",
+  "month10": "October",
+  "month11": "November",
+  "month12": "December",
+
   // game
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",
   "FIGHT_PROP_ROCK_ADD_HURT": "Geo DMG Bonus (%)",
@@ -237,13 +239,13 @@ const Map<String, String> en = {
   "cryo": "Cryo",
   "none": "None",
 
-  "e_cryo": "Cryo",
-  "e_hydro": "Hydro",
-  "e_pyro": "Pyro",
-  "e_electro": "Electro",
   "e_anemo": "Anemo",
   "e_geo": "Geo",
+  "e_electro": "Electro",
   "e_dendro": "Dendro",
+  "e_pyro": "Pyro",
+  "e_hydro": "Hydro",
+  "e_cryo": "Cryo",
 
   // weapon
   "sword": "Sword",

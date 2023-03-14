@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class IconApp extends StatelessWidget {
   final VoidCallback onTap;
-  final Icon icon;
+  final Widget icon;
   final bool? notification;
   const IconApp({
     super.key,
@@ -16,14 +16,9 @@ class IconApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        height: 40,
-        width: 40,
-        child: Stack(
+    return IconButton(
+        onPressed: onTap,
+        icon: Stack(
           children: [
             Center(child: icon),
             notification != null && notification == true
@@ -42,8 +37,6 @@ class IconApp extends StatelessWidget {
                   )
                 : const SizedBox(),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

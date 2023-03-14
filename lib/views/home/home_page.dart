@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/views/home/widgets/home_notification.dart';
 import 'package:genshinfan/views/home/widgets/home_today.dart';
 import 'package:get/get.dart';
 
@@ -29,6 +30,7 @@ class HomePage extends StatelessWidget {
             ),
             // hôm nay
             const HomeToday(),
+            const HomeNotification(),
             const SizedBox(height: 50),
           ],
         ),

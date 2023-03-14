@@ -6,9 +6,7 @@ import 'package:genshinfan/controllers/manage_user_controller.dart';
 import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
-import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +21,7 @@ class ManageUser extends StatelessWidget {
         leading: const BackButtonApp(),
         title: Text("manager".tr),
       ),
-      body: _Body(),
+      body: const _Body(),
     );
   }
 }

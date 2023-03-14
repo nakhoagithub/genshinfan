@@ -40,6 +40,7 @@ dialogConfirm(String title, String message, Function accept,
           Material(
             color: Colors.transparent,
             child: Container(
+              height: 40,
               margin: const EdgeInsets.only(top: 10),
               child: Row(
                 children: [
@@ -127,6 +128,7 @@ dialogInfo(String message) async {
           Material(
             color: Colors.transparent,
             child: Container(
+              height: 40,
               margin: const EdgeInsets.only(top: 10),
               child: InkWell(
                 onTap: () {

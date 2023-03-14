@@ -184,7 +184,7 @@ class _SelectElementTraveler extends StatelessWidget {
                 : null,
           ),
           child: Image.asset(
-            "${Tools.getAssetElementFromName(element)}",
+            Tools.getAssetElementFromName(element),
             height: 40,
             width: 40,
           ),

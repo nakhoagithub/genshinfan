@@ -1,13 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/management_contribute_character_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
-import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/weapon.dart';
-import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
@@ -140,8 +137,7 @@ class _Item extends StatelessWidget {
                       ),
                       Image.asset(
                           Tools.getAssetElementFromName(
-                                  characterBuilding.element) ??
-                              "",
+                                  characterBuilding.element),
                           height: 30,
                           width: 30),
                     ],

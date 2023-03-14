@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';

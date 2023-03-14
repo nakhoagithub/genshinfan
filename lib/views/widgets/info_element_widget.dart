@@ -31,7 +31,7 @@ class InfoElementWidget extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: Tools.getAssetElementFromName(element) == null
+            child: Tools.getAssetElementFromName(element) == ""
                 ? Text(
                     'especially'.tr,
                     textAlign: TextAlign.center,
@@ -42,7 +42,7 @@ class InfoElementWidget extends StatelessWidget {
                     ),
                   )
                 : Image.asset(
-                    "${Tools.getAssetElementFromName(element)}",
+                    Tools.getAssetElementFromName(element),
                     height: 30,
                     width: 30,
                   ),

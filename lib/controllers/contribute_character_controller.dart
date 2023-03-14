@@ -1,6 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
