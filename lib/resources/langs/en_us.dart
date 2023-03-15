@@ -186,18 +186,6 @@ const Map<String, String> en = {
   "day5": "Friday",
   "day6": "Saturday",
   "day7": "Sunday",
-  "month1": "January",
-  "month2": "February",
-  "month3": "March",
-  "month4": "April",
-  "month5": "May",
-  "month6": "June",
-  "month7": "July",
-  "month8": "August",
-  "month9": "September",
-  "month10": "October",
-  "month11": "November",
-  "month12": "December",
 
   // game
   "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",

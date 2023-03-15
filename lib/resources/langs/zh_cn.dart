@@ -188,18 +188,6 @@ const Map<String, String> zhCN = {
   "day5": "周五",
   "day6": "周六",
   "day7": "周日",
-  "month1": "January",
-  "month2": "February",
-  "month3": "March",
-  "month4": "April",
-  "month5": "May",
-  "month6": "June",
-  "month7": "July",
-  "month8": "August",
-  "month9": "September",
-  "month10": "October",
-  "month11": "November",
-  "month12": "December",
 
   // game
   "FIGHT_PROP_ATTACK_PERCENT": "攻击力 (%)",
