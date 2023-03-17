@@ -1,29 +1,25 @@
 import 'dart:ui';
 
 import 'package:genshinfan/objects/app/language.dart';
+import 'package:genshinfan/resources/langs/en_us.dart';
+import 'package:genshinfan/resources/langs/fr_fr.dart';
+import 'package:genshinfan/resources/langs/vi_vn.dart';
 import 'package:genshinfan/resources/langs/zh_cn.dart';
 import 'package:genshinfan/resources/langs/zh_tw.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../langs/en_us.dart';
-import '../langs/vi_vn.dart';
-
 class Localization extends Translations {
   static GetStorage box = GetStorage();
   static final locale = _getLocaleFromLanguage();
-  // static const localeSupport = [
-  //   Locale('en', 'US'),
-  //   Locale('vi', 'VN'),
-  //   Locale('zh', 'CN'),
-  // ];
   static const fallbackLocale = Locale('en', 'US');
   static const locales = [
     Locale('en', 'US'),
     Locale('vi', 'VN'),
     Locale('zh', 'CN'),
     Locale('zh', 'TW'),
+    Locale('fr', 'FR'),
   ];
 
   static Language getLanguageFromCode(Locale? locale) {
@@ -31,6 +27,7 @@ class Localization extends Translations {
     if (locale == const Locale('vi', 'VN')) return vietnamese;
     if (locale == const Locale('zh', 'CN')) return chineseSimplified;
     if (locale == const Locale('zh', 'TW')) return chineseTraditional;
+    if (locale == const Locale('fr', 'FR')) return french;
     return english;
   }
 
@@ -41,6 +38,7 @@ class Localization extends Translations {
     'Tiếng Việt',
     '简体中文',
     '中國傳統的',
+    'Français',
   ];
 
   static Future<void> changeLocale(
@@ -56,6 +54,7 @@ class Localization extends Translations {
         'vi_VN': vi,
         'zh_CN': zhCN,
         'zh_TW': zhTW,
+        'fr_FR': fr,
       };
 
   static Locale _getLocaleFromLanguage(

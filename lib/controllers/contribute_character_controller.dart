@@ -144,6 +144,7 @@ class ContributeCharacterController extends GetxController {
 
   @override
   void onInit() {
+    print(Get.find<AppController>().userApp.value?.name);
     characters.sort(
       (a, b) {
         int rarity = b.rarity.compareTo(a.rarity);

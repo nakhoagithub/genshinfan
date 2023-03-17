@@ -23,7 +23,6 @@ class ContributeCharacterBuildingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     Get.put(ContributeCharacterController());
-    context.theme;
     return Scaffold(
       appBar: AppBar(
         leading: const BackButtonApp(),

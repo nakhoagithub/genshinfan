@@ -69,12 +69,14 @@ class AppService {
         });
         if (dataSnapshot.value == null) {
           UserApp userApp = UserApp(
-              uid: user.uid,
-              name: user.displayName,
-              email: user.email,
-              linkImage: user.photoURL,
-              role: 10);
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            linkImage: user.photoURL,
+            role: 10,
+          );
           await db.child(user.uid).update(userApp.toJson());
+          return userApp;
         } else {
           return UserApp.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
         }
@@ -124,7 +126,6 @@ class AppService {
   /// trả về `true` nếu có dữ liệu mới.
   Future<List<Object?>> checkUpdateData() async {
     try {
-
       // get link from firebase remote
       final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
       await remoteConfig.fetchAndActivate();
