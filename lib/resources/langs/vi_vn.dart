@@ -11,7 +11,6 @@ const vietnamese = Language(
 const Map<String, String> vi = {
   "welcome_to_app": "Chào mừng bạn đến với Genshin Fan",
   "version": "Phiên bản @version",
-  "key": "vietnamese",
   "language": "Vietnamese",
   "loading": "Đang tải...",
   "downloading": "Đã tải xuống @percent%",
