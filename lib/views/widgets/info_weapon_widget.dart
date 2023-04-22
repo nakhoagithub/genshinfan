@@ -23,21 +23,16 @@ class InfoWeaponWidget extends StatelessWidget {
               "${"weapon".tr}: ",
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                color: ThemeApp.colorTextSecond(
-                  isDark: Get.isDarkMode,
-                ),
+                // color: ThemeApp.colorTextSecond(
+                //   isDark: Get.isDarkMode,
+                // ),
               ),
             ),
           ),
           Expanded(
             flex: 4,
             child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: ThemeApp.colorTextSecond(
-                  isDark: Get.isDarkMode,
-                ),
-              ),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
               padding: const EdgeInsets.all(2),
               child: Image.asset(
                 "${Tools.getAssetWeaponType(weapontype)}",

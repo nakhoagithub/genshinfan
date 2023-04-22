@@ -14,14 +14,7 @@ class DialogLanguage extends StatelessWidget {
     return Container(
       height: 300,
       width: double.infinity,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
-        ),
-        color: ThemeApp.colorScaffold(isDark: Get.isDarkMode),
-      ),
+      color: Get.theme.colorScheme.background,
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
@@ -41,9 +34,9 @@ class DialogLanguage extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: Localization.locales.length,
                 itemBuilder: (context, index) {
-                  String language =
-                      Localization.listLanguageView[index];
-                  String languageCode = Localization.locales[index].languageCode;
+                  String language = Localization.listLanguageView[index];
+                  String languageCode =
+                      Localization.locales[index].languageCode;
                   String? countryCode = Localization.locales[index].countryCode;
                   return Material(
                     color: Colors.transparent,
@@ -55,7 +48,8 @@ class DialogLanguage extends StatelessWidget {
                         // }));
                         dialogConfirm("notification".tr,
                             "notification_change_language".tr, () async {
-                          await Get.find<AppController>().updateLanguage(languageCode, countryCode);
+                          await Get.find<AppController>()
+                              .updateLanguage(languageCode, countryCode);
                         });
                       },
                       child: Container(

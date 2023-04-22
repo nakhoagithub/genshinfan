@@ -18,9 +18,6 @@ class InfoUser extends StatelessWidget {
       margin: const EdgeInsets.only(left: 5, right: 5),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
         child: Obx(() {
           User? user = appController.user.value;
           return user == null ? const _NoLogin() : const _Logged();

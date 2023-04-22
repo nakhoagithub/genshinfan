@@ -163,7 +163,7 @@ class _Item extends StatelessWidget {
               height: 1,
               width: double.infinity,
               margin: const EdgeInsets.only(top: 10),
-              color: ThemeApp.colorTextSecond(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorTextSecond(isDark: Get.isDarkMode),
             ),
             _Browse(
               characterBuilding: characterBuilding,
@@ -217,7 +217,7 @@ class _Browse extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
             ),
             Expanded(
               child: InkWell(

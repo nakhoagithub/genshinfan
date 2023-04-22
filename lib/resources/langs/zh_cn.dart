@@ -9,7 +9,7 @@ const chineseSimplified = Language(
 );
 
 const Map<String, String> zhCN = {
-  "welcome_to_app": "Welcome to Genshin Fan (ChineseSimplified)",
+  "welcome_to_app": "Welcome to Genshin Fan",
   "version": "版本 @version",
 
   "loading": "加载中...",

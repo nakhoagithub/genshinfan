@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+
 import 'package:get/get.dart';
 
 class SelectSandsEffect extends StatelessWidget {
@@ -45,8 +45,8 @@ class SelectSandsEffect extends StatelessWidget {
                     buttonStyleData: ButtonStyleData(
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color:
-                                  ThemeApp.colorText(isDark: Get.isDarkMode)),
+                              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                              ),
                           borderRadius: BorderRadius.circular(10)),
                     ),
                     // buttonDecoration: BoxDecoration(

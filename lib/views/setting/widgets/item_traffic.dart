@@ -18,9 +18,6 @@ class TrafficApplication extends StatelessWidget {
       margin: const EdgeInsets.only(left: 5, right: 5),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
         child: Obx(() {
           Traffic? traffic = homeController.traffic.value;
           return Column(

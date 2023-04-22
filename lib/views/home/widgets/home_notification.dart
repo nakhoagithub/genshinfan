@@ -8,6 +8,7 @@ class HomeNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.theme;
     return Container(
       margin: const EdgeInsets.only(top: 20, left: 4, right: 4),
       child: Column(

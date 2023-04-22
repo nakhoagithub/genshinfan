@@ -23,9 +23,6 @@ class AppBarCenter extends StatelessWidget {
     return Card(
       elevation: elevation ?? 4,
       margin: EdgeInsets.zero,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomRight: Radius.zero, bottomLeft: Radius.zero)),
       child: InkWell(
         onTap: onTap,
         child: Container(

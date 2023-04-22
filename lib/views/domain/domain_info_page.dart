@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/domain/widgets/domain_info.dart';
 import 'package:genshinfan/views/domain/widgets/domain_lv.dart';
@@ -17,7 +17,7 @@ class DomainInfoPage extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -37,6 +37,7 @@ class DomainInfoPage extends StatelessWidget {
                       children: [
                         InformationDomain(),
                         InformationDomainLv(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

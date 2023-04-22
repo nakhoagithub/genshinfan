@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/views/artifact/artifact_page.dart';
 import 'package:genshinfan/views/artifact/artifact_screen.dart';
 import 'package:genshinfan/views/domain/domain_page.dart';
@@ -14,8 +15,6 @@ import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:genshinfan/views/widgets/slide_layout.dart';
 import 'package:get/get.dart';
-import '../controllers/home_controller.dart';
-import '../resources/utils/theme.dart';
 import 'character/character_page.dart';
 import 'character/character_screen.dart';
 
@@ -35,7 +34,7 @@ class Home extends StatelessWidget {
       ItemSlide(
         iconMenu: Image.asset(
           "assets/images/ic_character.png",
-          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         left: const CharacterPage(),
         center: const CharacterScreen(),
@@ -44,7 +43,7 @@ class Home extends StatelessWidget {
       ItemSlide(
         iconMenu: Image.asset(
           "assets/images/ic_weapon.png",
-          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         left: const WeaponPage(),
         center: const WeaponScreen(),
@@ -52,7 +51,7 @@ class Home extends StatelessWidget {
       ItemSlide(
         iconMenu: Image.asset(
           "assets/images/ic_material.png",
-          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         left: const ResourcePage(),
         center: const ResourceScreen(),
@@ -60,7 +59,7 @@ class Home extends StatelessWidget {
       ItemSlide(
         iconMenu: Image.asset(
           "assets/images/ic_artifact.png",
-          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         left: const ArtifactPage(),
         center: const ArtifactScreen(),
@@ -68,7 +67,7 @@ class Home extends StatelessWidget {
       ItemSlide(
         iconMenu: Image.asset(
           "assets/images/ic_dungeon.png",
-          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         left: const DomainPage(),
         center: const DomainScreen(),
@@ -76,7 +75,7 @@ class Home extends StatelessWidget {
       ItemSlide(
         iconMenu: Image.asset(
           "assets/images/ic_enemy.png",
-          color: ThemeApp.colorIcon(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         left: const EnemyPage(),
         center: const EnemyScreen(),
@@ -98,7 +97,7 @@ class Home extends StatelessWidget {
           "assets/images/ic_map1.png",
           height: 40,
           width: 40,
-          color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
         ),
       ),
       Obx(
@@ -116,10 +115,9 @@ class Home extends StatelessWidget {
       body: SlideLayout(
         items: menus,
         streamChangeScreen: homeController.homeStream,
-        iconBackgroundColor:
-            ThemeApp.colorBackgroundIcon(isDark: Get.isDarkMode),
-        iconColor: ThemeApp.colorIcon(isDark: Get.isDarkMode),
-        indicatorColor: ThemeApp.colorText(isDark: Get.isDarkMode),
+        iconBackgroundColor: Get.theme.colorScheme.onInverseSurface,
+        iconColor: Get.theme.colorScheme.onSurface,
+        indicatorColor: Get.theme.colorScheme.tertiary,
         actionBottomLeftBar: actionBottomLeftBar,
       ),
     );

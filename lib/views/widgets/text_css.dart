@@ -29,6 +29,7 @@ class TextCSS extends StatelessWidget {
         )),
         'red': StyledTextTag(style: const TextStyle(color: Colors.red)),
         'orange': StyledTextTag(style: const TextStyle(color: Colors.orange)),
+        'green': StyledTextTag(style: const TextStyle(color: Colors.green)),
         'cryo': StyledTextTag(style: const TextStyle(color: Color(0xff67bbcf))),
         'hydro':
             StyledTextTag(style: const TextStyle(color: Color(0xff0b4dda))),

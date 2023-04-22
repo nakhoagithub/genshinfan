@@ -26,9 +26,9 @@ class InfoRewardWidget extends StatelessWidget {
           "${"reward".tr}: ",
           style: ThemeApp.textStyle(
             isDark: Get.isDarkMode,
-            color: ThemeApp.colorTextSecond(
-              isDark: Get.isDarkMode,
-            ),
+            // color: ThemeApp.colorTextSecond(
+            //   isDark: Get.isDarkMode,
+            // ),
           ),
         ),
         SizedBox(

@@ -1,10 +1,10 @@
 name: genshinfan
 description: Genshin Fan - Power by Anh Khoa
-publish_to: 'none'
+publish_to: "none"
 version: "1.0.1"
 
 environment:
-  sdk: '>=3.0.0-63.0.dev <4.0.0'
+  sdk: ">=3.0.0-63.0.dev <4.0.0"
 
 dependencies:
   flutter:
@@ -13,7 +13,7 @@ dependencies:
 
   get:
   get_storage:
-  
+
   fluttertoast: ^8.2.1
   flutter_custom_clippers: ^2.0.0
   cached_network_image: ^3.2.2
@@ -42,6 +42,7 @@ dependencies:
   firebase_database: ^10.1.1
   firebase_auth: any
   google_sign_in: ^6.1.0
+  translator: ^0.1.7
 
   flutter_localizations:
     sdk: flutter
@@ -54,7 +55,6 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-
   uses-material-design: true
 
   assets:

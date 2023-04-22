@@ -38,7 +38,8 @@ class SelectCharacter extends StatelessWidget {
                 width: sizeItem,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: ThemeApp.colorText(isDark: Get.isDarkMode)),
+                    // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                  ),
                   borderRadius: BorderRadius.circular(sizeItem * 0.05),
                 ),
                 child: Obx(

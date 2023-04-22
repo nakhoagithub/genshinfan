@@ -23,9 +23,9 @@ class InfoDaysOfWeekWidget extends StatelessWidget {
               "${"days_of_week".tr}: ",
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                color: ThemeApp.colorTextSecond(
-                  isDark: Get.isDarkMode,
-                ),
+                // color: ThemeApp.colorTextSecond(
+                //   isDark: Get.isDarkMode,
+                // ),
               ),
             ),
           ),

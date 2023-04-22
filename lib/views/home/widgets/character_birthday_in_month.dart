@@ -94,7 +94,7 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(left: 10, right: 10),
                     width: 1,
-                    color: ThemeApp.colorTextSecond(isDark: !Get.isDarkMode),
+                    // color: ThemeApp.colorTextSecond(isDark: !Get.isDarkMode),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

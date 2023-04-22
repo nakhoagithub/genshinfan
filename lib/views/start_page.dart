@@ -18,7 +18,7 @@ class StartPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-               _WelcomeApp(),
+              _WelcomeApp(),
               _VersionApp(),
               _LogoApp(),
               _Progress(),
@@ -40,6 +40,7 @@ class _WelcomeApp extends StatelessWidget {
       child: Center(
         child: Text(
           "welcome_to_app".tr,
+          textAlign: TextAlign.center,
           style: ThemeApp.textStyle(
             isDark: Get.isDarkMode,
             fontSize: 20,
@@ -115,11 +116,12 @@ class _Progress extends StatelessWidget {
               width: 200,
               child: Obx(
                 () => LinearProgressIndicator(
+                  color: Colors.green,
                   value: (startController.received.value /
                       startController.total.value),
-                  color: ThemeApp.colorPrimary(
-                    isDark: Get.isDarkMode,
-                  ),
+                  // color: ThemeApp.colorPrimary(
+                  //   isDark: Get.isDarkMode,
+                  // ),
                 ),
               ),
             ),

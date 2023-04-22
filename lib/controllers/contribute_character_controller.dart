@@ -1,15 +1,22 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/services/contribute_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class ContributeCharacterController extends GetxController {
+  GetStorage box = GetStorage();
+  TextEditingController textEditingControllerAuth = TextEditingController();
   RoundedLoadingButtonController buttonController =
       RoundedLoadingButtonController();
   RxList<Character> characters = Get.find<AppController>().characters;
@@ -28,6 +35,8 @@ class ContributeCharacterController extends GetxController {
 
   void changeAuthor(String value) {
     author.value = value;
+    textEditingControllerAuth.text = value;
+    unawaited(box.write(Config.keyAuthContribute, value));
     buttonController.reset();
   }
 
@@ -144,6 +153,12 @@ class ContributeCharacterController extends GetxController {
 
   @override
   void onInit() {
+    AppController appController = Get.find<AppController>();
+    author.value = box.read(Config.keyAuthContribute) ??
+        appController.userApp.value?.name ??
+        "";
+    textEditingControllerAuth.text = author.value;
+
     characters.sort(
       (a, b) {
         int rarity = b.rarity.compareTo(a.rarity);

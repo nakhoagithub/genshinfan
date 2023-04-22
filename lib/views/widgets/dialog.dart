@@ -6,12 +6,10 @@ import 'package:get/get.dart';
 dialogConfirm(String title, String message, Function accept,
     {Function? cancel}) async {
   await Get.bottomSheet(
+    clipBehavior: Clip.antiAliasWithSaveLayer,
     Container(
-      margin: const EdgeInsets.all(10),
       width: Get.mediaQuery.size.width,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: ThemeApp.colorCard(isDark: Get.isDarkMode)),
+      color: Get.theme.colorScheme.background,
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -65,7 +63,7 @@ dialogConfirm(String title, String message, Function accept,
                     width: 1,
                     height: 16,
                     margin: const EdgeInsets.only(left: 10, right: 10),
-                    color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                    // color: ThemeApp.colorText(isDark: Get.isDarkMode),
                   ),
                   Expanded(
                     child: InkWell(
@@ -94,12 +92,10 @@ dialogConfirm(String title, String message, Function accept,
 
 dialogInfo(String message) async {
   await Get.bottomSheet(
+    clipBehavior: Clip.antiAliasWithSaveLayer,
     Container(
-      margin: const EdgeInsets.all(10),
       width: Get.mediaQuery.size.width,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: ThemeApp.colorCard(isDark: Get.isDarkMode)),
+      color: Get.theme.colorScheme.background,
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,

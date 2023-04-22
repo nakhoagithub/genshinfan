@@ -9,7 +9,7 @@ const chineseTraditional = Language(
 );
 
 const Map<String, String> zhTW = {
-  "welcome_to_app": "Welcome to Genshin Fan (ChineseTraditional)",
+  "welcome_to_app": "Welcome to Genshin Fan", //(ChineseTraditional)
   "version": "Version @version",
   "loading": "Loading...",
   "downloading": "@percent% Downloaded.",

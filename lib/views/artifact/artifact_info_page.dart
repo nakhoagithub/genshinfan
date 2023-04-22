@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info_item.dart';
@@ -17,7 +16,7 @@ class ArtifactInfoPage extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -39,6 +38,7 @@ class ArtifactInfoPage extends StatelessWidget {
                       children: [
                         InformationArtifact(),
                         InformationItemArtifact(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

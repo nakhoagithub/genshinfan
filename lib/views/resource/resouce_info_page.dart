@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/resource/widgets/resource_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
@@ -16,7 +15,7 @@ class ResourceInfoPage extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -35,6 +34,7 @@ class ResourceInfoPage extends StatelessWidget {
                     child: const Column(
                       children: [
                         InformationResource(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

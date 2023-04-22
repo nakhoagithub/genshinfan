@@ -23,9 +23,9 @@ class InfoElementWidget extends StatelessWidget {
               "${"element".tr}: ",
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                color: ThemeApp.colorTextSecond(
-                  isDark: Get.isDarkMode,
-                ),
+                // color: ThemeApp.colorTextSecond(
+                //   isDark: Get.isDarkMode,
+                // ),
               ),
             ),
           ),

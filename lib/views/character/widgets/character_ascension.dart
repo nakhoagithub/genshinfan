@@ -34,7 +34,7 @@ class CharacterAscensionView extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 strokeAlign: 1,
-                color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                // color: ThemeApp.colorText(isDark: Get.isDarkMode),
               ),
             ),
             child: ListView(

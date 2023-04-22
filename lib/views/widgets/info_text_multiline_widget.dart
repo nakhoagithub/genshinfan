@@ -25,9 +25,9 @@ class InfoTextMultiLineWidget extends StatelessWidget {
               "${titleTranslate.tr}: ",
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                color: ThemeApp.colorTextSecond(
-                  isDark: Get.isDarkMode,
-                ),
+                // color: ThemeApp.colorTextSecond(
+                //   isDark: Get.isDarkMode,
+                // ),
               ),
             ),
           ),

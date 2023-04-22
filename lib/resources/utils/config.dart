@@ -9,6 +9,9 @@ import 'package:get/get.dart';
 /// 5: Duyệt đóng góp
 
 class Config {
+  static const String aboutApp =
+      '<green><b>Genshin Fan</b></green>\n\n<orange><b>Declaration Information</b></orange>\n- The <b>Genshin Fan</b> application is a game database application </b>Genshin Impact</b>.\n- All data is extracted from the Internet and this application has no affiliation or endorsement from miHoYo - Genshin Impact.\n\n<orange><b>Permissions and Security</b></orange>\nThe application receives some information from the user when the user is logged in, such as name and email address.\n\n<orange><b>Thank you</b></orange>\nMany thanks to <b>theBowja (Github)</b> as the main source of data for the app.\n\n<orange><b>Author and Developer:</b></orange> KanThin (Nguyen Anh Khoa - Vietnam).\n\n<orange><b>Contact:</b></orange> dev.nakhoa@gmail.com\n\n<orange><b>Author translation:</b></orange>\n- Turkish: Alberivh on twitter';
+
   static const String darkMode = 'darkMode';
   static const String languageApp = 'languageApp';
   static const String storageDataContentLength = 'dataContentLength';
@@ -26,12 +29,15 @@ class Config {
   // weapon
   static const String storageListWeaponWeaponFilter = 'listWeaponWeaponFilter';
   static const String storageListRarityWeaponFilter = 'listRarityWeaponFilter';
-  static const String storageListSubstatWeaponFilter = 'listSubstatWeaponFilter';
+  static const String storageListSubstatWeaponFilter =
+      'listSubstatWeaponFilter';
   static const String storageSortWeaponFilter = 'sortWeaponFilter';
 
   // weapon
-  static const String storageListRarityResourceFilter = 'listRarityResourceFilter';
-  static const String storageListSubstatResourceFilter = 'listSubstatResourceFilter';
+  static const String storageListRarityResourceFilter =
+      'listRarityResourceFilter';
+  static const String storageListSubstatResourceFilter =
+      'listSubstatResourceFilter';
   static const String storageSortResourceFilter = 'sortResourceFilter';
 
   static const String gmailSchema = 'com.google.android.gm';
@@ -44,6 +50,9 @@ class Config {
 
   static const String keyLinkUrlData = 'urlData';
   static const String keyLinkApiData = 'apiData';
+
+  // contribute
+  static const String keyAuthContribute = 'keyAuthContribute';
 
   static String urlData =
       "https://github.com/theBowja/genshin-db/raw/main/src/min/data.min.json.gzip";

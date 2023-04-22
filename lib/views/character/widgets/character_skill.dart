@@ -264,9 +264,8 @@ class _SelectElementTraveler extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: select == true
-                ? ThemeApp.colorText(isDark: Get.isDarkMode).withOpacity(0.2)
-                : null,
+            color:
+                select == true ? Get.theme.colorScheme.onInverseSurface : null,
           ),
           child: Image.asset(
             Tools.getAssetElementFromName(element),
@@ -298,7 +297,7 @@ class _Combat extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
         ),
         // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
@@ -365,9 +364,8 @@ class _Combat extends StatelessWidget {
                   child: IconApp(
                       onTap: () {
                         Get.bottomSheet(
-                          TalentStats(
-                            combat: combat,
-                          ),
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          TalentStats(combat: combat),
                           isScrollControlled: true,
                         );
                       },
@@ -429,7 +427,7 @@ class _Passive extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
         ),
         // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
@@ -528,7 +526,7 @@ class _Constellation extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
         ),
         // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
@@ -542,11 +540,10 @@ class _Constellation extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 10),
                 child: Text(
                   lv,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: ThemeApp.colorText(isDark: Get.isDarkMode),
-                  ),
+                  style: ThemeApp.textStyle(
+                      isDark: Get.isDarkMode,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               Container(

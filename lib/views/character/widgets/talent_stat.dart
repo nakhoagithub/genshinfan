@@ -18,10 +18,12 @@ class TalentStats extends StatelessWidget {
     double heightHeader = 80;
     double heightItem = 50;
     double widthItem = 150;
-    return SizedBox(
-      height: context.mediaQuerySize.height * 0.8,
-      child: Card(
-          child: Column(
+    return Container(
+      color: Get.theme.cardColor,
+      height: Get.height * 0.9,
+      width: Get.width,
+      padding: const EdgeInsets.all(16),
+      child: Column(
         children: [
           Expanded(
             child: Container(
@@ -156,7 +158,7 @@ class TalentStats extends StatelessWidget {
             child: const Text("OK"),
           ),
         ],
-      )),
+      ),
     );
   }
 }
@@ -179,8 +181,9 @@ class _Cell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BorderSide borderSide =
-        BorderSide(color: ThemeApp.colorText(isDark: Get.isDarkMode));
+    BorderSide borderSide = BorderSide(
+      color: Get.theme.colorScheme.onSurface,
+    );
     return Container(
       height: height,
       width: width,
@@ -197,39 +200,3 @@ class _Cell extends StatelessWidget {
     );
   }
 }
-
-// child: DataTable(
-          //   columnSpacing: 12,
-          //   // horizontalMargin: 1,
-          //   // minWidth: 1200,
-          //   // fixedLeftColumns: 1,
-          //   border: TableBorder.all(
-          //     color: ThemeApp.colorText(isDark: Get.isDarkMode),
-          //   ),
-          //   columns: [
-          //     // DataColumn(
-          //     //   label: Text("level".tr),
-          //     // ),
-          //     ...attrs.asMap().entries.map(
-          //       (e) {
-          //         return DataColumn(
-          //           label: ItemTable(title: "${e.value?.name}"),
-          //         );
-          //       },
-          //     ),
-          //   ],
-          //   rows: List<DataRow>.generate(
-          //     attrs[0]?.params.length ?? 0,
-          //     (index) => DataRow(
-          //       cells: [
-          //         // DataCell(Text("${index + 1}")),
-          //         ...attrs.asMap().entries.map(
-          //           (e) {
-          //             return DataCell(
-          //                 ItemTable(title: "${e.value?.params[index]}"));
-          //           },
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),

@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_ascension.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_info.dart';
@@ -21,7 +20,7 @@ class WeaponInfoPage extends StatelessWidget {
     WeaponController weaponController = Get.find<WeaponController>();
     return Obx(() {
       return Scaffold(
-        backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -47,7 +46,7 @@ class WeaponInfoPage extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             child: LinearProgressIndicator(
                               value: progress.progress,
-                              color: ThemeApp.colorPrimary(),
+                              // color: ThemeApp.colorPrimary(),
                             ),
                           );
                         },
@@ -67,6 +66,7 @@ class WeaponInfoPage extends StatelessWidget {
                         WeaponRefinement(),
                         WeaponStats(),
                         WeaponStory(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

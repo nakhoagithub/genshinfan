@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/talent.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/character/widgets/item_ascend_character.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
@@ -33,7 +34,7 @@ class SkillAscensionView extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               strokeAlign: 1,
-              color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
             ),
             // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
           ),
@@ -71,9 +72,9 @@ class _ItemCost extends StatelessWidget {
           child: Center(
             child: Text(
               lv,
-              style: TextStyle(
+              style: ThemeApp.textStyle(
+                isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
-                color: ThemeApp.colorText(isDark: Get.isDarkMode),
               ),
             ),
           ),

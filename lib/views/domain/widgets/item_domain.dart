@@ -7,6 +7,7 @@ import 'package:genshinfan/objects/reward_preview.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:get/get.dart';
 
 class ItemDomain extends StatelessWidget {
   final Domain domain;
@@ -21,6 +22,7 @@ class ItemDomain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.theme;
     double sizeItem = Config.sizeItem2;
     List<Rewardpreview> dataRevert = domain
         .domainLvs![domain.domainLvs!.length - 1].rewardpreview.reversed
@@ -30,7 +32,7 @@ class ItemDomain extends StatelessWidget {
       borderRadius: BorderRadius.circular(sizeItem * 0.05),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        color: ThemeApp.colorBackgroundItemInPage,
+        color: Get.theme.colorScheme.onInverseSurface,
         child: Container(
           width: width,
           margin: const EdgeInsets.all(4),
@@ -42,7 +44,7 @@ class ItemDomain extends StatelessWidget {
                   "assets/images/image_dungeon.png",
                   height: sizeItem * 0.5,
                   width: sizeItem * 0.5,
-                  color: ThemeApp.colorText(isDark: false),
+                  color: Get.theme.colorScheme.onSurface,
                 ),
               ),
               Expanded(
@@ -53,7 +55,7 @@ class ItemDomain extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: ThemeApp.textStyle(
-                      isDark: false, fontWeight: FontWeight.w500),
+                      isDark: false, fontWeight: FontWeight.w500, fontSize: 14),
                 ),
               ),
               domain.domainLvs == null

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
@@ -56,12 +55,9 @@ class _Author extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppController appController = Get.find<AppController>();
     ContributeCharacterController contributeCharacterController =
         Get.find<ContributeCharacterController>();
-
-    contributeCharacterController.author.value =
-        appController.userApp.value?.name ?? "";
+    
     return Container(
       margin: const EdgeInsets.all(16),
       child: TextFormField(
@@ -73,7 +69,7 @@ class _Author extends StatelessWidget {
           }
           return null;
         },
-        initialValue: appController.userApp.value?.name ?? "",
+        controller: contributeCharacterController.textEditingControllerAuth,
         onChanged: (value) {
           contributeCharacterController.changeAuthor(value);
         },
@@ -178,9 +174,8 @@ class _SelectElementTraveler extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: select == true
-                ? ThemeApp.colorText(isDark: Get.isDarkMode).withOpacity(0.2)
-                : null,
+            color:
+                select == true ? Get.theme.colorScheme.onInverseSurface : null,
           ),
           child: Image.asset(
             Tools.getAssetElementFromName(element),

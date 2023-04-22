@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
@@ -21,7 +20,7 @@ class CharacterScreen extends StatelessWidget {
     CharacterController characterController = Get.find<CharacterController>();
     return Obx(() {
       return Scaffold(
-        backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -61,7 +60,7 @@ class CharacterScreen extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             child: LinearProgressIndicator(
                               value: progress.progress,
-                              color: ThemeApp.colorPrimary(),
+                              // color: ThemeApp.colorPrimary(),
                             ),
                           );
                         },

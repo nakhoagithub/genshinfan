@@ -16,12 +16,7 @@ class TitleOfContent extends StatelessWidget {
         Container(
           width: 100,
           margin: const EdgeInsets.only(top: 20, bottom: 5),
-          child: Divider(
-            height: 2,
-            color: ThemeApp.colorText(
-              isDark: Get.isDarkMode,
-            ),
-          ),
+          child: const Divider(height: 2),
         ),
         Center(
           child: Text(
@@ -31,9 +26,9 @@ class TitleOfContent extends StatelessWidget {
               isDark: Get.isDarkMode,
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: ThemeApp.colorText(
-                isDark: Get.isDarkMode,
-              ),
+              // color: ThemeApp.colorText(
+              //   isDark: Get.isDarkMode,
+              // ),
             ),
           ),
         ),

@@ -24,9 +24,9 @@ class InfoMultiRarityWidget extends StatelessWidget {
               "${"rarity".tr}: ",
               style: ThemeApp.textStyle(
                 isDark: Get.isDarkMode,
-                color: ThemeApp.colorTextSecond(
-                  isDark: Get.isDarkMode,
-                ),
+                // color: ThemeApp.colorTextSecond(
+                //   isDark: Get.isDarkMode,
+                // ),
               ),
             ),
           ),

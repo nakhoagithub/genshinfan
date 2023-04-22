@@ -10,13 +10,12 @@ import 'package:get/get.dart';
 dialogFilterCharacter() async {
   CharacterController characterController = Get.find<CharacterController>();
   await Get.bottomSheet(
+    clipBehavior: Clip.antiAliasWithSaveLayer,
     isScrollControlled: true,
     Container(
-      margin: const EdgeInsets.all(10),
-      width: Get.mediaQuery.size.width,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: ThemeApp.colorCard(isDark: Get.isDarkMode)),
+      color: Get.theme.cardColor,
+      height: Get.height * 0.9,
+      width: Get.width,
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +46,7 @@ dialogFilterCharacter() async {
               ],
             ),
           ),
+          const Spacer(),
           _Button(
             accept: () async {
               characterController.filter();
@@ -331,7 +331,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
             ),
             Expanded(
               child: InkWell(
@@ -351,7 +351,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
             ),
             Expanded(
               child: InkWell(

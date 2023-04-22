@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/widgets/item_table.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
@@ -29,13 +28,12 @@ class WeaponStats extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             child: Table(
               border: TableBorder.all(
-                color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                color: Get.theme.colorScheme.onSurface,
               ),
               children: [
                 TableRow(
                   decoration: BoxDecoration(
-                    color: ThemeApp.colorPrimary(isDark: Get.isDarkMode)
-                        .withOpacity(0.3),
+                    color: Get.theme.colorScheme.primary.withOpacity(0.2),
                   ),
                   children: [
                     TableCell(
@@ -63,8 +61,7 @@ class WeaponStats extends StatelessWidget {
                     return TableRow(
                       decoration: BoxDecoration(
                         color: index % 2 == 1
-                            ? ThemeApp.colorText(isDark: !Get.isDarkMode)
-                                .withOpacity(0.5)
+                            ? Get.theme.colorScheme.tertiary.withOpacity(0.5)
                             : null,
                       ),
                       children: [

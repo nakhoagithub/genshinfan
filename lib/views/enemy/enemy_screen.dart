@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
@@ -17,7 +17,7 @@ class EnemyScreen extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -36,6 +36,7 @@ class EnemyScreen extends StatelessWidget {
                       children: [
                         InformationEnemy(),
                         EnemyStats(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

@@ -8,66 +8,62 @@ import 'package:get/get.dart';
 dialogFilterResource() async {
   ResourceController resourceController = Get.find<ResourceController>();
   await Get.bottomSheet(
+    clipBehavior: Clip.antiAliasWithSaveLayer,
     isScrollControlled: true,
     Container(
-      margin: EdgeInsets.only(top: Get.mediaQuery.padding.top),
-      child: Container(
-        margin: const EdgeInsets.all(10),
-        width: Get.mediaQuery.size.width,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: ThemeApp.colorCard(isDark: Get.isDarkMode)),
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                child: Text(
-                  "filter_resource".tr,
-                  style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+      color: Get.theme.cardColor,
+      height: Get.height * 0.9,
+      width: Get.width,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                "filter_resource".tr,
+                style: ThemeApp.textStyle(
+                  isDark: Get.isDarkMode,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            const Expanded(
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    SizedBox(height: 20),
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          _Rarity(),
-                          _FilterSubstat(),
-                          _SortName(),
-                        ],
-                      ),
+          ),
+          const Expanded(
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        _Rarity(),
+                        _FilterSubstat(),
+                        _SortName(),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            _Button(
-              accept: () async {
-                resourceController.filter();
-              },
-              reset: () async {
-                await dialogConfirm("confirm".tr, "reset_filter_comfirm".tr,
-                    () {
-                  resourceController.reset();
-                });
-              },
-            )
-          ],
-        ),
+          ),
+          const Spacer(),
+          _Button(
+            accept: () async {
+              resourceController.filter();
+            },
+            reset: () async {
+              await dialogConfirm("confirm".tr, "reset_filter_comfirm".tr, () {
+                resourceController.reset();
+              });
+            },
+          )
+        ],
       ),
     ),
   );
@@ -100,9 +96,13 @@ class _FilterSubstat extends StatelessWidget {
                       resourceController.checkAllSubstat();
                     });
               }, resourceController.substatAllFilter),
-              Text(
-                "all".tr,
-                style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              Expanded(
+                child: Text(
+                  "all".tr,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                ),
               ),
             ],
           ),
@@ -134,7 +134,6 @@ class _ItemSubstat extends StatelessWidget {
   Widget build(BuildContext context) {
     ResourceController resourceController = Get.find<ResourceController>();
     return Container(
-      height: 30,
       margin: const EdgeInsets.only(top: 8),
       child: Row(
         children: [
@@ -146,9 +145,13 @@ class _ItemSubstat extends StatelessWidget {
                   resourceController.checkSubstatFilter(index);
                 });
           }, resourceController.substatResourceFilters),
-          Text(
-            substat,
-            style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+          Expanded(
+            child: Text(
+              substat,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+            ),
           )
         ],
       ),
@@ -306,7 +309,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
             ),
             Expanded(
               child: InkWell(
@@ -326,7 +329,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
             ),
             Expanded(
               child: InkWell(
