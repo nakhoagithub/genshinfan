@@ -80,6 +80,7 @@ class CharacterScreen extends StatelessWidget {
                         SkillCharacterView(),
                         CharacterAscensionView(),
                         CharacterStats(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:genshinfan/objects/app/language.dart';
 import 'package:genshinfan/resources/langs/en_us.dart';
 import 'package:genshinfan/resources/langs/fr_fr.dart';
+import 'package:genshinfan/resources/langs/tr_tr.dart';
 import 'package:genshinfan/resources/langs/vi_vn.dart';
 import 'package:genshinfan/resources/langs/zh_cn.dart';
 import 'package:genshinfan/resources/langs/zh_tw.dart';
@@ -20,6 +21,7 @@ class Localization extends Translations {
     Locale('zh', 'CN'),
     Locale('zh', 'TW'),
     Locale('fr', 'FR'),
+    Locale('tr', 'TR')
   ];
 
   static Language getLanguageFromCode(Locale? locale) {
@@ -28,6 +30,7 @@ class Localization extends Translations {
     if (locale == const Locale('zh', 'CN')) return chineseSimplified;
     if (locale == const Locale('zh', 'TW')) return chineseTraditional;
     if (locale == const Locale('fr', 'FR')) return french;
+    if (locale == const Locale('tr', 'TR')) return turkish; 
     return english;
   }
 
@@ -39,6 +42,7 @@ class Localization extends Translations {
     '简体中文',
     '中國傳統的',
     'Français',
+    'Türkçe',
   ];
 
   static Future<void> changeLocale(
@@ -55,6 +59,7 @@ class Localization extends Translations {
         'zh_CN': zhCN,
         'zh_TW': zhTW,
         'fr_FR': fr,
+        'tr_TR': tr,
       };
 
   static Locale _getLocaleFromLanguage(

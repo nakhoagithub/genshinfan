@@ -56,8 +56,14 @@ android {
     }
 
     signingConfigs {
+        debug {
+            storeFile file("D:/_Private/upload-keystore.jks")
+            storePassword "zxcvbn"
+            keyAlias "upload"
+            keyPassword "zxcvbn"
+        }
         release {
-            storeFile file("D:/_Private/GenshinFan/upload-keystore.jks")
+            storeFile file("D:/_Private/upload-keystore.jks")
             storePassword "zxcvbn"
             keyAlias "upload"
             keyPassword "zxcvbn"

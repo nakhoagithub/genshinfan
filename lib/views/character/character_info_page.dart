@@ -80,6 +80,7 @@ class CharacterInfoPage extends StatelessWidget {
                         SkillCharacterView(),
                         CharacterAscensionView(),
                         CharacterStats(),
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),

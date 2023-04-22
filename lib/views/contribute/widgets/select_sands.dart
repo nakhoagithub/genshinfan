@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -43,14 +42,21 @@ class SelectSandsEffect extends StatelessWidget {
                       contributeCharacterController
                           .selectSandsEffect(value ?? "");
                     },
-                    buttonDecoration: BoxDecoration(
-                        border: Border.all(
-                            color: ThemeApp.colorText(isDark: Get.isDarkMode)),
-                        borderRadius: BorderRadius.circular(10)),
-                    dropdownDecoration: BoxDecoration(
-                        border: Border.all(
-                            color: ThemeApp.colorText(isDark: Get.isDarkMode)),
-                        borderRadius: BorderRadius.circular(10)),
+                    buttonStyleData: ButtonStyleData(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color:
+                                  ThemeApp.colorText(isDark: Get.isDarkMode)),
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    // buttonDecoration: BoxDecoration(
+                    //     border: Border.all(
+                    //         color: ThemeApp.colorText(isDark: Get.isDarkMode)),
+                    //     borderRadius: BorderRadius.circular(10)),
+                    // dropdownDecoration: BoxDecoration(
+                    //     border: Border.all(
+                    //         color: ThemeApp.colorText(isDark: Get.isDarkMode)),
+                    //     borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
               ),

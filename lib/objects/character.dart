@@ -6,6 +6,8 @@ import 'image_constellation.dart';
 import 'image_talent.dart';
 import 'talent.dart';
 
+List<int> levels = [];
+
 class Character {
   Character({
     this.id,
