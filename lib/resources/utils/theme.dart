@@ -21,11 +21,7 @@ class ThemeApp {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      // primaryColor: colorPrimary(isDark: true),
-      // scaffoldBackgroundColor: colorScaffold(isDark: true),
-      // cardColor: colorCard(isDark: true),
-      // appBarTheme: appBarTheme(isDark: true),
-      // tabBarTheme: tabBarTheme(isDark: true),
+      primaryColor: const Color(0xff00a173),
     );
   }
 
@@ -33,11 +29,7 @@ class ThemeApp {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      // primaryColor: colorPrimary(isDark: false),
-      // scaffoldBackgroundColor: colorScaffold(isDark: false),
-      // cardColor: colorCard(isDark: false),
-      // appBarTheme: appBarTheme(isDark: false),
-      // tabBarTheme: tabBarTheme(isDark: false),
+      primaryColor: const Color(0xff00a173),
     );
   }
 

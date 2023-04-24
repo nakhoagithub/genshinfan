@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/character_controller.dart';
+import 'package:genshinfan/controllers/character_filter_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -8,7 +8,8 @@ import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
 dialogFilterCharacter() async {
-  CharacterController characterController = Get.find<CharacterController>();
+  CharacterFilterController characterFilterController =
+      Get.put(CharacterFilterController());
   await Get.bottomSheet(
     clipBehavior: Clip.antiAliasWithSaveLayer,
     isScrollControlled: true,
@@ -36,24 +37,25 @@ dialogFilterCharacter() async {
             ),
           ),
           const SizedBox(height: 10),
-          const SingleChildScrollView(
-            child: Column(
-              children: [
-                _FilterElement(),
-                _FilterWeapon(),
-                _Rarity(),
-                _SortName(),
-              ],
+          const Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _FilterElement(),
+                  _FilterWeapon(),
+                  _Rarity(),
+                  _SortName(),
+                ],
+              ),
             ),
           ),
-          const Spacer(),
           _Button(
             accept: () async {
-              characterController.filter();
+              characterFilterController.filter();
             },
             reset: () async {
               await dialogConfirm("confirm".tr, "reset_filter_comfirm".tr, () {
-                characterController.reset();
+                characterFilterController.reset();
               });
             },
           )
@@ -103,7 +105,8 @@ class _ItemElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CharacterController characterController = Get.find<CharacterController>();
+    CharacterFilterController characterFilterController =
+        Get.find<CharacterFilterController>();
     return Container(
       margin: const EdgeInsets.only(top: 8),
       child: Column(
@@ -113,11 +116,11 @@ class _ItemElement extends StatelessWidget {
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
                 activeColor: Tools.getColorElementCharacter(element),
-                value: characterController.checkElementFilters[index],
+                value: characterFilterController.checkElementFilters[index],
                 onChanged: (value) async {
-                  await characterController.checkElementFilter(index);
+                  await characterFilterController.checkElementFilter(index);
                 });
-          }, characterController.checkElementFilters),
+          }, characterFilterController.checkElementFilters),
         ],
       ),
     );
@@ -164,21 +167,26 @@ class _ItemWeapon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CharacterController characterController = Get.find<CharacterController>();
+    CharacterFilterController characterFilterController =
+        Get.find<CharacterFilterController>();
     return Container(
       margin: const EdgeInsets.only(top: 8),
       child: Column(
         children: [
-          Image.asset(Tools.getAssetWeaponType(weapon) ?? "",
-              height: 30, width: 30),
+          Image.asset(
+            Tools.getAssetWeaponType(weapon) ?? "",
+            height: 30,
+            width: 30,
+            color: Get.theme.colorScheme.onSurface,
+          ),
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
                 activeColor: ThemeApp.theme.primaryColor,
-                value: characterController.checkWeaponFilters[index],
+                value: characterFilterController.checkWeaponFilters[index],
                 onChanged: (value) async {
-                  await characterController.checkWeaponFilter(index);
+                  await characterFilterController.checkWeaponFilter(index);
                 });
-          }, characterController.checkWeaponFilters),
+          }, characterFilterController.checkWeaponFilters),
         ],
       ),
     );
@@ -190,7 +198,8 @@ class _Rarity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CharacterController characterController = Get.find<CharacterController>();
+    CharacterFilterController characterFilterController =
+        Get.find<CharacterFilterController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -205,9 +214,9 @@ class _Rarity extends StatelessWidget {
                   activeColor: ThemeApp.theme.primaryColor,
                   value: p0.value,
                   onChanged: (value) {
-                    characterController.checkOneRarity();
+                    characterFilterController.checkOneRarity();
                   });
-            }, characterController.oneRarity),
+            }, characterFilterController.oneRarity),
             Text(
               "filter_with_rarity".tr,
               style: ThemeApp.textStyle(isDark: Get.isDarkMode),
@@ -241,15 +250,16 @@ class _ItemRarity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CharacterController characterController = Get.find<CharacterController>();
+    CharacterFilterController characterFilterController =
+        Get.find<CharacterFilterController>();
     return ObxValue<RxList<bool>>((p0) {
       return CheckboxRarity(
-        value: characterController.checkRarityFilters[index],
+        value: characterFilterController.checkRarityFilters[index],
         onTap: () async {
-          await characterController.checkRarityFilter(index);
+          await characterFilterController.checkRarityFilter(index);
         },
       );
-    }, characterController.checkRarityFilters);
+    }, characterFilterController.checkRarityFilters);
   }
 }
 
@@ -258,7 +268,8 @@ class _SortName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CharacterController characterController = Get.find<CharacterController>();
+    CharacterFilterController characterFilterController =
+        Get.find<CharacterFilterController>();
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: ObxValue((p0) {
@@ -276,7 +287,7 @@ class _SortName extends StatelessWidget {
                   value: 0,
                   groupValue: p0.value,
                   onChanged: (value) {
-                    characterController.checkSortFilter(value ?? 0);
+                    characterFilterController.checkSortFilter(value ?? 0);
                   }),
             ),
             SizedBox(
@@ -286,12 +297,12 @@ class _SortName extends StatelessWidget {
                   value: 1,
                   groupValue: p0.value,
                   onChanged: (value) {
-                    characterController.checkSortFilter(value ?? 1);
+                    characterFilterController.checkSortFilter(value ?? 1);
                   }),
             ),
           ],
         );
-      }, characterController.sortName),
+      }, characterFilterController.sortName),
     );
   }
 }

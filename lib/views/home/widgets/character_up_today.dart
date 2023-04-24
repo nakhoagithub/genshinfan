@@ -3,9 +3,10 @@ import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/character_service.dart';
-import 'package:genshinfan/views/character/widgets/item_character.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 class ListCharacterUpToday extends StatelessWidget {
@@ -65,14 +66,30 @@ class ListCharacterUpToday extends StatelessWidget {
                           child: SizedBox(
                             width: sizeItem,
                             height: sizeItem * 1.215,
-                            child: ItemCharacter(
-                              character: characterUpToday[index],
+                            child: ItemGame(
+                              title: characterUpToday[index].name,
+                              iconLeft: Tools.getAssetElementFromName(
+                                          characterUpToday[index].element) !=
+                                      ""
+                                  ? Image.asset(Tools.getAssetElementFromName(
+                                      characterUpToday[index].element))
+                                  : null,
+                              linkImage: characterUpToday[index].images?.icon,
+                              rarity: characterUpToday[index].rarity,
                               onTap: () {
                                 Get.find<CharacterController>()
                                     .selectCharacter(characterUpToday[index]);
                                 Get.toNamed('/character_info');
                               },
                             ),
+                            // child: ItemCharacter(
+                            //   character: characterUpToday[index],
+                            //   onTap: () {
+                            //     Get.find<CharacterController>()
+                            //         .selectCharacter(characterUpToday[index]);
+                            //     Get.toNamed('/character_info');
+                            //   },
+                            // ),
                           ),
                         );
                       },

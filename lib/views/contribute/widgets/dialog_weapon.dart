@@ -2,9 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
-import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 dialogContributeWeapon() async {
@@ -54,8 +56,17 @@ class _ListWeapon extends StatelessWidget {
                     child: SizedBox(
                       width: sizeItem,
                       height: sizeItem * 1.215,
-                      child: ItemWeapon(
-                        weapon: weapons[index],
+                      child: ItemGame(
+                        title: weapons[index].name,
+                        iconLeft:
+                            Tools.getAssetWeaponType(weapons[index].weapontype) != null
+                    ? Image.asset(
+                        Tools.getAssetWeaponType(weapons[index].weapontype) ?? "")
+                    : null,
+                        linkImage: weapons[index].images?.icon ??
+                            Config.urlImage(weapons[index].images?.namegacha),
+                        rarity: weapons[index].rarity,
+                        star: true,
                         onTap: () {
                           Get.find<ContributeCharacterController>()
                               .selectWeapon(weapons[index]);

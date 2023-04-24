@@ -12,7 +12,7 @@ import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/domain/widgets/item_reward.dart';
-import 'package:genshinfan/views/enemy/widgets/item_enemy.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 class InformationDomainLv extends StatelessWidget {
@@ -309,8 +309,10 @@ class _ItemDomain extends StatelessWidget {
                               child: SizedBox(
                                 width: sizeItem,
                                 height: sizeItem * 1.215,
-                                child: ItemEnemy(
-                                  enemy: enemy,
+                                child: ItemGame(
+                                  title: enemy.name,
+                                  linkImage:
+                                      Config.urlImage(enemy.images?.nameicon),
                                   onTap: () {},
                                 ),
                               ),

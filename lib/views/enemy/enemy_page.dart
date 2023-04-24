@@ -5,7 +5,7 @@ import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
-import 'package:genshinfan/views/enemy/widgets/item_enemy.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -56,8 +56,10 @@ class _List extends StatelessWidget {
                         child: SizedBox(
                           width: sizeItem,
                           height: sizeItem * 1.215,
-                          child: ItemEnemy(
-                            enemy: enemies[index],
+                          child: ItemGame(
+                            title: enemies[index].name,
+                            linkImage: Config.urlImage(
+                                enemies[index].images?.nameicon),
                             onTap: () {
                               enemyController.selectEnemy(enemies[index]);
                               homeController.pageCenter();

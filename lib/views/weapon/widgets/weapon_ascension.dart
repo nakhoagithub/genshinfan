@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
+import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
-import 'package:genshinfan/views/weapon/widgets/item_ascend_weapon.dart';
 import 'package:get/get.dart';
 
 import '../../../objects/weapon.dart';
@@ -137,8 +139,20 @@ class _ItemAscend extends StatelessWidget {
                             Tools.getResourceFromName(e.name ?? "");
                         return resource == null
                             ? const SizedBox()
-                            : ItemAscendWeapon(
-                                resource: resource, count: e.count ?? 0);
+                            : ItemGame(
+                                size: Get.width * 0.18,
+                                title: e.count.toString(),
+                                linkImage:
+                                    Config.urlImage(resource.images?.nameicon),
+                                rarity: resource.rarity,
+                                star: true,
+                                onTap: () {
+                                  ResourceController resourceController =
+                                      Get.find<ResourceController>();
+                                  resourceController.selectResource(resource);
+                                  Get.toNamed('/resource_info');
+                                },
+                              );
                       },
                     ),
                   ],

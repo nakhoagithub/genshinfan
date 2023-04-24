@@ -13,11 +13,9 @@ import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
-import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
-import 'package:genshinfan/views/character/widgets/item_character.dart';
-import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';
@@ -109,19 +107,51 @@ class _Item extends StatelessWidget {
                 children: [
                   character == null
                       ? const SizedBox()
-                      : ItemCharacter(character: character, onTap: () {}),
+                      : ItemGame(
+                          title: character.name,
+                          iconLeft: Tools.getAssetElementFromName(
+                                      character.element) !=
+                                  ""
+                              ? Image.asset(Tools.getAssetElementFromName(
+                                  character.element))
+                              : null,
+                          linkImage: character.images?.icon,
+                          rarity: character.rarity,
+                          onTap: () {}),
+                  // : ItemCharacter(character: character, onTap: () {}),
                   const SizedBox(width: 10),
                   weapon == null
                       ? const SizedBox()
-                      : ItemWeapon(weapon: weapon, onTap: () {}),
+                      : ItemGame(
+                          title: weapon.name,
+                          iconLeft: Tools.getAssetWeaponType(
+                                      weapon.weapontype) !=
+                                  null
+                              ? Image.asset(
+                                  Tools.getAssetWeaponType(weapon.weapontype) ??
+                                      "")
+                              : null,
+                          linkImage: weapon.images?.icon ??
+                              Config.urlImage(weapon.images?.namegacha),
+                          rarity: weapon.rarity,
+                          star: true,
+                          onTap: () {}),
                   const SizedBox(width: 10),
                   a1 == null
                       ? const SizedBox()
-                      : ItemArtifact(artifact: a1, onTap: () {}),
+                      : ItemGame(
+                          title: a1.name,
+                          linkImage: Tools.linkImageArtifact(a1),
+                          rarity: a1.rarity[a1.rarity.length - 1],
+                          onTap: () {}),
                   const SizedBox(width: 10),
                   a2 == null
                       ? const SizedBox()
-                      : ItemArtifact(artifact: a2, onTap: () {}),
+                      : ItemGame(
+                          title: a2.name,
+                          linkImage: Tools.linkImageArtifact(a2),
+                          rarity: a2.rarity[a2.rarity.length - 1],
+                          onTap: () {}),
                 ],
               ),
             ),
@@ -144,7 +174,7 @@ class _Item extends StatelessWidget {
                       ),
                       Image.asset(
                           Tools.getAssetElementFromName(
-                                  characterBuilding.element),
+                              characterBuilding.element),
                           height: 30,
                           width: 30),
                     ],

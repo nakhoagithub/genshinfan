@@ -2,9 +2,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
-import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 dialogContributeArtifact(int type) async {
@@ -52,8 +53,10 @@ class _List extends StatelessWidget {
             child: SizedBox(
               width: sizeItem,
               height: sizeItem * 1.215,
-              child: ItemArtifact(
-                artifact: artifacts[index],
+              child: ItemGame(
+                title: artifacts[index].name,
+                linkImage: Tools.linkImageArtifact(artifacts[index]),
+                rarity: artifacts[index].rarity[artifacts[index].rarity.length - 1],
                 onTap: () {
                   if (type == 0) {
                     Get.find<ContributeCharacterController>()
@@ -62,7 +65,6 @@ class _List extends StatelessWidget {
                     Get.find<ContributeCharacterController>()
                         .selectA2(artifacts[index]);
                   }
-
                   Get.back();
                 },
               ),

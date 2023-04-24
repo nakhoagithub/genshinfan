@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/talent.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 
 import 'package:genshinfan/resources/utils/tools.dart';
-import 'package:genshinfan/views/character/widgets/item_ascend_character.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
 
@@ -94,8 +96,19 @@ class _ItemCost extends StatelessWidget {
                               Tools.getResourceFromName(e.name);
                           return resource == null
                               ? const SizedBox()
-                              : ItemAscendCharacter(
-                                  resource: resource, count: e.count);
+                              : ItemGame(
+                                  size: Get.width * 0.18,
+                                  title: e.count.toString(),
+                                  linkImage: Config.urlImage(
+                                      resource.images?.nameicon),
+                                  rarity: resource.rarity,
+                                  star: true,
+                                  onTap: () {
+                                    ResourceController resourceController =
+                                        Get.find<ResourceController>();
+                                    resourceController.selectResource(resource);
+                                    Get.toNamed('/resource_info');
+                                  });
                         },
                       ),
                     ],

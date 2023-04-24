@@ -2,9 +2,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
-import 'package:genshinfan/views/character/widgets/item_character.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 dialogContributeCharacter() async {
@@ -49,14 +50,29 @@ class _ListCharacter extends StatelessWidget {
             child: SizedBox(
               width: sizeItem,
               height: sizeItem * 1.215,
-              child: ItemCharacter(
-                character: characters[index],
-                onTap: () {
-                  Get.find<ContributeCharacterController>()
-                      .selectCharacter(characters[index]);
-                  Get.back();
-                },
-              ),
+              child: ItemGame(
+                  title: characters[index].name,
+                  iconLeft: Tools.getAssetElementFromName(
+                              characters[index].element) !=
+                          ""
+                      ? Image.asset(Tools.getAssetElementFromName(
+                          characters[index].element))
+                      : null,
+                  linkImage: characters[index].images?.icon,
+                  rarity: characters[index].rarity,
+                  onTap: () {
+                    Get.find<ContributeCharacterController>()
+                        .selectCharacter(characters[index]);
+                    Get.back();
+                  }),
+              // child: ItemCharacter(
+              //   character: characters[index],
+              //   onTap: () {
+              //     Get.find<ContributeCharacterController>()
+              //         .selectCharacter(characters[index]);
+              //     Get.back();
+              //   },
+              // ),
             ),
           ),
         ),

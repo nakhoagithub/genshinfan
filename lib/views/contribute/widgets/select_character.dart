@@ -1,9 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
+import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/views/character/widgets/item_character.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/contribute/widgets/dialog_character.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 class SelectCharacter extends StatelessWidget {
@@ -38,17 +40,26 @@ class SelectCharacter extends StatelessWidget {
                 width: sizeItem,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    // color: ThemeApp.colorText(isDark: Get.isDarkMode),
-                  ),
+                      // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                      ),
                   borderRadius: BorderRadius.circular(sizeItem * 0.05),
                 ),
                 child: Obx(
                   () {
-                    return contributeCharacterController.character.value == null
+                    Character? c =
+                        contributeCharacterController.character.value;
+                    return c == null
                         ? const Icon(Icons.add, size: 35)
-                        : ItemCharacter(
-                            character:
-                                contributeCharacterController.character.value!,
+                        : ItemGame(
+                            title: c.name,
+                            iconLeft: Tools.getAssetElementFromName(
+                                      c.element) !=
+                                  ""
+                              ? Image.asset(Tools.getAssetElementFromName(
+                                  c.element))
+                              : null,
+                            linkImage: c.images?.icon,
+                            rarity: c.rarity,
                             onTap: () {
                               dialogContributeCharacter();
                             },

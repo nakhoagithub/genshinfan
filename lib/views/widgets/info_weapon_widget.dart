@@ -38,6 +38,7 @@ class InfoWeaponWidget extends StatelessWidget {
                 "${Tools.getAssetWeaponType(weapontype)}",
                 height: 30,
                 width: 30,
+                color: Get.theme.colorScheme.onSurface,
               ),
             ),
           ),

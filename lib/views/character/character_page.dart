@@ -4,9 +4,10 @@ import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
-import 'package:genshinfan/views/character/widgets/item_character.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -65,14 +66,29 @@ class _List extends StatelessWidget {
                         child: SizedBox(
                           width: sizeItem,
                           height: sizeItem * 1.215,
-                          child: ItemCharacter(
-                            character: characters[index],
-                            onTap: () {
-                              characterController
-                                  .selectCharacter(characters[index]);
-                              homeController.pageCenter();
-                            },
-                          ),
+                          child: ItemGame(
+                              title: characters[index].name,
+                              iconLeft: Tools.getAssetElementFromName(
+                                      characters[index].element) !=
+                                  ""
+                              ? Image.asset(Tools.getAssetElementFromName(
+                                  characters[index].element))
+                              : null,
+                              linkImage: characters[index].images?.icon,
+                              rarity: characters[index].rarity,
+                              onTap: () {
+                                characterController
+                                    .selectCharacter(characters[index]);
+                                homeController.pageCenter();
+                              }),
+                          // child: ItemCharacter(
+                          //   character: characters[index],
+                          //   onTap: () {
+                          //     characterController
+                          //         .selectCharacter(characters[index]);
+                          //     homeController.pageCenter();
+                          //   },
+                          // ),
                         ),
                       ),
                     ),

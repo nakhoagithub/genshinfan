@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/contribute/widgets/dialog_artifact.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
@@ -40,8 +41,8 @@ class ContributeItemArtifact extends StatelessWidget {
                       width: sizeItem,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
-                        ),
+                            // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                            ),
                         borderRadius: BorderRadius.circular(sizeItem * 0.05),
                       ),
                       child: _ItemImage(type: type),
@@ -97,16 +98,20 @@ class _ItemImage extends StatelessWidget {
       return type == 0
           ? (a1 == null
               ? const Icon(Icons.add, size: 35)
-              : ItemArtifact(
-                  artifact: a1,
+              : ItemGame(
+                  title: a1.name,
+                  linkImage: Tools.linkImageArtifact(a1),
+                  rarity: a1.rarity[a1.rarity.length - 1],
                   onTap: () {
                     dialogContributeArtifact(type);
                   },
                 ))
           : (a2 == null
               ? const Icon(Icons.add, size: 35)
-              : ItemArtifact(
-                  artifact: a2,
+              : ItemGame(
+                  title: a2.name,
+                  linkImage: Tools.linkImageArtifact(a2),
+                  rarity: a2.rarity[a2.rarity.length - 1],
                   onTap: () {
                     dialogContributeArtifact(type);
                   },

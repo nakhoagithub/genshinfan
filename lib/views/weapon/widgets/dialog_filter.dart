@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/controllers/weapon_filter_controller.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -8,7 +8,8 @@ import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
 dialogFilterWeapon() async {
-  WeaponController weaponController = Get.find<WeaponController>();
+  WeaponFilterController weaponFilterController =
+      Get.put(WeaponFilterController());
   await Get.bottomSheet(
     clipBehavior: Clip.antiAliasWithSaveLayer,
     isScrollControlled: true,
@@ -55,14 +56,13 @@ dialogFilterWeapon() async {
               ),
             ),
           ),
-          const Spacer(),
           _Button(
             accept: () async {
-              weaponController.filter();
+              weaponFilterController.filter();
             },
             reset: () async {
               await dialogConfirm("confirm".tr, "reset_filter_comfirm".tr, () {
-                weaponController.reset();
+                weaponFilterController.reset();
               });
             },
           )
@@ -112,21 +112,27 @@ class _ItemWeapon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeaponController weaponController = Get.find<WeaponController>();
+    WeaponFilterController weaponFilterController =
+        Get.find<WeaponFilterController>();
     return Container(
       margin: const EdgeInsets.only(top: 8),
+      height: 30,
       child: Column(
         children: [
-          Image.asset(Tools.getAssetWeaponType(weapon) ?? "",
-              height: 30, width: 30),
+          Image.asset(
+            Tools.getAssetWeaponType(weapon) ?? "",
+            height: 30,
+            width: 30,
+            color: Get.theme.colorScheme.onSurface,
+          ),
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
                 activeColor: ThemeApp.theme.primaryColor,
-                value: weaponController.checkWeaponFilters[index],
+                value: weaponFilterController.checkWeaponFilters[index],
                 onChanged: (value) {
-                  weaponController.checkWeaponFilter(index);
+                  weaponFilterController.checkWeaponFilter(index);
                 });
-          }, weaponController.checkWeaponFilters),
+          }, weaponFilterController.checkWeaponFilters),
         ],
       ),
     );
@@ -138,7 +144,8 @@ class _FilterSubstat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeaponController weaponController = Get.find<WeaponController>();
+    WeaponFilterController weaponFilterController =
+        Get.find<WeaponFilterController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -156,11 +163,11 @@ class _FilterSubstat extends StatelessWidget {
               ObxValue<RxBool>((p0) {
                 return Checkbox(
                     activeColor: ThemeApp.theme.primaryColor,
-                    value: weaponController.substatAllFilter.value,
+                    value: weaponFilterController.substatAllFilter.value,
                     onChanged: (value) {
-                      weaponController.checkAllSubstat();
+                      weaponFilterController.checkAllSubstat();
                     });
-              }, weaponController.substatAllFilter),
+              }, weaponFilterController.substatAllFilter),
               Text(
                 "all".tr,
                 style: ThemeApp.textStyle(isDark: Get.isDarkMode),
@@ -172,11 +179,11 @@ class _FilterSubstat extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.zero,
             primary: false,
-            itemCount: weaponController.substatWeaponFilter.length,
+            itemCount: weaponFilterController.substatWeaponFilter.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return _ItemSubstat(
-                substat: weaponController.substatWeaponFilter[index],
+                substat: weaponFilterController.substatWeaponFilter[index],
                 index: index,
               );
             },
@@ -194,20 +201,21 @@ class _ItemSubstat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeaponController weaponController = Get.find<WeaponController>();
+    WeaponFilterController weaponFilterController =
+        Get.find<WeaponFilterController>();
     return Container(
-      height: 30,
       margin: const EdgeInsets.only(top: 8),
+      height: 30,
       child: Row(
         children: [
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
                 activeColor: ThemeApp.theme.primaryColor,
-                value: weaponController.substatWeaponFilters[index],
+                value: weaponFilterController.substatWeaponFilters[index],
                 onChanged: (value) {
-                  weaponController.checkSubstatFilter(index);
+                  weaponFilterController.checkSubstatFilter(index);
                 });
-          }, weaponController.substatWeaponFilters),
+          }, weaponFilterController.substatWeaponFilters),
           Text(
             substat,
             style: ThemeApp.textStyle(isDark: Get.isDarkMode),
@@ -223,7 +231,8 @@ class _Rarity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeaponController weaponController = Get.find<WeaponController>();
+    WeaponFilterController weaponFilterController =
+        Get.find<WeaponFilterController>();
     return Container(
       margin: const EdgeInsets.only(top: 8),
       child: Column(
@@ -240,12 +249,17 @@ class _Rarity extends StatelessWidget {
                     activeColor: ThemeApp.theme.primaryColor,
                     value: p0.value,
                     onChanged: (value) {
-                      weaponController.checkOneRarity();
+                      weaponFilterController.checkOneRarity();
                     });
-              }, weaponController.oneRarity),
-              Text(
-                "filter_with_rarity".tr,
-                style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              }, weaponFilterController.oneRarity),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text(
+                    "filter_with_rarity".tr,
+                    style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                  ),
+                ),
               )
             ],
           ),
@@ -277,15 +291,16 @@ class _ItemRarity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeaponController weaponController = Get.find<WeaponController>();
+    WeaponFilterController weaponFilterController =
+        Get.find<WeaponFilterController>();
     return ObxValue<RxList<bool>>((p0) {
       return CheckboxRarity(
-        value: weaponController.checkRarityFilters[index],
+        value: weaponFilterController.checkRarityFilters[index],
         onTap: () {
-          weaponController.checkRarityFilter(index);
+          weaponFilterController.checkRarityFilter(index);
         },
       );
-    }, weaponController.checkRarityFilters);
+    }, weaponFilterController.checkRarityFilters);
   }
 }
 
@@ -294,7 +309,8 @@ class _SortName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeaponController weaponController = Get.find<WeaponController>();
+    WeaponFilterController weaponFilterController =
+        Get.find<WeaponFilterController>();
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: ObxValue((p0) {
@@ -313,7 +329,7 @@ class _SortName extends StatelessWidget {
                   value: 0,
                   groupValue: p0.value,
                   onChanged: (value) {
-                    weaponController.checkSortFilter(value ?? 0);
+                    weaponFilterController.checkSortFilter(value ?? 0);
                   }),
             ),
             SizedBox(
@@ -323,12 +339,12 @@ class _SortName extends StatelessWidget {
                   value: 1,
                   groupValue: p0.value,
                   onChanged: (value) {
-                    weaponController.checkSortFilter(value ?? 1);
+                    weaponFilterController.checkSortFilter(value ?? 1);
                   }),
             ),
           ],
         );
-      }, weaponController.sortName),
+      }, weaponFilterController.sortName),
     );
   }
 }

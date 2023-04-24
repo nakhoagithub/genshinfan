@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/resource_controller.dart';
+import 'package:genshinfan/controllers/resource_filter_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/checkbox_rarity.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
 dialogFilterResource() async {
-  ResourceController resourceController = Get.find<ResourceController>();
+  ResourceFilterController resourceFilterController =
+      Get.put(ResourceFilterController());
   await Get.bottomSheet(
     clipBehavior: Clip.antiAliasWithSaveLayer,
     isScrollControlled: true,
@@ -52,14 +53,13 @@ dialogFilterResource() async {
               ),
             ),
           ),
-          const Spacer(),
           _Button(
             accept: () async {
-              resourceController.filter();
+              resourceFilterController.filter();
             },
             reset: () async {
               await dialogConfirm("confirm".tr, "reset_filter_comfirm".tr, () {
-                resourceController.reset();
+                resourceFilterController.reset();
               });
             },
           )
@@ -74,7 +74,8 @@ class _FilterSubstat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResourceController resourceController = Get.find<ResourceController>();
+    ResourceFilterController resourceFilterController =
+        Get.find<ResourceFilterController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -91,11 +92,11 @@ class _FilterSubstat extends StatelessWidget {
               ObxValue<RxBool>((p0) {
                 return Checkbox(
                     activeColor: ThemeApp.theme.primaryColor,
-                    value: resourceController.substatAllFilter.value,
+                    value: resourceFilterController.substatAllFilter.value,
                     onChanged: (value) {
-                      resourceController.checkAllSubstat();
+                      resourceFilterController.checkAllSubstat();
                     });
-              }, resourceController.substatAllFilter),
+              }, resourceFilterController.substatAllFilter),
               Expanded(
                 child: Text(
                   "all".tr,
@@ -107,18 +108,16 @@ class _FilterSubstat extends StatelessWidget {
             ],
           ),
         ),
-        Center(
-          child: ListView.builder(
-            primary: false,
-            itemCount: resourceController.substatResourceFilter.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return _ItemSubstat(
-                substat: resourceController.substatResourceFilter[index],
-                index: index,
-              );
-            },
-          ),
+        ListView.builder(
+          primary: false,
+          itemCount: resourceFilterController.substatResourceFilters.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return _ItemSubstat(
+              substat: resourceFilterController.substatResourceFilters[index],
+              index: index,
+            );
+          },
         ),
       ],
     );
@@ -132,25 +131,31 @@ class _ItemSubstat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResourceController resourceController = Get.find<ResourceController>();
+    ResourceFilterController resourceFilterController =
+        Get.find<ResourceFilterController>();
     return Container(
       margin: const EdgeInsets.only(top: 8),
+      height: 30,
       child: Row(
         children: [
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
                 activeColor: ThemeApp.theme.primaryColor,
-                value: resourceController.substatResourceFilters[index],
+                value: resourceFilterController
+                    .selectSubstatResourceFilters[index],
                 onChanged: (value) {
-                  resourceController.checkSubstatFilter(index);
+                  resourceFilterController.checkSubstatFilter(index);
                 });
-          }, resourceController.substatResourceFilters),
+          }, resourceFilterController.selectSubstatResourceFilters),
           Expanded(
-            child: Text(
-              substat,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                substat,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              ),
             ),
           )
         ],
@@ -164,7 +169,8 @@ class _Rarity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResourceController resourceController = Get.find<ResourceController>();
+    ResourceFilterController resourceFilterController =
+        Get.find<ResourceFilterController>();
     return Container(
       margin: const EdgeInsets.only(top: 8),
       child: Column(
@@ -181,9 +187,9 @@ class _Rarity extends StatelessWidget {
                     activeColor: ThemeApp.theme.primaryColor,
                     value: p0.value,
                     onChanged: (value) {
-                      resourceController.checkOneRarity();
+                      resourceFilterController.checkOneRarity();
                     });
-              }, resourceController.oneRarity),
+              }, resourceFilterController.oneRarity),
               Text(
                 "filter_with_rarity".tr,
                 style: ThemeApp.textStyle(isDark: Get.isDarkMode),
@@ -218,15 +224,16 @@ class _ItemRarity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResourceController resourceController = Get.find<ResourceController>();
+    ResourceFilterController resourceFilterController =
+        Get.find<ResourceFilterController>();
     return ObxValue<RxList<bool>>((p0) {
       return CheckboxRarity(
-        value: resourceController.checkRarityFilters[index],
+        value: resourceFilterController.checkRarityFilters[index],
         onTap: () {
-          resourceController.checkRarityFilter(index);
+          resourceFilterController.checkRarityFilter(index);
         },
       );
-    }, resourceController.checkRarityFilters);
+    }, resourceFilterController.checkRarityFilters);
   }
 }
 
@@ -235,7 +242,8 @@ class _SortName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResourceController resourceController = Get.find<ResourceController>();
+    ResourceFilterController resourceFilterController =
+        Get.find<ResourceFilterController>();
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: ObxValue((p0) {
@@ -254,7 +262,7 @@ class _SortName extends StatelessWidget {
                   value: 0,
                   groupValue: p0.value,
                   onChanged: (value) {
-                    resourceController.checkSortFilter(value ?? 0);
+                    resourceFilterController.checkSortFilter(value ?? 0);
                   }),
             ),
             SizedBox(
@@ -264,12 +272,12 @@ class _SortName extends StatelessWidget {
                   value: 1,
                   groupValue: p0.value,
                   onChanged: (value) {
-                    resourceController.checkSortFilter(value ?? 1);
+                    resourceFilterController.checkSortFilter(value ?? 1);
                   }),
             ),
           ],
         );
-      }, resourceController.sortName),
+      }, resourceFilterController.sortName),
     );
   }
 }

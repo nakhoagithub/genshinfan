@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 class InformationItemArtifact extends StatelessWidget {
@@ -98,12 +99,14 @@ class _ArtifactItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-              margin: const EdgeInsets.all(10),
-              child: ItemArtifact(
-                artifact: artifact,
-                onTap: () {},
-                viewType: type,
-              )),
+            margin: const EdgeInsets.all(10),
+            child: ItemGame(
+              title: artifact.name,
+              linkImage: Tools.linkImageArtifact(artifact),
+              rarity: artifact.rarity[artifact.rarity.length - 1],
+              onTap: () {},
+            ),
+          ),
           Expanded(
             child: Column(
               children: [

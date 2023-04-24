@@ -3,9 +3,10 @@ import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/weapon_service.dart';
-import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 class ListWeaponUpToday extends StatelessWidget {
@@ -63,8 +64,20 @@ class ListWeaponUpToday extends StatelessWidget {
                           child: SizedBox(
                             width: sizeItem,
                             height: sizeItem * 1.215,
-                            child: ItemWeapon(
-                              weapon: weaponUpToday[index],
+                            child: ItemGame(
+                              title: weaponUpToday[index].name,
+                              iconLeft: Tools.getAssetWeaponType(
+                                          weaponUpToday[index].weapontype) !=
+                                      null
+                                  ? Image.asset(Tools.getAssetWeaponType(
+                                          weaponUpToday[index].weapontype) ??
+                                      "")
+                                  : null,
+                              linkImage: weaponUpToday[index].images?.icon ??
+                                  Config.urlImage(
+                                      weaponUpToday[index].images?.namegacha),
+                              rarity: weaponUpToday[index].rarity,
+                              star: true,
                               onTap: () {
                                 Get.find<WeaponController>()
                                     .selectWeapon(weaponUpToday[index]);

@@ -4,9 +4,10 @@ import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
-import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -65,8 +66,20 @@ class _List extends StatelessWidget {
                         child: SizedBox(
                           width: sizeItem,
                           height: sizeItem * 1.215,
-                          child: ItemWeapon(
-                            weapon: weapons[index],
+                          child: ItemGame(
+                            title: weapons[index].name,
+                            iconLeft: Tools.getAssetWeaponType(
+                                        weapons[index].weapontype) !=
+                                    null
+                                ? Image.asset(Tools.getAssetWeaponType(
+                                        weapons[index].weapontype) ??
+                                    "")
+                                : null,
+                            linkImage: weapons[index].images?.icon ??
+                                Config.urlImage(
+                                    weapons[index].images?.namegacha),
+                            rarity: weapons[index].rarity,
+                            star: true,
                             onTap: () {
                               weaponController.selectWeapon(weapons[index]);
                               homeController.pageCenter();

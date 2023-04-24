@@ -5,8 +5,8 @@ import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
-import 'package:genshinfan/views/resource/widgets/item_resource.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -50,34 +50,38 @@ class _List extends StatelessWidget {
     return Obx(() {
       List<Resource> resources = resourceController.resources;
       return SizedBox(
-          width: Config.widthCenter,
-          child: resources.isEmpty
-              ? ListEmpty(title: "empty_resource".tr)
-              : GridView.count(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  crossAxisCount: 3,
-                  childAspectRatio: sizeItem / (sizeItem * 1.215),
-                  children: List.generate(
-                    resources.length,
-                    (index) => FadeInUp(
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeItem,
-                          height: sizeItem * 1.215,
-                          child: ItemResource(
-                            resource: resources[index],
-                            onTap: () {
-                              resourceController
-                                  .selectResource(resources[index]);
-                              homeController.pageCenter();
-                            },
-                          ),
+        width: Config.widthCenter,
+        child: resources.isEmpty
+            ? ListEmpty(title: "empty_resource".tr)
+            : GridView.count(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                crossAxisCount: 3,
+                childAspectRatio: sizeItem / (sizeItem * 1.215),
+                children: List.generate(
+                  resources.length,
+                  (index) => FadeInUp(
+                    child: Center(
+                      child: SizedBox(
+                        width: sizeItem,
+                        height: sizeItem * 1.215,
+                        child: ItemGame(
+                          title: resources[index].name,
+                          rarity: resources[index].rarity,
+                          linkImage: Config.urlImage(
+                              resources[index].images?.nameicon),
+                          star: true,
+                          onTap: () {
+                            resourceController.selectResource(resources[index]);
+                            homeController.pageCenter();
+                          },
                         ),
                       ),
                     ),
                   ),
-                ));
+                ),
+              ),
+      );
     });
   }
 }

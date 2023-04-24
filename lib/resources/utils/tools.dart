@@ -314,6 +314,13 @@ class Tools {
     return "assets/images/ic_1s.png";
   }
 
+  static String? linkImageArtifact(Artifact value) {
+    if (value.flower == null) {
+      return value.images?.circlet;
+    }
+    return value.images?.flower;
+  }
+
   static Resource? getResourceFromName(String name) {
     ResourceController resourceController = Get.find<ResourceController>();
     Resource? resource = resourceController.resources

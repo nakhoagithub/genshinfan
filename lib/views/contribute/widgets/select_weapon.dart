@@ -1,9 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/contribute_character_controller.dart';
+import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/contribute/widgets/dialog_weapon.dart';
-import 'package:genshinfan/views/weapon/widgets/item_weapon.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
 class SelectWeapon extends StatelessWidget {
@@ -38,16 +41,25 @@ class SelectWeapon extends StatelessWidget {
                 width: sizeItem,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    // color: ThemeApp.colorText(isDark: Get.isDarkMode),
-                  ),
+                      // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                      ),
                   borderRadius: BorderRadius.circular(sizeItem * 0.05),
                 ),
                 child: Obx(
                   () {
-                    return contributeCharacterController.weapon.value == null
+                    Weapon? w = contributeCharacterController.weapon.value;
+                    return w == null
                         ? const Icon(Icons.add, size: 35)
-                        : ItemWeapon(
-                            weapon: contributeCharacterController.weapon.value!,
+                        : ItemGame(
+                            title: w.name,
+                            iconLeft: Tools.getAssetWeaponType(w.weapontype) != null
+                    ? Image.asset(
+                        Tools.getAssetWeaponType(w.weapontype) ?? "")
+                    : null,
+                            linkImage: w.images?.icon ??
+                                Config.urlImage(w.images?.namegacha),
+                            rarity: w.rarity,
+                            star: true,
                             onTap: () {
                               dialogContributeWeapon();
                             },

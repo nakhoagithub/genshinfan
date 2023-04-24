@@ -4,8 +4,9 @@ import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
-import 'package:genshinfan/views/artifact/widgets/item_artifact.dart';
+import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -58,8 +59,10 @@ class _List extends StatelessWidget {
                         child: SizedBox(
                           width: sizeItem,
                           height: sizeItem * 1.215,
-                          child: ItemArtifact(
-                            artifact: artifacts[index],
+                          child: ItemGame(
+                            title: artifacts[index].name,
+                            linkImage: Tools.linkImageArtifact(artifacts[index]),
+                            rarity: artifacts[index].rarity[artifacts[index].rarity.length - 1],
                             onTap: () {
                               artifactController
                                   .selectArtifact(artifacts[index]);
