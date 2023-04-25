@@ -164,7 +164,7 @@ class _Item extends StatelessWidget {
                     children: [
                       Text(
                         "${"element".tr}: ",
-                        style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                        style: ThemeApp.textStyle(),
                       ),
                       Image.asset(
                         Tools.getAssetElementFromName(
@@ -176,26 +176,26 @@ class _Item extends StatelessWidget {
                   ),
             TextCSS(
               "${"sands_effect".tr}: <b>${characterBuilding.sands.tr}</b>",
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             ),
             TextCSS(
               "${"goblet_effect".tr}: <b>${characterBuilding.goblet.tr}</b>",
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             ),
             TextCSS(
               "${"circlet_effect".tr}: <b>${characterBuilding.circlet.tr}</b>",
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             ),
             const SizedBox(height: 20),
             TextCSS(
               "${"author".tr}: <b>${characterBuilding.author}</b>",
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             ),
             Container(
               height: 1,
               width: double.infinity,
               margin: const EdgeInsets.only(top: 10),
-              // color: ThemeApp.colorTextSecond(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorTextSecond(),
             ),
             _Browse(
               characterBuilding: characterBuilding,
@@ -249,7 +249,7 @@ class _Browse extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(),
             ),
             Expanded(
               child: InkWell(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -125,7 +126,7 @@ class ResourceFilterController extends GetxController {
 
   @override
   void onInit() {
-    resources.addAll(Get.find<AppController>().resources);
+    resources = Get.find<ResourceController>().resources;
     for (var e in resources) {
       if (!substatResourceFilters.contains(e.materialtype) &&
           e.materialtype != "") {

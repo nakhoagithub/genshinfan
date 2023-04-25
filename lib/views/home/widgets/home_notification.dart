@@ -17,7 +17,6 @@ class HomeNotification extends StatelessWidget {
           Text(
             "notification".tr,
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
@@ -25,9 +24,7 @@ class HomeNotification extends StatelessWidget {
           const SizedBox(height: 10),
           TextCSS(
             "note_home".tr,
-            style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
-            ),
+            style: ThemeApp.textStyle(),
           ),
         ],
       ),

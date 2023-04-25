@@ -36,7 +36,7 @@ class WeaponRefinement extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 strokeAlign: 1,
-                // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                // color: ThemeApp.colorText(),
               ),
             ),
             child: Column(
@@ -46,9 +46,7 @@ class WeaponRefinement extends StatelessWidget {
                   margin: const EdgeInsets.all(4),
                   child: TextCSS(
                     Tools.handleEffectWeapon(effect, r1, r2, r3, r4, r5),
-                    style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode,
-                    ),
+                    style: ThemeApp.textStyle(),
                   ),
                 ),
               ],

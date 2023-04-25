@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:get/get.dart';
 
 class TitleOfContent extends StatelessWidget {
   final String title;
@@ -23,11 +22,10 @@ class TitleOfContent extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
               fontSize: 24,
               fontWeight: FontWeight.bold,
               // color: ThemeApp.colorText(
-              //   isDark: Get.isDarkMode,
+              //
               // ),
             ),
           ),

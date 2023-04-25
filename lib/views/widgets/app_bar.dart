@@ -34,7 +34,6 @@ class AppBarCenter extends StatelessWidget {
               Text(
                 title,
                 style: ThemeApp.textStyle(
-                  isDark: Get.isDarkMode,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

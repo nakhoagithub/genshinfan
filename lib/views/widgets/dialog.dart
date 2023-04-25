@@ -19,7 +19,6 @@ dialogConfirm(String title, String message, Function accept,
             child: Text(
               title,
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -30,9 +29,7 @@ dialogConfirm(String title, String message, Function accept,
             alignment: Alignment.centerLeft,
             child: TextCSS(
               message,
-              style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-              ),
+              style: ThemeApp.textStyle(),
             ),
           ),
           Material(
@@ -63,7 +60,7 @@ dialogConfirm(String title, String message, Function accept,
                     width: 1,
                     height: 16,
                     margin: const EdgeInsets.only(left: 10, right: 10),
-                    // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                    // color: ThemeApp.colorText(),
                   ),
                   Expanded(
                     child: InkWell(
@@ -105,7 +102,6 @@ dialogInfo(String message) async {
             child: Text(
               "information".tr,
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -116,9 +112,7 @@ dialogInfo(String message) async {
             alignment: Alignment.centerLeft,
             child: TextCSS(
               message,
-              style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-              ),
+              style: ThemeApp.textStyle(),
             ),
           ),
           Material(

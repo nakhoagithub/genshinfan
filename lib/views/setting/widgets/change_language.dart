@@ -14,7 +14,6 @@ class ChangeLanguage extends StatelessWidget {
         Text(
           Localization.getLanguageFromCode(Get.locale).language,
           style: ThemeApp.textStyle(
-            isDark: Get.isDarkMode,
             fontWeight: FontWeight.bold,
           ),
         ),

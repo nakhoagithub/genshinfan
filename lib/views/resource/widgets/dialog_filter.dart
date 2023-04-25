@@ -27,7 +27,6 @@ dialogFilterResource() async {
               child: Text(
                 "filter_resource".tr,
                 style: ThemeApp.textStyle(
-                  isDark: Get.isDarkMode,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -81,7 +80,7 @@ class _FilterSubstat extends StatelessWidget {
       children: [
         Text(
           "substat".tr,
-          style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+          style: ThemeApp.textStyle(),
         ),
         // chọn tất cả
         const SizedBox(height: 10),
@@ -102,7 +101,7 @@ class _FilterSubstat extends StatelessWidget {
                   "all".tr,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                  style: ThemeApp.textStyle(),
                 ),
               ),
             ],
@@ -154,7 +153,7 @@ class _ItemSubstat extends StatelessWidget {
                 substat,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                style: ThemeApp.textStyle(),
               ),
             ),
           )
@@ -178,7 +177,7 @@ class _Rarity extends StatelessWidget {
         children: [
           Text(
             "rarity".tr,
-            style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+            style: ThemeApp.textStyle(),
           ),
           Row(
             children: [
@@ -192,7 +191,7 @@ class _Rarity extends StatelessWidget {
               }, resourceFilterController.oneRarity),
               Text(
                 "filter_with_rarity".tr,
-                style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                style: ThemeApp.textStyle(),
               )
             ],
           ),
@@ -253,7 +252,7 @@ class _SortName extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               "sort_name".tr,
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             ),
             SizedBox(
               height: 30,
@@ -317,7 +316,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(),
             ),
             Expanded(
               child: InkWell(
@@ -337,7 +336,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(),
             ),
             Expanded(
               child: InkWell(

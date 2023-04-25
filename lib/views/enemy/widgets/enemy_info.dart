@@ -19,37 +19,36 @@ class InformationEnemy extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     EnemyController enemyController = Get.find<EnemyController>();
-    return Obx((){
+    return Obx(() {
       Enemy enemy = enemyController.enemy.value!;
       return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Container(
-        margin: const EdgeInsets.all(4),
-        child: Column(
-          children: [
-            _ImageEnemy(
-              linkImage: Config.urlImage(enemy.images?.nameicon),
-              rarity: "1",
-              size: 150,
-            ),
-            Center(
-              child: Text(
-                enemy.name,
-                textAlign: TextAlign.center,
-                style: ThemeApp.textStyle(
-                  isDark: Get.isDarkMode,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+          margin: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              _ImageEnemy(
+                linkImage: Config.urlImage(enemy.images?.nameicon),
+                rarity: "1",
+                size: 150,
+              ),
+              Center(
+                child: Text(
+                  enemy.name,
+                  textAlign: TextAlign.center,
+                  style: ThemeApp.textStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            _InformationMore(
-              enemy: enemy,
-            ),
-          ],
+              _InformationMore(
+                enemy: enemy,
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
     });
   }
 }

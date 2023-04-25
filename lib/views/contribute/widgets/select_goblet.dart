@@ -47,17 +47,17 @@ class SelectGobletEffect extends StatelessWidget {
                     buttonStyleData: ButtonStyleData(
                       decoration: BoxDecoration(
                           border: Border.all(
-                              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                              // color: ThemeApp.colorText(),
                               ),
                           borderRadius: BorderRadius.circular(10)),
                     ),
                     // buttonDecoration: BoxDecoration(
                     //     border: Border.all(
-                    //         color: ThemeApp.colorText(isDark: Get.isDarkMode)),
+                    //         color: ThemeApp.colorText()),
                     //     borderRadius: BorderRadius.circular(10)),
                     // dropdownDecoration: BoxDecoration(
                     //     border: Border.all(
-                    //         color: ThemeApp.colorText(isDark: Get.isDarkMode)),
+                    //         color: ThemeApp.colorText()),
                     //     borderRadius: BorderRadius.circular(10)),
                   ),
                 ),

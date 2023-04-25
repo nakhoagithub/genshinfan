@@ -57,7 +57,7 @@ class _Author extends StatelessWidget {
   Widget build(BuildContext context) {
     ContributeCharacterController contributeCharacterController =
         Get.find<ContributeCharacterController>();
-    
+
     return Container(
       margin: const EdgeInsets.all(16),
       child: TextFormField(
@@ -78,7 +78,7 @@ class _Author extends StatelessWidget {
           hintText: "author".tr,
           label: Text(
             "author".tr,
-            style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+            style: ThemeApp.textStyle(),
           ),
         ),
         maxLength: 30,
@@ -202,7 +202,6 @@ class _SelectArtifact extends StatelessWidget {
           Text(
             "artifact".tr,
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -232,7 +231,7 @@ class _Note extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: TextCSS(
         "<b><red>${"note".tr}:</red></b> ${"note_contribute_character_building".tr}",
-        style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+        style: ThemeApp.textStyle(),
       ),
     );
   }

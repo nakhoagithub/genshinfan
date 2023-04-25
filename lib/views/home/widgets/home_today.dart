@@ -25,7 +25,7 @@ class HomeToday extends StatelessWidget {
             children: [
               TextCSS(
                 "<b>${"today".tr}</b>: <b><orange>${"day${homeController.today}".tr}</orange></b>",
-                style: ThemeApp.textStyle(isDark: Get.isDarkMode, fontSize: 18),
+                style: ThemeApp.textStyle(fontSize: 18),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 5),

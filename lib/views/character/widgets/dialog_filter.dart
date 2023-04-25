@@ -29,7 +29,6 @@ dialogFilterCharacter() async {
               child: Text(
                 "filter_character".tr,
                 style: ThemeApp.textStyle(
-                  isDark: Get.isDarkMode,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -75,7 +74,7 @@ class _FilterElement extends StatelessWidget {
       children: [
         Text(
           "element".tr,
-          style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+          style: ThemeApp.textStyle(),
         ),
         SizedBox(
           height: 100,
@@ -137,7 +136,7 @@ class _FilterWeapon extends StatelessWidget {
       children: [
         Text(
           "weapon".tr,
-          style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+          style: ThemeApp.textStyle(),
         ),
         SizedBox(
           height: 100,
@@ -205,7 +204,7 @@ class _Rarity extends StatelessWidget {
       children: [
         Text(
           "rarity".tr,
-          style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+          style: ThemeApp.textStyle(),
         ),
         Row(
           children: [
@@ -219,7 +218,7 @@ class _Rarity extends StatelessWidget {
             }, characterFilterController.oneRarity),
             Text(
               "filter_with_rarity".tr,
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             )
           ],
         ),
@@ -278,7 +277,7 @@ class _SortName extends StatelessWidget {
           children: [
             Text(
               "sort_name".tr,
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             ),
             SizedBox(
               height: 40,
@@ -342,7 +341,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(),
             ),
             Expanded(
               child: InkWell(
@@ -362,7 +361,7 @@ class _Button extends StatelessWidget {
               width: 1,
               height: 16,
               margin: const EdgeInsets.only(left: 10, right: 10),
-              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              // color: ThemeApp.colorText(),
             ),
             Expanded(
               child: InkWell(

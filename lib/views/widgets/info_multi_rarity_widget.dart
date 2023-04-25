@@ -23,11 +23,11 @@ class InfoMultiRarityWidget extends StatelessWidget {
             child: Text(
               "${"rarity".tr}: ",
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-                // color: ThemeApp.colorTextSecond(
-                //   isDark: Get.isDarkMode,
-                // ),
-              ),
+
+                  // color: ThemeApp.colorTextSecond(
+                  //
+                  // ),
+                  ),
             ),
           ),
           Expanded(

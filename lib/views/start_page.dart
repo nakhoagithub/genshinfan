@@ -42,7 +42,6 @@ class _WelcomeApp extends StatelessWidget {
           "welcome_to_app".tr,
           textAlign: TextAlign.center,
           style: ThemeApp.textStyle(
-            isDark: Get.isDarkMode,
             fontSize: 20,
           ),
         ),
@@ -64,7 +63,6 @@ class _VersionApp extends StatelessWidget {
           () => Text(
             "version".trParams({"version": startController.version.value}),
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
               fontSize: 13,
               fontStyle: FontStyle.italic,
             ),
@@ -120,7 +118,7 @@ class _Progress extends StatelessWidget {
                   value: (startController.received.value /
                       startController.total.value),
                   // color: ThemeApp.colorPrimary(
-                  //   isDark: Get.isDarkMode,
+                  //
                   // ),
                 ),
               ),

@@ -37,9 +37,7 @@ class TrafficApplication extends StatelessWidget {
                     Expanded(
                       child: Text(
                         "access_throughput".tr,
-                        style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
-                        ),
+                        style: ThemeApp.textStyle(),
                       ),
                     ),
                     InkWell(
@@ -63,15 +61,41 @@ class TrafficApplication extends StatelessWidget {
                 child: traffic == null
                     ? Text(
                         "...",
-                        style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
-                        ),
+                        style: ThemeApp.textStyle(),
                       )
-                    : Text(
-                        "${"total".tr}: ${traffic.totalTraffic}\n${"this_month".tr}: ${traffic.trafficInMonth}\n${"today".tr}: ${traffic.trafficInDay}",
-                        style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
-                        ),
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Row(
+                          //   children: [
+                          //     Container(
+                          //       height: 10,
+                          //       width: 10,
+                          //       decoration: const BoxDecoration(
+                          //         shape: BoxShape.circle,
+                          //         color: Colors.green,
+                          //       ),
+                          //     ),
+                          //     const SizedBox(width: 4),
+                          //     Text(
+                          //       "${"online".tr}: ${traffic.online}",
+                          //       style: ThemeApp.textStyle(),
+                          //     )
+                          //   ],
+                          // ),
+                          Text(
+                            "${"total".tr}: ${traffic.totalTraffic}",
+                            style: ThemeApp.textStyle(),
+                          ),
+                          Text(
+                            "${"this_month".tr}: ${traffic.trafficInMonth}",
+                            style: ThemeApp.textStyle(),
+                          ),
+                          Text(
+                            "${"today".tr}: ${traffic.trafficInDay}",
+                            style: ThemeApp.textStyle(),
+                          ),
+                        ],
                       ),
               ),
             ],

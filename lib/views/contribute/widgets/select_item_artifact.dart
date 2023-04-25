@@ -41,7 +41,7 @@ class ContributeItemArtifact extends StatelessWidget {
                       width: sizeItem,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                            // color: ThemeApp.colorText(),
                             ),
                         borderRadius: BorderRadius.circular(sizeItem * 0.05),
                       ),
@@ -57,8 +57,7 @@ class ContributeItemArtifact extends StatelessWidget {
                       children: [
                         TextCSS(
                           type == 0 ? a1?.set2 ?? "" : a2?.set2 ?? "",
-                          style: ThemeApp.textStyle(
-                              isDark: Get.isDarkMode, fontSize: 15),
+                          style: ThemeApp.textStyle(fontSize: 15),
                         ),
                         const SizedBox(height: 4),
                         contributeCharacterController.type.value == 0
@@ -66,8 +65,7 @@ class ContributeItemArtifact extends StatelessWidget {
                             : FadeInRight(
                                 child: TextCSS(
                                   a1?.set4 ?? "",
-                                  style: ThemeApp.textStyle(
-                                      isDark: Get.isDarkMode, fontSize: 15),
+                                  style: ThemeApp.textStyle(fontSize: 15),
                                 ),
                               ),
                       ],

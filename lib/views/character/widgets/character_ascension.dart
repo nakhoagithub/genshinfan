@@ -35,7 +35,7 @@ class CharacterAscensionView extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 strokeAlign: 1,
-                // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                color: Get.theme.colorScheme.onSurface,
               ),
             ),
             child: ListView(
@@ -103,14 +103,12 @@ class _ItemAscend extends StatelessWidget {
             children: [
               Text(
                 "${"ascend".tr}: $rank",
-                style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode, fontWeight: FontWeight.bold),
+                style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 20),
               Text(
                 "${"level".tr}: $lv",
-                style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode, fontWeight: FontWeight.bold),
+                style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -126,7 +124,7 @@ class _ItemAscend extends StatelessWidget {
                   return resource == null
                       ? const SizedBox()
                       : ItemGame(
-                          size: Get.width * 0.18,
+                          size: Get.width * 0.16,
                           title: e.count.toString(),
                           linkImage: Config.urlImage(resource.images?.nameicon),
                           rarity: resource.rarity,

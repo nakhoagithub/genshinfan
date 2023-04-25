@@ -35,7 +35,6 @@ class InformationCharacter extends StatelessWidget {
                 character.fullname,
                 textAlign: TextAlign.center,
                 style: ThemeApp.textStyle(
-                  isDark: Get.isDarkMode,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
@@ -51,7 +50,6 @@ class InformationCharacter extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
                         fontSize: 14,
                       ),
                     ),

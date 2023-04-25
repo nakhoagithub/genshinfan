@@ -55,7 +55,7 @@ class ItemDomain extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: ThemeApp.textStyle(
-                      isDark: false, fontWeight: FontWeight.w500, fontSize: 14),
+                      fontWeight: FontWeight.w500, fontSize: 14),
                 ),
               ),
               domain.domainLvs == null

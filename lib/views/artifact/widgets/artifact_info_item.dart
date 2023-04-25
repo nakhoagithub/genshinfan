@@ -91,7 +91,7 @@ class _ArtifactItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(),
         ),
       ),
       child: Row(
@@ -115,16 +115,13 @@ class _ArtifactItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: ThemeApp.textStyle(
                     fontSize: 18,
-                    isDark: Get.isDarkMode,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   "${artifactItemWithType()?.relictype}",
                   textAlign: TextAlign.center,
-                  style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                  ),
+                  style: ThemeApp.textStyle(),
                 ),
                 // description
                 artifactItemWithType()?.description == null
@@ -136,7 +133,6 @@ class _ArtifactItem extends StatelessWidget {
                           "${artifactItemWithType()?.description}",
                           textAlign: TextAlign.start,
                           style: ThemeApp.textStyle(
-                            isDark: Get.isDarkMode,
                             fontSize: 14,
                             fontStyle: FontStyle.italic,
                           ),

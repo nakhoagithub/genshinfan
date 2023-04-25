@@ -22,20 +22,18 @@ class InfoParagraphWidget extends StatelessWidget {
           child: Text(
             "${titleTranslate.tr}: ",
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
-              // color: ThemeApp.colorTextSecond(
-              //   isDark: Get.isDarkMode,
-              // ),
-            ),
+
+                // color: ThemeApp.colorTextSecond(
+                //
+                // ),
+                ),
           ),
         ),
         Container(
           padding: const EdgeInsets.all(2),
           child: Text(
             data,
-            style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
-            ),
+            style: ThemeApp.textStyle(),
           ),
         ),
       ],

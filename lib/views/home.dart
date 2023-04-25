@@ -97,7 +97,7 @@ class Home extends StatelessWidget {
           "assets/images/ic_map1.png",
           height: 40,
           width: 40,
-          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(),
         ),
       ),
       Obx(

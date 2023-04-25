@@ -7,6 +7,7 @@ import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/views/widgets/slide_layout.dart';
 import 'package:get/get.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
@@ -44,6 +45,27 @@ class HomeController extends GetxController {
     traffic.value = await AppService().getTraffic();
   }
 
+  // Future<void> onConnect() async {
+  //   await FirebaseDatabase.instance
+  //       .ref('analytics')
+  //       .update({'online': ServerValue.increment(1)});
+  // }
+
+  // Future<void> onDisconnect() async {
+  //   await FirebaseDatabase.instance
+  //       .ref('analytics')
+  //       .onDisconnect()
+  //       .update({'online': ServerValue.increment(-1)});
+  // }
+
+  Future<void> checkUpdateApp() async {
+    await InAppUpdate.checkForUpdate();
+    AppUpdateResult appUpdateResult = await InAppUpdate.startFlexibleUpdate();
+    if (appUpdateResult == AppUpdateResult.success) {
+      await InAppUpdate.completeFlexibleUpdate();
+    }
+  }
+
   @override
   void onInit() async {
     super.onInit();
@@ -53,6 +75,7 @@ class HomeController extends GetxController {
     month.value = dateTime.month;
 
     unawaited(getTraffic());
+    unawaited(checkUpdateApp());
   }
 
   @override

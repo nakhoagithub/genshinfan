@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -147,7 +148,7 @@ class WeaponFilterController extends GetxController {
 
   @override
   void onInit() {
-    weapons.addAll(Get.find<AppController>().weapons);
+    weapons = Get.find<WeaponController>().weapons;
 
     for (var e in weapons) {
       if (!substatWeaponFilter.contains(e.substat) && e.substat != "") {
@@ -159,7 +160,7 @@ class WeaponFilterController extends GetxController {
 
     // filter weapon
     List<dynamic>? weaponTypes = box.read(Config.storageListWeaponWeaponFilter);
-    if (weaponTypes != null) {
+    if (weaponTypes != null) { 
       checkWeaponFilters.value =
           RxList.from(weaponTypes.map((element) => element as bool));
     }

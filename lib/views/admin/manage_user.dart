@@ -103,16 +103,13 @@ class _Item extends StatelessWidget {
                     Text(
                       "${user.name}",
                       style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       "${user.email}",
-                      style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
-                      ),
+                      style: ThemeApp.textStyle(),
                     ),
                   ],
                 ),
@@ -125,7 +122,7 @@ class _Item extends StatelessWidget {
                 children: [
                   Text(
                     "permission".tr,
-                    style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                    style: ThemeApp.textStyle(),
                   ),
                   const SizedBox(width: 10),
                   Expanded(

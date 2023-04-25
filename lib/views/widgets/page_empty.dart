@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:get/get.dart';
 
 class PageEmpty extends StatelessWidget {
   final String title;
@@ -11,7 +10,7 @@ class PageEmpty extends StatelessWidget {
     return Center(
       child: Text(
         title,
-        style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+        style: ThemeApp.textStyle(),
       ),
     );
   }

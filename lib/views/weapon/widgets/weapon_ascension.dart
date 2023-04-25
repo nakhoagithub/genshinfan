@@ -41,7 +41,7 @@ class WeaponAscensionView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         strokeAlign: 1,
-                        // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                        // color: ThemeApp.colorText(),
                       ),
                     ),
                     child: ListView(
@@ -114,14 +114,12 @@ class _ItemAscend extends StatelessWidget {
             children: [
               Text(
                 "${"ascend".tr}: $rank",
-                style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode, fontWeight: FontWeight.bold),
+                style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 20),
               Text(
                 "${"level".tr}: $lv",
-                style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode, fontWeight: FontWeight.bold),
+                style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),

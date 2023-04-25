@@ -31,7 +31,7 @@ class WeaponStory extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                       strokeAlign: 1,
-                      // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                      // color: ThemeApp.colorText(),
                     ),
                   ),
                   child: Column(
@@ -41,9 +41,7 @@ class WeaponStory extends StatelessWidget {
                         margin: const EdgeInsets.all(4),
                         child: Text(
                           weapon.story,
-                          style: ThemeApp.textStyle(
-                            isDark: Get.isDarkMode,
-                          ),
+                          style: ThemeApp.textStyle(),
                         ),
                       ),
                     ],

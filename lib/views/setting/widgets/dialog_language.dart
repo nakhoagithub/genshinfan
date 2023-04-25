@@ -21,7 +21,6 @@ class DialogLanguage extends StatelessWidget {
           Text(
             "choose_language".tr,
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -58,7 +57,7 @@ class DialogLanguage extends StatelessWidget {
                         child: Center(
                           child: Text(
                             language,
-                            style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                            style: ThemeApp.textStyle(),
                           ),
                         ),
                       ),

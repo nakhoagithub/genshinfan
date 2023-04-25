@@ -22,11 +22,11 @@ class InfoWeaponWidget extends StatelessWidget {
             child: Text(
               "${"weapon".tr}: ",
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-                // color: ThemeApp.colorTextSecond(
-                //   isDark: Get.isDarkMode,
-                // ),
-              ),
+
+                  // color: ThemeApp.colorTextSecond(
+                  //
+                  // ),
+                  ),
             ),
           ),
           Expanded(

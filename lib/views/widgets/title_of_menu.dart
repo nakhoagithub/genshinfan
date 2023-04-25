@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:get/get.dart';
@@ -15,7 +14,6 @@ class TitleApp extends StatelessWidget {
       child: Text(
         title,
         style: ThemeApp.textStyle(
-          isDark: Get.isDarkMode,
           fontSize: 14,
         ),
       ),

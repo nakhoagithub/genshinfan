@@ -29,7 +29,6 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
           Text(
             "birthday".tr,
             style: ThemeApp.textStyle(
-              isDark: Get.isDarkMode,
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
@@ -47,7 +46,6 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                       Text(
                         "today".tr,
                         style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
                           fontStyle: FontStyle.italic,
                         ),
                       ),
@@ -59,7 +57,6 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                                   child: Text(
                                     "...",
                                     style: ThemeApp.textStyle(
-                                      isDark: Get.isDarkMode,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -120,7 +117,6 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                       Text(
                         "birthday_in_month".tr,
                         style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
                           fontStyle: FontStyle.italic,
                         ),
                       ),

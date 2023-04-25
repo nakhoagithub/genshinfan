@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -136,7 +137,7 @@ class CharacterFilterController extends GetxController {
 
   @override
   void onInit() {
-    characters.addAll(Get.find<AppController>().characters);
+    characters = Get.find<CharacterController>().characters;
 
     // filter element
     List<dynamic>? elements =

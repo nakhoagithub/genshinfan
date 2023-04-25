@@ -55,7 +55,7 @@ class _ItemDomain extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          // color: ThemeApp.colorText(),
         ),
       ),
       child: Container(
@@ -80,7 +80,7 @@ class _ItemDomain extends StatelessWidget {
                     "assets/images/image_dungeon.png",
                     height: 40,
                     width: 40,
-                    // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                    // color: ThemeApp.colorText(),
                   ),
                 ),
                 Expanded(
@@ -89,7 +89,6 @@ class _ItemDomain extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: ThemeApp.textStyle(
                       fontSize: 18,
-                      isDark: Get.isDarkMode,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -135,16 +134,15 @@ class _ItemDomain extends StatelessWidget {
                 Text(
                   "${"recommendedlevel".tr}: ",
                   style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                    // color: ThemeApp.colorTextSecond(
-                    //   isDark: Get.isDarkMode,
-                    // ),
-                  ),
+
+                      // color: ThemeApp.colorTextSecond(
+                      //
+                      // ),
+                      ),
                 ),
                 Text(
                   "${domainLv.recommendedlevel}",
-                  style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode, fontWeight: FontWeight.bold),
+                  style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -155,16 +153,15 @@ class _ItemDomain extends StatelessWidget {
                 Text(
                   "${"unlockrank".tr}: ",
                   style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                    // color: ThemeApp.colorTextSecond(
-                    //   isDark: Get.isDarkMode,
-                    // ),
-                  ),
+
+                      // color: ThemeApp.colorTextSecond(
+                      //
+                      // ),
+                      ),
                 ),
                 Text(
                   "${domainLv.unlockrank}",
-                  style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode, fontWeight: FontWeight.bold),
+                  style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -177,11 +174,11 @@ class _ItemDomain extends StatelessWidget {
                       Text(
                         "${"recommendedelements".tr}: ",
                         style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
-                          // color: ThemeApp.colorTextSecond(
-                          //   isDark: Get.isDarkMode,
-                          // ),
-                        ),
+
+                            // color: ThemeApp.colorTextSecond(
+                            //
+                            // ),
+                            ),
                       ),
                       Expanded(
                         child: SingleChildScrollView(
@@ -208,17 +205,17 @@ class _ItemDomain extends StatelessWidget {
                 Text(
                   "${"disorder".tr}: ",
                   style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                    // color: ThemeApp.colorTextSecond(
-                    //   isDark: Get.isDarkMode,
-                    // ),
-                  ),
+
+                      // color: ThemeApp.colorTextSecond(
+                      //
+                      // ),
+                      ),
                 ),
                 ...domainLv.disorder.map(
                   (e) {
                     return Text(
                       "- $e",
-                      style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+                      style: ThemeApp.textStyle(),
                     );
                   },
                 ),
@@ -232,11 +229,11 @@ class _ItemDomain extends StatelessWidget {
                 Text(
                   "${"reward".tr}: ",
                   style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                    // color: ThemeApp.colorTextSecond(
-                    //   isDark: Get.isDarkMode,
-                    // ),
-                  ),
+
+                      // color: ThemeApp.colorTextSecond(
+                      //
+                      // ),
+                      ),
                 ),
                 SizedBox(
                   height: 140,
@@ -287,11 +284,11 @@ class _ItemDomain extends StatelessWidget {
                 Text(
                   "${"monster".tr}: ",
                   style: ThemeApp.textStyle(
-                    isDark: Get.isDarkMode,
-                    // color: ThemeApp.colorTextSecond(
-                    //   isDark: Get.isDarkMode,
-                    // ),
-                  ),
+
+                      // color: ThemeApp.colorTextSecond(
+                      //
+                      // ),
+                      ),
                 ),
                 SizedBox(
                   height: 140,

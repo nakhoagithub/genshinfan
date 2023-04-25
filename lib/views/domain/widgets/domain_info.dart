@@ -30,7 +30,6 @@ class InformationDomain extends StatelessWidget {
                     domain.name,
                     textAlign: TextAlign.center,
                     style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),

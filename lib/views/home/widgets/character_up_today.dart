@@ -30,7 +30,6 @@ class ListCharacterUpToday extends StatelessWidget {
                     Text(
                       "character".tr,
                       style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),

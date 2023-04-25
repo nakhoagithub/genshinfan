@@ -23,11 +23,11 @@ class InfoTextColorWidget extends StatelessWidget {
             child: Text(
               "${titleTranslate.tr}: ",
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-                // color: ThemeApp.colorTextSecond(
-                //   isDark: Get.isDarkMode,
-                // ),
-              ),
+
+                  // color: ThemeApp.colorTextSecond(
+                  //
+                  // ),
+                  ),
             ),
           ),
           Expanded(
@@ -36,7 +36,6 @@ class InfoTextColorWidget extends StatelessWidget {
               data,
               textAlign: TextAlign.center,
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
               ),
             ),

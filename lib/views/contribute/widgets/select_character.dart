@@ -25,7 +25,6 @@ class SelectCharacter extends StatelessWidget {
             Text(
               "character".tr,
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -40,7 +39,7 @@ class SelectCharacter extends StatelessWidget {
                 width: sizeItem,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                      // color: ThemeApp.colorText(),
                       ),
                   borderRadius: BorderRadius.circular(sizeItem * 0.05),
                 ),
@@ -53,11 +52,11 @@ class SelectCharacter extends StatelessWidget {
                         : ItemGame(
                             title: c.name,
                             iconLeft: Tools.getAssetElementFromName(
-                                      c.element) !=
-                                  ""
-                              ? Image.asset(Tools.getAssetElementFromName(
-                                  c.element))
-                              : null,
+                                        c.element) !=
+                                    ""
+                                ? Image.asset(
+                                    Tools.getAssetElementFromName(c.element))
+                                : null,
                             linkImage: c.images?.icon,
                             rarity: c.rarity,
                             onTap: () {

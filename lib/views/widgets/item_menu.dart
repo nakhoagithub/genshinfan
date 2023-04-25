@@ -50,9 +50,7 @@ class ItemMenu extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: ThemeApp.textStyle(
-                              isDark: Get.isDarkMode,
-                            ),
+                            style: ThemeApp.textStyle(),
                           ),
                           const SizedBox(width: 10),
                           notification == null || notification == false
@@ -80,7 +78,6 @@ class ItemMenu extends StatelessWidget {
                       child: Text(
                         "$description",
                         style: ThemeApp.textStyle(
-                          isDark: Get.isDarkMode,
                           fontSize: 14,
                           fontStyle: FontStyle.italic,
                         ),

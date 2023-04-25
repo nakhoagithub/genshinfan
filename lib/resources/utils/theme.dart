@@ -131,26 +131,16 @@ class ThemeApp {
   // }
 
   static TextStyle textStyle({
-    required bool isDark,
     Color? color,
     double fontSize = 16,
     FontStyle? fontStyle,
     FontWeight? fontWeight,
   }) {
-    if (isDark) {
-      return TextStyle(
-        color: color,
+    return TextStyle(
+        color: color ?? Get.theme.colorScheme.onSurface,
         fontSize: fontSize,
         fontStyle: fontStyle ?? FontStyle.normal,
         fontWeight: fontWeight ?? FontWeight.normal,
       );
-    } else {
-      return TextStyle(
-        color: color,
-        fontSize: fontSize,
-        fontStyle: fontStyle ?? FontStyle.normal,
-        fontWeight: fontWeight ?? FontWeight.normal,
-      );
-    }
   }
 }

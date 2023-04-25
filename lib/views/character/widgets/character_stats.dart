@@ -28,9 +28,6 @@ class CharacterStats extends StatelessWidget {
             Container(
               margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(5),
-              // color: Tools.getColorElementCharacter(
-              //         characterController.element.value)
-              //     .withOpacity(0.5),
               child: Table(
                 border: TableBorder.all(
                   color: Get.theme.colorScheme.onSurface,

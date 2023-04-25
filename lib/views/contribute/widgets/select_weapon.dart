@@ -26,7 +26,6 @@ class SelectWeapon extends StatelessWidget {
             Text(
               "weapon".tr,
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -41,7 +40,7 @@ class SelectWeapon extends StatelessWidget {
                 width: sizeItem,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+                      // color: ThemeApp.colorText(),
                       ),
                   borderRadius: BorderRadius.circular(sizeItem * 0.05),
                 ),
@@ -52,10 +51,12 @@ class SelectWeapon extends StatelessWidget {
                         ? const Icon(Icons.add, size: 35)
                         : ItemGame(
                             title: w.name,
-                            iconLeft: Tools.getAssetWeaponType(w.weapontype) != null
-                    ? Image.asset(
-                        Tools.getAssetWeaponType(w.weapontype) ?? "")
-                    : null,
+                            iconLeft: Tools.getAssetWeaponType(w.weapontype) !=
+                                    null
+                                ? Image.asset(
+                                    Tools.getAssetWeaponType(w.weapontype) ??
+                                        "")
+                                : null,
                             linkImage: w.images?.icon ??
                                 Config.urlImage(w.images?.namegacha),
                             rarity: w.rarity,

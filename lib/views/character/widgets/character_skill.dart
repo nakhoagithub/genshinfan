@@ -297,7 +297,7 @@ class _Combat extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
@@ -354,7 +354,6 @@ class _Combat extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: ThemeApp.textStyle(
                       fontSize: 18,
-                      isDark: Get.isDarkMode,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -362,14 +361,15 @@ class _Combat extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(right: 5),
                   child: IconApp(
-                      onTap: () {
-                        Get.bottomSheet(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          TalentStats(combat: combat),
-                          isScrollControlled: true,
-                        );
-                      },
-                      icon: const Icon(Icons.expand_more_rounded)),
+                    onTap: () {
+                      Get.bottomSheet(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        TalentStats(combat: combat),
+                        isScrollControlled: true,
+                      );
+                    },
+                    icon: const Icon(Icons.keyboard_arrow_right_rounded),
+                  ),
                 ),
               ],
             ),
@@ -383,7 +383,6 @@ class _Combat extends StatelessWidget {
                       "${combat.description}",
                       textAlign: TextAlign.start,
                       style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
                         fontSize: 14,
                         fontStyle: FontStyle.italic,
                       ),
@@ -396,9 +395,7 @@ class _Combat extends StatelessWidget {
               child: TextCSS(
                 combat.info,
                 textAlign: TextAlign.start,
-                style: ThemeApp.textStyle(
-                  isDark: Get.isDarkMode,
-                ),
+                style: ThemeApp.textStyle(),
               ),
             ),
           ],
@@ -427,7 +424,7 @@ class _Passive extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
@@ -481,7 +478,6 @@ class _Passive extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: ThemeApp.textStyle(
                     fontSize: 18,
-                    isDark: Get.isDarkMode,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -494,9 +490,7 @@ class _Passive extends StatelessWidget {
             child: TextCSS(
               passive.info,
               textAlign: TextAlign.start,
-              style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-              ),
+              style: ThemeApp.textStyle(),
             ),
           ),
         ],
@@ -526,7 +520,7 @@ class _Constellation extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+          color: Get.theme.colorScheme.onSurface,
         ),
         // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
@@ -541,9 +535,7 @@ class _Constellation extends StatelessWidget {
                 child: Text(
                   lv,
                   style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
@@ -590,7 +582,6 @@ class _Constellation extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: ThemeApp.textStyle(
                     fontSize: 18,
-                    isDark: Get.isDarkMode,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -603,9 +594,7 @@ class _Constellation extends StatelessWidget {
             child: TextCSS(
               constellation.effect,
               textAlign: TextAlign.start,
-              style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-              ),
+              style: ThemeApp.textStyle(),
             ),
           ),
         ],

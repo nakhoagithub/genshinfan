@@ -19,7 +19,7 @@ class AboutApp extends StatelessWidget {
             margin: const EdgeInsets.all(12),
             child: TextCSS(
               Config.aboutApp,
-              style: ThemeApp.textStyle(isDark: Get.isDarkMode),
+              style: ThemeApp.textStyle(),
             )),
       ),
     );

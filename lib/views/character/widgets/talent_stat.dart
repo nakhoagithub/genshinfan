@@ -35,7 +35,6 @@ class TalentStats extends StatelessWidget {
                     Text(
                       "talent_stats".tr,
                       style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),

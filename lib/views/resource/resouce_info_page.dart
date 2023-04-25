@@ -15,7 +15,7 @@ class ResourceInfoPage extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,

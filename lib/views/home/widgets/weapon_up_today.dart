@@ -29,7 +29,6 @@ class ListWeaponUpToday extends StatelessWidget {
                     Text(
                       "weapon".tr,
                       style: ThemeApp.textStyle(
-                        isDark: Get.isDarkMode,
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),

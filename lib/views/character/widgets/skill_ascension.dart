@@ -36,7 +36,7 @@ class SkillAscensionView extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               strokeAlign: 1,
-              // color: ThemeApp.colorText(isDark: Get.isDarkMode),
+              color: Get.theme.colorScheme.onSurface,
             ),
             // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
           ),
@@ -75,7 +75,6 @@ class _ItemCost extends StatelessWidget {
             child: Text(
               lv,
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -97,7 +96,7 @@ class _ItemCost extends StatelessWidget {
                           return resource == null
                               ? const SizedBox()
                               : ItemGame(
-                                  size: Get.width * 0.18,
+                                  size: Get.width * 0.16,
                                   title: e.count.toString(),
                                   linkImage: Config.urlImage(
                                       resource.images?.nameicon),

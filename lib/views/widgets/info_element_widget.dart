@@ -22,11 +22,11 @@ class InfoElementWidget extends StatelessWidget {
             child: Text(
               "${"element".tr}: ",
               style: ThemeApp.textStyle(
-                isDark: Get.isDarkMode,
-                // color: ThemeApp.colorTextSecond(
-                //   isDark: Get.isDarkMode,
-                // ),
-              ),
+
+                  // color: ThemeApp.colorTextSecond(
+                  //
+                  // ),
+                  ),
             ),
           ),
           Expanded(
@@ -36,7 +36,6 @@ class InfoElementWidget extends StatelessWidget {
                     'especially'.tr,
                     textAlign: TextAlign.center,
                     style: ThemeApp.textStyle(
-                      isDark: Get.isDarkMode,
                       fontWeight: FontWeight.bold,
                       color: Colors.amber[700],
                     ),

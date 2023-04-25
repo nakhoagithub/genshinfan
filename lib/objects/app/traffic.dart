@@ -2,11 +2,13 @@ class Traffic {
   dynamic totalTraffic;
   dynamic trafficInDay;
   dynamic trafficInMonth;
+  dynamic online;
 
   Traffic({
-    required this.totalTraffic,
-    required this.trafficInDay,
-    required this.trafficInMonth,
+    this.totalTraffic,
+    this.trafficInDay,
+    this.trafficInMonth,
+    this.online,
   });
 
   factory Traffic.fromJson(Map<dynamic, dynamic> json) {
@@ -14,6 +16,7 @@ class Traffic {
       totalTraffic: json['totalTraffic'],
       trafficInDay: json['trafficInDay'],
       trafficInMonth: json['trafficInMonth'],
+      online: json['online'],
     );
   }
 
@@ -22,6 +25,7 @@ class Traffic {
       "totalTraffic": totalTraffic,
       "trafficInDay": trafficInDay,
       "trafficInMonth": trafficInMonth,
+      "online": online,
     };
   }
 }

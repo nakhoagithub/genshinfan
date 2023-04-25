@@ -20,7 +20,7 @@ class CharacterInfoPage extends StatelessWidget {
     CharacterController characterController = Get.find<CharacterController>();
     return Obx(() {
       return Scaffold(
-        // backgroundColor: ThemeApp.colorCard(isDark: Get.isDarkMode),
+        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
           leading: const BackButtonApp(),
           centerTitle: true,
@@ -36,7 +36,7 @@ class CharacterInfoPage extends StatelessWidget {
                   Fluttertoast.showToast(msg: "choose_character".tr);
                 }
               },
-              icon: const Icon(Icons.build_circle_outlined),
+              icon: const Icon(Icons.keyboard_arrow_right_rounded),
             )
           ],
         ),
