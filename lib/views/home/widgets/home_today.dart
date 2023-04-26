@@ -4,7 +4,6 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/home/widgets/character_up_today.dart';
 import 'package:genshinfan/views/home/widgets/weapon_up_today.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
-import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:genshinfan/views/home/widgets/character_birthday_in_month.dart';
 import 'package:genshinfan/views/home/widgets/domain_today.dart';
 import 'package:get/get.dart';
@@ -23,9 +22,16 @@ class HomeToday extends StatelessWidget {
           margin: const EdgeInsets.all(4),
           child: Row(
             children: [
-              TextCSS(
-                "<b>${"today".tr}</b>: <b><orange>${"day${homeController.today}".tr}</orange></b>",
+              Text(
+                "${"today".tr}: ",
                 style: ThemeApp.textStyle(fontSize: 18),
+              ),
+              Text(
+                "day${homeController.today}".tr,
+                style: ThemeApp.textStyle(
+                    fontSize: 18,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 5),

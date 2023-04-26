@@ -245,8 +245,9 @@ const Map<String, String> en = {
   "polearm": "Polearm",
 
   // region
-  "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
+   "mondstadt": "Mondstadt",
   "sumeru": "Sumeru",
+  "inazuma": "Inazuma",
+  "liyue": "Liyue",
+  "snezhnaya": "Snezhnaya",
 };

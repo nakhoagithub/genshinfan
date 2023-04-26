@@ -178,19 +178,19 @@ const Map<String, String> id = {
   "online": "On line",
 
   "note_home":
-      "This is a Beta version, a test version of Genshin Fan before being officially released. In this version, new features are added and bugs are fixed, however, the product is still incomplete and may encounter minor bugs and problems.\nYour contribution in language translation in the Beta version is very important to help improve the quality of the product. You can help by providing feedback on terms and language structures in the product. This makes the product easier to use for users and also makes it easier for users in different countries and regions to use the product. In addition to the contribution of the application language, I also look forward to your contribution on how to build the character. You can go to <b>Settings</b> to contribute.\nI look forward to receiving your input to improve the product and ensure that it is used to its fullest potential. I will continue to update the Beta version and listen to your feedback to ensure that the final product will best meet your needs.",
+      "Ini adalah versi Beta, versi uji coba Genshin Fan sebelum dirilis secara resmi. Dalam versi ini, fitur baru ditambahkan dan bug diperbaiki, namun produk masih belum lengkap dan mungkin mengalami bug dan masalah kecil.\nKontribusi Anda dalam terjemahan bahasa dalam versi Beta sangat penting untuk membantu meningkatkan kualitas produk. Anda dapat membantu dengan memberikan umpan balik tentang istilah dan struktur bahasa dalam produk. Ini membuat produk lebih mudah digunakan oleh pengguna dan juga memudahkan pengguna di berbagai negara dan wilayah untuk menggunakan produk. Selain kontribusi bahasa aplikasi, saya juga mengharapkan kontribusi Anda tentang bagaimana membangun karakter. Anda dapat membuka <b>Setelan</b> untuk berkontribusi. \nSaya berharap dapat menerima masukan Anda untuk meningkatkan produk dan memastikannya digunakan secara maksimal. Saya akan terus memperbarui versi Beta dan mendengarkan umpan balik Anda untuk memastikan bahwa produk akhir akan memenuhi kebutuhan Anda dengan sebaik-baiknya.",
 
   // date
-  "day1": "Monday",
-  "day2": "Tuesday",
-  "day3": "Wednesday",
-  "day4": "Thursday",
-  "day5": "Friday",
-  "day6": "Saturday",
-  "day7": "Sunday",
+  "day1": "Senin",
+  "day2": "Selasa",
+  "day3": "Rabu",
+  "day4": "Kamis",
+  "day5": "Jumat",
+  "day6": "Sabtu",
+  "day7": "Minggu",
 
   // game
-  "FIGHT_PROP_ATTACK_PERCENT": "Attack (%)",
+  "FIGHT_PROP_ATTACK_PERCENT": "ATK (%)",
   "FIGHT_PROP_ROCK_ADD_HURT": "Geo DMG Bonus (%)",
   "FIGHT_PROP_ICE_ADD_HURT": "Cryo DMG Bonus (%)",
   "FIGHT_PROP_ELEC_ADD_HURT": "Electro DMG Bonus (%)",
@@ -208,7 +208,7 @@ const Map<String, String> id = {
   "FIGHT_PROP_CRITICAL_HURT": "CRIT DMG (%)",
 
   // các loại chỉ số
-  "attack": "Attack",
+  "attack": "ATK",
   "hp": "HP",
   "def": "Defense",
   "energy_recharge": "Energy Recharge",
@@ -227,7 +227,7 @@ const Map<String, String> id = {
   "pyro": "Pyro",
   "hydro": "Hydro",
   "cryo": "Cryo",
-  "none": "None",
+  "none": "Tidak ada",
 
   "e_anemo": "Anemo",
   "e_geo": "Geo",
@@ -246,7 +246,8 @@ const Map<String, String> id = {
 
   // region
   "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
   "sumeru": "Sumeru",
+  "inazuma": "Inazuma",
+  "liyue": "Liyue",
+  "snezhnaya": "Snezhnaya",
 };

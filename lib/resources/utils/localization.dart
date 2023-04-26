@@ -1,8 +1,17 @@
 import 'dart:ui';
 
 import 'package:genshinfan/objects/app/language.dart';
+import 'package:genshinfan/resources/langs/de_de.dart';
 import 'package:genshinfan/resources/langs/en_us.dart';
+import 'package:genshinfan/resources/langs/es_es.dart';
 import 'package:genshinfan/resources/langs/fr_fr.dart';
+import 'package:genshinfan/resources/langs/id_id.dart';
+import 'package:genshinfan/resources/langs/it_it.dart';
+import 'package:genshinfan/resources/langs/ja_jp.dart';
+import 'package:genshinfan/resources/langs/ko_kr.dart';
+import 'package:genshinfan/resources/langs/pt_br.dart';
+import 'package:genshinfan/resources/langs/ru_ru.dart';
+import 'package:genshinfan/resources/langs/th_th.dart';
 import 'package:genshinfan/resources/langs/tr_tr.dart';
 import 'package:genshinfan/resources/langs/vi_vn.dart';
 import 'package:genshinfan/resources/langs/zh_cn.dart';
@@ -21,7 +30,16 @@ class Localization extends Translations {
     Locale('zh', 'CN'),
     Locale('zh', 'TW'),
     Locale('fr', 'FR'),
-    Locale('tr', 'TR')
+    Locale('tr', 'TR'),
+    Locale('de', 'DE'),
+    Locale("es", 'ES'),
+    Locale("id", 'ID'),
+    Locale("it", 'IT'),
+    Locale('ja', 'JP'),
+    Locale("ko", 'KR'),
+    Locale("pt", 'BR'),
+    Locale("ru", 'RU'),
+    Locale("th", 'TH'),
   ];
 
   static Language getLanguageFromCode(Locale? locale) {
@@ -31,6 +49,15 @@ class Localization extends Translations {
     if (locale == const Locale('zh', 'TW')) return chineseTraditional;
     if (locale == const Locale('fr', 'FR')) return french;
     if (locale == const Locale('tr', 'TR')) return turkish; 
+    if (locale == const Locale('de', 'DE')) return german; 
+    if (locale == const Locale('es', 'ES')) return spanish; 
+    if (locale == const Locale('id', 'ID')) return indonesian; 
+    if (locale == const Locale('it', 'IT')) return italian; 
+    if (locale == const Locale('ja', 'JP')) return japanese; 
+    if (locale == const Locale("ko", 'KR')) return korean; 
+    if (locale == const Locale("pt", 'BR')) return portuguese;
+    if (locale == const Locale("ru", 'RU')) return russian; 
+    if (locale == const Locale("th", 'TH')) return thai; 
     return english;
   }
 
@@ -39,10 +66,19 @@ class Localization extends Translations {
   static List<String> listLanguageView = [
     'English',
     'Tiếng Việt',
-    '简体中文',
-    '中國傳統的',
+    '中文(简体)',
+    '中文(繁體)',
     'Français',
     'Türkçe',
+    'Deutsch',
+    'Español',
+    'Indonesia',
+    'Italiano',
+    '日本語',
+    '한국인',
+    'Português',
+    'Русский',
+    'ภาษาไทย',
   ];
 
   static Future<void> changeLocale(
@@ -60,6 +96,15 @@ class Localization extends Translations {
         'zh_TW': zhTW,
         'fr_FR': fr,
         'tr_TR': tr,
+        'de_DE': de,
+        'es_ES': es,
+        'id_ID': id,
+        'it_IT': it,
+        'ja_JP': ja,
+        'ko_KR': ko,
+        'pt_BR': pt,
+        'ru_RU': ru,
+        'th_TH': th,
       };
 
   static Locale _getLocaleFromLanguage(

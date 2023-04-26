@@ -12,7 +12,7 @@ class DialogLanguage extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     return Container(
-      height: 300,
+      height: Get.height * 0.8,
       width: double.infinity,
       color: Get.theme.colorScheme.background,
       padding: const EdgeInsets.all(10),

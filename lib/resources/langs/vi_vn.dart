@@ -187,18 +187,6 @@ const Map<String, String> vi = {
   "day5": "Thứ 6",
   "day6": "Thứ 7",
   "day7": "Chủ Nhật",
-  "month1": "Tháng 1",
-  "month2": "Tháng 2",
-  "month3": "Tháng 3",
-  "month4": "Tháng 4",
-  "month5": "Tháng 5",
-  "month6": "Tháng 6",
-  "month7": "Tháng 7",
-  "month8": "Tháng 8",
-  "month9": "Tháng 9",
-  "month10": "Tháng 10",
-  "month11": "Tháng 11",
-  "month12": "Tháng 12",
 
   // game
   "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
@@ -257,7 +245,8 @@ const Map<String, String> vi = {
 
   // region
   "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
   "sumeru": "Sumeru",
+  "inazuma": "Inazuma",
+  "liyue": "Liyue",
+  "snezhnaya": "Snezhnaya",
 };

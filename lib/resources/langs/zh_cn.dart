@@ -77,8 +77,7 @@ const Map<String, String> zhCN = {
   "monster": "怪物",
   "specialname": "特殊名称",
   "notification": "通知",
-  "notification_change_language":
-      "更改语言后，应用程序将重新启动以您选择的语言加载数据.",
+  "notification_change_language": "更改语言后，应用程序将重新启动以您选择的语言加载数据.",
   "cancel": "取消",
   "ok": "同意",
   "double_click_exit": "再按一次退出",
@@ -93,8 +92,7 @@ const Map<String, String> zhCN = {
   "character_up_today": "角色可以在白天找到升级材料.",
   "weapon_up_today": "武器可以在白天找到升级材料.",
   "genshin_map": "Genshin Map",
-  "notification_open_genshin_map":
-      "您要在浏览器中打开 <b>Genshin Map</b> 吗?",
+  "notification_open_genshin_map": "您要在浏览器中打开 <b>Genshin Map</b> 吗?",
   "update": "更新",
   "check_update": "检查数据更新.",
   "description_update_setting": "检查并更新应用程序的数据.",
@@ -140,8 +138,7 @@ const Map<String, String> zhCN = {
   "permission": "允许",
   "permission_denied": "没有权限",
   "error": "错误",
-  "note_contribute_character_building":
-      "这些贡献的数据将由版主审查和批准.",
+  "note_contribute_character_building": "这些贡献的数据将由版主审查和批准.",
   "timeout_exception": "超时异常",
   "reset": "重置",
   "filter_character": "过滤字符",
@@ -250,7 +247,8 @@ const Map<String, String> zhCN = {
 
   // region
   "mondstadt": "蒙德",
-  "liyue": "璃月",
-  "inazuma": "稻妻",
   "sumeru": "须弥",
+  "inazuma": "稻妻",
+  "liyue": "璃月",
+  "snezhnaya": "至冬",
 };

@@ -137,7 +137,7 @@ class AppService {
 
       GetStorage box = GetStorage();
       int length = box.read(Config.storageDataContentLength) ?? 0;
-      log("$size $length", name: "Update");
+      log("$size $length", name: "checkUpdateData");
       if (size == length || size == null) {
         return [false, json];
       } else {

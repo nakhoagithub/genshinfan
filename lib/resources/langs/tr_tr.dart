@@ -250,8 +250,9 @@ const Map<String, String> tr = {
   "polearm": "Mızrak",
 
   // region
-  "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
+   "mondstadt": "Mondstadt",
   "sumeru": "Sumeru",
+  "inazuma": "Inazuma",
+  "liyue": "Liyue",
+  "snezhnaya": "Snezhnaya",
 };

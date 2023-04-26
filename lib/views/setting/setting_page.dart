@@ -68,6 +68,7 @@ class SettingPage extends StatelessWidget {
                 Get.bottomSheet(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   const DialogLanguage(),
+                  isScrollControlled: true,
                 );
               },
             ),

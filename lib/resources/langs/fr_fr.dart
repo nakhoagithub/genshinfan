@@ -252,7 +252,8 @@ const Map<String, String> fr = {
 
   // region
   "mondstadt": "Mondstadt",
-  "liyue": "Liyue",
-  "inazuma": "Inazuma",
   "sumeru": "Sumeru",
+  "inazuma": "Inazuma",
+  "liyue": "Liyue",
+  "snezhnaya": "Snezhnaya",
 };
