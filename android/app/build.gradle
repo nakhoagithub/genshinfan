@@ -48,8 +48,8 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 8
-        versionName "v1.3.3"
+        versionCode 9
+        versionName "v1.3.4"
         ndk {
             debugSymbolLevel 'SYMBOL_TABLE'
         }
