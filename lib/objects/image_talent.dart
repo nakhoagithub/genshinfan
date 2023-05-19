@@ -7,6 +7,7 @@ class ImageTalent {
     required this.passive1,
     required this.passive2,
     this.passive3,
+    this.passive4,
   });
 
   String combat1;
@@ -16,6 +17,7 @@ class ImageTalent {
   String passive1;
   String passive2;
   String? passive3;
+  String? passive4;
 
   factory ImageTalent.fromJson(Map<String, dynamic> json) => ImageTalent(
         combat1: json["combat1"],
@@ -25,6 +27,7 @@ class ImageTalent {
         passive1: json["passive1"],
         passive2: json["passive2"],
         passive3: json["passive3"],
+        passive4: json["passive4"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,5 +38,6 @@ class ImageTalent {
         "passive1": passive1,
         "passive2": passive2,
         "passive3": passive3,
+        "passive4": passive4,
       };
 }

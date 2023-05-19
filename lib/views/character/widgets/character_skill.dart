@@ -133,6 +133,14 @@ class _SkillViewAndConstellation extends StatelessWidget {
                       element: element,
                     ),
 
+              talent!.passive4 == null
+                  ? const SizedBox()
+                  : _Passive(
+                      passive: talent!.passive4!,
+                      imageTalent: talent?.imageTalent?.passive4,
+                      element: element,
+                    ),
+
               TitleOfContent(
                 title: "constellation".tr,
               ),
