@@ -1,3 +1,4 @@
+import 'package:genshinfan/objects/items.dart';
 import 'package:get/get.dart';
 
 class StatWeapon {
@@ -26,71 +27,82 @@ List<int> levels = [
 
 class Weapon {
   Weapon({
-    this.id,
+    this.key,
+    required this.id,
     required this.name,
     this.dupealias,
     required this.description,
-    required this.weapontype,
+    required this.descriptionRaw,
+    required this.weaponType,
+    required this.weaponText,
     required this.rarity,
     required this.story,
-    required this.baseatk,
-    required this.substat,
-    required this.subvalue,
-    required this.effectname,
-    required this.effect,
-    required this.r1,
-    required this.r2,
-    required this.r3,
-    required this.r4,
-    required this.r5,
-    required this.weaponmaterialtype,
+    required this.baseAtkValue,
+    required this.mainStatType,
+    required this.mainStatText,
+    required this.baseStatText,
+    this.effectName,
+    this.effectTemplateRaw,
+    this.r1,
+    this.r2,
+    this.r3,
+    this.r4,
+    this.r5,
     required this.costs,
     this.images,
     this.stats,
     this.specialized,
+    this.version,
   });
 
-  String? id;
-  String name;
-  String? dupealias;
-  String description;
-  String weapontype;
-  String rarity;
-  String story;
-  int baseatk;
-  String substat;
-  String subvalue;
-  String effectname;
-  String effect;
-  List<String> r1;
-  List<String> r2;
-  List<String> r3;
-  List<String> r4;
-  List<String> r5;
-  String weaponmaterialtype;
-  Costs? costs;
+  String? key;
+  final int id;
+  final String name;
+  final String? dupealias;
+  final String description;
+  final String descriptionRaw;
+  final String weaponType;
+  final String weaponText;
+  final int rarity;
+  final String story;
+  final double baseAtkValue;
+  final String? mainStatType;
+  final String? mainStatText;
+  final String? baseStatText;
+  final String? effectName;
+  final String? effectTemplateRaw;
+  final WeaponRefine? r1;
+  final WeaponRefine? r2;
+  final WeaponRefine? r3;
+  final WeaponRefine? r4;
+  final WeaponRefine? r5;
+  final Costs? costs;
   ImageWeapon? images;
   List<Stat>? stats;
   String? specialized;
+  String? version;
 
   factory Weapon.fromJson(Map<String, dynamic> json) => Weapon(
+        key: json['key'],
         id: json['id'],
         name: json["name"],
         description: json["description"],
-        weapontype: json["weapontype"],
+        descriptionRaw: json['descriptionRaw'],
+        weaponType: json["weaponType"],
+        weaponText: json["weaponText"],
         rarity: json["rarity"],
         story: json['story'],
-        baseatk: json["baseatk"],
-        substat: json["substat"],
-        subvalue: json["subvalue"],
-        effectname: json["effectname"],
-        effect: json["effect"],
-        r1: List<String>.from(json["r1"].map((x) => x)),
-        r2: List<String>.from(json["r2"].map((x) => x)),
-        r3: List<String>.from(json["r3"].map((x) => x)),
-        r4: List<String>.from(json["r4"].map((x) => x)),
-        r5: List<String>.from(json["r5"].map((x) => x)),
-        weaponmaterialtype: json["weaponmaterialtype"],
+        baseAtkValue: json["baseAtkValue"],
+        mainStatType: json["mainStatType"],
+        mainStatText: json["mainStatText"],
+        baseStatText: json["baseStatText"],
+        effectName: json["effectName"],
+        effectTemplateRaw: json["effectTemplateRaw"],
+        r1: json['r1'] == null ? null : WeaponRefine.fromJson(json['r1']),
+        r2: json['r2'] == null ? null : WeaponRefine.fromJson(json['r2']),
+        r3: json['r3'] == null ? null : WeaponRefine.fromJson(json['r3']),
+        r4: json['r4'] == null ? null : WeaponRefine.fromJson(json['r4']),
+        r5: json['r5'] == null ? null : WeaponRefine.fromJson(json['r5']),
         costs: json["costs"] == null ? null : Costs.fromJson(json["costs"]),
         images: json["images"] == null
             ? null
@@ -99,32 +111,37 @@ class Weapon {
             ? null
             : List<Stat>.from(json["stats"].map((x) => Stat.fromJson(x))),
         specialized: json['specialized'],
+        version: json['version'],
       );
 
   Map<String, dynamic> toJson() => {
+        "key": key,
         "id": id,
         "name": name,
         "description": description,
-        "weapontype": weapontype,
+        "descriptionRaw": descriptionRaw,
+        "weaponType": weaponType,
+        "weaponText": weaponText,
         "rarity": rarity,
         "story": story,
-        "baseatk": baseatk,
-        "substat": substat,
-        "subvalue": subvalue,
-        "effectname": effectname,
-        "effect": effect,
-        "r1": List<dynamic>.from(r1.map((x) => x)),
-        "r2": List<dynamic>.from(r2.map((x) => x)),
-        "r3": List<dynamic>.from(r3.map((x) => x)),
-        "r4": List<dynamic>.from(r4.map((x) => x)),
-        "r5": List<dynamic>.from(r5.map((x) => x)),
-        "weaponmaterialtype": weaponmaterialtype,
+        "baseAtkValue": baseAtkValue,
+        "mainStatType": mainStatType,
+        "mainStatText": mainStatText,
+        "baseStatText": baseStatText,
+        "effectName": effectName,
+        "effectTemplateRaw": effectTemplateRaw,
+        "r1": r1?.toJson(),
+        "r2": r2?.toJson(),
+        "r3": r3?.toJson(),
+        "r4": r4?.toJson(),
+        "r5": r5?.toJson(),
         "costs": costs?.toJson(),
         "images": images?.toJson(),
         "stats": stats == null
             ? null
             : List<dynamic>.from(stats!.map((x) => x.toJson())),
         "specialized": specialized,
+        "version": version,
       };
 
   void setImage(dynamic json) {
@@ -178,6 +195,25 @@ class Weapon {
   }
 }
 
+class WeaponRefine {
+  final String description;
+  final List<String> values;
+  const WeaponRefine({
+    required this.description,
+    required this.values,
+  });
+
+  factory WeaponRefine.fromJson(Map<String, dynamic> json) => WeaponRefine(
+        description: json["description"],
+        values: List<String>.from(json["values"].map((x) => x)),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "description": description,
+        "values": List<dynamic>.from(values.map((x) => x)),
+      };
+}
+
 class Costs {
   Costs({
     required this.ascend1,
@@ -188,30 +224,28 @@ class Costs {
     this.ascend6,
   });
 
-  List<AscendWeapon> ascend1;
-  List<AscendWeapon> ascend2;
-  List<AscendWeapon> ascend3;
-  List<AscendWeapon> ascend4;
-  List<AscendWeapon>? ascend5;
-  List<AscendWeapon>? ascend6;
+  List<Items> ascend1;
+  List<Items> ascend2;
+  List<Items> ascend3;
+  List<Items> ascend4;
+  List<Items>? ascend5;
+  List<Items>? ascend6;
 
   factory Costs.fromJson(Map<String, dynamic> json) => Costs(
-        ascend1: List<AscendWeapon>.from(
-            json["ascend1"].map((x) => AscendWeapon.fromJson(x))),
-        ascend2: List<AscendWeapon>.from(
-            json["ascend2"].map((x) => AscendWeapon.fromJson(x))),
-        ascend3: List<AscendWeapon>.from(
-            json["ascend3"].map((x) => AscendWeapon.fromJson(x))),
-        ascend4: List<AscendWeapon>.from(
-            json["ascend4"].map((x) => AscendWeapon.fromJson(x))),
+        ascend1:
+            List<Items>.from(json["ascend1"].map((x) => Items.fromJson(x))),
+        ascend2:
+            List<Items>.from(json["ascend2"].map((x) => Items.fromJson(x))),
+        ascend3:
+            List<Items>.from(json["ascend3"].map((x) => Items.fromJson(x))),
+        ascend4:
+            List<Items>.from(json["ascend4"].map((x) => Items.fromJson(x))),
         ascend5: json["ascend5"] == null
             ? null
-            : List<AscendWeapon>.from(
-                json["ascend5"].map((x) => AscendWeapon.fromJson(x))),
+            : List<Items>.from(json["ascend5"].map((x) => Items.fromJson(x))),
         ascend6: json["ascend6"] == null
             ? null
-            : List<AscendWeapon>.from(
-                json["ascend6"].map((x) => AscendWeapon.fromJson(x))),
+            : List<Items>.from(json["ascend6"].map((x) => Items.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -228,59 +262,35 @@ class Costs {
       };
 }
 
-class AscendWeapon {
-  AscendWeapon({
-    required this.name,
-    required this.count,
-  });
-
-  String? name;
-  int? count;
-
-  factory AscendWeapon.fromJson(Map<String, dynamic> json) => AscendWeapon(
-        name: json["name"],
-        count: json["count"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "count": count,
-      };
-}
-
 class ImageWeapon {
-  String nameicon;
-  String namegacha;
-  String nameawakenicon;
-  String? image;
-  String? icon;
-  String? awakenicon;
+  final String filenameIcon;
+  final String filenameAwakenIcon;
+  final String filenameGacha;
+  final String? mihoyoIcon;
+  final String? mihoyoAwakenIcon;
 
   ImageWeapon({
-    required this.nameicon,
-    required this.namegacha,
-    required this.nameawakenicon,
-    this.image,
-    this.icon,
-    this.awakenicon,
+    required this.filenameIcon,
+    required this.filenameAwakenIcon,
+    required this.filenameGacha,
+    this.mihoyoIcon,
+    this.mihoyoAwakenIcon,
   });
 
   factory ImageWeapon.fromJson(Map<String, dynamic> json) => ImageWeapon(
-        nameicon: json["nameicon"],
-        namegacha: json["namegacha"],
-        nameawakenicon: json["nameawakenicon"],
-        image: json["image"],
-        icon: json["icon"],
-        awakenicon: json["awakenicon"],
+        filenameIcon: json["filename_icon"],
+        filenameAwakenIcon: json["filename_awakenIcon"],
+        filenameGacha: json["filename_gacha"],
+        mihoyoIcon: json["mihoyo_icon"],
+        mihoyoAwakenIcon: json["mihoyo_awakenIcon"],
       );
 
   Map<String, dynamic> toJson() => {
-        "nameicon": nameicon,
-        "namegacha": namegacha,
-        "nameawakenicon": nameawakenicon,
-        "image": image,
-        "icon": icon,
-        "awakenicon": awakenicon,
+        "filename_icon": filenameIcon,
+        "filename_awakenIcon": filenameAwakenIcon,
+        "filename_gacha": filenameGacha,
+        "mihoyo_icon": mihoyoIcon,
+        "mihoyo_awakenIcon": mihoyoAwakenIcon,
       };
 }
 

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/domain.dart';
+import 'package:genshinfan/objects/items.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -25,7 +26,7 @@ class WeaponService {
     dynamic curveWeapon = curve['weapons'];
     for (var k in jsonData.keys) {
       Weapon obj = Weapon.fromJson(jsonData[k]);
-      obj.id = k;
+      obj.key = k;
       // hình ảnh
       obj.setImage(img[k]);
       obj.setStat(statWeapon[k], curveWeapon);
@@ -41,9 +42,10 @@ class WeaponService {
     if (directory != null) {
       File file = File("${directory.path}/$language/weapons.json");
       String json = await file.readAsString();
+
+      List<dynamic> dataDecode = jsonDecode(json);
       List<Weapon> weapons =
-          List<Weapon>.from(jsonDecode(json).map((e) => Weapon.fromJson(e)))
-              .toList();
+          List<Weapon>.from(dataDecode.map((e) => Weapon.fromJson(e))).toList();
       return weapons;
     }
     return null;
@@ -68,7 +70,7 @@ class WeaponService {
     }
     List<Weapon> weaponUpToday = weapons.where((element) {
       if (element.costs != null) {
-        List<AscendWeapon> ascendAll = [];
+        List<Items> ascendAll = [];
         ascendAll.addAll(element.costs!.ascend1);
         ascendAll.addAll(element.costs!.ascend2);
         ascendAll.addAll(element.costs!.ascend3);

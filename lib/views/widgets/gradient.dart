@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class GradientApp {
-
   static Gradient getBackgroundRarity(String? rarity) {
     LinearGradient gradient = GradientApp.bg1sGradient();
     switch (rarity) {

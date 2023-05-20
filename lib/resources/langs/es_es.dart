@@ -191,24 +191,6 @@ const Map<String, String> es = {
   "day6": "Sábado",
   "day7": "Domingo",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "ATQ (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "Bono de Daño Geo (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "Bono de Daño Cryo (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "Bono de Daño Electro (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "Bono de Daño Pyro (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "Bono de Daño Hydro (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "Bono de Daño Anemo (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "Bono de Daño Dendro (%)",
-  "FIGHT_PROP_HEAL_ADD": "Bono de Curación (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "DEF (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "Bono de Daño Físico (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "Maestría Elemental",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "Recarga de Energía (%)",
-  "FIGHT_PROP_HP_PERCENT": "Vida (%)",
-  "FIGHT_PROP_CRITICAL": "Prob. CRIT (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "Daño CRIT (%)",
-
   // các loại chỉ số
   "attack": "ATQ",
   "hp": "Vida",

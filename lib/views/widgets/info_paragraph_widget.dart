@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
 class InfoParagraphWidget extends StatelessWidget {
@@ -21,17 +22,12 @@ class InfoParagraphWidget extends StatelessWidget {
           margin: const EdgeInsets.only(top: Config.marginText),
           child: Text(
             "${titleTranslate.tr}: ",
-            style: ThemeApp.textStyle(
-
-                // color: ThemeApp.colorTextSecond(
-                //
-                // ),
-                ),
+            style: ThemeApp.textStyle(),
           ),
         ),
         Container(
           padding: const EdgeInsets.all(2),
-          child: Text(
+          child: TextCSS(
             data,
             style: ThemeApp.textStyle(),
           ),

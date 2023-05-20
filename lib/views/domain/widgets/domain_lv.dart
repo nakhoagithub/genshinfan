@@ -7,7 +7,7 @@ import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/reward_preview.dart';
+import 'package:genshinfan/objects/reward.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -46,8 +46,7 @@ class _ItemDomain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Rewardpreview> dataRevert = domainLv.rewardpreview.reversed.toList();
-    double sizeItem = Config.sizeItem3;
+    List<Reward> dataRevert = domainLv.rewardpreview.reversed.toList();
     return Container(
       margin: const EdgeInsets.all(5),
       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -55,7 +54,6 @@ class _ItemDomain extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(),
         ),
       ),
       child: Container(
@@ -133,12 +131,7 @@ class _ItemDomain extends StatelessWidget {
               children: [
                 Text(
                   "${"recommendedlevel".tr}: ",
-                  style: ThemeApp.textStyle(
-
-                      // color: ThemeApp.colorTextSecond(
-                      //
-                      // ),
-                      ),
+                  style: ThemeApp.textStyle(),
                 ),
                 Text(
                   "${domainLv.recommendedlevel}",
@@ -152,12 +145,7 @@ class _ItemDomain extends StatelessWidget {
               children: [
                 Text(
                   "${"unlockrank".tr}: ",
-                  style: ThemeApp.textStyle(
-
-                      // color: ThemeApp.colorTextSecond(
-                      //
-                      // ),
-                      ),
+                  style: ThemeApp.textStyle(),
                 ),
                 Text(
                   "${domainLv.unlockrank}",
@@ -173,12 +161,7 @@ class _ItemDomain extends StatelessWidget {
                     children: [
                       Text(
                         "${"recommendedelements".tr}: ",
-                        style: ThemeApp.textStyle(
-
-                            // color: ThemeApp.colorTextSecond(
-                            //
-                            // ),
-                            ),
+                        style: ThemeApp.textStyle(),
                       ),
                       Expanded(
                         child: SingleChildScrollView(
@@ -204,12 +187,7 @@ class _ItemDomain extends StatelessWidget {
               children: [
                 Text(
                   "${"disorder".tr}: ",
-                  style: ThemeApp.textStyle(
-
-                      // color: ThemeApp.colorTextSecond(
-                      //
-                      // ),
-                      ),
+                  style: ThemeApp.textStyle(),
                 ),
                 ...domainLv.disorder.map(
                   (e) {
@@ -228,15 +206,10 @@ class _ItemDomain extends StatelessWidget {
               children: [
                 Text(
                   "${"reward".tr}: ",
-                  style: ThemeApp.textStyle(
-
-                      // color: ThemeApp.colorTextSecond(
-                      //
-                      // ),
-                      ),
+                  style: ThemeApp.textStyle(),
                 ),
                 SizedBox(
-                  height: 140,
+                  height: Get.width * 0.25,
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
@@ -248,27 +221,24 @@ class _ItemDomain extends StatelessWidget {
                       Artifact? artifact =
                           Tools.getArtifactFromName(dataRevert[index].name);
                       return Center(
-                        child: SizedBox(
-                          width: sizeItem,
-                          height: sizeItem * 1.215,
-                          child: ItemReward(
-                            resource: resource,
-                            artifact: artifact,
-                            rarity: dataRevert[index].rarity,
-                            name: dataRevert[index].name,
-                            onTap: () {
-                              if (resource != null) {
-                                Get.find<ResourceController>()
-                                    .selectResource(resource);
-                                Get.toNamed('/resource_info');
-                              } else if (artifact != null) {
-                                // xem thông tin thánh di vật
-                                Get.find<ArtifactController>()
-                                    .selectArtifact(artifact);
-                                Get.toNamed('/artifact_info');
-                              }
-                            },
-                          ),
+                        child: ItemReward(
+                          size: Get.width * 0.18,
+                          resource: resource,
+                          artifact: artifact,
+                          rarity: dataRevert[index].rarity,
+                          name: dataRevert[index].name,
+                          onTap: () {
+                            if (resource != null) {
+                              Get.find<ResourceController>()
+                                  .selectResource(resource);
+                              Get.toNamed('/resource_info');
+                            } else if (artifact != null) {
+                              // xem thông tin thánh di vật
+                              Get.find<ArtifactController>()
+                                  .selectArtifact(artifact);
+                              Get.toNamed('/artifact_info');
+                            }
+                          },
                         ),
                       );
                     },
@@ -278,47 +248,41 @@ class _ItemDomain extends StatelessWidget {
             ),
 
             // monster
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "${"monster".tr}: ",
-                  style: ThemeApp.textStyle(
-
-                      // color: ThemeApp.colorTextSecond(
-                      //
-                      // ),
+            domainLv.monsterlist == null
+                ? const SizedBox()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${"monster".tr}: ",
+                        style: ThemeApp.textStyle(),
                       ),
-                ),
-                SizedBox(
-                  height: 140,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemCount: domainLv.monsterlist.length,
-                    itemBuilder: (context, index) {
-                      Enemy? enemy =
-                          Tools.getEnemyFromName(domainLv.monsterlist[index]);
-                      return enemy == null
-                          ? const SizedBox()
-                          : Center(
-                              child: SizedBox(
-                                width: sizeItem,
-                                height: sizeItem * 1.215,
-                                child: ItemGame(
-                                  title: enemy.name,
-                                  linkImage:
-                                      Config.urlImage(enemy.images?.nameicon),
-                                  onTap: () {},
-                                ),
-                              ),
-                            );
-                    },
+                      SizedBox(
+                        height: Get.width * 0.25,
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: domainLv.monsterlist!.length,
+                          itemBuilder: (context, index) {
+                            Enemy? enemy = Tools.getEnemyFromName(
+                                domainLv.monsterlist![index]);
+                            return enemy == null
+                                ? const SizedBox()
+                                : Center(
+                                    child: ItemGame(
+                                      size: Get.width * 0.18,
+                                      title: enemy.name,
+                                      linkImage: Config.urlImage(
+                                          enemy.images?.nameicon),
+                                      onTap: () {},
+                                    ),
+                                  );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
           ],
         ),
       ),

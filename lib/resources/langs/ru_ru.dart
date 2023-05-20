@@ -191,25 +191,6 @@ const Map<String, String> ru = {
   "day5": "Пятница",
   "day6": "Суббота",
   "day7": "Воскресенье",
-
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "Сила атаки (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "Бонус Гео урона (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "Бонус Крио урона (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "Бонус Электро урона (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "Бонус Пиро урона (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "Бонус Гидро урона (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "Бонус Анемо урона (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "Бонус Дендро урона (%)",
-  "FIGHT_PROP_HEAL_ADD": "Бонус лечения (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "Защита (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "Бонус физ. урона (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "Мастерство стихий",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "Восст. энергии (%)",
-  "FIGHT_PROP_HP_PERCENT": "HP (%)",
-  "FIGHT_PROP_CRITICAL": "Шанс крит. попадания (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "Крит. урон (%)",
-
   // các loại chỉ số
   "attack": "Сила атаки",
   "hp": "HP",

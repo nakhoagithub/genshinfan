@@ -6,7 +6,6 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_element_widget.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
-import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
 import 'package:genshinfan/views/widgets/info_rarity_widget.dart';
 import 'package:genshinfan/views/widgets/info_weapon_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
@@ -26,13 +25,13 @@ class InformationCharacter extends StatelessWidget {
         child: Column(
           children: [
             _ImageCharacter(
-              linkImage: character.images?.icon,
-              rarity: character.rarity,
+              linkImage: character.images?.mihoyoIcon,
+              rarity: character.rarity.toString(),
               size: 150,
             ),
             Center(
               child: Text(
-                character.fullname,
+                character.fullname ?? character.name,
                 textAlign: TextAlign.center,
                 style: ThemeApp.textStyle(
                   fontSize: 32,
@@ -67,7 +66,7 @@ class InformationCharacter extends StatelessWidget {
 
 class _ImageCharacter extends StatelessWidget {
   final String? linkImage;
-  final String? rarity;
+  final String rarity;
   final double size;
   const _ImageCharacter({
     required this.linkImage,
@@ -130,16 +129,16 @@ class _InformationMore extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           // nguyên tố
-          InfoElementWidget(element: character.element),
+          InfoElementWidget(element: character.elementType),
           // vũ khí
-          InfoWeaponWidget(weapontype: character.weapontype),
+          InfoWeaponWidget(weaponType: character.weaponType),
 
           // độ hiếm
-          InfoRarityWidget(rarity: character.rarity),
+          InfoRarityWidget(rarity: character.rarity.toString()),
 
           // đột phá tăng
-          InfoTextColorWidget(
-              titleTranslate: "substat", data: character.substat),
+          InfoTextWidget(
+              titleTranslate: "substat", data: character.substatText),
 
           // giới tính
           InfoTextWidget(
@@ -150,14 +149,12 @@ class _InformationMore extends StatelessWidget {
           // Sinh nhật
           InfoTextWidget(
               titleTranslate: "birthday",
-              data: character.birthday == ""
-                  ? "travelerBirthday".tr
-                  : character.birthday),
+              data: character.birthday == "" ? "..." : character.birthday),
 
           // vùng
           character.region == ""
               ? const SizedBox()
-              : InfoTextColorWidget(
+              : InfoTextWidget(
                   titleTranslate: "region", data: character.region),
 
           // thuộc - nghề nghiệp
@@ -166,6 +163,14 @@ class _InformationMore extends StatelessWidget {
               : InfoTextWidget(
                   titleTranslate: "affiliation",
                   data: character.affiliation,
+                ),
+
+          // cung mệnh
+          character.constellation == ""
+              ? const SizedBox()
+              : InfoTextWidget(
+                  titleTranslate: "constellation",
+                  data: character.constellation,
                 ),
 
           // mô tả

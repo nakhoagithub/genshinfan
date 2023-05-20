@@ -6,7 +6,6 @@ import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_rarity_widget.dart';
-import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
 import '../../../objects/weapon.dart';
@@ -63,12 +62,12 @@ class _ImageWeapon extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient: GradientApp.getBackgroundRarity(weapon.rarity),
+          gradient: GradientApp.getBackgroundRarity(weapon.rarity.toString()),
         ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: CachedNetworkImage(
-          imageUrl:
-              weapon.images?.icon ?? Config.urlImage(weapon.images?.namegacha),
+          imageUrl: weapon.images?.mihoyoIcon ??
+              Config.urlImage(weapon.images?.filenameGacha),
           fit: BoxFit.cover,
           progressIndicatorBuilder: (context, url, progress) {
             return const Center(
@@ -111,24 +110,35 @@ class _InformationMore extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
+          // tấn công
+          InfoTextWidget(
+              titleTranslate: "attack",
+              data: weapon.baseAtkValue.toStringAsFixed(0)),
+
           // đột phá tăng
-          InfoTextWidget(titleTranslate: "attack", data: "${weapon.baseatk}"),
+          InfoTextWidget(
+              titleTranslate: "substat", data: weapon.mainStatText ?? "..."),
+
+          // chỉ số phụ
+          InfoTextWidget(
+            titleTranslate: weapon.mainStatText ?? "...",
+            data: weapon.baseStatText ?? "...",
+            translate: false,
+          ),
 
           // độ hiếm
-          InfoRarityWidget(rarity: weapon.rarity),
+          InfoRarityWidget(rarity: weapon.rarity.toString()),
 
           // loại
-          InfoTextWidget(titleTranslate: "type", data: weapon.weapontype),
-
-          // đột phá tăng
-          InfoTextColorWidget(titleTranslate: "substat", data: weapon.substat),
+          InfoTextWidget(titleTranslate: "type", data: weapon.weaponText),
 
           // tên hiệu
-          InfoTextWidget(titleTranslate: "effectname", data: weapon.effectname),
+          InfoTextWidget(
+              titleTranslate: "effectname", data: weapon.effectName ?? "..."),
 
           // mô tả
           InfoParagraphWidget(
-              titleTranslate: "description", data: weapon.description),
+              titleTranslate: "description", data: weapon.descriptionRaw),
         ],
       ),
     );

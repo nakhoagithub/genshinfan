@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/objects/items.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
@@ -84,7 +85,7 @@ class CharacterAscensionView extends StatelessWidget {
 class _ItemAscend extends StatelessWidget {
   final String rank;
   final String lv;
-  final List<AscendCharacter> ascends;
+  final List<Items> ascends;
   const _ItemAscend({
     required this.rank,
     required this.lv,
@@ -120,11 +121,11 @@ class _ItemAscend extends StatelessWidget {
             children: [
               ...ascends.map(
                 (e) {
-                  Resource? resource = Tools.getResourceFromName(e.name ?? "");
+                  Resource? resource = Tools.getResourceFromName(e.name);
                   return resource == null
                       ? const SizedBox()
                       : ItemGame(
-                          size: Get.width * 0.16,
+                          size: Get.width * 0.18,
                           title: e.count.toString(),
                           linkImage: Config.urlImage(resource.images?.nameicon),
                           rarity: resource.rarity,

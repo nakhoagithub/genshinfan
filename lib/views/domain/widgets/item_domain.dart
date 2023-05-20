@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/reward_preview.dart';
+import 'package:genshinfan/objects/reward.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -24,7 +24,7 @@ class ItemDomain extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     double sizeItem = Config.sizeItem2;
-    List<Rewardpreview> dataRevert = domain
+    List<Reward> dataRevert = domain
         .domainLvs![domain.domainLvs!.length - 1].rewardpreview.reversed
         .toList();
     return InkWell(
@@ -83,7 +83,7 @@ class ItemDomain extends StatelessWidget {
 }
 
 class _ItemReward extends StatelessWidget {
-  final Rewardpreview reward;
+  final Reward reward;
   const _ItemReward({
     required this.reward,
   });

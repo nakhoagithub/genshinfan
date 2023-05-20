@@ -187,24 +187,6 @@ const Map<String, String> zhTW = {
   "day6": "週六",
   "day7": "週日",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "攻擊力 (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "岩元素傷害加成 (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "冰元素傷害加成 (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "雷元素傷害加成 (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "火元素傷害加成 (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "水元素傷害加成 (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "風元素傷害加成 (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "草元素傷害加成 (%)",
-  "FIGHT_PROP_HEAL_ADD": "治療加成 (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "防禦力 (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "物理傷害加成 (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "元素精通",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "元素充能效率 (%)",
-  "FIGHT_PROP_HP_PERCENT": "生命值 (%)",
-  "FIGHT_PROP_CRITICAL": "暴擊率 (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "暴擊傷害 (%)",
-
   // các loại chỉ số
   "attack": "攻擊力",
   "hp": "生命值",

@@ -73,7 +73,6 @@ class SettingController extends GetxController {
   void updateData() {
     dialogConfirm("notification".tr, "check_update".tr, () async {
       dialogProgress("checking".tr);
-      await Future.delayed(const Duration(milliseconds: 500));
       List<Object?> result = await AppService().checkUpdateData();
       Get.back();
       if (result[0] as bool) {

@@ -21,12 +21,7 @@ class InfoElementWidget extends StatelessWidget {
             flex: 2,
             child: Text(
               "${"element".tr}: ",
-              style: ThemeApp.textStyle(
-
-                  // color: ThemeApp.colorTextSecond(
-                  //
-                  // ),
-                  ),
+              style: ThemeApp.textStyle(),
             ),
           ),
           Expanded(

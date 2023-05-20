@@ -72,8 +72,9 @@ class CharacterFilterController extends GetxController {
     characters.clear();
     characters.addAll(Get.find<AppController>().characters);
     characters.removeWhere((element) =>
-        !elements.contains(Tools.getEnglishElementFromName(element.element)) &&
-        element.element != "none".tr);
+        !elements
+            .contains(element.elementType) &&
+        element.elementType != "none".tr);
 
     // lọc theo vũ khí
     List<String> weapons = List.generate(checkWeaponFilters.length, (index) {
@@ -82,8 +83,7 @@ class CharacterFilterController extends GetxController {
       }
       return "None";
     });
-    characters.removeWhere((element) =>
-        !weapons.contains(Tools.getEnglishWeaponType(element.weapontype)));
+    characters.removeWhere((element) => !weapons.contains(element.weaponType));
 
     // lọc theo rarity
     List<bool> rarities = List.generate(
@@ -91,9 +91,9 @@ class CharacterFilterController extends GetxController {
     rarities.removeWhere((element) => element == false);
     characters.removeWhere((element) {
       if (oneRarity.value) {
-        return element.rarity != rarities.length.toString();
+        return element.rarity != rarities.length;
       } else {
-        return int.parse(element.rarity) > rarities.length;
+        return element.rarity > rarities.length;
       }
     });
 

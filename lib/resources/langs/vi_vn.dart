@@ -188,24 +188,6 @@ const Map<String, String> vi = {
   "day6": "Thứ 7",
   "day7": "Chủ Nhật",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "Tấn Công (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "Tăng ST Nguyên Tố Nham (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "Tăng ST Nguyên Tố Băng (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "Tăng ST Nguyên Tố Lôi (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "Tăng ST Nguyên Tố Hỏa (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "Tăng ST Nguyên Tố Thủy (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "Tăng ST Nguyên Tố Phong (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "Tăng ST Nguyên Tố Thảo (%)",
-  "FIGHT_PROP_HEAL_ADD": "Tăng Trị Liệu (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "Phòng Ngự (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "Tăng ST Vật Lý (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "Tinh Thông Nguyên Tố",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "Hiệu Quả Nạp Nguyên Tố (%)",
-  "FIGHT_PROP_HP_PERCENT": "HP (%)",
-  "FIGHT_PROP_CRITICAL": "Tỉ lệ Bạo Kích (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "ST Bạo Kích (%)",
-
   // các loại chỉ số
   "attack": "Tấn công",
   "hp": "HP",

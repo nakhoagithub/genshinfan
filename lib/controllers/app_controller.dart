@@ -62,7 +62,7 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return a.name.compareTo(b.name);
+          return a.id.compareTo(b.id);
         },
       );
 
@@ -74,8 +74,7 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return Tools.removeDiacritics(a.name)
-              .compareTo(Tools.removeDiacritics(b.name));
+          return a.id.compareTo(b.id);
         },
       );
 
@@ -181,8 +180,8 @@ class AppController extends GetxController {
 class AppBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(CharacterController());
     Get.put(ResourceController());
+    Get.put(CharacterController());
     Get.put(WeaponController());
     Get.put(ArtifactController());
     Get.put(DomainController());

@@ -15,19 +15,19 @@ class Image {
     this.namesideicon,
   });
 
-  String? card;
-  String? portrait;
-  String? icon;
-  String? sideicon;
-  String? cover1;
-  String? cover2;
-  String? hoyolabAvatar;
-  String? namecard;
-  String? nameicon;
-  String? nameiconcard;
-  String? namegachasplash;
-  String? namegachaslice;
-  String? namesideicon;
+  final String? card;
+  final String? portrait;
+  final String? icon;
+  final String? sideicon;
+  final String? cover1;
+  final String? cover2;
+  final String? hoyolabAvatar;
+  final String? namecard;
+  final String? nameicon;
+  final String? nameiconcard;
+  final String? namegachasplash;
+  final String? namegachaslice;
+  final String? namesideicon;
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
         card: json["card"],

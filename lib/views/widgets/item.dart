@@ -9,7 +9,7 @@ class ItemGame extends StatelessWidget {
   final Widget? iconLeft;
   final String? rarity;
   final bool? star;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final double? size;
   const ItemGame({
     super.key,
@@ -18,7 +18,7 @@ class ItemGame extends StatelessWidget {
     this.iconLeft,
     this.rarity,
     this.star,
-    required this.onTap,
+    this.onTap,
     this.size,
   });
 
@@ -141,7 +141,7 @@ class ItemGame extends StatelessWidget {
                     child: Container(
                       margin: EdgeInsets.only(bottom: sizeItem * 0.15),
                       child: Image.asset(
-                        Tools.getRarityStar(rarity!),
+                        Tools.getRarityStar(rarity),
                         height: sizeItem * 1.215 * 0.18,
                         width: sizeItem * 0.85,
                       ),

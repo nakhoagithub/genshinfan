@@ -9,8 +9,8 @@ import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/app/character_building.dart';
 import 'package:genshinfan/objects/domain.dart';
+import 'package:genshinfan/objects/items.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/talent.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:get/get.dart';
@@ -38,7 +38,7 @@ class CharacterService {
     dynamic curveCharacter = curve['characters'];
     for (var k in jsonData.keys) {
       Character obj = Character.fromJson(jsonData[k]);
-      obj.id = k;
+      obj.key = k;
       // hình ảnh
       obj.setImage(img[k]);
       obj.setTalent(k, talent, imgTalent, statTalent);
@@ -56,8 +56,12 @@ class CharacterService {
     if (directory != null) {
       File file = File("${directory.path}/$language/characters.json");
       String json = await file.readAsString();
-      List<Character> characters = List<Character>.from(
-          jsonDecode(json).map((e) => Character.fromJson(e))).toList();
+      List<dynamic> dataDecode = jsonDecode(json) as List<dynamic>;
+
+      List<Character> characters =
+          List<Character>.from(dataDecode.map((e) => Character.fromJson(e)))
+              .toList();
+
       return characters;
     }
     return null;
@@ -134,12 +138,12 @@ class CharacterService {
     }
 
     List<Character> characterUpToday = characters.where((element) {
-      if (element.association == "MAINACTOR") {
+      if (element.associationType == "MAINACTOR") {
         // nhà lữ hành
       } else {
         if (element.talent != null) {
           for (var key in element.talent!.costs.keys) {
-            List<Cost>? cost = element.talent!.costs[key];
+            List<Items>? cost = element.talent!.costs[key];
             if (cost != null) {
               for (var e in cost) {
                 if (nameResourceToday.contains(e.name)) {

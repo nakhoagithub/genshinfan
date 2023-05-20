@@ -189,24 +189,6 @@ const Map<String, String> ja = {
   "day6": "土曜",
   "day7": "日曜",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "攻撃力 (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "岩元素ダメージ (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "氷元素ダメージ (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "雷元素ダメージ (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "炎元素ダメージ (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "水元素ダメージ (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "風元素ダメージ (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "草元素ダメージ (%)",
-  "FIGHT_PROP_HEAL_ADD": "与える治療効果 (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "防御力 (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "物理ダメージ (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "元素熟知",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "元素チャージ効率 (%)",
-  "FIGHT_PROP_HP_PERCENT": "HP (%)",
-  "FIGHT_PROP_CRITICAL": "会心率 (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "会心ダメージ (%)",
-
   // các loại chỉ số
   "attack": "攻撃力",
   "hp": "HP",

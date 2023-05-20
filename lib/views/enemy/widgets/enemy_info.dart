@@ -2,13 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
 import 'package:genshinfan/objects/enemy.dart';
-import 'package:genshinfan/objects/reward_preview.dart';
+import 'package:genshinfan/objects/reward.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_reward_widget.dart';
-import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
 
@@ -109,7 +108,7 @@ class _InformationMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    List<Rewardpreview> dataRevert = enemy.rewardpreview.reversed.toList();
+    List<Reward> dataRevert = enemy.rewardpreview.reversed.toList();
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(top: 10),
@@ -119,14 +118,14 @@ class _InformationMore extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           // tên đặc biệt
-          InfoTextColorWidget(
+          InfoTextWidget(
               titleTranslate: "specialname", data: enemy.specialname),
 
           // type
           InfoTextWidget(titleTranslate: "type", data: enemy.enemytype),
 
           // substat
-          InfoTextColorWidget(titleTranslate: "substat", data: enemy.category),
+          InfoTextWidget(titleTranslate: "substat", data: enemy.category),
 
           // description
           InfoParagraphWidget(

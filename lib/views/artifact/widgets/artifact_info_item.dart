@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
@@ -66,7 +66,7 @@ class _ArtifactItem extends StatelessWidget {
     required this.linkImage,
   });
 
-  ArtifactItem? artifactItemWithType() {
+  ArtifactDetail? artifactItemWithType() {
     switch (type) {
       case 1:
         return artifact.flower;
@@ -94,53 +94,65 @@ class _ArtifactItem extends StatelessWidget {
           // color: ThemeApp.colorText(),
         ),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.all(10),
-            child: ItemGame(
-              title: artifact.name,
-              linkImage: Tools.linkImageArtifact(artifact),
-              rarity: artifact.rarity[artifact.rarity.length - 1],
-              onTap: () {},
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Text(
-                  "${artifactItemWithType()?.name}",
-                  textAlign: TextAlign.center,
-                  style: ThemeApp.textStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.all(10),
+                child: ItemGame(
+                  title: artifact.name,
+                  linkImage: linkImage,
+                  rarity: artifact.rarity[artifact.rarity.length - 1],
+                  onTap: () {},
                 ),
-                Text(
-                  "${artifactItemWithType()?.relictype}",
-                  textAlign: TextAlign.center,
-                  style: ThemeApp.textStyle(),
-                ),
-                // description
-                artifactItemWithType()?.description == null
-                    ? const SizedBox()
-                    : Container(
-                        margin: const EdgeInsets.only(
-                            left: 5, right: 5, bottom: 10),
-                        child: Text(
-                          "${artifactItemWithType()?.description}",
-                          textAlign: TextAlign.start,
-                          style: ThemeApp.textStyle(
-                            fontSize: 14,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      "${artifactItemWithType()?.name}",
+                      textAlign: TextAlign.center,
+                      style: ThemeApp.textStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-              ],
-            ),
+                    ),
+                    Text(
+                      "${artifactItemWithType()?.relictype}",
+                      textAlign: TextAlign.center,
+                      style: ThemeApp.textStyle(),
+                    ),
+                    // description
+                    artifactItemWithType()?.description == null
+                        ? const SizedBox()
+                        : Container(
+                            margin: const EdgeInsets.only(
+                                left: 5, right: 5, bottom: 10),
+                            child: Text(
+                              "${artifactItemWithType()?.description}",
+                              textAlign: TextAlign.start,
+                              style: ThemeApp.textStyle(
+                                fontSize: 14,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                  ],
+                ),
+              ),
+            ],
           ),
+          artifactItemWithType()?.story == null
+              ? const SizedBox()
+              : Container(
+                  margin: const EdgeInsets.all(4),
+                  child: InfoParagraphWidget(
+                      titleTranslate: "story",
+                      data: artifactItemWithType()!.story),
+                )
         ],
       ),
     );

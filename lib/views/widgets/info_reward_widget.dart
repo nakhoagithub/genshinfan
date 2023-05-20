@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/reward_preview.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/objects/reward.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
-import 'package:genshinfan/views/widgets/item.dart';
+import 'package:genshinfan/views/domain/widgets/item_reward.dart';
 import 'package:get/get.dart';
 
 class InfoRewardWidget extends StatelessWidget {
   final String titleTranslate;
-  final List<Rewardpreview> data;
+  final List<Reward> data;
   const InfoRewardWidget({
     super.key,
     required this.titleTranslate,
@@ -24,12 +22,7 @@ class InfoRewardWidget extends StatelessWidget {
       children: [
         Text(
           "${"reward".tr}: ",
-          style: ThemeApp.textStyle(
-
-              // color: ThemeApp.colorTextSecond(
-              //
-              // ),
-              ),
+          style: ThemeApp.textStyle(),
         ),
         SizedBox(
           child: SingleChildScrollView(
@@ -42,19 +35,11 @@ class InfoRewardWidget extends StatelessWidget {
                     Resource? resource = Tools.getResourceFromName(e.name);
                     return resource == null
                         ? const SizedBox()
-                        : ItemGame(
+                        : ItemReward(
+                            name: resource.name,
+                            resource: resource,
                             size: Get.width * 0.18,
-                            title: e.name,
-                            linkImage:
-                                Config.urlImage(resource.images?.nameicon),
                             rarity: resource.rarity,
-                            star: true,
-                            onTap: () {
-                              ResourceController resourceController =
-                                  Get.find<ResourceController>();
-                              resourceController.selectResource(resource);
-                              Get.toNamed('/resource_info');
-                            },
                           );
                   },
                 ),

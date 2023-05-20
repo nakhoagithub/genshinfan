@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
-import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/objects/constellation.dart';
 import 'package:genshinfan/objects/talent.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
@@ -21,10 +21,10 @@ class SkillCharacterView extends StatelessWidget {
     context.theme;
     CharacterController characterController = Get.find<CharacterController>();
     return Obx(() {
-      String association = characterController.character.value!.association;
+      String association = characterController.character.value!.associationType;
       List<Talent>? talentTravelers =
           characterController.character.value!.talentTravelers;
-      List<Constellations>? constellationTravelers =
+      List<Constellation>? constellationTravelers =
           characterController.character.value!.constellationTravelers;
       return Container(
         margin: const EdgeInsets.all(4),
@@ -49,7 +49,7 @@ class SkillCharacterView extends StatelessWidget {
                     talent: characterController.character.value!.talent,
                     constellations:
                         characterController.character.value!.constellations,
-                    element: characterController.character.value!.element,
+                    element: characterController.character.value!.elementType,
                   ),
           ],
         ),
@@ -60,7 +60,7 @@ class SkillCharacterView extends StatelessWidget {
 
 class _SkillViewAndConstellation extends StatelessWidget {
   final Talent? talent;
-  final Constellations? constellations;
+  final Constellation? constellations;
   final String? element;
   const _SkillViewAndConstellation({
     required this.talent,
@@ -79,19 +79,19 @@ class _SkillViewAndConstellation extends StatelessWidget {
               // tấn công thường
               _Combat(
                 combat: talent!.combat1,
-                imageTalent: talent?.imageTalent?.combat1,
+                imageTalent: talent?.imageTalent?.filenameCombat1,
                 element: element,
               ),
               // E
               _Combat(
                 combat: talent!.combat2,
-                imageTalent: talent?.imageTalent?.combat2,
+                imageTalent: talent?.imageTalent?.filenameCombat2,
                 element: element,
               ),
               // Q
               _Combat(
                 combat: talent!.combat3,
-                imageTalent: talent?.imageTalent?.combat3,
+                imageTalent: talent?.imageTalent?.filenameCombat3,
                 element: element,
               ),
               // sp
@@ -99,7 +99,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
                   ? const SizedBox()
                   : _Combat(
                       combat: talent!.combatsp!,
-                      imageTalent: talent?.imageTalent?.combatsp,
+                      imageTalent: talent?.imageTalent?.filenameCombatsp,
                       element: element,
                     ),
 
@@ -115,13 +115,13 @@ class _SkillViewAndConstellation extends StatelessWidget {
 
               _Passive(
                 passive: talent!.passive1,
-                imageTalent: talent?.imageTalent?.passive1,
+                imageTalent: talent?.imageTalent?.filenamePassive1,
                 element: element,
               ),
 
               _Passive(
                 passive: talent!.passive2,
-                imageTalent: talent?.imageTalent?.passive2,
+                imageTalent: talent?.imageTalent?.filenamePassive2,
                 element: element,
               ),
 
@@ -129,7 +129,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
                   ? const SizedBox()
                   : _Passive(
                       passive: talent!.passive3!,
-                      imageTalent: talent?.imageTalent?.passive3,
+                      imageTalent: talent?.imageTalent?.filenamePassive3,
                       element: element,
                     ),
 
@@ -137,7 +137,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
                   ? const SizedBox()
                   : _Passive(
                       passive: talent!.passive4!,
-                      imageTalent: talent?.imageTalent?.passive4,
+                      imageTalent: talent?.imageTalent?.filenamePassive4,
                       element: element,
                     ),
 
@@ -153,42 +153,42 @@ class _SkillViewAndConstellation extends StatelessWidget {
                           lv: "1",
                           constellation: constellations!.c1,
                           imageConstellation:
-                              constellations!.imageConstellation?.c1,
+                              constellations!.images?.filenameC1,
                           element: element,
                         ),
                         _Constellation(
                           lv: "2",
                           constellation: constellations!.c2,
                           imageConstellation:
-                              constellations!.imageConstellation?.c2,
+                              constellations!.images?.filenameC2,
                           element: element,
                         ),
                         _Constellation(
                           lv: "3",
                           constellation: constellations!.c3,
                           imageConstellation:
-                              constellations!.imageConstellation?.c3,
+                              constellations!.images?.filenameC3,
                           element: element,
                         ),
                         _Constellation(
                           lv: "4",
                           constellation: constellations!.c4,
                           imageConstellation:
-                              constellations!.imageConstellation?.c4,
+                              constellations!.images?.filenameC4,
                           element: element,
                         ),
                         _Constellation(
                           lv: "5",
                           constellation: constellations!.c5,
                           imageConstellation:
-                              constellations!.imageConstellation?.c5,
+                              constellations!.images?.filenameC5,
                           element: element,
                         ),
                         _Constellation(
                           lv: "6",
                           constellation: constellations!.c6,
                           imageConstellation:
-                              constellations!.imageConstellation?.c6,
+                              constellations!.images?.filenameC6,
                           element: element,
                         ),
                       ],
@@ -200,7 +200,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
 
 class _SkillViewAndConstellationTraveler extends StatelessWidget {
   final List<Talent> talents;
-  final List<Constellations> constellations;
+  final List<Constellation> constellations;
   const _SkillViewAndConstellationTraveler({
     required this.talents,
     required this.constellations,
@@ -287,7 +287,7 @@ class _SelectElementTraveler extends StatelessWidget {
 }
 
 class _Combat extends StatelessWidget {
-  final Combat combat;
+  final CombatTalenDetail combat;
   final String? imageTalent;
   final String? element;
   const _Combat({
@@ -307,7 +307,6 @@ class _Combat extends StatelessWidget {
           strokeAlign: 1,
           color: Get.theme.colorScheme.onSurface,
         ),
-        // color: Tools.getColorElementCharacter(element).withOpacity(0.5),
       ),
       child: InkWell(
         onTap: () {},
@@ -372,8 +371,8 @@ class _Combat extends StatelessWidget {
                     onTap: () {
                       Get.bottomSheet(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        TalentStats(combat: combat),
                         isScrollControlled: true,
+                        TalentStats(combat: combat),
                       );
                     },
                     icon: const Icon(Icons.keyboard_arrow_right_rounded),
@@ -381,30 +380,23 @@ class _Combat extends StatelessWidget {
                 ),
               ],
             ),
-            // description
-            combat.description == null
-                ? const SizedBox()
-                : Container(
-                    margin:
-                        const EdgeInsets.only(left: 5, right: 5, bottom: 10),
-                    child: Text(
-                      "${combat.description}",
-                      textAlign: TextAlign.start,
-                      style: ThemeApp.textStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ),
+            // // description
+            // Container(
+            //   margin: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
+            //   child: Text(
+            //     combat.description,
+            //     textAlign: TextAlign.start,
+            //     style: ThemeApp.textStyle(
+            //       fontSize: 14,
+            //       fontStyle: FontStyle.italic,
+            //     ),
+            //   ),
+            // ),
 
-            // info
+            // descriptionRaw
             Container(
               margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-              child: TextCSS(
-                combat.info,
-                textAlign: TextAlign.start,
-                style: ThemeApp.textStyle(),
-              ),
+              child: TextCSS(combat.descriptionRaw),
             ),
           ],
         ),
@@ -414,7 +406,7 @@ class _Combat extends StatelessWidget {
 }
 
 class _Passive extends StatelessWidget {
-  final Passive passive;
+  final PassiveTalenDetail passive;
   final String? imageTalent;
   final String? element;
   const _Passive({
@@ -492,11 +484,11 @@ class _Passive extends StatelessWidget {
               ),
             ],
           ),
-          // info
+          // description
           Container(
             margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
             child: TextCSS(
-              passive.info,
+              passive.descriptionRaw,
               textAlign: TextAlign.start,
               style: ThemeApp.textStyle(),
             ),
@@ -509,7 +501,7 @@ class _Passive extends StatelessWidget {
 
 class _Constellation extends StatelessWidget {
   final String lv;
-  final Constellation constellation;
+  final ConstellationDetail constellation;
   final String? imageConstellation;
   final String? element;
   const _Constellation({
@@ -600,7 +592,7 @@ class _Constellation extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
             child: TextCSS(
-              constellation.effect,
+              constellation.descriptionRaw,
               textAlign: TextAlign.start,
               style: ThemeApp.textStyle(),
             ),

@@ -1,4 +1,4 @@
-import 'package:genshinfan/objects/reward_preview.dart';
+import 'package:genshinfan/objects/reward.dart';
 
 class Domain {
   Domain({
@@ -56,16 +56,16 @@ class DomainLv {
     required this.unlockrank,
     required this.rewardpreview,
     required this.disorder,
-    required this.monsterlist,
+    this.monsterlist,
     this.images,
   });
   String name;
   int recommendedlevel;
   List<String> recommendedelements;
   int unlockrank;
-  List<Rewardpreview> rewardpreview;
+  List<Reward> rewardpreview;
   List<String> disorder;
-  List<String> monsterlist;
+  List<String>? monsterlist;
   ImageDomain? images;
 
   factory DomainLv.fromJson(Map<String, dynamic> json) => DomainLv(
@@ -75,10 +75,12 @@ class DomainLv {
             ? []
             : List<String>.from(json["recommendedelements"].map((x) => x)),
         unlockrank: json["unlockrank"],
-        rewardpreview: List<Rewardpreview>.from(
-            json["rewardpreview"].map((x) => Rewardpreview.fromJson(x))),
+        rewardpreview: List<Reward>.from(
+            json["rewardpreview"].map((x) => Reward.fromJson(x))),
         disorder: List<String>.from(json["disorder"].map((x) => x)),
-        monsterlist: List<String>.from(json["monsterlist"].map((x) => x)),
+        monsterlist: json["monsterlist"] == null
+            ? null
+            : List<String>.from(json["monsterlist"].map((x) => x)),
         images: json["images"] == null
             ? null
             : ImageDomain.fromJson(json["images"]),
@@ -93,7 +95,9 @@ class DomainLv {
         "rewardpreview":
             List<dynamic>.from(rewardpreview.map((x) => x.toJson())),
         "disorder": List<dynamic>.from(disorder.map((x) => x)),
-        "monsterlist": List<dynamic>.from(monsterlist.map((x) => x)),
+        "monsterlist": monsterlist == null
+            ? null
+            : List<dynamic>.from(monsterlist!.map((x) => x)),
         "images": images?.toJson(),
       };
 }

@@ -114,7 +114,8 @@ class _ItemElement extends StatelessWidget {
               height: 30, width: 30),
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
-                activeColor: Tools.getColorElementCharacter(element),
+                activeColor: ThemeApp.theme.primaryColor,
+                checkColor: Colors.white,
                 value: characterFilterController.checkElementFilters[index],
                 onChanged: (value) async {
                   await characterFilterController.checkElementFilter(index);
@@ -181,6 +182,7 @@ class _ItemWeapon extends StatelessWidget {
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
                 activeColor: ThemeApp.theme.primaryColor,
+                checkColor: Colors.white,
                 value: characterFilterController.checkWeaponFilters[index],
                 onChanged: (value) async {
                   await characterFilterController.checkWeaponFilter(index);

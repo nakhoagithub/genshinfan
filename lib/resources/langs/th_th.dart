@@ -189,24 +189,6 @@ const Map<String, String> th = {
   "day6": "วันเสาร์",
   "day7": "วันอาทิตย์",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "พลังโจมตี (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "โบนัสความเสียหายหิน (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "โบนัสความเสียหายน้ำแข็ง (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "โบนัสความเสียหายไฟฟ้า (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "โบนัสความเสียหายไฟ (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "โบนัสความเสียหายน้ำ (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "โบนัสความเสียหายลม (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "โบนัสความเสียหายไม้ (%)",
-  "FIGHT_PROP_HEAL_ADD": "โบนัสการรักษา (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "พลังป้องกัน (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "โบนัสความเสียหายกายภาพ (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "ความชำนาญธาตุ",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "การฟื้นฟูพลังงาน (%)",
-  "FIGHT_PROP_HP_PERCENT": "พลังชีวิต (%)",
-  "FIGHT_PROP_CRITICAL": "อัตราคริ (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "ความแรงคริ (%)",
-
   // các loại chỉ số
   "attack": "พลังโจมตี",
   "hp": "พลังชีวิต",

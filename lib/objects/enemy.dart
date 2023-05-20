@@ -1,4 +1,4 @@
-import 'package:genshinfan/objects/reward_preview.dart';
+import 'package:genshinfan/objects/reward.dart';
 
 List<int> levels = [
   1,
@@ -34,19 +34,19 @@ class Enemy {
     required this.enemytype,
     required this.category,
     required this.description,
-    required this.investigation,
+    this.investigation,
     required this.rewardpreview,
     this.images,
     this.stats,
   });
 
-  String name;
-  String specialname;
-  String enemytype;
-  String category;
-  String description;
-  Investigation? investigation;
-  List<Rewardpreview> rewardpreview;
+  final String name;
+  final String specialname;
+  final String enemytype;
+  final String category;
+  final String description;
+  final Investigation? investigation;
+  final List<Reward> rewardpreview;
   ImageEnemy? images;
   List<Stat>? stats;
 
@@ -59,8 +59,8 @@ class Enemy {
         investigation: json["investigation"] == null
             ? null
             : Investigation.fromJson(json["investigation"]),
-        rewardpreview: List<Rewardpreview>.from(
-            json["rewardpreview"].map((x) => Rewardpreview.fromJson(x))),
+        rewardpreview: List<Reward>.from(
+            json["rewardpreview"].map((x) => Reward.fromJson(x))),
         images:
             json['images'] == null ? null : ImageEnemy.fromJson(json['images']),
         stats: json["stats"] == null
@@ -120,9 +120,9 @@ class Investigation {
     required this.description,
   });
 
-  String name;
-  String category;
-  String description;
+  final String name;
+  final String category;
+  final String description;
 
   factory Investigation.fromJson(Map<String, dynamic> json) => Investigation(
         name: json["name"],

@@ -13,14 +13,16 @@ class ItemReward extends StatelessWidget {
   final Artifact? artifact;
   final String? rarity;
   final String name;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final double? size;
   const ItemReward({
     super.key,
-    required this.resource,
-    required this.artifact,
+    this.resource,
+    this.artifact,
     this.rarity,
     required this.name,
-    required this.onTap,
+    this.onTap,
+    this.size,
   });
 
   @override
@@ -44,11 +46,13 @@ class ItemReward extends StatelessWidget {
         }
       },
       child: ItemGame(
-          title: name,
-          rarity: rarity,
-          linkImage: linkImage,
-          star: resource != null ? true : null,
-          onTap: onTap),
+        size: size,
+        title: name,
+        rarity: rarity,
+        linkImage: linkImage,
+        star: resource != null ? true : null,
+        onTap: onTap,
+      ),
     );
   }
 }

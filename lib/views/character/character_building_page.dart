@@ -110,13 +110,13 @@ class _Item extends StatelessWidget {
                       : ItemGame(
                           title: character.name,
                           iconLeft: Tools.getAssetElementFromName(
-                                      character.element) !=
+                                      character.elementType) !=
                                   ""
                               ? Image.asset(Tools.getAssetElementFromName(
-                                  character.element))
+                                  character.elementType))
                               : null,
-                          linkImage: character.images?.icon,
-                          rarity: character.rarity,
+                          linkImage: character.images?.mihoyoIcon,
+                          rarity: character.rarity.toString(),
                           onTap: () {}),
                   // : ItemCharacter(character: character, onTap: () {}),
                   const SizedBox(width: 10),
@@ -125,15 +125,15 @@ class _Item extends StatelessWidget {
                       : ItemGame(
                           title: weapon.name,
                           iconLeft: Tools.getAssetWeaponType(
-                                      weapon.weapontype) !=
+                                      weapon.weaponType) !=
                                   null
                               ? Image.asset(
-                                  Tools.getAssetWeaponType(weapon.weapontype) ??
+                                  Tools.getAssetWeaponType(weapon.weaponType) ??
                                       "")
                               : null,
-                          linkImage: weapon.images?.icon ??
-                              Config.urlImage(weapon.images?.namegacha),
-                          rarity: weapon.rarity,
+                          linkImage: weapon.images?.mihoyoIcon ??
+                              Config.urlImage(weapon.images?.filenameGacha),
+                          rarity: weapon.rarity.toString(),
                           star: true,
                           onTap: () {}),
                   const SizedBox(width: 10),

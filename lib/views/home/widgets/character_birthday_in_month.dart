@@ -77,15 +77,16 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                                         title: characters[index].name,
                                         iconLeft: Tools.getAssetElementFromName(
                                                     characters[index]
-                                                        .element) !=
+                                                        .elementType) !=
                                                 ""
                                             ? Image.asset(
                                                 Tools.getAssetElementFromName(
-                                                    characters[index].element))
+                                                    characters[index]
+                                                        .elementType))
                                             : null,
                                         linkImage:
-                                            characters[index].images?.icon,
-                                        rarity: characters[index].rarity,
+                                            characters[index].images?.mihoyoIcon,
+                                        rarity: characters[index].rarity.toString(),
                                         onTap: () {
                                           Get.find<CharacterController>()
                                               .selectCharacter(
@@ -136,14 +137,14 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                                 child: ItemGame(
                                   title: characters[index].name,
                                   iconLeft: Tools.getAssetElementFromName(
-                                              characters[index].element) !=
+                                              characters[index].elementType) !=
                                           ""
                                       ? Image.asset(
                                           Tools.getAssetElementFromName(
-                                              characters[index].element))
+                                              characters[index].elementType))
                                       : null,
-                                  linkImage: characters[index].images?.icon,
-                                  rarity: characters[index].rarity,
+                                  linkImage: characters[index].images?.mihoyoIcon,
+                                  rarity: characters[index].rarity.toString(),
                                   onTap: () {
                                     Get.find<CharacterController>()
                                         .selectCharacter(characters[index]);

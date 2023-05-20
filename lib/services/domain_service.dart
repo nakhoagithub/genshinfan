@@ -90,14 +90,6 @@ class DomainService {
     AppController appController = Get.find<AppController>();
     List<Domain> domains = appController.domains;
 
-    // for (var e in domains) {
-    //   if (e.daysofweek != null) {
-    //     for (var e1 in e.daysofweek!) {
-    //       print(e1);
-    //     }
-    //   }
-    // }
-
     List<Domain> domainToday = domains.where((element) {
       List<String>? daysofweeks = element.daysofweek?.where((element) {
         return element == today;

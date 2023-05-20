@@ -14,8 +14,7 @@ class Config {
 
   static const String darkMode = 'darkMode';
   static const String languageApp = 'languageApp';
-  static const String storageDataContentLength = 'dataContentLength';
-  static const String storageContentSHA512 = 'contentSHA512';
+  static const String storageContentSHA = 'contentSHA';
 
   // character
   static const String storageListElementCharacterFilter =
@@ -88,20 +87,20 @@ class Config {
   ];
 
   static List<String> elements = [
-    'Anemo',
-    'Geo',
-    'Electro',
-    'Dendro',
-    'Pyro',
-    'Hydro',
-    'Cryo'
+    'ELEMENT_ANEMO',
+    'ELEMENT_GEO',
+    'ELEMENT_ELECTRO',
+    'ELEMENT_DENDRO',
+    'ELEMENT_PYRO',
+    'ELEMENT_HYDRO',
+    'ELEMENT_CRYO'
   ];
 
   static List<String> weapons = [
-    'Sword',
-    'Bow',
-    'Claymore',
-    'Catalyst',
-    'Polearm',
+    'WEAPON_SWORD_ONE_HAND',
+    'WEAPON_BOW',
+    'WEAPON_CLAYMORE',
+    'WEAPON_CATALYST',
+    'WEAPON_POLE',
   ];
 }

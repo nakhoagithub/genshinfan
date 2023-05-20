@@ -53,13 +53,13 @@ class _ListCharacter extends StatelessWidget {
               child: ItemGame(
                   title: characters[index].name,
                   iconLeft: Tools.getAssetElementFromName(
-                              characters[index].element) !=
+                              characters[index].elementType) !=
                           ""
                       ? Image.asset(Tools.getAssetElementFromName(
-                          characters[index].element))
+                          characters[index].elementType))
                       : null,
-                  linkImage: characters[index].images?.icon,
-                  rarity: characters[index].rarity,
+                  linkImage: characters[index].images?.mihoyoIcon,
+                  rarity: characters[index].rarity.toString(),
                   onTap: () {
                     Get.find<ContributeCharacterController>()
                         .selectCharacter(characters[index]);

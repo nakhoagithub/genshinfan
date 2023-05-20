@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
@@ -10,8 +11,6 @@ import 'package:get/get.dart';
 import '../resources/utils/enum.dart';
 
 class StartController extends GetxController {
-  StartController get startController => this;
-
   late StartService startService;
 
   Rx<String> version = "".obs;
@@ -73,71 +72,81 @@ class StartController extends GetxController {
     _setLog(dataAppStatus);
   }
 
+  Future<void> _getDataToHome() async {
+    await Get.find<AppController>().getData();
+    setProgress(1, 1, DataAppStatus.success);
+    // đợi chút xíu rồi chuyển màn hình
+    await Future.delayed(const Duration(milliseconds: 1000));
+    Get.offAllNamed("/home");
+  }
+
   Future<void> _download() async {
-    // tải dữ liệu
-    bool resultDownload = await startService.downloadData();
-    if (resultDownload) {
-      setProgress(1, 1, DataAppStatus.extract);
-      bool resultExtract =
-          await startService.extractDataLocal(Localization.language);
-      if (resultExtract) {
-        // lấy dữ liệu
-        bool resultGetData = await Get.find<AppController>().getData();
-        if (resultGetData) {
-          setProgress(1, 1, DataAppStatus.success);
-          await Future.delayed(const Duration(milliseconds: 1500));
-          Get.offAllNamed("/home");
-        }
+    setProgress(1, 0, DataAppStatus.loading);
+    // kiểm tra dữ liệu có chưa
+    bool hasGzip = await startService.checkGzipData(Localization.language);
+    if (hasGzip) {
+      // có gzip
+      // kiểm tra json
+      bool hasJson = await startService.checkJsonData(Localization.language);
+      if (hasJson) {
+        // có json
+        await _getDataToHome();
       } else {
-        setProgress(1, 0, DataAppStatus.failure);
+        // không có json
+        // giải nén dữ liệu
+        bool resultExtract =
+            await startService.extractData(Localization.language);
+        if (resultExtract) {
+          await _getDataToHome();
+        } else {
+          setProgress(1, 0, DataAppStatus.failure);
+        }
+      }
+    } else {
+      // không có gzip
+      // tải dữ liệu
+      bool resultDownload = await startService.download();
+      if (resultDownload) {
+        // giải nén dữ liệu
+        bool resultExtract =
+            await startService.extractData(Localization.language);
+        if (resultExtract) {
+          await _getDataToHome();
+        } else {
+          setProgress(1, 0, DataAppStatus.failure);
+        }
       }
     }
   }
 
   @override
   void onInit() async {
-    super.onInit();
-    // khởi tạo thành công
-    startService = StartService(startController: startController);
-
-    // version app
+    startService = const StartService();
     PackageApp packageApp = await startService.getVersion();
     version.value = packageApp.version;
-
-    // tạo thông lượng truy cập
     unawaited(AppService().setTraffic());
+    super.onInit();
+  }
 
-    bool hasData = await startService.checkInitData(Localization.language);
-    if (hasData) {
-      // có data
-      // get data từ file json
-      // xử lý progress
-      setProgress(1, 1, DataAppStatus.loading);
-      await Get.find<AppController>().getData();
-      setProgress(1, 1, DataAppStatus.success);
-
-      // đợi 2 giây rồi chuyển màn hình
-      await Future.delayed(const Duration(milliseconds: 1500));
-      Get.offAllNamed("/home");
+  @override
+  void onReady() async {
+    bool connect = appController.hasInternet.value;
+    if (connect) {
+      await _download();
     } else {
-      //không có data
-      bool conn = appController.hasInternet.value;
-      if (conn) {
+      setProgress(1, 0, DataAppStatus.notInternet);
+    }
+
+    // stream download
+    appController.hasInternet.listen((p0) async {
+      if (p0) {
+        // có internet
         await _download();
       } else {
+        // không có internet
         setProgress(1, 0, DataAppStatus.notInternet);
       }
-
-      // stream download
-      appController.hasInternet.listen((p0) async {
-        if (p0) {
-          // có internet
-          await _download();
-        } else {
-          // không có internet
-          setProgress(1, 0, DataAppStatus.notInternet);
-        }
-      });
-    }
+    });
+    super.onReady();
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/views/widgets/info_text_color_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:genshinfan/views/widgets/info_daysofweek_widget.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
@@ -61,7 +60,7 @@ class _InformationMore extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           // vùng
-          InfoTextColorWidget(titleTranslate: "region", data: domain.region),
+          InfoTextWidget(titleTranslate: "region", data: domain.region),
 
           // domainentrance
           domain.domainentrance == null

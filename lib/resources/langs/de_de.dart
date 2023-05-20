@@ -195,24 +195,6 @@ const Map<String, String> de = {
   "day6": "Samstag",
   "day7": "Sonntag",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "ANG (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "Geo-SCH-Bonus (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "Kryo-SCH-Bonus (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "Elektro-SCH-Bonus (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "Pyro-SCH-Bonus (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "Hydro-SCH-Bonus (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "Anemo-SCH-Bonus (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "Dendro-SCH-Bonus (%)",
-  "FIGHT_PROP_HEAL_ADD": "Heilungsbonus (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "VTD (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "Physischer SCH-Bonus (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "Elementarkunde",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "Aufladerate (%)",
-  "FIGHT_PROP_HP_PERCENT": "LP (%)",
-  "FIGHT_PROP_CRITICAL": "KT (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "KSCH (%)",
-
   // các loại chỉ số
   "attack": "ANG",
   "hp": "LP",

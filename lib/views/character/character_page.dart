@@ -61,37 +61,31 @@ class _List extends StatelessWidget {
                   childAspectRatio: sizeItem / (sizeItem * 1.215),
                   children: List.generate(
                     characters.length,
-                    (index) => FadeInUp(
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeItem,
-                          height: sizeItem * 1.215,
-                          child: ItemGame(
-                              title: characters[index].name,
-                              iconLeft: Tools.getAssetElementFromName(
-                                      characters[index].element) !=
-                                  ""
-                              ? Image.asset(Tools.getAssetElementFromName(
-                                  characters[index].element))
-                              : null,
-                              linkImage: characters[index].images?.icon,
-                              rarity: characters[index].rarity,
-                              onTap: () {
-                                characterController
-                                    .selectCharacter(characters[index]);
-                                homeController.pageCenter();
-                              }),
-                          // child: ItemCharacter(
-                          //   character: characters[index],
-                          //   onTap: () {
-                          //     characterController
-                          //         .selectCharacter(characters[index]);
-                          //     homeController.pageCenter();
-                          //   },
-                          // ),
+                    (index) {
+                      return FadeInUp(
+                        child: Center(
+                          child: SizedBox(
+                            width: sizeItem,
+                            height: sizeItem * 1.215,
+                            child: ItemGame(
+                                title: characters[index].name,
+                                iconLeft: Tools.getAssetElementFromName(
+                                            characters[index].elementType) !=
+                                        ""
+                                    ? Image.asset(Tools.getAssetElementFromName(
+                                        characters[index].elementType))
+                                    : null,
+                                linkImage: characters[index].images?.mihoyoIcon,
+                                rarity: characters[index].rarity.toString(),
+                                onTap: () {
+                                  characterController
+                                      .selectCharacter(characters[index]);
+                                  homeController.pageCenter();
+                                }),
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ));
     });

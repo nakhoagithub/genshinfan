@@ -58,14 +58,16 @@ class _ListWeapon extends StatelessWidget {
                       height: sizeItem * 1.215,
                       child: ItemGame(
                         title: weapons[index].name,
-                        iconLeft:
-                            Tools.getAssetWeaponType(weapons[index].weapontype) != null
-                    ? Image.asset(
-                        Tools.getAssetWeaponType(weapons[index].weapontype) ?? "")
-                    : null,
-                        linkImage: weapons[index].images?.icon ??
-                            Config.urlImage(weapons[index].images?.namegacha),
-                        rarity: weapons[index].rarity,
+                        iconLeft: Tools.getAssetWeaponType(
+                                    weapons[index].weaponType) !=
+                                null
+                            ? Image.asset(Tools.getAssetWeaponType(
+                                    weapons[index].weaponType) ??
+                                "")
+                            : null,
+                        linkImage: weapons[index].images?.mihoyoIcon ??
+                            Config.urlImage(weapons[index].images?.filenameGacha),
+                        rarity: weapons[index].rarity.toString(),
                         star: true,
                         onTap: () {
                           Get.find<ContributeCharacterController>()

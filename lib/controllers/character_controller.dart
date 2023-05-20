@@ -12,22 +12,18 @@ class CharacterController extends GetxController
   Rx<Status> status = Status.init.obs;
   Rx<Character?> character = Rx(null);
   RxString element = "".obs;
-  RxString imagePortrait = "".obs;
-  RxString imageGacha = "".obs;
   ScrollController scrollController = ScrollController();
 
   void selectCharacter(Character value) async {
     character.value = value;
-    if (character.value?.association == "MAINACTOR") {
+    if (character.value?.associationType == "MAINACTOR") {
       if (character.value?.name != "" &&
           character.value?.talentTravelers != null) {
         element.value = character.value!.talentTravelers?[0].element ?? "";
       }
     } else {
-      element.value = character.value?.element ?? "";
+      element.value = character.value?.elementType ?? "";
     }
-    imagePortrait.value = character.value?.images?.portrait ?? "";
-    imageGacha.value = character.value?.images?.namegachasplash ?? "";
     update();
   }
 
@@ -35,7 +31,6 @@ class CharacterController extends GetxController
     this.element.value = element ?? "";
   }
 
-  
   @override
   void onInit() {
     characters.addAll(Get.find<AppController>().characters);

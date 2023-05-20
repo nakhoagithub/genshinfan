@@ -45,7 +45,7 @@ class ContributeCharacterController extends GetxController {
     weapon.value = null;
     AppController appController = Get.find<AppController>();
     weapons.value = appController.weapons.where((p0) {
-      return p0.weapontype == value.weapontype;
+      return p0.weaponType == value.weaponType;
     }).toList();
     weapons.sort(
       (a, b) {
@@ -107,11 +107,11 @@ class ContributeCharacterController extends GetxController {
   }
 
   Future<void> contribute() async {
-    String? character = this.character.value?.id;
+    String? character = this.character.value?.key;
 
-    String? weapon = this.weapon.value?.id;
-    String? a1 = this.a1.value?.id;
-    String? a2 = this.a2.value?.id;
+    String? weapon = this.weapon.value?.key;
+    String? a1 = this.a1.value?.key;
+    String? a2 = this.a2.value?.key;
     String sand = sandsEffect.value;
     String goblet = gobletEffect.value;
     String circlet = circletEffect.value;

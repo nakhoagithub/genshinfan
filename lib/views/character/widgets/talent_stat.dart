@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../resources/utils/theme.dart';
 
 class TalentStats extends StatelessWidget {
-  final Combat combat;
+  final CombatTalenDetail combat;
   const TalentStats({
     super.key,
     required this.combat,

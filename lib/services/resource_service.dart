@@ -29,7 +29,7 @@ class ResourceService {
     for (var k in jsonData.keys) {
       Resource obj = Resource.fromJson(jsonData[k]);
       // hình ảnh
-      obj.id = k;
+      obj.key = k;
       obj.setImage(img[k]);
       resources.add(obj.toJson());
     }

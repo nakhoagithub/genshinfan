@@ -16,44 +16,46 @@ class WeaponRefinement extends StatelessWidget {
     WeaponController weaponController = Get.find<WeaponController>();
     return Obx(() {
       Weapon weapon = weaponController.weapon.value!;
-      String effect = weapon.effect;
-      List<String> r1 = weapon.r1;
-      List<String> r2 = weapon.r2;
-      List<String> r3 = weapon.r3;
-      List<String> r4 = weapon.r4;
-      List<String> r5 = weapon.r5;
-      return Column(
-        children: [
-          // title
-          TitleOfContent(title: "refinement".tr),
-
-          // content
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                strokeAlign: 1,
-                // color: ThemeApp.colorText(),
-              ),
-            ),
-            child: Column(
+      WeaponRefine? r1 = weapon.r1;
+      WeaponRefine? r2 = weapon.r2;
+      WeaponRefine? r3 = weapon.r3;
+      WeaponRefine? r4 = weapon.r4;
+      WeaponRefine? r5 = weapon.r5;
+      return weapon.effectTemplateRaw == null
+          ? const SizedBox()
+          : Column(
               children: [
-                // refinement
+                // title
+                TitleOfContent(title: "refinement".tr),
+
+                // content
                 Container(
-                  margin: const EdgeInsets.all(4),
-                  child: TextCSS(
-                    Tools.handleEffectWeapon(effect, r1, r2, r3, r4, r5),
-                    style: ThemeApp.textStyle(),
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      strokeAlign: 1,
+                      // color: ThemeApp.colorText(),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      // refinement
+                      Container(
+                        margin: const EdgeInsets.all(4),
+                        child: TextCSS(
+                          Tools.handleRefinementWeapon(
+                              weapon.effectTemplateRaw, r1, r2, r3, r4, r5),
+                          style: ThemeApp.textStyle(),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
-            ),
-          ),
-        ],
-      );
+            );
     });
   }
 }

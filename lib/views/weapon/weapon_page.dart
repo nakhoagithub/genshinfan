@@ -69,16 +69,16 @@ class _List extends StatelessWidget {
                           child: ItemGame(
                             title: weapons[index].name,
                             iconLeft: Tools.getAssetWeaponType(
-                                        weapons[index].weapontype) !=
+                                        weapons[index].weaponType) !=
                                     null
                                 ? Image.asset(Tools.getAssetWeaponType(
-                                        weapons[index].weapontype) ??
+                                        weapons[index].weaponType) ??
                                     "")
                                 : null,
-                            linkImage: weapons[index].images?.icon ??
+                            linkImage: weapons[index].images?.mihoyoIcon ??
                                 Config.urlImage(
-                                    weapons[index].images?.namegacha),
-                            rarity: weapons[index].rarity,
+                                    weapons[index].images?.filenameGacha),
+                            rarity: weapons[index].rarity.toString(),
                             star: true,
                             onTap: () {
                               weaponController.selectWeapon(weapons[index]);

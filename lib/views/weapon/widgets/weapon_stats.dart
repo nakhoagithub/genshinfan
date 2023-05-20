@@ -47,9 +47,9 @@ class WeaponStats extends StatelessWidget {
                     TableCell(
                       verticalAlignment: TableCellVerticalAlignment.middle,
                       child: ItemTable(
-                        title: weapon.specialized == null
+                        title: weapon.mainStatText == null
                             ? "-"
-                            : "${weapon.specialized}".tr,
+                            : "${weapon.mainStatText}",
                       ),
                     ),
                   ],

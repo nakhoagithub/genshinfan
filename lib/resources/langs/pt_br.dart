@@ -189,24 +189,6 @@ const Map<String, String> pt = {
   "day6": "Sábado",
   "day7": "Domingo",
 
-  // game
-  "FIGHT_PROP_ATTACK_PERCENT": "ATQ (%)",
-  "FIGHT_PROP_ROCK_ADD_HURT": "Bônus de Dano Geo (%)",
-  "FIGHT_PROP_ICE_ADD_HURT": "Bônus de Dano Cryo (%)",
-  "FIGHT_PROP_ELEC_ADD_HURT": "Bônus de Dano Electro (%)",
-  "FIGHT_PROP_FIRE_ADD_HURT": "Bônus de Dano Pyro (%)",
-  "FIGHT_PROP_WATER_ADD_HURT": "Bônus de Dano Hydro (%)",
-  "FIGHT_PROP_WIND_ADD_HURT": "Bônus de Dano Anemo (%)",
-  "FIGHT_PROP_GRASS_ADD_HURT": "Bônus de Dano Dendro (%)",
-  "FIGHT_PROP_HEAL_ADD": "Bônus de Cura (%)",
-  "FIGHT_PROP_DEFENSE_PERCENT": "DEF (%)",
-  "FIGHT_PROP_PHYSICAL_ADD_HURT": "Bônus de Dano Físico (%)",
-  "FIGHT_PROP_ELEMENT_MASTERY": "Proficiência Elemental",
-  "FIGHT_PROP_CHARGE_EFFICIENCY": "Recarga de Energia (%)",
-  "FIGHT_PROP_HP_PERCENT": "Vida (%)",
-  "FIGHT_PROP_CRITICAL": "Taxa Crítica (%)",
-  "FIGHT_PROP_CRITICAL_HURT": "Dano Crítico (%)",
-
   // các loại chỉ số
   "attack": "ATQ",
   "hp": "Vida",

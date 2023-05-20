@@ -30,7 +30,7 @@ class ArtifactService {
     dynamic img = image['artifacts'];
     for (var k in jsonData.keys) {
       Artifact obj = Artifact.fromJson(jsonData[k]);
-      obj.id = k;
+      obj.key = k;
       // hình ảnh
       obj.setImage(img[k]);
       artifacts.add(obj.toJson());
@@ -46,7 +46,7 @@ class ArtifactService {
     }
     List<Artifact> artifacts = Get.find<AppController>().artifacts;
     return artifacts.firstWhereOrNull((element) {
-      return element.id == id;
+      return element.key == id;
     });
   }
 }

@@ -1,31 +1,52 @@
-import 'dart:convert';
+import 'package:genshinfan/objects/constellation.dart';
+import 'package:genshinfan/objects/items.dart';
+import 'package:genshinfan/objects/url.dart';
 
 import '../resources/utils/tools.dart';
-import 'image.dart';
-import 'image_constellation.dart';
-import 'image_talent.dart';
 import 'talent.dart';
 
-List<int> levels = [];
+List<int> levels = [
+  1,
+  20,
+  -20,
+  40,
+  -40,
+  50,
+  -50,
+  60,
+  -60,
+  70,
+  -70,
+  80,
+  -80,
+  90,
+];
+
+List<int> ascensions = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
 class Character {
   Character({
-    this.id,
+    this.key,
+    required this.id,
     required this.name,
-    required this.fullname,
+    this.fullname,
     required this.title,
     required this.description,
-    required this.rarity,
-    required this.element,
-    required this.weapontype,
-    required this.substat,
+    required this.weaponType,
+    required this.weaponText,
+    required this.bodyType,
     required this.gender,
-    required this.body,
-    required this.association,
-    required this.region,
-    required this.affiliation,
+    required this.qualityType,
+    required this.rarity,
     required this.birthdaymmdd,
     required this.birthday,
+    required this.elementType,
+    required this.elementText,
+    required this.affiliation,
+    required this.associationType,
+    required this.region,
+    required this.substatType,
+    required this.substatText,
     required this.constellation,
     this.constellationTravelers,
     required this.cv,
@@ -35,60 +56,75 @@ class Character {
     this.talentTravelers,
     this.constellations,
     this.stats,
-    this.specialized,
+    this.url,
+    this.version,
   });
-  String? id;
-  String name;
-  String fullname;
-  String title;
-  String description;
-  String rarity;
-  String element;
-  String weapontype;
-  String substat;
-  String gender;
-  String body;
-  String association;
-  String region;
-  String affiliation;
-  String birthdaymmdd;
-  String birthday;
-  String constellation;
+
+  String? key;
+  final int id;
+  final String name;
+  final String? fullname;
+  final String title;
+  final String description;
+  final String weaponType;
+  final String weaponText;
+  final String bodyType;
+  final String gender;
+  final String qualityType;
+  final int rarity;
+  final String birthdaymmdd;
+  final String birthday;
+  final String elementType;
+  final String elementText;
+  final String affiliation;
+  final String associationType;
+  final String region;
+  final String substatType;
+  final String substatText;
+  final String constellation;
   Cv cv;
   Costs costs;
-  Image? images;
+  ImageCharacter? images;
   Talent? talent;
   List<Talent>? talentTravelers;
-  Constellations? constellations;
-  List<Constellations>? constellationTravelers;
+  Constellation? constellations;
+  List<Constellation>? constellationTravelers;
   List<Stat>? stats;
-  String? specialized;
+  UrlObject? url;
+  String? version;
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
+        key: json['key'],
         id: json['id'],
         name: json["name"],
         fullname: json["fullname"],
         title: json["title"],
         description: json["description"],
-        rarity: json["rarity"],
-        element: json["element"],
-        weapontype: json["weapontype"],
-        substat: json["substat"],
+        weaponType: json["weaponType"],
+        weaponText: json["weaponText"],
+        bodyType: json["bodyType"],
         gender: json["gender"],
-        body: json["body"],
-        association: json["association"],
-        region: json["region"],
-        affiliation: json["affiliation"],
+        qualityType: json['qualityType'],
+        rarity: json["rarity"],
         birthdaymmdd: json["birthdaymmdd"],
         birthday: json["birthday"],
+        elementType: json["elementType"],
+        elementText: json["elementText"],
+        affiliation: json["affiliation"],
+        associationType: json["associationType"],
+        region: json["region"],
+        substatType: json["substatType"],
+        substatText: json["substatText"],
         constellation: json["constellation"],
         constellationTravelers: json["constellationTravelers"] == null
             ? null
-            : List<Constellations>.from(json["constellationTravelers"]
-                .map((x) => Constellations.fromJson(x))),
-        cv: Cv.fromMap(json["cv"]),
+            : List<Constellation>.from(json["constellationTravelers"]
+                .map((x) => Constellation.fromJson(x))),
+        cv: Cv.fromJson(json["cv"]),
         costs: Costs.fromJson(json["costs"]),
-        images: json['images'] == null ? null : Image.fromJson(json['images']),
+        images: json['images'] == null
+            ? null
+            : ImageCharacter.fromJson(json['images']),
         talent: json['talent'] == null ? null : Talent.fromJson(json['talent']),
         talentTravelers: json["talentTravelers"] == null
             ? null
@@ -96,36 +132,42 @@ class Character {
                 json["talentTravelers"].map((x) => Talent.fromJson(x))),
         constellations: json['constellations'] == null
             ? null
-            : Constellations.fromJson(json['constellations']),
+            : Constellation.fromJson(json['constellations']),
         stats: json["stats"] == null
             ? null
             : List<Stat>.from(json["stats"].map((x) => Stat.fromJson(x))),
-        specialized: json['specialized'],
+        url: json['url'] == null ? null : UrlObject.fromJson(json['url']),
+        version: json['version'],
       );
 
   Map<String, dynamic> toJson() => {
+        "key": key,
         "id": id,
         "name": name,
         "fullname": fullname,
         "title": title,
         "description": description,
-        "rarity": rarity,
-        "element": element,
-        "weapontype": weapontype,
-        "substat": substat,
+        "weaponType": weaponType,
+        "weaponText": weaponText,
+        "bodyType": bodyType,
         "gender": gender,
-        "body": body,
-        "association": association,
-        "region": region,
-        "affiliation": affiliation,
+        "qualityType": qualityType,
+        "rarity": rarity,
         "birthdaymmdd": birthdaymmdd,
         "birthday": birthday,
+        "elementType": elementType,
+        "elementText": elementText,
+        "affiliation": affiliation,
+        "associationType": associationType,
+        "region": region,
+        "substatType": substatType,
+        "substatText": substatText,
         "constellation": constellation,
         "constellationTravelers": constellationTravelers == null
             ? null
             : List<dynamic>.from(
                 constellationTravelers!.map((e) => e.toJson())),
-        "cv": cv.toMap(),
+        "cv": cv.toJson(),
         "costs": costs.toJson(),
         "images": images?.toJson(),
         "talent": talent?.toJson(),
@@ -136,11 +178,12 @@ class Character {
         "stats": stats == null
             ? null
             : List<dynamic>.from(stats!.map((x) => x.toJson())),
-        "specialized": specialized,
+        "url": url?.toJson(),
+        "version": version,
       };
 
   void setImage(dynamic json) {
-    images = Image.fromJson(json);
+    images = ImageCharacter.fromJson(json);
   }
 
   String _handleParameter(num value, String format) {
@@ -242,7 +285,7 @@ class Character {
   void setTalent(
       String id, dynamic talentJson, dynamic imageTalent, dynamic stat) {
     // không phải nhân vật main
-    if (association != "MAINACTOR") {
+    if (associationType != "ASSOC_MAINACTOR") {
       talent = _talent(id, talentJson, imageTalent, stat);
     } else {
       // nhân vật main
@@ -261,17 +304,16 @@ class Character {
   }
 
   void setConstellation(String id, dynamic json, dynamic imageConstellation) {
-    if (association != "MAINACTOR") {
-      constellations = Constellations.fromJson(json[id]);
-      constellations?.imageConstellation =
+    if (associationType != "ASSOC_MAINACTOR") {
+      constellations = Constellation.fromJson(json[id]);
+      constellations?.images =
           ImageConstellation.fromJson(imageConstellation[id]);
     } else {
-      List<Constellations> listConstellation = [];
+      List<Constellation> listConstellation = [];
       for (var e in json.keys) {
         if (e.contains('traveler')) {
-          Constellations c = Constellations.fromJson(json[e]);
-          c.imageConstellation =
-              ImageConstellation.fromJson(imageConstellation[e]);
+          Constellation c = Constellation.fromJson(json[e]);
+          c.images = ImageConstellation.fromJson(imageConstellation[e]);
           listConstellation.add(c);
         }
       }
@@ -333,20 +375,67 @@ class Character {
   /// `stat`: base của nhân vật
   ///
   /// `curve`: base của tất cả nhân vật
+  // void setStat(dynamic stat, dynamic curve) {
+  //   List<Stat> listData = [];
+  //   List<dynamic> promotions = stat['promotion'];
+  //   _baseStat(listData, stat, curve, stat['curve'], promotions[0], 1, 0, false);
+  //   for (int i = 0; i < promotions.length; i++) {
+  //     _baseStat(listData, stat, curve, stat['curve'], promotions[i],
+  //         promotions[i]['maxlevel'], i, false);
+  //     if (promotions[i]['maxlevel'] != 90) {
+  //       _baseStat(listData, stat, curve, stat['curve'], promotions[i + 1],
+  //           promotions[i]['maxlevel'], i + 1, true);
+  //     }
+  //   }
+  //   stats = listData;
+  //   specialized = stat['specialized'];
+  // }
+
   void setStat(dynamic stat, dynamic curve) {
     List<Stat> listData = [];
+    Map<String, dynamic> base = stat['base'];
+    Map<String, dynamic> curveBase = stat['curve'];
+    String spec = stat['specialized'];
     List<dynamic> promotions = stat['promotion'];
-    _baseStat(listData, stat, curve, stat['curve'], promotions[0], 1, 0, false);
-    for (int i = 0; i < promotions.length; i++) {
-      _baseStat(listData, stat, curve, stat['curve'], promotions[i],
-          promotions[i]['maxlevel'], i, false);
-      if (promotions[i]['maxlevel'] != 90) {
-        _baseStat(listData, stat, curve, stat['curve'], promotions[i + 1],
-            promotions[i]['maxlevel'], i + 1, true);
+    for (int i = 0; i < levels.length; i++) {
+      // level
+      int level = levels[i] > 0 ? levels[i] : levels[i] * -1;
+
+      // ascension
+      int ascension = ascensions[i];
+
+      // bonus
+
+      // hp
+      double hp = base['hp'] * curve["$level"][curveBase['hp']];
+      // attack
+      double attack = base['attack'] * curve["$level"][curveBase['attack']] +
+          promotions[i ~/ 2]['attack'];
+      // defense
+      double defense = base['defense'] * curve["$level"][curveBase['defense']] +
+          promotions[i ~/ 2]['defense'];
+      // specialized
+      double specialized =
+          double.parse(promotions[i ~/ 2]['specialized'].toString());
+
+      if (spec == 'FIGHT_PROP_CRITICAL') {
+        specialized += base['critrate'];
+      } else if (spec == 'FIGHT_PROP_CRITICAL_HURT') {
+        specialized += base['critdmg'];
       }
+
+      Stat stat = Stat(
+        level: level,
+        ascension: ascension,
+        bonus: levels[i] < 0 ? true : false,
+        hp: hp,
+        attack: attack,
+        defense: defense,
+        specialized: specialized,
+      );
+      listData.add(stat);
     }
     stats = listData;
-    specialized = stat['specialized'];
   }
 }
 
@@ -360,26 +449,26 @@ class Costs {
     required this.ascend6,
   });
 
-  List<AscendCharacter> ascend1;
-  List<AscendCharacter> ascend2;
-  List<AscendCharacter> ascend3;
-  List<AscendCharacter> ascend4;
-  List<AscendCharacter> ascend5;
-  List<AscendCharacter> ascend6;
+  List<Items> ascend1;
+  List<Items> ascend2;
+  List<Items> ascend3;
+  List<Items> ascend4;
+  List<Items> ascend5;
+  List<Items> ascend6;
 
   factory Costs.fromJson(Map<String, dynamic> json) => Costs(
-        ascend1: List<AscendCharacter>.from(
-            json["ascend1"].map((x) => AscendCharacter.fromJson(x))),
-        ascend2: List<AscendCharacter>.from(
-            json["ascend2"].map((x) => AscendCharacter.fromJson(x))),
-        ascend3: List<AscendCharacter>.from(
-            json["ascend3"].map((x) => AscendCharacter.fromJson(x))),
-        ascend4: List<AscendCharacter>.from(
-            json["ascend4"].map((x) => AscendCharacter.fromJson(x))),
-        ascend5: List<AscendCharacter>.from(
-            json["ascend5"].map((x) => AscendCharacter.fromJson(x))),
-        ascend6: List<AscendCharacter>.from(
-            json["ascend6"].map((x) => AscendCharacter.fromJson(x))),
+        ascend1:
+            List<Items>.from(json["ascend1"].map((x) => Items.fromJson(x))),
+        ascend2:
+            List<Items>.from(json["ascend2"].map((x) => Items.fromJson(x))),
+        ascend3:
+            List<Items>.from(json["ascend3"].map((x) => Items.fromJson(x))),
+        ascend4:
+            List<Items>.from(json["ascend4"].map((x) => Items.fromJson(x))),
+        ascend5:
+            List<Items>.from(json["ascend5"].map((x) => Items.fromJson(x))),
+        ascend6:
+            List<Items>.from(json["ascend6"].map((x) => Items.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -392,27 +481,6 @@ class Costs {
       };
 }
 
-class AscendCharacter {
-  AscendCharacter({
-    required this.name,
-    required this.count,
-  });
-
-  String? name;
-  int? count;
-
-  factory AscendCharacter.fromJson(Map<String, dynamic> json) =>
-      AscendCharacter(
-        name: json["name"],
-        count: json["count"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "count": count,
-      };
-}
-
 class Cv {
   Cv({
     required this.english,
@@ -421,93 +489,23 @@ class Cv {
     required this.korean,
   });
 
-  String english;
-  String chinese;
-  String japanese;
-  String korean;
+  final String english;
+  final String chinese;
+  final String japanese;
+  final String korean;
 
-  factory Cv.fromJson(String str) => Cv.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Cv.fromMap(Map<String, dynamic> json) => Cv(
+  factory Cv.fromJson(Map<String, dynamic> json) => Cv(
         english: json["english"],
         chinese: json["chinese"],
         japanese: json["japanese"],
         korean: json["korean"],
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         "english": english,
         "chinese": chinese,
         "japanese": japanese,
         "korean": korean,
-      };
-}
-
-class Constellations {
-  Constellations({
-    required this.name,
-    required this.c1,
-    required this.c2,
-    required this.c3,
-    required this.c4,
-    required this.c5,
-    required this.c6,
-    this.imageConstellation,
-  });
-
-  String name;
-  Constellation c1;
-  Constellation c2;
-  Constellation c3;
-  Constellation c4;
-  Constellation c5;
-  Constellation c6;
-  ImageConstellation? imageConstellation;
-
-  factory Constellations.fromJson(Map<String, dynamic> json) => Constellations(
-        name: json["name"],
-        c1: Constellation.fromJson(json["c1"]),
-        c2: Constellation.fromJson(json["c2"]),
-        c3: Constellation.fromJson(json["c3"]),
-        c4: Constellation.fromJson(json["c4"]),
-        c5: Constellation.fromJson(json["c5"]),
-        c6: Constellation.fromJson(json["c6"]),
-        imageConstellation: json["images"] == null
-            ? null
-            : ImageConstellation.fromJson(json["images"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "c1": c1.toJson(),
-        "c2": c2.toJson(),
-        "c3": c3.toJson(),
-        "c4": c4.toJson(),
-        "c5": c5.toJson(),
-        "c6": c6.toJson(),
-        "images": imageConstellation?.toJson(),
-      };
-}
-
-class Constellation {
-  Constellation({
-    required this.name,
-    required this.effect,
-  });
-
-  String name;
-  String effect;
-
-  factory Constellation.fromJson(Map<String, dynamic> json) => Constellation(
-        name: json["name"],
-        effect: json["effect"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "effect": effect,
       };
 }
 
@@ -548,5 +546,65 @@ class Stat {
         "attack": attack,
         "defense": defense,
         "specialized": specialized,
+      };
+}
+
+class ImageCharacter {
+  final String filenameIcon;
+  final String filenameSideIcon;
+  final String? filenameIconCard;
+  final String? filenameGachaSplash;
+  final String? filenameGacheSlice;
+  final String? card;
+  final String? portrait;
+  final String mihoyoIcon;
+  final String mihoyoSideIcon;
+  final String? cover1;
+  final String? cover2;
+  final String? hoyolabAvatar;
+
+  const ImageCharacter({
+    required this.filenameIcon,
+    required this.filenameSideIcon,
+    this.filenameIconCard,
+    this.filenameGachaSplash,
+    this.filenameGacheSlice,
+    this.card,
+    this.portrait,
+    required this.mihoyoIcon,
+    required this.mihoyoSideIcon,
+    this.cover1,
+    this.cover2,
+    this.hoyolabAvatar,
+  });
+
+  factory ImageCharacter.fromJson(Map<String, dynamic> json) => ImageCharacter(
+        filenameIcon: json['filename_icon'],
+        filenameSideIcon: json['filename_sideIcon'],
+        filenameIconCard: json['filename_iconCard'],
+        filenameGachaSplash: json['filename_gachaSplash'],
+        filenameGacheSlice: json['filename_gachaSlice'],
+        card: json['card'],
+        portrait: json['portrait'],
+        mihoyoIcon: json['mihoyo_icon'],
+        mihoyoSideIcon: json['mihoyo_sideIcon'],
+        cover1: json['cover1'],
+        cover2: json['cover2'],
+        hoyolabAvatar: json['hoyolab-avatar'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "card": card,
+        "portrait": portrait,
+        "cover1": cover1,
+        "cover2": cover2,
+        "hoyolab-avatar": hoyolabAvatar,
+        "filename_icon": filenameIcon,
+        "filename_iconCard": filenameIconCard,
+        "filename_sideIcon": filenameSideIcon,
+        "filename_gachaSplash": filenameGachaSplash,
+        "filename_gachaSlice": filenameGacheSlice,
+        "mihoyo_icon": mihoyoIcon,
+        "mihoyo_sideIcon": mihoyoSideIcon,
       };
 }

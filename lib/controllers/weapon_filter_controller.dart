@@ -83,8 +83,7 @@ class WeaponFilterController extends GetxController {
       }
       return "None";
     });
-    weapons.removeWhere((element) =>
-        !weaponTypes.contains(Tools.getEnglishWeaponType(element.weapontype)));
+    weapons.removeWhere((element) => !weaponTypes.contains(element.weaponType));
 
     // lọc theo substat
     List<String> substat = List.generate(substatWeaponFilters.length, (index) {
@@ -93,7 +92,7 @@ class WeaponFilterController extends GetxController {
       }
       return "None";
     });
-    weapons.removeWhere((element) => !substat.contains(element.substat));
+    weapons.removeWhere((element) => !substat.contains(element.mainStatText));
 
     // lọc theo rarity
     List<bool> rarities = List.generate(
@@ -101,9 +100,9 @@ class WeaponFilterController extends GetxController {
     rarities.removeWhere((element) => element == false);
     weapons.removeWhere((element) {
       if (oneRarity.value) {
-        return element.rarity != rarities.length.toString();
+        return element.rarity != rarities.length;
       } else {
-        return int.parse(element.rarity) > rarities.length;
+        return element.rarity > rarities.length;
       }
     });
 
@@ -151,8 +150,10 @@ class WeaponFilterController extends GetxController {
     weapons = Get.find<WeaponController>().weapons;
 
     for (var e in weapons) {
-      if (!substatWeaponFilter.contains(e.substat) && e.substat != "") {
-        substatWeaponFilter.add(e.substat);
+      if (e.mainStatText != null &&
+          e.mainStatText != "" &&
+          !substatWeaponFilter.contains(e.mainStatText)) {
+        substatWeaponFilter.add(e.mainStatText!);
       }
     }
     substatWeaponFilters =
@@ -160,7 +161,7 @@ class WeaponFilterController extends GetxController {
 
     // filter weapon
     List<dynamic>? weaponTypes = box.read(Config.storageListWeaponWeaponFilter);
-    if (weaponTypes != null) { 
+    if (weaponTypes != null) {
       checkWeaponFilters.value =
           RxList.from(weaponTypes.map((element) => element as bool));
     }

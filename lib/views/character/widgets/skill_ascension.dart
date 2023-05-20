@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
+import 'package:genshinfan/objects/items.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/talent.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 
@@ -11,7 +11,7 @@ import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
 
 class SkillAscensionView extends StatelessWidget {
-  final Map<String, List<Cost>> costs;
+  final Map<String, List<Items>> costs;
   final String? element;
   const SkillAscensionView({
     super.key,
@@ -59,7 +59,7 @@ class SkillAscensionView extends StatelessWidget {
 
 class _ItemCost extends StatelessWidget {
   final String lv;
-  final List<Cost>? costs;
+  final List<Items>? costs;
   const _ItemCost({
     required this.lv,
     required this.costs,
@@ -96,7 +96,7 @@ class _ItemCost extends StatelessWidget {
                           return resource == null
                               ? const SizedBox()
                               : ItemGame(
-                                  size: Get.width * 0.16,
+                                  size: Get.width * 0.18,
                                   title: e.count.toString(),
                                   linkImage: Config.urlImage(
                                       resource.images?.nameicon),

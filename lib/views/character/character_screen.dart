@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/character_controller.dart';
-import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
@@ -50,10 +49,9 @@ class CharacterScreen extends StatelessWidget {
                     child: Opacity(
                       opacity: 0.3,
                       child: CachedNetworkImage(
-                        imageUrl: characterController.imageGacha.value == ""
-                            ? characterController.imagePortrait.value
-                            : Config.urlImage(
-                                characterController.imageGacha.value),
+                        imageUrl: characterController
+                                .character.value?.images?.cover2 ??
+                            "",
                         fit: BoxFit.cover,
                         progressIndicatorBuilder: (context, url, progress) {
                           return Align(

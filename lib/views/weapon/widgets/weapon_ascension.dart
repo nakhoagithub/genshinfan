@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/objects/items.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/views/widgets/item.dart';
@@ -95,7 +96,7 @@ class WeaponAscensionView extends StatelessWidget {
 class _ItemAscend extends StatelessWidget {
   final String rank;
   final String lv;
-  final List<AscendWeapon>? ascends;
+  final List<Items>? ascends;
   const _ItemAscend({
     required this.rank,
     required this.lv,
@@ -134,7 +135,7 @@ class _ItemAscend extends StatelessWidget {
                     ...ascends!.map(
                       (e) {
                         Resource? resource =
-                            Tools.getResourceFromName(e.name ?? "");
+                            Tools.getResourceFromName(e.name);
                         return resource == null
                             ? const SizedBox()
                             : ItemGame(

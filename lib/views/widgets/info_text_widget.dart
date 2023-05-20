@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 class InfoTextWidget extends StatelessWidget {
   final String titleTranslate;
   final String data;
+  final bool? translate;
   const InfoTextWidget({
     super.key,
     required this.titleTranslate,
     required this.data,
+    this.translate = true,
   });
 
   @override
@@ -21,13 +23,8 @@ class InfoTextWidget extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              "${titleTranslate.tr}: ",
-              style: ThemeApp.textStyle(
-
-                  // color: ThemeApp.colorTextSecond(
-                  //
-                  // ),
-                  ),
+              "${translate == true ? titleTranslate.tr : titleTranslate}: ",
+              style: ThemeApp.textStyle(),
             ),
           ),
           Expanded(

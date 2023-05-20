@@ -4,15 +4,16 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:archive/archive.dart';
-import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
+import 'package:genshinfan/objects/app/api_github.dart';
 import 'package:genshinfan/objects/app/package_app.dart';
+import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
@@ -23,8 +24,7 @@ import 'character_service.dart';
 import 'resource_service.dart';
 
 class StartService {
-  StartController startController;
-  StartService({required this.startController});
+  const StartService();
 
   Future<PackageApp> getVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -41,120 +41,29 @@ class StartService {
     );
   }
 
-  // void _saveFile({
-  //   required List<int> bytes,
-  //   required int totalLength,
-  // }) async {
-  //   Directory? directory = await getExternalStorageDirectory();
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   if (directory != null) {
-  //     // tạo và lưu file
-  //     File file = File("${directory.path}/data.gzip");
-  //     // viết xong đổi thành hash lưu vô bộ nhớ cache
-  //     final hash = sha512.convert(await file.readAsBytes());
-  //     // lưu dataContentLength để kiểm data mới
-  //     sharedPreferences.setInt("dataContentLength", totalLength);
-  //     sharedPreferences.setString("contentSHA512", hash.toString());
-  //   }
-  // }
-
-  // void _stream({
-  //   required int total,
-  //   required int recieved,
-  //   required DataAppStatus dataAppStatus,
-  //   String? log,
-  // }) {
-  //   streamStart?.sink.add(DataApp(
-  //     total: total,
-  //     received: recieved,
-  //     dataAppStatus: dataAppStatus,
-  //     log: log,
-  //   ));
-  // }
-
-  Future<bool> _download() async {
+  Future<bool> checkGzipData(String language) async {
+    Directory? directory = await getExternalStorageDirectory();
     try {
-      // get link from firebase remote
-      final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-      await remoteConfig.fetchAndActivate();
-      String link = remoteConfig.getString(Config.keyLinkUrlData);
-
-      Directory? directory = await getExternalStorageDirectory();
-      if (directory != null) {
-        Dio dio = Dio();
-        await dio.download(
-          link,
-          "${directory.path}/data.gzip",
-          onReceiveProgress: (count, total) async {
-            startController.setProgress(
-                total, count, DataAppStatus.downloading);
-            if (count == total) {
-              File file = File("${directory.path}/data.gzip");
-              // viết xong đổi thành hash lưu vô bộ nhớ cache
-              final hash = sha512.convert(await file.readAsBytes());
-              // lưu dataContentLength để kiểm data mới
-              GetStorage box = GetStorage();
-              await box.write(Config.storageDataContentLength, total);
-              await box.write(Config.storageContentSHA512, hash.toString());
-              startController.setProgress(
-                  total, total, DataAppStatus.downloaded);
-            }
-          },
-        );
+      File data = File("${directory!.path}/data.gzip");
+      if (await data.exists()) {
         return true;
       }
-    } catch (error) {
-      log("$error", name: "Lỗi download");
-      if (error is HttpException) {
-        startController.setProgress(1, 0, DataAppStatus.notInternet);
-      }
+    } catch (e) {
+      log("$e", name: "StartService checkGzipData");
     }
     return false;
   }
 
-  /// Kiểm tra dữ liệu cũ và tải dữ liệu
-  Future<bool> downloadData() async {
+  Future<bool> checkJsonData(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    // Directory? pathFile = await getExternalStorageDirectory();
-    if (directory != null) {
-      // file data
-      File file = File("${directory.path}/data.gzip");
-      // file.create(recursive: true);
-      // kiểm tra data
-      GetStorage box = GetStorage();
-      String? contentSHA512 = box.read(Config.storageContentSHA512);
-      // file data tồn tại
-      if (await file.exists()) {
-        // mã hash của dữ liệu
-        String hash = sha512.convert(await file.readAsBytes()).toString();
-        // dữ liệu hoàn chỉnh không lỗi
-        if (contentSHA512 == hash) {
-          startController.setProgress(1, 1, DataAppStatus.downloaded);
-          return true;
-        } else {
-          // dữ liệu lỗi -> tải lại
-          return await _download();
-        }
-      } else {
-        // file không tồn tại -> tải lại
-        return await _download();
-      }
-    }
-    return false;
-  }
-
-  Future<bool> checkInitData(String language) async {
-    Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File data = File("${directory.path}/data.gzip");
-      File fCharacter = File("${directory.path}/$language/characters.json");
+    try {
+      File fCharacter = File("${directory!.path}/$language/characters.json");
       File fResource = File("${directory.path}/$language/materials.json");
       File fWeapon = File("${directory.path}/$language/weapons.json");
       File fArtifact = File("${directory.path}/$language/artifacts.json");
       File fDomain = File("${directory.path}/$language/domains.json");
       File fEnemy = File("${directory.path}/$language/enemies.json");
-      if (await data.exists() &&
-          await fCharacter.exists() &&
+      if (await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
           await fArtifact.exists() &&
@@ -162,29 +71,51 @@ class StartService {
           await fEnemy.exists()) {
         return true;
       }
+    } catch (e) {
+      log("$e", name: "StartService checkJsonData");
     }
     return false;
   }
 
-  Future<void> _extractStream(
-      Directory directory, String language, dynamic json) async {
-    CharacterService characterService = CharacterService();
-    ResourceService resourceService = ResourceService();
-    WeaponService weaponService = WeaponService();
-    ArtifactService artifactService = ArtifactService();
-    DomainService domainService = DomainService();
-    EnemyService enemyService = EnemyService();
-    await characterService.getCharacterFromGzip(directory, language, json);
-    await resourceService.getResourceFromGzip(directory, language, json);
-    await weaponService.getWeaponFromGzip(directory, language, json);
-    await artifactService.getArtifactFromGzip(directory, language, json);
-    await domainService.getDomainFromGzip(directory, language, json);
-    await enemyService.getEnemyFromGzip(directory, language, json);
-
-    startController.setProgress(1, 1, DataAppStatus.success);
+  Future<bool> download() async {
+    bool result = false;
+    Directory? directory = await getExternalStorageDirectory();
+    try {
+      // nhận link download từ api
+      ApiGithub? apiGithub = await AppService().getAPI();
+      if (apiGithub != null) {
+        // download
+        Dio dio = Dio();
+        await dio.download(
+          apiGithub.downloadUrl,
+          "${directory!.path}/data.gzip",
+          onReceiveProgress: (count, total) async {
+            Get.find<StartController>()
+                .setProgress(total, count, DataAppStatus.downloading);
+            if (count == total) {
+              // viết xong đổi thành hash lưu vô bộ nhớ cache
+              // lưu dataContentLength để kiểm data mới
+              GetStorage box = GetStorage();
+              await box.write(Config.storageContentSHA, apiGithub.sha);
+              Get.find<StartController>()
+                  .setProgress(total, total, DataAppStatus.downloaded);
+              result = true;
+            }
+          },
+        );
+      }
+    } catch (e) {
+      log("$e", name: "StartService download");
+      if (e is HttpException) {
+        Get.find<StartController>()
+            .setProgress(1, 0, DataAppStatus.notInternet);
+      }
+    }
+    return result;
   }
 
-  Future<bool> extractDataLocal(String language) async {
+  Future<bool> extractData(String language) async {
+    Get.find<StartController>().setProgress(1, 1, DataAppStatus.extract);
     Directory? directory = await getExternalStorageDirectory();
 
     if (directory != null) {
@@ -196,13 +127,52 @@ class StartService {
         // chuyển gzip thành utf-8
         String data = utf8.decode(gzipBytes);
         dynamic json = jsonDecode(data);
-        await _extractStream(directory, language, json);
+
+        // giải nén dữ liệu
+        await CharacterService()
+            .getCharacterFromGzip(directory, language, json);
+        await ResourceService().getResourceFromGzip(directory, language, json);
+        await WeaponService().getWeaponFromGzip(directory, language, json);
+        await ArtifactService().getArtifactFromGzip(directory, language, json);
+        await DomainService().getDomainFromGzip(directory, language, json);
+        await EnemyService().getEnemyFromGzip(directory, language, json);
         return true;
       } catch (e) {
-        log("$e", name: "extractDataLocal");
+        log("$e", name: "StartService extractData");
         return false;
       }
     }
     return false;
   }
+
+  // /// Kiểm tra dữ liệu cũ và tải dữ liệu
+  // Future<bool> downloadData() async {
+  //   Directory? directory = await getExternalStorageDirectory();
+  //   // Directory? pathFile = await getExternalStorageDirectory();
+  //   if (directory != null) {
+  //     // file data
+  //     File file = File("${directory.path}/data.gzip");
+  //     // file.create(recursive: true);
+  //     // kiểm tra data
+  //     GetStorage box = GetStorage();
+  //     String? contentSHA512 = box.read(Config.storageContentSHA512);
+  //     // file data tồn tại
+  //     if (await file.exists()) {
+  //       // mã hash của dữ liệu
+  //       String hash = sha512.convert(await file.readAsBytes()).toString();
+  //       // dữ liệu hoàn chỉnh không lỗi
+  //       if (contentSHA512 == hash) {
+  //         startController.setProgress(1, 1, DataAppStatus.downloaded);
+  //         return true;
+  //       } else {
+  //         // dữ liệu lỗi -> tải lại
+  //         return await _download();
+  //       }
+  //     } else {
+  //       // file không tồn tại -> tải lại
+  //       return await _download();
+  //     }
+  //   }
+  //   return false;
+  // }
 }

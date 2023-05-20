@@ -1,21 +1,20 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/objects/app/api_github.dart';
 import 'package:genshinfan/objects/app/traffic.dart';
 import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 class AppService {
@@ -123,25 +122,36 @@ class AppService {
     return traffic;
   }
 
+  Future<ApiGithub?> getAPI() async {
+    Dio dio = Dio();
+    try {
+      DatabaseReference db = FirebaseDatabase.instance.ref();
+      DataSnapshot link = await db.child('application').child("linkAPI").get();
+      if (link.value != null && link.value is String) {
+        final res = await dio.get(link.value as String);
+        return ApiGithub.fromJson(res.data);
+      }
+    } catch (e) {
+      log("$e", name: "AppService _getAPI");
+    }
+    return null;
+  }
+
   /// trả về `true` nếu có dữ liệu mới.
   Future<List<Object?>> checkUpdateData() async {
     try {
       // get link from firebase remote
-      final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-      await remoteConfig.fetchAndActivate();
-      String link = remoteConfig.getString(Config.keyLinkApiData);
-
-      var response = await http.get(Uri.parse(link));
-      dynamic json = jsonDecode(response.body);
-      int? size = json['size'];
-
-      GetStorage box = GetStorage();
-      int length = box.read(Config.storageDataContentLength) ?? 0;
-      log("$size $length", name: "checkUpdateData");
-      if (size == length || size == null) {
-        return [false, json];
-      } else {
-        return [true, json];
+      ApiGithub? apiGithub = await getAPI();
+      if (apiGithub != null) {
+        GetStorage box = GetStorage();
+        String sha = box.read(Config.storageContentSHA) ?? "";
+        log("API sha: ${apiGithub.sha} - Storage sha: $sha",
+            name: "checkUpdateData");
+        if (sha != "" && apiGithub.sha == sha) {
+          return [false, apiGithub];
+        } else {
+          return [true, apiGithub];
+        }
       }
     } catch (e) {
       log("$e", name: "checkUpdateData");
@@ -159,8 +169,7 @@ class AppService {
         File file = File("${directory.path}/data.gzip");
         await file.delete();
         GetStorage box = GetStorage();
-        await box.remove(Config.storageContentSHA512);
-        await box.remove(Config.storageDataContentLength);
+        await box.remove(Config.storageContentSHA);
         return true;
       } catch (e) {
         log("$e", name: "deleteFileData");
