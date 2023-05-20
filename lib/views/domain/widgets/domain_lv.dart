@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
@@ -95,36 +94,36 @@ class _ItemDomain extends StatelessWidget {
             ),
 
             // image
-            Container(
-              margin: const EdgeInsets.all(4),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              child: CachedNetworkImage(
-                imageUrl: Config.urlImage(domainLv.images?.namepic),
-                fit: BoxFit.cover,
-                progressIndicatorBuilder: (context, url, progress) {
-                  return const Center(
-                    child: SizedBox(
-                      height: 15,
-                      width: 15,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 1,
-                      ),
-                    ),
-                  );
-                },
-                errorWidget: (context, url, error) {
-                  return const Center(
-                    child: Icon(
-                      Icons.image_not_supported_rounded,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
-                  );
-                },
-              ),
-            ),
+            // Container(
+            //   margin: const EdgeInsets.all(4),
+            //   clipBehavior: Clip.antiAliasWithSaveLayer,
+            //   decoration:
+            //       BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            //   child: CachedNetworkImage(
+            //     imageUrl: Config.urlImage(domainLv.images?.namepic),
+            //     fit: BoxFit.cover,
+            //     progressIndicatorBuilder: (context, url, progress) {
+            //       return const Center(
+            //         child: SizedBox(
+            //           height: 15,
+            //           width: 15,
+            //           child: CircularProgressIndicator(
+            //             strokeWidth: 1,
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //     errorWidget: (context, url, error) {
+            //       return const Center(
+            //         child: Icon(
+            //           Icons.image_not_supported_rounded,
+            //           color: Colors.black54,
+            //           size: 20,
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
 
             // recommendedlevel
             Row(

@@ -4,13 +4,10 @@ import 'package:genshinfan/objects/resource.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../resources/utils/enum.dart';
-
 class ResourceController extends GetxController
     with GetSingleTickerProviderStateMixin {
   GetStorage box = GetStorage();
   List<Resource> resources = <Resource>[].obs;
-  Rx<Status> status = Status.init.obs;
   Rx<Resource?> resource = Rx(null);
   ScrollController scrollController = ScrollController();
 

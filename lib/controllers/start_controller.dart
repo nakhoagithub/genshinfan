@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/app/package_app.dart';

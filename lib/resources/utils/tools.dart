@@ -7,7 +7,6 @@ import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:get/get.dart';
 
 class Tools {
@@ -46,15 +45,6 @@ class Tools {
     } else {
       return "${(value * 100).toStringAsFixed(1)}%";
     }
-  }
-
-  static Text toTextColorCSS(String text, {TextAlign? textAlign}) {
-    print(text.indexOf("</color>"));
-    return Text(
-      text,
-      textAlign: textAlign,
-      style: ThemeApp.textStyle(),
-    );
   }
 
   static String getRole(int role) {
@@ -138,6 +128,18 @@ class Tools {
     return result;
   }
 
+  static String handleDescriptionAchievement(
+      String description, String valueReplace) {
+    String result = description;
+    RegExp rx = RegExp(r'{(.*?)}');
+    Iterable<Match> matches = rx.allMatches(description);
+    for (Match e in matches) {
+      String valueParam = e[0]!;
+      result = result.replaceAll(valueParam, valueReplace);
+    }
+    return result;
+  }
+
   static String getBackground(String? rarity) {
     switch (rarity) {
       case "1":
@@ -188,25 +190,6 @@ class Tools {
     }
     return null;
   }
-
-  // static String? getKeyWeaponType(String? weapon) {
-  //   if (weapon == "sword".tr || weapon == 'Sword') {
-  //     return "sword";
-  //   }
-  //   if (weapon == "bow".tr || weapon == 'Bow') {
-  //     return "bow";
-  //   }
-  //   if (weapon == "claymore".tr || weapon == 'Claymore') {
-  //     return "claymore";
-  //   }
-  //   if (weapon == "catalyst".tr || weapon == 'Catalyst') {
-  //     return "catalyst";
-  //   }
-  //   if (weapon == "polearm".tr || weapon == 'Polearm') {
-  //     return "polearm";
-  //   }
-  //   return null;
-  // }
 
   static String getAssetElementFromName(String? element) {
     if (element == "ELEMENT_ANEMO" || element == "anemo".tr) {

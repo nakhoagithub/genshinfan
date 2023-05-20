@@ -46,15 +46,17 @@ class CharacterService {
       obj.setStat(statCharacter[k], curveCharacter);
       characters.add(obj.toJson());
     }
-    File fileCharacter = File("${directory.path}/$language/characters.json");
-    await fileCharacter.create(recursive: true);
-    await fileCharacter.writeAsString(jsonEncode(characters).toString());
+    File file =
+        File("${directory.path}/$language/${Config.fileNameCharacter}.json");
+    await file.create(recursive: true);
+    await file.writeAsString(jsonEncode(characters).toString());
   }
 
   Future<List<Character>?> getCharacters(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
-      File file = File("${directory.path}/$language/characters.json");
+      File file =
+          File("${directory.path}/$language/${Config.fileNameCharacter}.json");
       String json = await file.readAsString();
       List<dynamic> dataDecode = jsonDecode(json) as List<dynamic>;
 
@@ -164,10 +166,10 @@ class CharacterService {
     return characterUpToday;
   }
 
-  Character? getCharacterFromId(String id) {
+  Character? getCharacterFromId(String key) {
     List<Character> characters = Get.find<AppController>().characters;
     return characters.firstWhereOrNull((element) {
-      return element.id == id;
+      return element.key == key;
     });
   }
 

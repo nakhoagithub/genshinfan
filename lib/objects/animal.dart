@@ -1,4 +1,5 @@
 class Animal {
+  String? key;
   final String name;
   final String description;
   final String category;
@@ -8,6 +9,7 @@ class Animal {
   String? version;
 
   Animal({
+    this.key,
     required this.name,
     required this.description,
     required this.category,
@@ -17,17 +19,25 @@ class Animal {
     this.version,
   });
 
+  void setImage(dynamic json) {
+    images = ImageAnimal.fromJson(json);
+  }
+
   factory Animal.fromJson(Map<String, dynamic> json) => Animal(
+        key: json['key'],
         name: json["name"],
         description: json["description"],
         category: json["category"],
         counttype: json["counttype"],
         sortorder: json["sortorder"],
-        images: json['images'],
+        images: json['images'] == null
+            ? null
+            : ImageAnimal.fromJson(json['images']),
         version: json['version'],
       );
 
   Map<String, dynamic> toJson() => {
+        "key": key,
         "name": name,
         "description": description,
         "category": category,

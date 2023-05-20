@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
+import 'package:genshinfan/views/achievement/achievement_page.dart';
+import 'package:genshinfan/views/achievement/achievement_screen.dart';
+import 'package:genshinfan/views/animal/animal_page.dart';
+import 'package:genshinfan/views/animal/animal_screen.dart';
 import 'package:genshinfan/views/artifact/artifact_page.dart';
 import 'package:genshinfan/views/artifact/artifact_screen.dart';
 import 'package:genshinfan/views/domain/domain_page.dart';
@@ -7,6 +11,8 @@ import 'package:genshinfan/views/domain/domain_screen.dart';
 import 'package:genshinfan/views/enemy/enemy_page.dart';
 import 'package:genshinfan/views/enemy/enemy_screen.dart';
 import 'package:genshinfan/views/home/home_page.dart';
+import 'package:genshinfan/views/namecard/namecard_page.dart';
+import 'package:genshinfan/views/namecard/namecard_screen.dart';
 import 'package:genshinfan/views/resource/resource_page.dart';
 import 'package:genshinfan/views/resource/resource_screen.dart';
 import 'package:genshinfan/views/weapon/weapon_page.dart';
@@ -50,7 +56,7 @@ class Home extends StatelessWidget {
       ),
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_material.png",
+          "assets/images/UI_Icon_Activity_DoubleReward.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const ResourcePage(),
@@ -80,6 +86,38 @@ class Home extends StatelessWidget {
         left: const EnemyPage(),
         center: const EnemyScreen(),
       ),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/UI_HomeWorldTabIcon_2_Animals.png",
+          color: Get.theme.colorScheme.onSurface,
+        ),
+        left: const AnimalPage(),
+        center: const AnimalScreen(),
+      ),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/ic_achievement.png",
+          color: Get.theme.colorScheme.onSurface,
+        ),
+        left: const AchievementGroupPage(),
+        center: const AchievementGroupScreen(),
+      ),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/UI_BtnIcon_NameCard.png",
+          color: Get.theme.colorScheme.onSurface,
+        ),
+        left: const NamecardPage(),
+        center: const NamecardScreen(),
+      ),
+      // ItemSlide(
+      //   iconMenu: Image.asset(
+      //     "assets/images/UI_Icon_Intee_Combine.png",
+      //     color: Get.theme.colorScheme.onSurface,
+      //   ),
+      //   left: const SizedBox(),
+      //   center: const SizedBox(),
+      // ),
     ];
 
     List<Widget> actionBottomLeftBar = [

@@ -2,13 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:genshinfan/objects/resource.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ResourceService {
   Future<List<Resource>?> getResources(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
-      File file = File("${directory.path}/$language/materials.json");
+      File file =
+          File("${directory.path}/$language/${Config.fileNameMaterial}.json");
       String json = await file.readAsString();
       List<Resource> resources =
           List<Resource>.from(jsonDecode(json).map((e) => Resource.fromJson(e)))
@@ -33,8 +35,9 @@ class ResourceService {
       obj.setImage(img[k]);
       resources.add(obj.toJson());
     }
-    File fileResource = File("${directory.path}/$language/materials.json");
-    await fileResource.create(recursive: true);
-    await fileResource.writeAsString(jsonEncode(resources).toString());
+    File file =
+        File("${directory.path}/$language/${Config.fileNameMaterial}.json");
+    await file.create(recursive: true);
+    await file.writeAsString(jsonEncode(resources).toString());
   }
 }

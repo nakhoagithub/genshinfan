@@ -8,10 +8,13 @@ import 'package:dio/dio.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
 import 'package:genshinfan/objects/app/api_github.dart';
 import 'package:genshinfan/objects/app/package_app.dart';
+import 'package:genshinfan/services/achievement_service.dart';
+import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
+import 'package:genshinfan/services/namecard_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -57,18 +60,36 @@ class StartService {
   Future<bool> checkJsonData(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     try {
-      File fCharacter = File("${directory!.path}/$language/characters.json");
-      File fResource = File("${directory.path}/$language/materials.json");
-      File fWeapon = File("${directory.path}/$language/weapons.json");
-      File fArtifact = File("${directory.path}/$language/artifacts.json");
-      File fDomain = File("${directory.path}/$language/domains.json");
-      File fEnemy = File("${directory.path}/$language/enemies.json");
+      File fCharacter =
+          File("${directory!.path}/$language/${Config.fileNameCharacter}.json");
+      File fResource =
+          File("${directory.path}/$language/${Config.fileNameMaterial}.json");
+      File fWeapon =
+          File("${directory.path}/$language/${Config.fileNameWeapon}.json");
+      File fArtifact =
+          File("${directory.path}/$language/${Config.fileNameArtifact}.json");
+      File fDomain =
+          File("${directory.path}/$language/${Config.fileNameDomain}.json");
+      File fEnemy =
+          File("${directory.path}/$language/${Config.fileNameEnemie}.json");
+      File fAchievementGroup = File(
+          "${directory.path}/$language/${Config.fileNameAchievementGroup}.json");
+      File fAchievement = File(
+          "${directory.path}/$language/${Config.fileNameAchievement}.json");
+      File fNamecard =
+          File("${directory.path}/$language/${Config.fileNameNamecard}.json");
+      File fAnimal =
+          File("${directory.path}/$language/${Config.fileNameAnimal}.json");
       if (await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
           await fArtifact.exists() &&
           await fDomain.exists() &&
-          await fEnemy.exists()) {
+          await fEnemy.exists() &&
+          await fAchievementGroup.exists() &&
+          await fAchievement.exists() &&
+          await fNamecard.exists() &&
+          await fAnimal.exists()) {
         return true;
       }
     } catch (e) {
@@ -136,6 +157,12 @@ class StartService {
         await ArtifactService().getArtifactFromGzip(directory, language, json);
         await DomainService().getDomainFromGzip(directory, language, json);
         await EnemyService().getEnemyFromGzip(directory, language, json);
+        await AchievementService()
+            .getAchievementGroupsFromGzip(directory, language, json);
+        await AchievementService()
+            .getAchievementsFromGzip(directory, language, json);
+        await NamecardService().getNamecardFromGzip(directory, language, json);
+        await AnimalService().getAnimalFromGzip(directory, language, json);
         return true;
       } catch (e) {
         log("$e", name: "StartService extractData");

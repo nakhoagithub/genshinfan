@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -10,7 +11,8 @@ class ArtifactService {
   Future<List<Artifact>?> getArtifacts(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
-      File file = File("${directory.path}/$language/artifacts.json");
+      File file =
+          File("${directory.path}/$language/${Config.fileNameArtifact}.json");
       String json = await file.readAsString();
       List<Artifact> artifacts =
           List<Artifact>.from(jsonDecode(json).map((e) => Artifact.fromJson(e)))
@@ -35,18 +37,19 @@ class ArtifactService {
       obj.setImage(img[k]);
       artifacts.add(obj.toJson());
     }
-    File fileCharacter = File("${directory.path}/$language/artifacts.json");
-    await fileCharacter.create(recursive: true);
-    await fileCharacter.writeAsString(jsonEncode(artifacts).toString());
+    File file =
+        File("${directory.path}/$language/${Config.fileNameArtifact}.json");
+    await file.create(recursive: true);
+    await file.writeAsString(jsonEncode(artifacts).toString());
   }
 
-  Artifact? getArtifactFromId(String? id) {
-    if (id == null) {
+  Artifact? getArtifactFromKey(String? key) {
+    if (key == null) {
       return null;
     }
     List<Artifact> artifacts = Get.find<AppController>().artifacts;
     return artifacts.firstWhereOrNull((element) {
-      return element.key == id;
+      return element.key == key;
     });
   }
 }

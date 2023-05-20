@@ -2,14 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:genshinfan/objects/enemy.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:path_provider/path_provider.dart';
 
 class EnemyService {
-
-   Future<List<Enemy>?> getEnemies(String language) async {
+  Future<List<Enemy>?> getEnemies(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
-      File file = File("${directory.path}/$language/enemies.json");
+      File file =
+          File("${directory.path}/$language/${Config.fileNameEnemie}.json");
       String json = await file.readAsString();
       List<Enemy> enemies =
           List<Enemy>.from(jsonDecode(json).map((e) => Enemy.fromJson(e)))
@@ -38,8 +39,9 @@ class EnemyService {
       obj.setStat(statEnemy[k], curveEnemy);
       enemies.add(obj.toJson());
     }
-    File fileEnemy = File("${directory.path}/$language/enemies.json");
-    await fileEnemy.create(recursive: true);
-    await fileEnemy.writeAsString(jsonEncode(enemies).toString());
+    File file =
+        File("${directory.path}/$language/${Config.fileNameEnemie}.json");
+    await file.create(recursive: true);
+    await file.writeAsString(jsonEncode(enemies).toString());
   }
 }

@@ -4,25 +4,34 @@ import 'dart:developer';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/controllers/achievement_controller.dart';
+import 'package:genshinfan/controllers/animal_controller.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/controllers/namecard_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/objects/achievement.dart';
+import 'package:genshinfan/objects/animal.dart';
 import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/enemy.dart';
+import 'package:genshinfan/objects/namecard.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/localization.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/services/achievement_service.dart';
+import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
+import 'package:genshinfan/services/namecard_service.dart';
 import 'package:genshinfan/services/resource_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
@@ -51,9 +60,14 @@ class AppController extends GetxController {
   RxList<Artifact> artifacts = <Artifact>[].obs;
   RxList<Domain> domains = <Domain>[].obs;
   RxList<Enemy> enemies = <Enemy>[].obs;
+  RxList<AchievementGroup> achievementGroups = <AchievementGroup>[].obs;
+  RxList<Achievement> achievements = <Achievement>[].obs;
+  RxList<Namecard> namecards = <Namecard>[].obs;
+  RxList<Animal> animals = <Animal>[].obs;
 
   Future<bool> getData() async {
     try {
+      // nhân vật
       characters.value =
           await CharacterService().getCharacters(Localization.language) ?? [];
       characters.sort(
@@ -66,6 +80,7 @@ class AppController extends GetxController {
         },
       );
 
+      // vk
       weapons.value =
           await WeaponService().getWeapons(Localization.language) ?? [];
       weapons.sort(
@@ -78,18 +93,18 @@ class AppController extends GetxController {
         },
       );
 
+      // tài nguyên
       resources.value =
           await ResourceService().getResources(Localization.language) ?? [];
-      // sắp xếp resource
       resources.sort(
         (a, b) {
           return a.sortorder.compareTo(b.sortorder);
         },
       );
 
+      // tdv
       artifacts.value =
           await ArtifactService().getArtifacts(Localization.language) ?? [];
-
       artifacts.sort(
         (a, b) {
           int rarity = b.rarity[b.rarity.length - 1]
@@ -102,11 +117,47 @@ class AppController extends GetxController {
         },
       );
 
+      // dung
       domains.value =
           await DomainService().getDomains(Localization.language) ?? [];
 
+      // quái
       enemies.value =
           await EnemyService().getEnemies(Localization.language) ?? [];
+
+      // achievement
+      achievements.value =
+          await AchievementService().getAchiements(Localization.language) ?? [];
+      achievementGroups.value = await AchievementService()
+              .getAchiementGroups(Localization.language) ??
+          [];
+      achievementGroups.sort(
+        (a, b) {
+          if (a.sortorder != null && b.sortorder != null) {
+            return a.sortorder!.compareTo(b.sortorder!);
+          }
+          return a.name.compareTo(b.name);
+        },
+      );
+
+      // namecard
+      namecards.value =
+          await NamecardService().getNamecards(Localization.language) ?? [];
+      namecards.sort(
+        (a, b) {
+          return a.sortorder.compareTo(b.sortorder);
+        },
+      );
+
+      // namecard
+      animals.value =
+          await AnimalService().getAnimals(Localization.language) ?? [];
+      animals.sort(
+        (a, b) {
+          return a.sortorder.compareTo(b.sortorder);
+        },
+      );
+
 
       return true;
     } catch (e) {
@@ -186,5 +237,8 @@ class AppBinding extends Bindings {
     Get.put(ArtifactController());
     Get.put(DomainController());
     Get.put(EnemyController());
+    Get.put(AchievementController());
+    Get.put(NamecardController());
+    Get.put(AnimalController());
   }
 }

@@ -7,6 +7,7 @@ import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/items.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
@@ -32,15 +33,17 @@ class WeaponService {
       obj.setStat(statWeapon[k], curveWeapon);
       weapons.add(obj.toJson());
     }
-    File fileWeapon = File("${directory.path}/$language/weapons.json");
-    await fileWeapon.create(recursive: true);
-    await fileWeapon.writeAsString(jsonEncode(weapons).toString());
+    File file =
+        File("${directory.path}/$language/${Config.fileNameWeapon}.json");
+    await file.create(recursive: true);
+    await file.writeAsString(jsonEncode(weapons).toString());
   }
 
   Future<List<Weapon>?> getWeapons(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
-      File file = File("${directory.path}/$language/weapons.json");
+      File file =
+          File("${directory.path}/$language/${Config.fileNameWeapon}.json");
       String json = await file.readAsString();
 
       List<dynamic> dataDecode = jsonDecode(json);
@@ -94,10 +97,10 @@ class WeaponService {
     return weaponUpToday;
   }
 
-  Weapon? getWeaponFromId(String id) {
+  Weapon? getWeaponFromId(String key) {
     List<Weapon> weapons = Get.find<AppController>().weapons;
     return weapons.firstWhereOrNull((element) {
-      return element.id == id;
+      return element.key == key;
     });
   }
 }

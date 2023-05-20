@@ -43,33 +43,34 @@ class _List extends StatelessWidget {
     return Obx(() {
       List<Domain> domains = domainController.domains;
       return SizedBox(
-          width: Config.widthCenter,
-          child: domains.isEmpty
-              ? ListEmpty(title: "empty_domain".tr)
-              : GridView.count(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  crossAxisCount: 2,
-                  childAspectRatio: sizeItem / (sizeItem * 1.215),
-                  children: List.generate(
-                    domains.length,
-                    (index) => FadeInUp(
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeItem,
-                          height: sizeItem * 1.215,
-                          child: ItemDomain(
-                            domain: domains[index],
-                            onTap: () {
-                              domainController.selectDomain(domains[index]);
-                              homeController.pageCenter();
-                            },
-                          ),
+        width: Config.widthCenter,
+        child: domains.isEmpty
+            ? ListEmpty(title: "empty_domain".tr)
+            : GridView.count(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                crossAxisCount: 2,
+                childAspectRatio: sizeItem / (sizeItem * 1.215),
+                children: List.generate(
+                  domains.length,
+                  (index) => FadeInUp(
+                    child: Center(
+                      child: SizedBox(
+                        width: sizeItem,
+                        height: sizeItem * 1.215,
+                        child: ItemDomain(
+                          domain: domains[index],
+                          onTap: () {
+                            domainController.selectDomain(domains[index]);
+                            homeController.pageCenter();
+                          },
                         ),
                       ),
                     ),
                   ),
-                ));
+                ),
+              ),
+      );
     });
   }
 }

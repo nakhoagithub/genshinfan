@@ -31,7 +31,7 @@ class InformationWeapon extends StatelessWidget {
                   weapon.name,
                   textAlign: TextAlign.center,
                   style: ThemeApp.textStyle(
-                    fontSize: 32,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -89,8 +89,8 @@ class _Item extends StatelessWidget {
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
     Weapon? weapon = WeaponService().getWeaponFromId(characterBuilding.weapon);
-    Artifact? a1 = ArtifactService().getArtifactFromId(characterBuilding.a1);
-    Artifact? a2 = ArtifactService().getArtifactFromId(characterBuilding.a2);
+    Artifact? a1 = ArtifactService().getArtifactFromKey(characterBuilding.a1);
+    Artifact? a2 = ArtifactService().getArtifactFromKey(characterBuilding.a2);
 
     List<String> chips = ['set2_artifact'.tr, 'set4_artifact'.tr];
 

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
 import 'package:genshinfan/objects/domain.dart';
+import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -24,7 +25,8 @@ class DomainService {
   Future<List<Domain>?> getDomains(String language) async {
     Directory? directory = await getExternalStorageDirectory();
     if (directory != null) {
-      File file = File("${directory.path}/$language/domains.json");
+      File file =
+          File("${directory.path}/$language/${Config.fileNameDomain}.json");
       String json = await file.readAsString();
       List<Domain> domains =
           List<Domain>.from(jsonDecode(json).map((e) => Domain.fromJson(e)))
@@ -81,9 +83,10 @@ class DomainService {
       domain.domainLvs = domainLvs;
       domains.add(domain.toJson());
     }
-    File fileCharacter = File("${directory.path}/$language/domains.json");
-    await fileCharacter.create(recursive: true);
-    await fileCharacter.writeAsString(jsonEncode(domains).toString());
+    File file =
+        File("${directory.path}/$language/${Config.fileNameDomain}.json");
+    await file.create(recursive: true);
+    await file.writeAsString(jsonEncode(domains).toString());
   }
 
   List<Domain>? getDomainToday(String today) {

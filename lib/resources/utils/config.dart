@@ -16,6 +16,17 @@ class Config {
   static const String languageApp = 'languageApp';
   static const String storageContentSHA = 'contentSHA';
 
+  static const String fileNameCharacter = 'characters';
+  static const String fileNameMaterial = 'materials';
+  static const String fileNameWeapon = 'weapons';
+  static const String fileNameArtifact = 'artifacts';
+  static const String fileNameDomain = 'domains';
+  static const String fileNameEnemie = 'enemies';
+  static const String fileNameAchievementGroup = 'achievementGroups';
+  static const String fileNameAchievement = 'achievements';
+  static const String fileNameNamecard = 'namecards';
+  static const String fileNameAnimal = 'animals';
+
   // character
   static const String storageListElementCharacterFilter =
       'listElementCharacterFilter';

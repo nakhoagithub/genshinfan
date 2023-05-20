@@ -1,4 +1,5 @@
 class Namecard {
+  String? key;
   final String name;
   final String description;
   final int sortorder;
@@ -7,6 +8,7 @@ class Namecard {
   String? version;
 
   Namecard({
+    this.key,
     required this.name,
     required this.description,
     required this.sortorder,
@@ -15,7 +17,12 @@ class Namecard {
     this.version,
   });
 
+  void setImage(dynamic json) {
+    images = ImageNamecard.fromJson(json);
+  }
+
   factory Namecard.fromJson(Map<String, dynamic> json) => Namecard(
+        key: json['key'],
         name: json["name"],
         description: json["description"],
         sortorder: json["sortorder"],
@@ -27,6 +34,7 @@ class Namecard {
       );
 
   Map<String, dynamic> toJson() => {
+        "key": key,
         "name": name,
         "description": description,
         "sortorder": sortorder,
