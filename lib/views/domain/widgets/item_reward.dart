@@ -15,6 +15,8 @@ class ItemReward extends StatelessWidget {
   final String name;
   final VoidCallback? onTap;
   final double? size;
+  final bool noData;
+  final String? contentIfNotImage;
   const ItemReward({
     super.key,
     this.resource,
@@ -23,6 +25,8 @@ class ItemReward extends StatelessWidget {
     required this.name,
     this.onTap,
     this.size,
+    this.noData = false,
+    this.contentIfNotImage,
   });
 
   @override
@@ -50,8 +54,10 @@ class ItemReward extends StatelessWidget {
         title: name,
         rarity: rarity,
         linkImage: linkImage,
+        contentIfNotImage: contentIfNotImage,
         star: resource != null ? true : null,
         onTap: onTap,
+        noData: noData,
       ),
     );
   }

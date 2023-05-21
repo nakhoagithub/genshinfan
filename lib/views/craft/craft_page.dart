@@ -25,7 +25,7 @@ class CraftPage extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                  // dialogFilterCraft(); 
+                  // dialogFilterCraft();
                 },
                 icon: const Icon(Icons.filter_alt_rounded),
               )
@@ -66,7 +66,7 @@ class _List extends StatelessWidget {
                         height: sizeItem * 1.215,
                         child: ItemGame(
                           title: crafts[index].name,
-                          rarity: crafts[index].resource?.rarity ?? "0",
+                          rarity: crafts[index].resource?.rarity ?? "1",
                           linkImage: Config.urlImage(
                               crafts[index].resource?.images?.nameicon),
                           star: true,

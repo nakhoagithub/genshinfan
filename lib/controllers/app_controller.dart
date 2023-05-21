@@ -166,6 +166,16 @@ class AppController extends GetxController {
           await CraftService().getCrafts(Localization.language) ?? [];
       crafts.sort(
         (a, b) {
+          if (a.resource == null && b.resource == null) {
+            return a.sortorder.compareTo(b.sortorder);
+          } else if (a.resource == null) {
+            return 1;
+          } else if (b.resource == null) {
+            return -1;
+          }
+          // if (a.resource != null || b.resource != null) {
+          //   return a.sortorder.compareTo(b.sortorder);
+          // }
           return a.sortorder.compareTo(b.sortorder);
         },
       );

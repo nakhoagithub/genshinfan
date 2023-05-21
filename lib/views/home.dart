@@ -7,6 +7,7 @@ import 'package:genshinfan/views/animal/animal_screen.dart';
 import 'package:genshinfan/views/artifact/artifact_page.dart';
 import 'package:genshinfan/views/artifact/artifact_screen.dart';
 import 'package:genshinfan/views/craft/craft_page.dart';
+import 'package:genshinfan/views/craft/craft_screen.dart';
 import 'package:genshinfan/views/domain/domain_page.dart';
 import 'package:genshinfan/views/domain/domain_screen.dart';
 import 'package:genshinfan/views/enemy/enemy_page.dart';
@@ -117,7 +118,7 @@ class Home extends StatelessWidget {
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const CraftPage(),
-        center: const SizedBox(),
+        center: const CraftScreen(),
       ),
     ];
 

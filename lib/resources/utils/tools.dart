@@ -277,6 +277,13 @@ class Tools {
     return resource;
   }
 
+  static Resource? getResourceFromKey(String key) {
+    ResourceController resourceController = Get.find<ResourceController>();
+    Resource? resource = resourceController.resources
+        .firstWhereOrNull((element) => element.key == key);
+    return resource;
+  }
+
   static Artifact? getArtifactFromName(String name) {
     ArtifactController artifactController = Get.find<ArtifactController>();
     Artifact? artifact = artifactController.artifacts

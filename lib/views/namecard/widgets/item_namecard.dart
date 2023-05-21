@@ -18,6 +18,7 @@ class ItemNamecard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.theme;
     return Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       color: Get.theme.colorScheme.onInverseSurface,
