@@ -4,6 +4,7 @@ import 'package:genshinfan/objects/namecard.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
+import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:get/get.dart';
 
 class ItemRewardAchievementGroup extends StatelessWidget {
@@ -27,13 +28,7 @@ class ItemRewardAchievementGroup extends StatelessWidget {
             return const CircularProgressApp();
           },
           errorWidget: (context, url, error) {
-            return const Center(
-              child: Icon(
-                Icons.image_not_supported_rounded,
-                color: Colors.black54,
-                size: 20,
-              ),
-            );
+            return const ImageFailure();
           },
         ),
       ],

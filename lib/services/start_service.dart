@@ -12,6 +12,7 @@ import 'package:genshinfan/services/achievement_service.dart';
 import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
+import 'package:genshinfan/services/craft_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
 import 'package:genshinfan/services/namecard_service.dart';
@@ -80,6 +81,8 @@ class StartService {
           File("${directory.path}/$language/${Config.fileNameNamecard}.json");
       File fAnimal =
           File("${directory.path}/$language/${Config.fileNameAnimal}.json");
+      File fCraft =
+          File("${directory.path}/$language/${Config.fileNameCraft}.json");
       if (await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
@@ -89,7 +92,8 @@ class StartService {
           await fAchievementGroup.exists() &&
           await fAchievement.exists() &&
           await fNamecard.exists() &&
-          await fAnimal.exists()) {
+          await fAnimal.exists() &&
+          await fCraft.exists()) {
         return true;
       }
     } catch (e) {
@@ -163,6 +167,7 @@ class StartService {
             .getAchievementsFromGzip(directory, language, json);
         await NamecardService().getNamecardFromGzip(directory, language, json);
         await AnimalService().getAnimalFromGzip(directory, language, json);
+        await CraftService().getCraftFromGzip(directory, language, json);
         return true;
       } catch (e) {
         log("$e", name: "StartService extractData");

@@ -1,6 +1,9 @@
+import 'package:genshinfan/objects/resource.dart';
+
 class Craft {
+  String? key;
   final String name;
-  final String filter;
+  final String? filter;
   final int sortorder;
   final int unlockrank;
   final int resultcount;
@@ -8,10 +11,12 @@ class Craft {
   final List<CraftIngredient> recipe;
   final List<List<CraftIngredient>>? altrecipes;
   String? version;
+  Resource? resource;
 
   Craft({
+    this.key,
     required this.name,
-    required this.filter,
+    this.filter,
     required this.sortorder,
     required this.unlockrank,
     required this.resultcount,
@@ -19,9 +24,11 @@ class Craft {
     required this.recipe,
     this.altrecipes,
     this.version,
+    this.resource,
   });
 
   factory Craft.fromJson(Map<String, dynamic> json) => Craft(
+        key: json['key'],
         name: json["name"],
         filter: json["filter"],
         sortorder: json["sortorder"],
@@ -38,6 +45,7 @@ class Craft {
       );
 
   Map<String, dynamic> toJson() => {
+        "key": key,
         "name": name,
         "filter": filter,
         "sortorder": sortorder,

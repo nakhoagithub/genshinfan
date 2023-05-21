@@ -26,6 +26,7 @@ class Config {
   static const String fileNameAchievement = 'achievements';
   static const String fileNameNamecard = 'namecards';
   static const String fileNameAnimal = 'animals';
+  static const String fileNameCraft = 'crafts';
 
   // character
   static const String storageListElementCharacterFilter =

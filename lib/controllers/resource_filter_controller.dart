@@ -4,7 +4,6 @@ import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -92,13 +91,14 @@ class ResourceFilterController extends GetxController {
     // sắp xếp tên
     resources.sort(
       (a, b) {
-        if (sortName.value == 0) {
-          return Tools.removeDiacritics(a.name)
-              .compareTo(Tools.removeDiacritics(b.name));
-        } else {
-          return Tools.removeDiacritics(b.name)
-              .compareTo(Tools.removeDiacritics(a.name));
-        }
+        return a.sortorder.compareTo(b.sortorder);
+        // if (sortName.value == 0) {
+        //   return Tools.removeDiacritics(a.name)
+        //       .compareTo(Tools.removeDiacritics(b.name));
+        // } else {
+        //   return Tools.removeDiacritics(b.name)
+        //       .compareTo(Tools.removeDiacritics(a.name));
+        // }
       },
     );
   }

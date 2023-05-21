@@ -5,7 +5,9 @@ import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/reward.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
+import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_reward_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
@@ -77,24 +79,10 @@ class _ImageEnemy extends StatelessWidget {
         imageUrl: linkImage ?? "",
         fit: BoxFit.cover,
         progressIndicatorBuilder: (context, url, progress) {
-          return const Center(
-            child: SizedBox(
-              height: 15,
-              width: 15,
-              child: CircularProgressIndicator(
-                strokeWidth: 1,
-              ),
-            ),
-          );
+          return const CircularProgressApp();
         },
         errorWidget: (context, url, error) {
-          return const Center(
-            child: Icon(
-              Icons.image_not_supported_rounded,
-              color: Colors.black54,
-              size: 20,
-            ),
-          );
+          return const ImageFailure();
         },
       ),
     );

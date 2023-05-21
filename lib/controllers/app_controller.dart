@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/achievement_controller.dart';
 import 'package:genshinfan/controllers/animal_controller.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
+import 'package:genshinfan/controllers/craft_controller.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
 import 'package:genshinfan/controllers/namecard_controller.dart';
@@ -17,6 +18,7 @@ import 'package:genshinfan/objects/animal.dart';
 import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/objects/artifact.dart';
 import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/objects/craft.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/namecard.dart';
@@ -29,6 +31,7 @@ import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
+import 'package:genshinfan/services/craft_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
 import 'package:genshinfan/services/namecard_service.dart';
@@ -64,6 +67,7 @@ class AppController extends GetxController {
   RxList<Achievement> achievements = <Achievement>[].obs;
   RxList<Namecard> namecards = <Namecard>[].obs;
   RxList<Animal> animals = <Animal>[].obs;
+  RxList<Craft> crafts = <Craft>[].obs;
 
   Future<bool> getData() async {
     try {
@@ -158,6 +162,13 @@ class AppController extends GetxController {
         },
       );
 
+      crafts.value =
+          await CraftService().getCrafts(Localization.language) ?? [];
+      crafts.sort(
+        (a, b) {
+          return a.sortorder.compareTo(b.sortorder);
+        },
+      );
 
       return true;
     } catch (e) {
@@ -240,5 +251,6 @@ class AppBinding extends Bindings {
     Get.put(AchievementController());
     Get.put(NamecardController());
     Get.put(AnimalController());
+    Get.put(CraftController());
   }
 }

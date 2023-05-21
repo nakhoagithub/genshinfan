@@ -4,6 +4,8 @@ import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
+import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:genshinfan/views/widgets/info_daysofweek_widget.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
@@ -49,24 +51,10 @@ class InformationDomain extends StatelessWidget {
                             domain.domainLvs![0].images?.namepic),
                         fit: BoxFit.cover,
                         progressIndicatorBuilder: (context, url, progress) {
-                          return const Center(
-                            child: SizedBox(
-                              height: 15,
-                              width: 15,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 1,
-                              ),
-                            ),
-                          );
+                          return const CircularProgressApp();
                         },
                         errorWidget: (context, url, error) {
-                          return const Center(
-                            child: Icon(
-                              Icons.image_not_supported_rounded,
-                              color: Colors.black54,
-                              size: 20,
-                            ),
-                          );
+                          return const ImageFailure();
                         },
                       ),
                     ),

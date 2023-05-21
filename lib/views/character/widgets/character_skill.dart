@@ -6,8 +6,10 @@ import 'package:genshinfan/objects/talent.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:genshinfan/views/character/widgets/talent_stat.dart';
+import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
@@ -334,24 +336,10 @@ class _Combat extends StatelessWidget {
                     height: 40,
                     width: 40,
                     progressIndicatorBuilder: (context, url, progress) {
-                      return const Center(
-                        child: SizedBox(
-                          height: 15,
-                          width: 15,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 1,
-                          ),
-                        ),
-                      );
+                      return const CircularProgressApp();
                     },
                     errorWidget: (context, url, error) {
-                      return const Center(
-                        child: Icon(
-                          Icons.image_not_supported_rounded,
-                          color: Colors.black54,
-                          size: 20,
-                        ),
-                      );
+                      return const ImageFailure();
                     },
                   ),
                 ),
@@ -451,24 +439,10 @@ class _Passive extends StatelessWidget {
                   height: 40,
                   width: 40,
                   progressIndicatorBuilder: (context, url, progress) {
-                    return const Center(
-                      child: SizedBox(
-                        height: 15,
-                        width: 15,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1,
-                        ),
-                      ),
-                    );
+                    return const CircularProgressApp();
                   },
                   errorWidget: (context, url, error) {
-                    return const Center(
-                      child: Icon(
-                        Icons.image_not_supported_rounded,
-                        color: Colors.black54,
-                        size: 20,
-                      ),
-                    );
+                    return const ImageFailure();
                   },
                 ),
               ),
@@ -555,24 +529,10 @@ class _Constellation extends StatelessWidget {
                   height: 40,
                   width: 40,
                   progressIndicatorBuilder: (context, url, progress) {
-                    return const Center(
-                      child: SizedBox(
-                        height: 15,
-                        width: 15,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1,
-                        ),
-                      ),
-                    );
+                    return const CircularProgressApp();
                   },
                   errorWidget: (context, url, error) {
-                    return const Center(
-                      child: Icon(
-                        Icons.image_not_supported_rounded,
-                        color: Colors.black54,
-                        size: 20,
-                      ),
-                    );
+                    return const ImageFailure();
                   },
                 ),
               ),
