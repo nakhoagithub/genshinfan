@@ -13,6 +13,7 @@ class ResourceController extends GetxController
 
   void selectResource(Resource resource) {
     this.resource.value = resource;
+    update();
   }
 
   @override

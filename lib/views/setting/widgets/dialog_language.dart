@@ -19,7 +19,7 @@ class DialogLanguage extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "choose_language".tr,
+            "select_language".tr,
             style: ThemeApp.textStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

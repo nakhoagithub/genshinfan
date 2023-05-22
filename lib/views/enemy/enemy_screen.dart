@@ -26,7 +26,7 @@ class EnemyScreen extends StatelessWidget {
           ),
         ),
         body: enemyController.enemy.value == null
-            ? PageEmpty(title: "choose_enemy".tr)
+            ? PageEmpty(title: "select_enemy".tr)
             : Stack(
                 children: [
                   SingleChildScrollView(

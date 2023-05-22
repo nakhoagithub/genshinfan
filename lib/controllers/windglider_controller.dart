@@ -1,17 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/resources/utils/enum.dart';
+import 'package:genshinfan/objects/windglider.dart';
 import 'package:get/get.dart';
-import '../objects/animal.dart';
+import 'package:get_storage/get_storage.dart';
 
-class AnimalController extends GetxController with GetTickerProviderStateMixin {
-  List<Animal> animals = Get.find<AppController>().animals;
-  Rx<Status> status = Status.init.obs;
-  Rx<Animal?> animal = Rx(null);
+class WindgliderController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  GetStorage box = GetStorage();
+  List<Windglider> windgliders = <Windglider>[].obs;
+  Rx<Windglider?> windglider = Rx(null);
   ScrollController scrollController = ScrollController();
 
-  void selectAnimal(Animal value) async {
-    animal.value = value;
+  void selectWindglider(Windglider windglider) {
+    this.windglider.value = windglider;
     update();
   }
 
@@ -25,6 +26,12 @@ class AnimalController extends GetxController with GetTickerProviderStateMixin {
       );
     }
     super.update(ids, condition);
+  }
+
+  @override
+  void onInit() {
+    windgliders.addAll(Get.find<AppController>().windgliders);
+    super.onInit();
   }
 
   @override

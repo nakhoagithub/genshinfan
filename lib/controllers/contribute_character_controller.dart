@@ -146,7 +146,7 @@ class ContributeCharacterController extends GetxController {
         buttonController.error();
       }
     } else {
-      dialogInfo("choose_full_info".tr);
+      dialogInfo("select_full_info".tr);
       buttonController.error();
     }
   }

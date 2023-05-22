@@ -23,6 +23,7 @@ import 'package:genshinfan/services/namecard_service.dart';
 import 'package:genshinfan/services/outfit_service.dart';
 import 'package:genshinfan/services/resource_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
+import 'package:genshinfan/services/windglider_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -88,6 +89,8 @@ class StartService {
           File("${directory.path}/$language/${Config.fileNameOutfit}.json");
       File fGeography =
           File("${directory.path}/$language/${Config.fileNameGeography}.json");
+      File fWindglider =
+          File("${directory.path}/$language/${Config.fileNameWindglider}.json");
       if (await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
@@ -100,7 +103,8 @@ class StartService {
           await fAnimal.exists() &&
           await fCraft.exists() &&
           await fOutfit.exists() &&
-          await fGeography.exists()) {
+          await fGeography.exists() &&
+          await fWindglider.exists()) {
         return true;
       }
     } catch (e) {
@@ -178,6 +182,8 @@ class StartService {
         await OutfitService().getOutfitFromGzip(directory, language, json);
         await GeographyService()
             .getGeographyFromGzip(directory, language, json);
+        await WindgliderService()
+            .getWindgliderFromGzip(directory, language, json);
         return true;
       } catch (e) {
         log("$e", name: "StartService extractData");

@@ -13,6 +13,7 @@ class CraftController extends GetxController
 
   void selectCraft(Craft craft) {
     this.craft.value = craft;
+    update();
   }
 
   @override

@@ -336,7 +336,9 @@ class SlideLayoutState extends State<SlideLayout>
                               onTap: () => _onTap(0),
                               child: widget.items[0].iconMenu,
                             ),
-                            const _DividerApp(),
+                            const _DividerApp(
+                              top: 10,
+                            ),
                             Expanded(
                               child: ListView.builder(
                                 padding: EdgeInsets.zero,
@@ -357,7 +359,7 @@ class SlideLayoutState extends State<SlideLayout>
                                 },
                               ),
                             ),
-                            const _DividerApp(),
+                            const _DividerApp(top: 10),
                             widget.actionBottomLeftBar == null
                                 ? const SizedBox()
                                 : Column(
@@ -551,12 +553,22 @@ class _IconAppState extends State<_IconApp> with AutomaticKeepAliveClientMixin {
 }
 
 class _DividerApp extends StatelessWidget {
-  const _DividerApp({Key? key}) : super(key: key);
+  final double top;
+  final double bottom;
+  final double right;
+  final double left;
+  const _DividerApp({
+    this.top = 5,
+    this.bottom = 5,
+    this.right = 5,
+    this.left = 10,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10, right: 5, top: 10, bottom: 10),
+      margin:
+          EdgeInsets.only(left: left, right: right, top: top, bottom: bottom),
       child: const Divider(
         color: Colors.grey,
         height: 1,

@@ -23,7 +23,7 @@ class OutfitScreen extends StatelessWidget {
           ),
         ),
         body: outfitController.outfit.value == null
-            ? PageEmpty(title: "choose_outfit".tr)
+            ? PageEmpty(title: "select_outfit".tr)
             : Stack(
                 children: [
                   // content

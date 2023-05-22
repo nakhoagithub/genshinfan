@@ -29,6 +29,7 @@ class Config {
   static const String fileNameCraft = 'crafts';
   static const String fileNameOutfit = 'outfits';
   static const String fileNameGeography = 'geographies';
+  static const String fileNameWindglider = 'windgliders';
 
   // character
   static const String storageListElementCharacterFilter =

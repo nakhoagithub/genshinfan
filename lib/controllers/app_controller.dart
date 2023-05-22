@@ -16,6 +16,7 @@ import 'package:genshinfan/controllers/namecard_controller.dart';
 import 'package:genshinfan/controllers/outfit_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
+import 'package:genshinfan/controllers/windglider_controller.dart';
 import 'package:genshinfan/objects/achievement.dart';
 import 'package:genshinfan/objects/animal.dart';
 import 'package:genshinfan/objects/app/user.dart';
@@ -29,6 +30,7 @@ import 'package:genshinfan/objects/namecard.dart';
 import 'package:genshinfan/objects/outfit.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
+import 'package:genshinfan/objects/windglider.dart';
 import 'package:genshinfan/resources/utils/localization.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
@@ -45,6 +47,7 @@ import 'package:genshinfan/services/namecard_service.dart';
 import 'package:genshinfan/services/outfit_service.dart';
 import 'package:genshinfan/services/resource_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
+import 'package:genshinfan/services/windglider_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
@@ -75,6 +78,7 @@ class AppController extends GetxController {
   RxList<Craft> crafts = <Craft>[].obs;
   RxList<Outfit> outfits = <Outfit>[].obs;
   RxList<Geography> geographies = <Geography>[].obs;
+  RxList<Windglider> windgliders = <Windglider>[].obs;
 
   Future<bool> getData() async {
     try {
@@ -201,6 +205,9 @@ class AppController extends GetxController {
         },
       );
 
+      windgliders.value =
+          await WindgliderService().getWindgliders(Localization.language) ?? [];
+
       return true;
     } catch (e) {
       log("$e", name: "AppController - getData");
@@ -285,5 +292,6 @@ class AppBinding extends Bindings {
     Get.put(CraftController());
     Get.put(OutfitController());
     Get.put(GeographyController());
+    Get.put(WindgliderController());
   }
 }

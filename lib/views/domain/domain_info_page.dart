@@ -26,7 +26,7 @@ class DomainInfoPage extends StatelessWidget {
           ),
         ),
         body: domainController.domain.value == null
-            ? PageEmpty(title: "choose_domain".tr)
+            ? PageEmpty(title: "select_domain".tr)
             : Stack(
                 children: [
                   // content

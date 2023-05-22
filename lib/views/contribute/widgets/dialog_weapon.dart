@@ -42,7 +42,7 @@ class _ListWeapon extends StatelessWidget {
       List<Weapon> weapons = contributeCharacterController.weapons;
       return weapons.isEmpty
           ? Center(
-              child: Text('choose_character'.tr),
+              child: Text('select_character'.tr),
             )
           : GridView.count(
               physics: const BouncingScrollPhysics(),
@@ -66,7 +66,8 @@ class _ListWeapon extends StatelessWidget {
                                 "")
                             : null,
                         linkImage: weapons[index].images?.mihoyoIcon ??
-                            Config.urlImage(weapons[index].images?.filenameGacha),
+                            Config.urlImage(
+                                weapons[index].images?.filenameGacha),
                         rarity: weapons[index].rarity.toString(),
                         star: true,
                         onTap: () {

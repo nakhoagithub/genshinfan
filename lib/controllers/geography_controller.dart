@@ -13,6 +13,7 @@ class GeographyController extends GetxController
 
   void selectGeography(Geography geography) {
     this.geography.value = geography;
+    update();
   }
 
   @override

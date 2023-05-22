@@ -24,7 +24,7 @@ class ResourceInfoPage extends StatelessWidget {
           ),
         ),
         body: resourceController.resource.value == null
-            ? PageEmpty(title: "choose_resource".tr)
+            ? PageEmpty(title: "select_resource".tr)
             : Stack(
                 children: [
                   // content

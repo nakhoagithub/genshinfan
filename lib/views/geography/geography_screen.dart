@@ -23,7 +23,7 @@ class GeographyScreen extends StatelessWidget {
           ),
         ),
         body: geographyController.geography.value == null
-            ? PageEmpty(title: "choose_geography".tr)
+            ? PageEmpty(title: "select_geography".tr)
             : Stack(
                 children: [
                   // content

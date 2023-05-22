@@ -32,7 +32,7 @@ class CharacterInfoPage extends StatelessWidget {
                 if (characterController.character.value != null) {
                   Get.toNamed("/character_building");
                 } else {
-                  Fluttertoast.showToast(msg: "choose_character".tr);
+                  Fluttertoast.showToast(msg: "select_character".tr);
                 }
               },
               icon: const Icon(Icons.keyboard_arrow_right_rounded),
@@ -40,7 +40,7 @@ class CharacterInfoPage extends StatelessWidget {
           ],
         ),
         body: characterController.character.value == null
-            ? PageEmpty(title: "choose_character".tr)
+            ? PageEmpty(title: "select_character".tr)
             : Stack(
                 children: [
                   SizedBox(

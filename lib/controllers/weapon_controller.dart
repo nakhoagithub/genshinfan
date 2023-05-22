@@ -16,6 +16,7 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
   void selectWeapon(Weapon value) {
     weapon.value = value;
     imageGacha.value = weapon.value?.images?.filenameGacha ?? "";
+    update();
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
 class InfoParagraphWidget extends StatelessWidget {
@@ -27,7 +26,7 @@ class InfoParagraphWidget extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.all(2),
-          child: TextCSS(
+          child: Text(
             data,
             style: ThemeApp.textStyle(),
           ),

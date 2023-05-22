@@ -13,6 +13,7 @@ class NamecardController extends GetxController
 
   void selectNamecard(Namecard namecard) {
     this.namecard.value = namecard;
+    update();
   }
 
   @override

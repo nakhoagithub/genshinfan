@@ -29,7 +29,7 @@ class WeaponInfoPage extends StatelessWidget {
           ),
         ),
         body: weaponController.weapon.value == null
-            ? PageEmpty(title: "choose_weapon".tr)
+            ? PageEmpty(title: "select_weapon".tr)
             : Stack(
                 children: [
                   SizedBox(

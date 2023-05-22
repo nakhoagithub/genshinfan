@@ -25,7 +25,7 @@ class CraftScreen extends StatelessWidget {
           ),
         ),
         body: craftController.craft.value == null
-            ? PageEmpty(title: "choose_craft".tr)
+            ? PageEmpty(title: "select_craft".tr)
             : Stack(
                 children: [
                   SingleChildScrollView(

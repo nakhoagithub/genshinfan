@@ -13,6 +13,7 @@ class OutfitController extends GetxController
 
   void selectOutfit(Outfit outfit) {
     this.outfit.value = outfit;
+    update();
   }
 
   @override

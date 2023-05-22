@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/controllers/windglider_controller.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
-import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
-import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
+import 'package:genshinfan/views/windglider/widgets/windglider_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class EnemyInfoPage extends StatelessWidget {
-  const EnemyInfoPage({super.key});
+class WindgliderScreen extends StatelessWidget {
+  const WindgliderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    EnemyController enemyController = Get.find<EnemyController>();
+    WindgliderController windgliderController =
+        Get.find<WindgliderController>();
 
     return Obx(() {
       return Scaffold(
@@ -22,23 +22,19 @@ class EnemyInfoPage extends StatelessWidget {
           leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "enemy_information".tr,
+            "windglider_information".tr,
           ),
         ),
-        body: enemyController.enemy.value == null
-            ? PageEmpty(title: "select_enemy".tr)
+        body: windgliderController.windglider.value == null
+            ? PageEmpty(title: "select_windglider".tr)
             : Stack(
                 children: [
-                  // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: enemyController.scrollController,
+                    controller: windgliderController.scrollController,
                     child: const Column(
                       children: [
-                        // thông tin
-                        InformationEnemy(),
-                        // stat
-                        EnemyStats(),
+                        InformationWindglider(),
                         SizedBox(height: 100),
                       ],
                     ),

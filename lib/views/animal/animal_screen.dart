@@ -25,7 +25,7 @@ class AnimalScreen extends StatelessWidget {
           ),
         ),
         body: animalController.animal.value == null
-            ? PageEmpty(title: "choose_animal".tr)
+            ? PageEmpty(title: "select_animal".tr)
             : Stack(
                 children: [
                   SingleChildScrollView(

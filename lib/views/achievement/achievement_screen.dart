@@ -26,7 +26,7 @@ class AchievementGroupScreen extends StatelessWidget {
           ),
         ),
         body: achievementController.achievementGroup.value == null
-            ? PageEmpty(title: "choose_achievement".tr)
+            ? PageEmpty(title: "select_achievement".tr)
             : Stack(
                 children: [
                   // content

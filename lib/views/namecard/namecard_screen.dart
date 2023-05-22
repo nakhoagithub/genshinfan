@@ -23,7 +23,7 @@ class NamecardScreen extends StatelessWidget {
           ),
         ),
         body: namecardController.namecard.value == null
-            ? PageEmpty(title: "choose_namecard".tr)
+            ? PageEmpty(title: "select_namecard".tr)
             : Stack(
                 children: [
                   // content

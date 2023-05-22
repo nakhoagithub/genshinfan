@@ -28,7 +28,7 @@ class ArtifactInfoPage extends StatelessWidget {
           ),
         ),
         body: artifactController.artifact.value == null
-            ? PageEmpty(title: "choose_artifact".tr)
+            ? PageEmpty(title: "select_artifact".tr)
             : Stack(
                 children: [
                   SingleChildScrollView(

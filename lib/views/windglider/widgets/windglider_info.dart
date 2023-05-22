@@ -1,33 +1,40 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/namecard_controller.dart';
-import 'package:genshinfan/objects/namecard.dart';
+import 'package:genshinfan/controllers/windglider_controller.dart';
+import 'package:genshinfan/objects/windglider.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
+import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_multiline_widget.dart';
 import 'package:get/get.dart';
 
-class InformationNamecard extends StatelessWidget {
-  const InformationNamecard({super.key});
+class InformationWindglider extends StatelessWidget {
+  const InformationWindglider({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    NamecardController namecardController = Get.find<NamecardController>();
+    WindgliderController windgliderController =
+        Get.find<WindgliderController>();
     return Obx(() {
-      Namecard namecard = namecardController.namecard.value!;
+      Windglider windglider = windgliderController.windglider.value!;
       return SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
           margin: const EdgeInsets.all(4),
           child: Column(
             children: [
+              _ImageWindglider(
+                linkImage: Config.urlImage(windglider.images?.nameicon),
+                rarity: "1",
+                size: 150,
+              ),
               Center(
                 child: Text(
-                  namecard.name,
+                  windglider.name,
                   textAlign: TextAlign.center,
                   style: ThemeApp.textStyle(
                     fontSize: 28,
@@ -35,14 +42,9 @@ class InformationNamecard extends StatelessWidget {
                   ),
                 ),
               ),
-              _ImageNamecard(
-                linkImage: Config.urlImage(namecard.images?.namebackground),
+              _InformationMore(
+                windglider: windglider,
               ),
-              namecard.images?.namebanner == null
-                  ? const SizedBox()
-                  : _ImageNamebanner(
-                      linkImage: Config.urlImage(namecard.images?.namebanner)),
-              _InformationMore(namecard: namecard),
             ],
           ),
         ),
@@ -51,16 +53,27 @@ class InformationNamecard extends StatelessWidget {
   }
 }
 
-class _ImageNamecard extends StatelessWidget {
+class _ImageWindglider extends StatelessWidget {
   final String? linkImage;
-  const _ImageNamecard({
+  final String? rarity;
+  final double size;
+  const _ImageWindglider({
     required this.linkImage,
+    required this.rarity,
+    required this.size,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: size,
+      height: size,
       margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: GradientApp.getBackgroundRarity(rarity),
+      ),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       child: CachedNetworkImage(
         imageUrl: linkImage ?? "",
         fit: BoxFit.cover,
@@ -75,32 +88,9 @@ class _ImageNamecard extends StatelessWidget {
   }
 }
 
-class _ImageNamebanner extends StatelessWidget {
-  final String? linkImage;
-  const _ImageNamebanner({
-    required this.linkImage,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      child: CachedNetworkImage(
-        imageUrl: linkImage ?? "",
-        progressIndicatorBuilder: (context, url, progress) {
-          return const CircularProgressApp();
-        },
-        errorWidget: (context, url, error) {
-          return const ImageFailure();
-        },
-      ),
-    );
-  }
-}
-
 class _InformationMore extends StatelessWidget {
-  final Namecard namecard;
-  const _InformationMore({required this.namecard});
+  final Windglider windglider;
+  const _InformationMore({required this.windglider});
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +105,13 @@ class _InformationMore extends StatelessWidget {
         children: [
           // nguồn
           InfoTextMultiLineWidget(
-              titleTranslate: "source", data: namecard.source),
+              titleTranslate: "source", data: windglider.source),
 
-          // mô tả
+          // description
           InfoParagraphWidget(
-              titleTranslate: "description", data: namecard.description),
+              titleTranslate: "description", data: windglider.description),
+
+          InfoParagraphWidget(titleTranslate: "story", data: windglider.story),
         ],
       ),
     );

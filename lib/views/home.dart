@@ -26,6 +26,8 @@ import 'package:genshinfan/views/weapon/weapon_screen.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:genshinfan/views/widgets/slide_layout.dart';
+import 'package:genshinfan/views/windglider/windglider_page.dart';
+import 'package:genshinfan/views/windglider/windglider_screen.dart';
 import 'package:get/get.dart';
 import 'character/character_page.dart';
 import 'character/character_screen.dart';
@@ -139,6 +141,14 @@ class Home extends StatelessWidget {
         ),
         left: const GeographyPage(),
         center: const GeographyScreen(),
+      ),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/UI_Icon_Activity_FleurFair_FallGame.png",
+          color: Get.theme.colorScheme.onSurface,
+        ),
+        left: const WindgliderPage(),
+        center: const WindgliderScreen(),
       ),
     ];
 
