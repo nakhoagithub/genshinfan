@@ -121,6 +121,17 @@ class AppService {
 
     return traffic;
   }
+  
+  /// cần kết nối mạng để ứng dụng kết nối đến firebase
+  Future<bool> isDeleteDataFirstInstall() async {
+    DatabaseReference db = FirebaseDatabase.instance.ref();
+    DataSnapshot data =
+        await db.child('application').child("deleteDataFirstInstall").get();
+    if (data.value != null && data.value is bool) {
+      return data.value as bool;
+    }
+    return false;
+  }
 
   Future<ApiGithub?> getAPI() async {
     Dio dio = Dio();
@@ -132,7 +143,7 @@ class AppService {
         return ApiGithub.fromJson(res.data);
       }
     } catch (e) {
-      log("$e", name: "AppService _getAPI");
+      log("$e", name: "AppService getAPI");
     }
     return null;
   }

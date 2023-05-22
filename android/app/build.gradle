@@ -62,6 +62,12 @@ android {
             keyAlias "upload"
             keyPassword "zxcvbn"
         }
+        debug {
+            storeFile file("D:/_Private/upload-keystore.jks")
+            storePassword "zxcvbn"
+            keyAlias "upload"
+            keyPassword "zxcvbn"
+        }
     }
    
    buildTypes {

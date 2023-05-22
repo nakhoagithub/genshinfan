@@ -15,6 +15,7 @@ class Config {
   static const String darkMode = 'darkMode';
   static const String languageApp = 'languageApp';
   static const String storageContentSHA = 'contentSHA';
+  static const String deleteDataFirstInstall = 'deleteDataFirstInstall';
 
   static const String fileNameCharacter = 'characters';
   static const String fileNameMaterial = 'materials';

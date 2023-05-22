@@ -559,8 +559,11 @@ class _DividerApp extends StatelessWidget {
   final double left;
   const _DividerApp({
     this.top = 5,
+    // ignore: unused_element
     this.bottom = 5,
+    // ignore: unused_element
     this.right = 5,
+    // ignore: unused_element
     this.left = 10,
   });
 
