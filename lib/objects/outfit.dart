@@ -1,13 +1,15 @@
 class Outfit {
+  String? key;
   final String name;
   final String description;
   final bool isdefault;
   final String character;
   final List<String>? source;
-  ImageNamecard? images;
+  ImageOutfit? images;
   String? version;
 
   Outfit({
+    this.key,
     required this.name,
     required this.description,
     required this.isdefault,
@@ -17,7 +19,12 @@ class Outfit {
     this.version,
   });
 
+  void setImage(dynamic json) {
+    images = ImageOutfit.fromJson(json);
+  }
+
   factory Outfit.fromJson(Map<String, dynamic> json) => Outfit(
+        key: json['key'],
         name: json["name"],
         description: json["description"],
         isdefault: json["isdefault"],
@@ -27,11 +34,12 @@ class Outfit {
             : List<String>.from(json["source"].map((x) => x)),
         images: json['images'] == null
             ? null
-            : ImageNamecard.fromJson(json['images']),
+            : ImageOutfit.fromJson(json['images']),
         version: json['version'],
       );
 
   Map<String, dynamic> toJson() => {
+        "key": key,
         "name": name,
         "description": description,
         "isdefault": isdefault,
@@ -43,18 +51,18 @@ class Outfit {
       };
 }
 
-class ImageNamecard {
+class ImageOutfit {
   final String namecard;
   final String? nameicon;
   final String? namesideicon;
-  final String namesplash;
-  const ImageNamecard({
+  final String? namesplash;
+  const ImageOutfit({
     required this.namecard,
-    required this.nameicon,
-    required this.namesideicon,
-    required this.namesplash,
+    this.nameicon,
+    this.namesideicon,
+    this.namesplash,
   });
-  factory ImageNamecard.fromJson(Map<String, dynamic> json) => ImageNamecard(
+  factory ImageOutfit.fromJson(Map<String, dynamic> json) => ImageOutfit(
         namecard: json["namecard"],
         nameicon: json["nameicon"],
         namesideicon: json["namesideicon"],
@@ -65,6 +73,6 @@ class ImageNamecard {
         "namecard": namecard,
         "nameicon": nameicon,
         "namesideicon": namesideicon,
-        "character": namesplash,
+        "namesplash": namesplash,
       };
 }

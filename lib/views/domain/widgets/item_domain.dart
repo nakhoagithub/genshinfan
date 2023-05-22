@@ -7,6 +7,7 @@ import 'package:genshinfan/objects/reward.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:get/get.dart';
 
 class ItemDomain extends StatelessWidget {
@@ -116,15 +117,7 @@ class _ItemReward extends StatelessWidget {
               ? Config.urlImage(resource.images?.nameicon)
               : artifact?.images?.flower ?? "",
           progressIndicatorBuilder: (context, url, progress) {
-            return const Center(
-              child: SizedBox(
-                height: 10,
-                width: 10,
-                child: CircularProgressIndicator(
-                  strokeWidth: 1,
-                ),
-              ),
-            );
+            return const CircularProgressApp();
           },
           errorWidget: (context, url, error) {
             return Image.asset("assets/images/icon_genshin_error.png");

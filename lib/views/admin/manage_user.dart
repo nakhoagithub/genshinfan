@@ -7,6 +7,7 @@ import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';
 
@@ -81,15 +82,7 @@ class _Item extends StatelessWidget {
                     imageUrl: user.linkImage ?? "",
                     fit: BoxFit.cover,
                     progressIndicatorBuilder: (context, url, progress) {
-                      return const Center(
-                        child: SizedBox(
-                          height: 12,
-                          width: 12,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 1,
-                          ),
-                        ),
-                      );
+                      return const CircularProgressApp();
                     },
                     errorWidget: (context, url, error) {
                       return Image.asset("assets/images/ic_user.png");

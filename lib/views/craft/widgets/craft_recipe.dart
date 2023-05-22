@@ -8,9 +8,11 @@ import 'package:get/get.dart';
 
 class CraftRecipe extends StatelessWidget {
   final List<CraftIngredient> craftIngredients;
+  final VoidCallback? onTap;
   const CraftRecipe({
     super.key,
     required this.craftIngredients,
+    this.onTap,
   });
 
   @override
@@ -44,6 +46,7 @@ class CraftRecipe extends StatelessWidget {
                   contentIfNotImage: craftIngredients[index].name,
                   name: craftIngredients[index].count.toString(),
                   noData: craftIngredients[index].count == 0,
+                  onTap: onTap,
                 ),
               );
             },

@@ -47,7 +47,6 @@ class WeaponScreen extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             child: LinearProgressIndicator(
                               value: progress.progress,
-                              // color: ThemeApp.colorPrimary(),
                             ),
                           );
                         },

@@ -1,19 +1,21 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/achievement_controller.dart';
+import 'package:genshinfan/controllers/outfit_controller.dart';
 import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/objects/achievement.dart';
+import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/objects/outfit.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
-class AchievementGroupPage extends StatelessWidget {
-  const AchievementGroupPage({super.key});
+class OutfitPage extends StatelessWidget {
+  const OutfitPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class AchievementGroupPage extends StatelessWidget {
       child: Column(
         children: [
           AppBarCenter(
-            title: "achievementGroup".tr,
+            title: "outfit".tr,
             width: double.infinity,
           ),
           const Expanded(
@@ -40,49 +42,48 @@ class _List extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AchievementController achievementController =
-        Get.find<AchievementController>();
+    OutfitController outfitController = Get.find<OutfitController>();
     HomeController homeController = Get.find<HomeController>();
     double sizeItem = Config.sizeItem2;
     return Obx(() {
-      List<AchievementGroup> achievementGroups =
-          achievementController.achievementGroups;
-      return achievementGroups.isEmpty
-          ? ListEmpty(title: "empty_achievementGroup".tr)
+      List<Outfit> outfits = outfitController.outfits;
+      return outfits.isEmpty
+          ? ListEmpty(title: "empty_outfit".tr)
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               crossAxisCount: 2,
               childAspectRatio: sizeItem / (sizeItem * 1.215),
               children: List.generate(
-                achievementGroups.length,
-                (index) => FadeInUp(
-                  child: Center(
-                    child: SizedBox(
-                      width: sizeItem,
-                      height: sizeItem * 1.215,
-                      child: _ItemAchievementGroup(
-                        achievementGroup: achievementGroups[index],
-                        onTap: () {
-                          achievementController
-                              .selectAchievementGroup(achievementGroups[index]);
-                          homeController.pageCenter();
-                        },
+                outfits.length,
+                (index) {
+                  return FadeInUp(
+                    child: Center(
+                      child: SizedBox(
+                        width: sizeItem,
+                        height: sizeItem * 1.215,
+                        child: _ItemOutfit(
+                          outfit: outfits[index],
+                          onTap: () {
+                            outfitController.selectOutfit(outfits[index]);
+                            homeController.pageCenter();
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             );
     });
   }
 }
 
-class _ItemAchievementGroup extends StatelessWidget {
-  final AchievementGroup achievementGroup;
+class _ItemOutfit extends StatelessWidget {
+  final Outfit outfit;
   final VoidCallback onTap;
-  const _ItemAchievementGroup({
-    required this.achievementGroup,
+  const _ItemOutfit({
+    required this.outfit,
     required this.onTap,
   });
 
@@ -90,6 +91,11 @@ class _ItemAchievementGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     double sizeItem = Config.sizeItem2;
+    Character? character = Tools.getCharacterFromName(outfit.character);
+    String linkImage = (outfit.isdefault
+            ? character?.images?.mihoyoIcon
+            : Config.urlImage(outfit.images?.namecard)) ??
+        "";
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(sizeItem * 0.05),
@@ -103,10 +109,8 @@ class _ItemAchievementGroup extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: CachedNetworkImage(
-                  imageUrl: Config.urlImage(achievementGroup.images?.nameicon),
+                  imageUrl: linkImage,
                   fit: BoxFit.cover,
-                  height: sizeItem * 0.6,
-                  width: sizeItem * 0.6,
                   progressIndicatorBuilder: (context, url, progress) {
                     return const CircularProgressApp();
                   },
@@ -116,12 +120,12 @@ class _ItemAchievementGroup extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Center(
                   child: Text(
-                    achievementGroup.name,
+                    outfit.name,
                     textAlign: TextAlign.center,
-                    maxLines: 3,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: ThemeApp.textStyle(
                         fontWeight: FontWeight.w500, fontSize: 14),

@@ -7,6 +7,8 @@ import 'package:genshinfan/objects/achievement.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
+import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -106,18 +108,10 @@ class _ItemAchievementGroup extends StatelessWidget {
                   height: sizeItem * 0.6,
                   width: sizeItem * 0.6,
                   progressIndicatorBuilder: (context, url, progress) {
-                    return const Center(
-                      child: SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1,
-                        ),
-                      ),
-                    );
+                    return const CircularProgressApp();
                   },
                   errorWidget: (context, url, error) {
-                    return const SizedBox();
+                    return const ImageFailure();
                   },
                 ),
               ),

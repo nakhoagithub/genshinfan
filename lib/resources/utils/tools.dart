@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
+import 'package:genshinfan/controllers/character_controller.dart';
+import 'package:genshinfan/controllers/craft_controller.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/objects/artifact.dart';
+import 'package:genshinfan/objects/character.dart';
+import 'package:genshinfan/objects/craft.dart';
 import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
@@ -270,31 +274,45 @@ class Tools {
     return value.images?.flower;
   }
 
+  static Character? getCharacterFromName(String name) {
+    Character? character = Get.find<CharacterController>()
+        .characters
+        .firstWhereOrNull((element) => element.name == name);
+    return character;
+  }
+
   static Resource? getResourceFromName(String name) {
-    ResourceController resourceController = Get.find<ResourceController>();
-    Resource? resource = resourceController.resources
+    Resource? resource = Get.find<ResourceController>()
+        .resources
         .firstWhereOrNull((element) => element.name == name);
     return resource;
   }
 
-  static Resource? getResourceFromKey(String key) {
-    ResourceController resourceController = Get.find<ResourceController>();
-    Resource? resource = resourceController.resources
+  static Resource? getResourceFromKey(String? key) {
+    Resource? resource = Get.find<ResourceController>()
+        .resources
         .firstWhereOrNull((element) => element.key == key);
     return resource;
   }
 
   static Artifact? getArtifactFromName(String name) {
-    ArtifactController artifactController = Get.find<ArtifactController>();
-    Artifact? artifact = artifactController.artifacts
+    Artifact? artifact = Get.find<ArtifactController>()
+        .artifacts
         .firstWhereOrNull((element) => element.name == name);
     return artifact;
   }
 
   static Enemy? getEnemyFromName(String name) {
-    EnemyController enemyController = Get.find<EnemyController>();
-    Enemy? enemy = enemyController.enemies
+    Enemy? enemy = Get.find<EnemyController>()
+        .enemies
         .firstWhereOrNull((element) => element.name == name);
     return enemy;
+  }
+
+  static Craft? getCraftFromKey(String? key) {
+    Craft? craft = Get.find<CraftController>()
+        .crafts
+        .firstWhereOrNull((element) => element.key == key);
+    return craft;
   }
 }

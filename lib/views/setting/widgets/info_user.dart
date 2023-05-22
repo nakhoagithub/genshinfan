@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:get/get.dart';
@@ -50,15 +51,7 @@ class _Logged extends StatelessWidget {
               imageUrl: user.photoURL ?? "",
               fit: BoxFit.cover,
               progressIndicatorBuilder: (context, url, progress) {
-                return const Center(
-                  child: SizedBox(
-                    height: 12,
-                    width: 12,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 1,
-                    ),
-                  ),
-                );
+                return const CircularProgressApp();
               },
               errorWidget: (context, url, error) {
                 return Image.asset("assets/images/ic_user.png");
@@ -88,7 +81,7 @@ class _Logged extends StatelessWidget {
             onTap: () async {
               await Get.find<AppController>().logout();
             },
-            icon: const Icon(Icons.logout_outlined),
+            child: const Icon(Icons.logout_outlined),
           ),
         ],
       ),

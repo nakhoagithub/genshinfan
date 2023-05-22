@@ -327,17 +327,14 @@ class SlideLayoutState extends State<SlideLayout>
                         width: 60,
                         child: Column(
                           children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              child: _IconApp(
-                                iconColor: widget.iconColor,
-                                iconBackgroundColor: widget.iconBackgroundColor,
-                                indicatorColor: widget.indicatorColor,
-                                index: 0,
-                                currentIndex: selected,
-                                onTap: () => _onTap(0),
-                                child: widget.items[0].iconMenu,
-                              ),
+                            _IconApp(
+                              iconColor: widget.iconColor,
+                              iconBackgroundColor: widget.iconBackgroundColor,
+                              indicatorColor: widget.indicatorColor,
+                              index: 0,
+                              currentIndex: selected,
+                              onTap: () => _onTap(0),
+                              child: widget.items[0].iconMenu,
                             ),
                             const _DividerApp(),
                             Expanded(
@@ -360,19 +357,16 @@ class SlideLayoutState extends State<SlideLayout>
                                 },
                               ),
                             ),
+                            const _DividerApp(),
                             widget.actionBottomLeftBar == null
                                 ? const SizedBox()
-                                : Container(
-                                    margin: const EdgeInsets.only(
-                                        bottom: 12, top: 12),
-                                    child: Column(
-                                      children: widget.actionBottomLeftBar!.map(
-                                        (e) {
-                                          return e;
-                                        },
-                                      ).toList(),
-                                    ),
-                                  )
+                                : Column(
+                                    children: widget.actionBottomLeftBar!.map(
+                                      (e) {
+                                        return e;
+                                      },
+                                    ).toList(),
+                                  ),
                           ],
                         ),
                       ),
@@ -562,7 +556,7 @@ class _DividerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10, right: 5),
+      margin: const EdgeInsets.only(left: 10, right: 5, top: 10, bottom: 10),
       child: const Divider(
         color: Colors.grey,
         height: 1,

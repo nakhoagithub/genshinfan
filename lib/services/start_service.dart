@@ -8,24 +8,25 @@ import 'package:dio/dio.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
 import 'package:genshinfan/objects/app/api_github.dart';
 import 'package:genshinfan/objects/app/package_app.dart';
+import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/resources/utils/enum.dart';
 import 'package:genshinfan/services/achievement_service.dart';
 import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/services/artifact_service.dart';
+import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/craft_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
+import 'package:genshinfan/services/geography_service.dart';
 import 'package:genshinfan/services/namecard_service.dart';
+import 'package:genshinfan/services/outfit_service.dart';
+import 'package:genshinfan/services/resource_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
-
-import '../resources/utils/config.dart';
-import '../resources/utils/enum.dart';
-import 'character_service.dart';
-import 'resource_service.dart';
 
 class StartService {
   const StartService();
@@ -83,6 +84,10 @@ class StartService {
           File("${directory.path}/$language/${Config.fileNameAnimal}.json");
       File fCraft =
           File("${directory.path}/$language/${Config.fileNameCraft}.json");
+      File fOutfit =
+          File("${directory.path}/$language/${Config.fileNameOutfit}.json");
+      File fGeography =
+          File("${directory.path}/$language/${Config.fileNameGeography}.json");
       if (await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
@@ -93,7 +98,9 @@ class StartService {
           await fAchievement.exists() &&
           await fNamecard.exists() &&
           await fAnimal.exists() &&
-          await fCraft.exists()) {
+          await fCraft.exists() &&
+          await fOutfit.exists() &&
+          await fGeography.exists()) {
         return true;
       }
     } catch (e) {
@@ -168,6 +175,9 @@ class StartService {
         await NamecardService().getNamecardFromGzip(directory, language, json);
         await AnimalService().getAnimalFromGzip(directory, language, json);
         await CraftService().getCraftFromGzip(directory, language, json);
+        await OutfitService().getOutfitFromGzip(directory, language, json);
+        await GeographyService()
+            .getGeographyFromGzip(directory, language, json);
         return true;
       } catch (e) {
         log("$e", name: "StartService extractData");
@@ -176,35 +186,4 @@ class StartService {
     }
     return false;
   }
-
-  // /// Kiểm tra dữ liệu cũ và tải dữ liệu
-  // Future<bool> downloadData() async {
-  //   Directory? directory = await getExternalStorageDirectory();
-  //   // Directory? pathFile = await getExternalStorageDirectory();
-  //   if (directory != null) {
-  //     // file data
-  //     File file = File("${directory.path}/data.gzip");
-  //     // file.create(recursive: true);
-  //     // kiểm tra data
-  //     GetStorage box = GetStorage();
-  //     String? contentSHA512 = box.read(Config.storageContentSHA512);
-  //     // file data tồn tại
-  //     if (await file.exists()) {
-  //       // mã hash của dữ liệu
-  //       String hash = sha512.convert(await file.readAsBytes()).toString();
-  //       // dữ liệu hoàn chỉnh không lỗi
-  //       if (contentSHA512 == hash) {
-  //         startController.setProgress(1, 1, DataAppStatus.downloaded);
-  //         return true;
-  //       } else {
-  //         // dữ liệu lỗi -> tải lại
-  //         return await _download();
-  //       }
-  //     } else {
-  //       // file không tồn tại -> tải lại
-  //       return await _download();
-  //     }
-  //   }
-  //   return false;
-  // }
 }

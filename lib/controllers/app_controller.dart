@@ -7,10 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/achievement_controller.dart';
 import 'package:genshinfan/controllers/animal_controller.dart';
 import 'package:genshinfan/controllers/artifact_controller.dart';
+import 'package:genshinfan/controllers/character_controller.dart';
 import 'package:genshinfan/controllers/craft_controller.dart';
 import 'package:genshinfan/controllers/domain_controller.dart';
 import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/controllers/geography_controller.dart';
 import 'package:genshinfan/controllers/namecard_controller.dart';
+import 'package:genshinfan/controllers/outfit_controller.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
 import 'package:genshinfan/controllers/weapon_controller.dart';
 import 'package:genshinfan/objects/achievement.dart';
@@ -21,10 +24,13 @@ import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/craft.dart';
 import 'package:genshinfan/objects/domain.dart';
 import 'package:genshinfan/objects/enemy.dart';
+import 'package:genshinfan/objects/geography.dart';
 import 'package:genshinfan/objects/namecard.dart';
+import 'package:genshinfan/objects/outfit.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/localization.dart';
+import 'package:genshinfan/resources/utils/theme.dart';
 import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:genshinfan/services/achievement_service.dart';
 import 'package:genshinfan/services/animal_service.dart';
@@ -34,14 +40,13 @@ import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/craft_service.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/services/enemy_service.dart';
+import 'package:genshinfan/services/geography_service.dart';
 import 'package:genshinfan/services/namecard_service.dart';
+import 'package:genshinfan/services/outfit_service.dart';
 import 'package:genshinfan/services/resource_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
-
-import '../resources/utils/theme.dart';
-import 'character_controller.dart';
 
 class AppController extends GetxController {
   // theme app
@@ -68,6 +73,8 @@ class AppController extends GetxController {
   RxList<Namecard> namecards = <Namecard>[].obs;
   RxList<Animal> animals = <Animal>[].obs;
   RxList<Craft> crafts = <Craft>[].obs;
+  RxList<Outfit> outfits = <Outfit>[].obs;
+  RxList<Geography> geographies = <Geography>[].obs;
 
   Future<bool> getData() async {
     try {
@@ -162,6 +169,7 @@ class AppController extends GetxController {
         },
       );
 
+      // đồ thủ công
       crafts.value =
           await CraftService().getCrafts(Localization.language) ?? [];
       crafts.sort(
@@ -176,6 +184,19 @@ class AppController extends GetxController {
           // if (a.resource != null || b.resource != null) {
           //   return a.sortorder.compareTo(b.sortorder);
           // }
+          return a.sortorder.compareTo(b.sortorder);
+        },
+      );
+
+      // trang phục
+      outfits.value =
+          await OutfitService().getOutfits(Localization.language) ?? [];
+
+      // khu vực địa lý
+      geographies.value =
+          await GeographyService().getGeographies(Localization.language) ?? [];
+      geographies.sort(
+        (a, b) {
           return a.sortorder.compareTo(b.sortorder);
         },
       );
@@ -262,5 +283,7 @@ class AppBinding extends Bindings {
     Get.put(NamecardController());
     Get.put(AnimalController());
     Get.put(CraftController());
+    Get.put(OutfitController());
+    Get.put(GeographyController());
   }
 }

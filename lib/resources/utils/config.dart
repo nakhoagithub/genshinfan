@@ -27,6 +27,8 @@ class Config {
   static const String fileNameNamecard = 'namecards';
   static const String fileNameAnimal = 'animals';
   static const String fileNameCraft = 'crafts';
+  static const String fileNameOutfit = 'outfits';
+  static const String fileNameGeography = 'geographies';
 
   // character
   static const String storageListElementCharacterFilter =

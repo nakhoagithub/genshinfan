@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/resource_controller.dart';
+import 'package:genshinfan/objects/craft.dart';
 import 'package:genshinfan/objects/resource.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/craft/widgets/craft_recipe.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
@@ -97,6 +100,8 @@ class _InformationMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+
+    Craft? craft = Tools.getCraftFromKey(resource.key);
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(top: 10),
@@ -124,6 +129,13 @@ class _InformationMore extends StatelessWidget {
               ? const SizedBox()
               : InfoTextMultiLineWidget(
                   titleTranslate: "source", data: resource.source),
+
+          craft == null
+              ? const SizedBox()
+              : CraftRecipe(
+                  craftIngredients: craft.recipe,
+                  onTap: () {},
+                ),
 
           // domain
           resource.dropdomain == null

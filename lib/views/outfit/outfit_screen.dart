@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/resource_controller.dart';
+import 'package:genshinfan/controllers/outfit_controller.dart';
+import 'package:genshinfan/views/outfit/widgets/outfit_info.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
-import 'package:genshinfan/views/resource/widgets/resource_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class ResourceScreen extends StatelessWidget {
-  const ResourceScreen({super.key});
+class OutfitScreen extends StatelessWidget {
+  const OutfitScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    ResourceController resourceController = Get.find<ResourceController>();
+    OutfitController outfitController = Get.find<OutfitController>();
 
     return Obx(() {
       return Scaffold(
@@ -19,20 +19,20 @@ class ResourceScreen extends StatelessWidget {
           leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "resource_information".tr,
+            "outfit_information".tr,
           ),
         ),
-        body: resourceController.resource.value == null
-            ? PageEmpty(title: "choose_resource".tr)
+        body: outfitController.outfit.value == null
+            ? PageEmpty(title: "choose_outfit".tr)
             : Stack(
                 children: [
                   // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: resourceController.scrollController,
+                    controller: outfitController.scrollController,
                     child: const Column(
                       children: [
-                        InformationResource(),
+                        InformationOutfit(),
                         SizedBox(height: 100),
                       ],
                     ),

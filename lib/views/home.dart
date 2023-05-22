@@ -12,9 +12,13 @@ import 'package:genshinfan/views/domain/domain_page.dart';
 import 'package:genshinfan/views/domain/domain_screen.dart';
 import 'package:genshinfan/views/enemy/enemy_page.dart';
 import 'package:genshinfan/views/enemy/enemy_screen.dart';
+import 'package:genshinfan/views/geography/geography_page.dart';
+import 'package:genshinfan/views/geography/geography_screen.dart';
 import 'package:genshinfan/views/home/home_page.dart';
 import 'package:genshinfan/views/namecard/namecard_page.dart';
 import 'package:genshinfan/views/namecard/namecard_screen.dart';
+import 'package:genshinfan/views/outfit/outfit_page.dart';
+import 'package:genshinfan/views/outfit/outfit_screen.dart';
 import 'package:genshinfan/views/resource/resource_page.dart';
 import 'package:genshinfan/views/resource/resource_screen.dart';
 import 'package:genshinfan/views/weapon/weapon_page.dart';
@@ -120,6 +124,22 @@ class Home extends StatelessWidget {
         left: const CraftPage(),
         center: const CraftScreen(),
       ),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/UI_BtnIcon_AvatarList.png",
+          color: Get.theme.colorScheme.onSurface,
+        ),
+        left: const OutfitPage(),
+        center: const OutfitScreen(),
+      ),
+      ItemSlide(
+        iconMenu: Image.asset(
+          "assets/images/UI_Icon_Intee_Explore_0.png",
+          color: Get.theme.colorScheme.onSurface,
+        ),
+        left: const GeographyPage(),
+        center: const GeographyScreen(),
+      ),
     ];
 
     List<Widget> actionBottomLeftBar = [
@@ -133,10 +153,8 @@ class Home extends StatelessWidget {
             },
           );
         },
-        icon: Image.asset(
-          "assets/images/ic_map1.png",
-          height: 40,
-          width: 40,
+        child: Image.asset(
+          "assets/images/UI_HomeWorldTabIcon_2_Teleport.png",
           color: Get.theme.colorScheme.onSurface,
         ),
       ),
@@ -146,7 +164,7 @@ class Home extends StatelessWidget {
             Get.toNamed("/setting");
           },
           notification: Get.find<HomeController>().haveNewVesion.value,
-          icon: const Icon(Icons.settings),
+          child: const Icon(Icons.settings),
         ),
       ),
     ];

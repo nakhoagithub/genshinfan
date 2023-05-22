@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 
 class IconApp extends StatelessWidget {
   final VoidCallback onTap;
-  final Widget icon;
+  final Widget child;
   final bool? notification;
   const IconApp({
     super.key,
     required this.onTap,
-    required this.icon,
+    required this.child,
     this.notification,
   });
 
@@ -18,25 +18,29 @@ class IconApp extends StatelessWidget {
     context.theme;
     return IconButton(
         onPressed: onTap,
-        icon: Stack(
-          children: [
-            Center(child: icon),
-            notification != null && notification == true
-                ? Align(
-                    alignment: Alignment.topRight,
-                    child: FadeIn(
-                      child: Container(
-                        height: 8,
-                        width: 8,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.red,
+        icon: SizedBox(
+          height: 40,
+          width: 40,
+          child: Stack(
+            children: [
+              Center(child: child),
+              notification != null && notification == true
+                  ? Align(
+                      alignment: Alignment.topRight,
+                      child: FadeIn(
+                        child: Container(
+                          height: 8,
+                          width: 8,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                : const SizedBox(),
-          ],
+                    )
+                  : const SizedBox(),
+            ],
+          ),
         ));
   }
 }

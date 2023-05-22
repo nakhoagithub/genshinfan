@@ -363,7 +363,7 @@ class _Combat extends StatelessWidget {
                         TalentStats(combat: combat),
                       );
                     },
-                    icon: const Icon(Icons.keyboard_arrow_right_rounded),
+                    child: const Icon(Icons.keyboard_arrow_right_rounded),
                   ),
                 ),
               ],

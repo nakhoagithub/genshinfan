@@ -22,14 +22,14 @@ class CraftPage extends StatelessWidget {
           AppBarCenter(
             title: "craft".tr,
             width: double.infinity,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  // dialogFilterCraft();
-                },
-                icon: const Icon(Icons.filter_alt_rounded),
-              )
-            ],
+            // actions: [
+            //   IconButton(
+            //     onPressed: () {
+            //       // dialogFilterCraft();
+            //     },
+            //     icon: const Icon(Icons.filter_alt_rounded),
+            //   )
+            // ],
           ),
           const Expanded(child: _List()),
         ],
