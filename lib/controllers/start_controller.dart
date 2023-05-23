@@ -18,6 +18,8 @@ class StartController extends GetxController {
   Rx<Color> colorLog = (Colors.orange).obs;
   Rx<DataAppStatus> dataAppStatus = DataAppStatus.init.obs;
 
+  Rx<int> redownload = 0.obs;
+
   AppController appController = Get.find<AppController>();
 
   void _setLog(DataAppStatus dataAppStatus) {
@@ -48,9 +50,17 @@ class StartController extends GetxController {
         log.value = "complete".tr;
         colorLog.value = Colors.green;
         break;
-      case DataAppStatus.failure:
-        log.value = "ERROR";
+      case DataAppStatus.extractFailure:
+        log.value = "extract_failure".tr;
         colorLog.value = Colors.red;
+        break;
+      case DataAppStatus.deleteFileDataAndRedownload:
+        log.value = "delete_data_and_redownload".tr;
+        colorLog.value = Colors.cyan;
+        break;
+      case DataAppStatus.waitForNewUpdate:
+        log.value = "data_failure_wait_for_new_update".tr;
+        colorLog.value = Colors.cyan;
         break;
       case DataAppStatus.notInternet:
         log.value = "data_failure".tr;
@@ -78,6 +88,12 @@ class StartController extends GetxController {
     Get.offAllNamed("/home");
   }
 
+  Future<void> deleteFileDataAndRedownload() async {
+    setProgress(1, 0, DataAppStatus.deleteFileDataAndRedownload);
+    await AppService().deleteFileData();
+    await _download();
+  }
+
   Future<void> _download() async {
     setProgress(1, 0, DataAppStatus.loading);
     // kiểm tra dữ liệu có chưa
@@ -97,22 +113,39 @@ class StartController extends GetxController {
         if (resultExtract) {
           await _getDataToHome();
         } else {
-          setProgress(1, 0, DataAppStatus.failure);
+          setProgress(1, 0, DataAppStatus.extractFailure);
         }
       }
     } else {
       // không có gzip
-      // tải dữ liệu
-      bool resultDownload = await startService.download();
-      if (resultDownload) {
-        // giải nén dữ liệu
-        bool resultExtract =
-            await startService.extractData(Localization.language);
-        if (resultExtract) {
-          await _getDataToHome();
-        } else {
-          setProgress(1, 0, DataAppStatus.failure);
+      // kiểm tra kết nối
+      bool connect = appController.hasInternet.value;
+      if (connect) {
+        // tải dữ liệu
+        bool resultDownload = await startService.download();
+        if (resultDownload) {
+          // giải nén dữ liệu
+          bool resultExtract =
+              await startService.extractData(Localization.language);
+          if (resultExtract) {
+            await _getDataToHome();
+          } else {
+            setProgress(1, 0, DataAppStatus.extractFailure);
+          }
         }
+      } else {
+        setProgress(1, 0, DataAppStatus.notInternet);
+      }
+    }
+
+    if (dataAppStatus.value == DataAppStatus.extractFailure) {
+      await Future.delayed(const Duration(seconds: 2));
+      await AppService().deleteFileData();
+      if (redownload.value < 1) {
+        _download();
+        redownload.value += 1;
+      } else {
+        setProgress(1, 0, DataAppStatus.waitForNewUpdate);
       }
     }
   }
@@ -128,12 +161,7 @@ class StartController extends GetxController {
 
   @override
   void onReady() async {
-    bool connect = appController.hasInternet.value;
-    if (connect) {
-      await _download();
-    } else {
-      setProgress(1, 0, DataAppStatus.notInternet);
-    }
+    await _download();
 
     // stream download
     appController.hasInternet.listen((p0) async {

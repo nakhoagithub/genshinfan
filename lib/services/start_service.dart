@@ -10,6 +10,7 @@ import 'package:genshinfan/objects/app/api_github.dart';
 import 'package:genshinfan/objects/app/package_app.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/enum.dart';
+import 'package:genshinfan/resources/utils/localization.dart';
 import 'package:genshinfan/services/achievement_service.dart';
 import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';

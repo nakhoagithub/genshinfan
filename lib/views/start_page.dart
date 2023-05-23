@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
+import 'package:genshinfan/resources/utils/enum.dart';
 import 'package:get/get.dart';
 
 import '../resources/utils/theme.dart';

@@ -193,6 +193,9 @@ const Map<String, String> zhTW = {
   "select_geography": "請選擇地理區域",
   "windglider_information": "機翼信息",
   "select_windglider": "請選擇機翼",
+  "extract_failure": "提取數據時出錯",
+  "delete_data_and_redownload": "刪除數據並重新加載",
+  "data_failure_wait_for_new_update": "當前數據已損壞，請等待新的更新！",
 
   "note_home":
       "這是 Beta 版本，是 Genshin Fan 正式發布前的測試版本。 在這個版本中，增加了新功能並修復了錯誤，但是產品仍然不完整，可能會遇到一些小錯誤和問題。\n您在 Beta 版本中對語言翻譯的貢獻對於幫助提高產品質量非常重要。 您可以通過提供有關產品中的術語和語言結構的反饋來提供幫助。 這使得產品更易於用戶使用，也使不同國家和地區的用戶更容易使用該產品。 除了應用語言的貢獻，我也期待你在如何構建角色方面的貢獻。 您可以前往<b>設置</b>進行貢獻。\n我期待收到您的意見以改進產品並確保其發揮最大潛力。 我會繼續更新 Beta 版本並聽取您的反饋，以確保最終產品能夠最好地滿足您的需求。",

@@ -11,9 +11,11 @@ enum DataAppStatus {
   downloading,
   downloaded,
   success,
-  failure,
+  extractFailure,
+  deleteFileDataAndRedownload,
+  waitForNewUpdate,
   notInternet,
-  extract
+  extract,
 }
 
 enum CharacterStatus { init, loading, success, fail }

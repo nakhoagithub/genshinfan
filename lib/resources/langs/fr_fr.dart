@@ -180,6 +180,10 @@ const Map<String, String> fr = {
   "select_geography": "Veuillez sélectionner une zone géographique",
   "windglider_information": "Informations sur l'aile",
   "select_windglider": "Veuillez sélectionner une aile",
+  "extract_failure": "Erreur lors de l'extraction des données",
+  "delete_data_and_redownload": "Supprimer les données et recharger",
+  "data_failure_wait_for_new_update":
+      "Les données actuelles sont corrompues, veuillez attendre la nouvelle mise à jour !",
 
   "note_home":
       "Il s'agit d'une version Beta, une version test de Genshin Fan avant sa sortie officielle. Dans cette version, de nouvelles fonctionnalités sont ajoutées et des bogues sont corrigés, cependant, le produit est encore incomplet et peut rencontrer des bogues et des problèmes mineurs.\nVotre contribution à la traduction linguistique dans la version bêta est très importante pour aider à améliorer la qualité du produit. Vous pouvez aider en fournissant des commentaires sur les termes et les structures linguistiques du produit. Cela rend le produit plus facile à utiliser pour les utilisateurs et facilite également l'utilisation du produit pour les utilisateurs de différents pays et régions. En plus de la contribution du langage de l'application, j'attends également avec impatience votre contribution sur la façon de construire le personnage. Vous pouvez accéder aux <b>Paramètres</b> pour contribuer.\nJ'ai hâte de recevoir vos commentaires pour améliorer le produit et m'assurer qu'il est utilisé au maximum de son potentiel. Je continuerai à mettre à jour la version bêta et à écouter vos commentaires pour m'assurer que le produit final répondra au mieux à vos besoins.",

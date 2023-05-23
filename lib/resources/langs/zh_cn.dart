@@ -175,6 +175,9 @@ const Map<String, String> zhCN = {
   "select_geography": "请选择地理区域",
   "windglider_information": "机翼信息",
   "select_windglider": "请选择机翼",
+  "extract_failure": "提取数据时出错",
+  "delete_data_and_redownload": "删除数据并重新加载",
+  "data_failure_wait_for_new_update": "当前数据已损坏，请等待新的更新！",
 
   "note_home":
       "这是 Beta 版本，是 Genshin Fan 正式发布前的测试版本。 在这个版本中，增加了新功能并修复了错误，但是产品仍然不完整，可能会遇到一些小错误和问题。\n您在 Beta 版本中对语言翻译的贡献对于帮助提高产品质量非常重要。 您可以通过提供有关产品中的术语和语言结构的反馈来提供帮助。 这使得产品更易于用户使用，也使不同国家和地区的用户更容易使用该产品。 除了应用语言的贡献，我也期待你在如何构建角色方面的贡献。 您可以前往<b>设置</b>进行贡献。\n我期待收到您的意见以改进产品并确保其发挥最大潜力。 我会继续更新 Beta 版本并听取您的反馈，以确保最终产品能够最好地满足您的需求。",
