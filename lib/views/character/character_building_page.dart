@@ -57,7 +57,7 @@ class _Body extends StatelessWidget {
                   child: Text("contribute_manage_empty".tr),
                 )
               : ListView.builder(
-                  physics: const BouncingScrollPhysics(),
+                  // physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: characters.length,
                   itemBuilder: (context, index) {
