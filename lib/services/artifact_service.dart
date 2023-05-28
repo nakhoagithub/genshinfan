@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/controllers/app_controller.dart';
@@ -24,23 +25,27 @@ class ArtifactService {
 
   Future<void> getArtifactFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> artifacts = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
+    try {
+      List<dynamic> artifacts = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
 
-    dynamic jsonData = data[language]['artifacts'];
-    dynamic img = image['artifacts'];
-    for (var k in jsonData.keys) {
-      Artifact obj = Artifact.fromJson(jsonData[k]);
-      obj.key = k;
-      // hình ảnh
-      obj.setImage(img[k]);
-      artifacts.add(obj.toJson());
+      dynamic jsonData = data[language]['artifacts'];
+      dynamic img = image['artifacts'];
+      for (var k in jsonData.keys) {
+        Artifact obj = Artifact.fromJson(jsonData[k]);
+        obj.key = k;
+        // hình ảnh
+        obj.setImage(img[k]);
+        artifacts.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameArtifact}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(artifacts).toString());
+    } catch (e) {
+      log("$e", name: "getArtifactFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameArtifact}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(artifacts).toString());
   }
 
   Artifact? getArtifactFromKey(String? key) {

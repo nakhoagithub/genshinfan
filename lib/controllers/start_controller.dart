@@ -153,7 +153,7 @@ class StartController extends GetxController {
   @override
   void onInit() async {
     startService = const StartService();
-    PackageApp packageApp = await startService.getVersion();
+    PackageApp packageApp = await AppService().getVersion();
     version.value = packageApp.version;
     unawaited(AppService().setTraffic());
     super.onInit();

@@ -121,7 +121,7 @@ class _ItemAscend extends StatelessWidget {
             children: [
               ...ascends.map(
                 (e) {
-                  Resource? resource = Tools.getResourceFromName(e.name);
+                  Resource? resource = Tools.getResourceFromName(e.name ?? "");
                   return resource == null
                       ? const SizedBox()
                       : ItemGame(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/objects/namecard.dart';
@@ -22,23 +23,27 @@ class NamecardService {
 
   Future<void> getNamecardFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> namecards = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
+    try {
+      List<dynamic> namecards = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
 
-    dynamic jsonData = data[language]['namecards'];
-    dynamic img = image['namecards'];
-    for (var k in jsonData.keys) {
-      Namecard obj = Namecard.fromJson(jsonData[k]);
-      // hình ảnh
-      obj.key = k;
+      dynamic jsonData = data[language]['namecards'];
+      dynamic img = image['namecards'];
+      for (var k in jsonData.keys) {
+        Namecard obj = Namecard.fromJson(jsonData[k]);
+        // hình ảnh
+        obj.key = k;
 
-      obj.setImage(img[k]);
-      namecards.add(obj.toJson());
+        obj.setImage(img[k]);
+        namecards.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameNamecard}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(namecards).toString());
+    } catch (e) {
+      log("$e", name: "getNamecardFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameNamecard}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(namecards).toString());
   }
 }

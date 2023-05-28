@@ -51,14 +51,14 @@ class SelectWeapon extends StatelessWidget {
                         ? const Icon(Icons.add, size: 35)
                         : ItemGame(
                             title: w.name,
-                            iconLeft: Tools.getAssetWeaponType(w.weaponType) !=
+                            iconLeft: Tools.getAssetWeaponType(w.weapontype) !=
                                     null
                                 ? Image.asset(
-                                    Tools.getAssetWeaponType(w.weaponType) ??
+                                    Tools.getAssetWeaponType(w.weapontype) ??
                                         "")
                                 : null,
-                            linkImage: w.images?.mihoyoIcon ??
-                                Config.urlImage(w.images?.filenameGacha),
+                            linkImage: w.images?.icon ??
+                                Config.urlImage(w.images?.namegacha),
                             rarity: w.rarity.toString(),
                             star: true,
                             onTap: () {

@@ -91,7 +91,8 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return a.id.compareTo(b.id);
+
+          return a.name.compareTo(b.name);
         },
       );
 
@@ -104,7 +105,7 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return a.id.compareTo(b.id);
+          return a.name.compareTo(b.name);
         },
       );
 

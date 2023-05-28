@@ -216,6 +216,24 @@ const Map<String, String> tr = {
   "day6": "Cumartesi",
   "day7": "Pazar",
 
+  // game
+  "FIGHT_PROP_ATTACK_PERCENT": "Saldırı (%)",
+  "FIGHT_PROP_ROCK_ADD_HURT": "Toprak hasarı bonusu (%)",
+  "FIGHT_PROP_ICE_ADD_HURT": "Buz hasarı bonusu (%)",
+  "FIGHT_PROP_ELEC_ADD_HURT": "Elektrik hasarı bonusu (%)",
+  "FIGHT_PROP_FIRE_ADD_HURT": "Ateş hasarı bonusu (%)",
+  "FIGHT_PROP_WATER_ADD_HURT": "Su hasarı bonusu (%)",
+  "FIGHT_PROP_WIND_ADD_HURT": "Hava hasarı bonusu (%)",
+  "FIGHT_PROP_GRASS_ADD_HURT": "Doğa hasarı bonusu (%)",
+  "FIGHT_PROP_HEAL_ADD": "İyileştirme bonusu (%)",
+  "FIGHT_PROP_DEFENSE_PERCENT": "Savunma (%)",
+  "FIGHT_PROP_PHYSICAL_ADD_HURT": "Fiziksel hasar bonusu (%)",
+  "FIGHT_PROP_ELEMENT_MASTERY": "Element ustalığı",
+  "FIGHT_PROP_CHARGE_EFFICIENCY": "Enerji yenilemesi (%)",
+  "FIGHT_PROP_HP_PERCENT": "Can (%)",
+  "FIGHT_PROP_CRITICAL": "Kritik oranı (%)",
+  "FIGHT_PROP_CRITICAL_HURT": "Kritik hasarı (%)",
+
   // các loại chỉ số
   "attack": "Attack",
   "hp": "HP",

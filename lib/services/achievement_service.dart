@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/objects/achievement.dart';
@@ -22,23 +23,27 @@ class AchievementService {
 
   Future<void> getAchievementGroupsFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> achievementGroups = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
+    try {
+      List<dynamic> achievementGroups = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
 
-    dynamic jsonData = data[language]['achievementgroups'];
-    dynamic img = image['achievementgroups'];
-    for (var k in jsonData.keys) {
-      AchievementGroup obj = AchievementGroup.fromJson(jsonData[k]);
-      obj.key = k;
-      // hình ảnh
-      obj.setImage(img[k]);
-      achievementGroups.add(obj.toJson());
+      dynamic jsonData = data[language]['achievementgroups'];
+      dynamic img = image['achievementgroups'];
+      for (var k in jsonData.keys) {
+        AchievementGroup obj = AchievementGroup.fromJson(jsonData[k]);
+        obj.key = k;
+        // hình ảnh
+        obj.setImage(img[k]);
+        achievementGroups.add(obj.toJson());
+      }
+      File file = File(
+          "${directory.path}/$language/${Config.fileNameAchievementGroup}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(achievementGroups).toString());
+    } catch (e) {
+      log("$e", name: "getAchievementGroupsFromGzip");
     }
-    File file = File(
-        "${directory.path}/$language/${Config.fileNameAchievementGroup}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(achievementGroups).toString());
   }
 
   /// -------------------------------------- ACHIEVEMENT --------------------------------------
@@ -61,18 +66,22 @@ class AchievementService {
 
   Future<void> getAchievementsFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> achievements = [];
-    dynamic data = json['data'];
-    dynamic jsonData = data[language]['achievements'];
-    for (var k in jsonData.keys) {
-      Achievement obj = Achievement.fromJson(jsonData[k]);
-      obj.key = k;
-      // hình ảnh
-      achievements.add(obj.toJson());
+    try {
+      List<dynamic> achievements = [];
+      dynamic data = json['data'];
+      dynamic jsonData = data[language]['achievements'];
+      for (var k in jsonData.keys) {
+        Achievement obj = Achievement.fromJson(jsonData[k]);
+        obj.key = k;
+        // hình ảnh
+        achievements.add(obj.toJson());
+      }
+      File file = File(
+          "${directory.path}/$language/${Config.fileNameAchievement}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(achievements).toString());
+    } catch (e) {
+      log("$e", name: "getAchievementsFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameAchievement}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(achievements).toString());
   }
 }

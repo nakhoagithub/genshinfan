@@ -45,23 +45,23 @@ class TextCSS extends StatelessWidget {
         'up': StyledTextTag(
             style: const TextStyle(
                 color: Colors.orange, fontWeight: FontWeight.bold)),
-        'color': StyledTextCustomTag(
-          baseStyle: const TextStyle(),
-          parse: (baseStyle, attributes) {
-            if (attributes.containsKey('color') &&
-                attributes['color'] is String &&
-                ((attributes['color'] as String).substring(0, 1) == '#') &&
-                (attributes['color'] as String).length >= 6) {
-              String color = attributes['color'] as String;
-              final String hexColor = color.substring(1);
-              final Color c = Color(int.parse("0x$hexColor"));
+        // 'color': StyledTextCustomTag(
+        //   baseStyle: const TextStyle(),
+        //   parse: (baseStyle, attributes) {
+        //     if (attributes.containsKey('color') &&
+        //         attributes['color'] is String &&
+        //         ((attributes['color'] as String).substring(0, 1) == '#') &&
+        //         (attributes['color'] as String).length >= 6) {
+        //       String color = attributes['color'] as String;
+        //       final String hexColor = color.substring(1);
+        //       final Color c = Color(int.parse("0x$hexColor"));
 
-              return baseStyle?.copyWith(color: c, fontWeight: FontWeight.bold);
-            } else {
-              return baseStyle;
-            }
-          },
-        ),
+        //       return baseStyle?.copyWith(color: c, fontWeight: FontWeight.bold);
+        //     } else {
+        //       return baseStyle;
+        //     }
+        //   },
+        // ),
       },
     );
   }

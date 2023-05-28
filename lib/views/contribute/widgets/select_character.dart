@@ -51,13 +51,13 @@ class SelectCharacter extends StatelessWidget {
                         ? const Icon(Icons.add, size: 35)
                         : ItemGame(
                             title: c.name,
-                            iconLeft:
-                                Tools.getAssetElementFromName(c.elementType) !=
-                                        ""
-                                    ? Image.asset(Tools.getAssetElementFromName(
-                                        c.elementType))
-                                    : null,
-                            linkImage: c.images?.mihoyoIcon,
+                            iconLeft: Tools.getAssetElementFromName(
+                                        c.element) !=
+                                    ""
+                                ? Image.asset(
+                                    Tools.getAssetElementFromName(c.element))
+                                : null,
+                            linkImage: c.images?.icon,
                             rarity: c.rarity.toString(),
                             onTap: () {
                               dialogContributeCharacter();

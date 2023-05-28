@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/objects/enemy.dart';
@@ -22,26 +23,30 @@ class EnemyService {
 
   Future<void> getEnemyFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> enemies = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
-    dynamic stat = json['stats'];
-    dynamic curve = json['curve'];
+    try {
+      List<dynamic> enemies = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
+      dynamic stat = json['stats'];
+      dynamic curve = json['curve'];
 
-    dynamic jsonData = data[language]['enemies'];
-    dynamic img = image['enemies'];
-    dynamic statEnemy = stat['enemies'];
-    dynamic curveEnemy = curve['enemies'];
-    for (var k in jsonData.keys) {
-      Enemy obj = Enemy.fromJson(jsonData[k]);
-      // hình ảnh
-      obj.setImage(img[k]);
-      obj.setStat(statEnemy[k], curveEnemy);
-      enemies.add(obj.toJson());
+      dynamic jsonData = data[language]['enemies'];
+      dynamic img = image['enemies'];
+      dynamic statEnemy = stat['enemies'];
+      dynamic curveEnemy = curve['enemies'];
+      for (var k in jsonData.keys) {
+        Enemy obj = Enemy.fromJson(jsonData[k]);
+        // hình ảnh
+        obj.setImage(img[k]);
+        obj.setStat(statEnemy[k], curveEnemy);
+        enemies.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameEnemie}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(enemies).toString());
+    } catch (e) {
+      log("$e", name: "getEnemyFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameEnemie}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(enemies).toString());
   }
 }

@@ -93,7 +93,7 @@ class _ItemOutfit extends StatelessWidget {
     double sizeItem = Config.sizeItem2;
     Character? character = Tools.getCharacterFromName(outfit.character);
     String linkImage = (outfit.isdefault
-            ? character?.images?.mihoyoIcon
+            ? character?.images?.icon
             : Config.urlImage(outfit.images?.namecard)) ??
         "";
     return InkWell(

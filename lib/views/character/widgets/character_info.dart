@@ -27,7 +27,7 @@ class InformationCharacter extends StatelessWidget {
         child: Column(
           children: [
             _ImageCharacter(
-              linkImage: character.images?.mihoyoIcon,
+              linkImage: character.images?.icon,
               rarity: character.rarity.toString(),
               size: 150,
             ),
@@ -117,16 +117,15 @@ class _InformationMore extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           // nguyên tố
-          InfoElementWidget(element: character.elementType),
+          InfoElementWidget(element: character.element),
           // vũ khí
-          InfoWeaponWidget(weaponType: character.weaponType),
+          InfoWeaponWidget(weapontype: character.weapontype),
 
           // độ hiếm
           InfoRarityWidget(rarity: character.rarity.toString()),
 
           // đột phá tăng
-          InfoTextWidget(
-              titleTranslate: "substat", data: character.substatText),
+          InfoTextWidget(titleTranslate: "substat", data: character.substat),
 
           // giới tính
           InfoTextWidget(

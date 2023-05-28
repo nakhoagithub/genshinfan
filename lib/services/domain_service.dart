@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/controllers/app_controller.dart';
@@ -59,34 +60,38 @@ class DomainService {
 
   Future<void> getDomainFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> domains = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
+    try {
+      List<dynamic> domains = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
 
-    dynamic jsonData = data[language]['domains'];
-    dynamic img = image['domains'];
-    List<String> keys = _getKey(List.from(jsonData.keys));
-    for (var k in keys) {
-      dynamic dataObj = jsonData["${k}i"];
-      Domain domain = Domain.fromJson(dataObj);
-      domain.name = domain.name.substring(0, domain.name.length - 2);
-      List<DomainLv> domainLvs = [];
-      for (String lv in levels) {
-        dynamic dataLevel = jsonData["$k$lv"];
-        dynamic imgLevel = img["$k$lv"];
-        if (dataLevel != null) {
-          DomainLv domainLv = DomainLv.fromJson(dataLevel);
-          domainLv.images = ImageDomain.fromJson(imgLevel);
-          domainLvs.add(domainLv);
+      dynamic jsonData = data[language]['domains'];
+      dynamic img = image['domains'];
+      List<String> keys = _getKey(List.from(jsonData.keys));
+      for (var k in keys) {
+        dynamic dataObj = jsonData["${k}i"];
+        Domain domain = Domain.fromJson(dataObj);
+        domain.name = domain.name.substring(0, domain.name.length - 2);
+        List<DomainLv> domainLvs = [];
+        for (String lv in levels) {
+          dynamic dataLevel = jsonData["$k$lv"];
+          dynamic imgLevel = img["$k$lv"];
+          if (dataLevel != null) {
+            DomainLv domainLv = DomainLv.fromJson(dataLevel);
+            domainLv.images = ImageDomain.fromJson(imgLevel);
+            domainLvs.add(domainLv);
+          }
         }
+        domain.domainLvs = domainLvs;
+        domains.add(domain.toJson());
       }
-      domain.domainLvs = domainLvs;
-      domains.add(domain.toJson());
+      File file =
+          File("${directory.path}/$language/${Config.fileNameDomain}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(domains).toString());
+    } catch (e) {
+      log("$e", name: "getDomainFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameDomain}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(domains).toString());
   }
 
   List<Domain>? getDomainToday(String today) {

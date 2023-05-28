@@ -16,13 +16,13 @@ class CharacterController extends GetxController
 
   void selectCharacter(Character value) async {
     character.value = value;
-    if (character.value?.associationType == "MAINACTOR") {
+    if (character.value?.association == "MAINACTOR") {
       if (character.value?.name != "" &&
           character.value?.talentTravelers != null) {
         element.value = character.value!.talentTravelers?[0].element ?? "";
       }
     } else {
-      element.value = character.value?.elementType ?? "";
+      element.value = character.value?.element ?? "";
     }
     update();
   }

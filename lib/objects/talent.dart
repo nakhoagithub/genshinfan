@@ -2,7 +2,6 @@ import 'package:genshinfan/objects/items.dart';
 
 class Talent {
   Talent({
-    required this.id,
     required this.name,
     required this.combat1,
     required this.combat2,
@@ -17,7 +16,6 @@ class Talent {
     this.element,
   });
 
-  final int id;
   final String name;
   final CombatTalenDetail combat1;
   final CombatTalenDetail combat2;
@@ -33,7 +31,6 @@ class Talent {
   String? element;
 
   factory Talent.fromJson(Map<String, dynamic> json) => Talent(
-        id: json['id'],
         name: json["name"],
         combat1: CombatTalenDetail.fromJson(json["combat1"]),
         combat2: CombatTalenDetail.fromJson(json["combat2"]),
@@ -59,7 +56,6 @@ class Talent {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "name": name,
         "combat1": combat1.toJson(),
         "combat2": combat2.toJson(),
@@ -79,24 +75,21 @@ class Talent {
 class CombatTalenDetail {
   CombatTalenDetail({
     required this.name,
-    required this.descriptionRaw,
-    required this.description,
-    this.flavorText,
+    required this.info,
+    this.description,
     this.attrs,
   });
 
   final String name;
-  final String descriptionRaw;
-  final String description;
-  final String? flavorText;
+  final String info;
+  final String? description;
   List<Attribute?>? attrs;
 
   factory CombatTalenDetail.fromJson(Map<String, dynamic> json) {
     return CombatTalenDetail(
       name: json["name"],
-      descriptionRaw: json["descriptionRaw"],
+      info: json["info"],
       description: json["description"],
-      flavorText: json['flavorText'],
       attrs: json["attrs"] == null
           ? null
           : List<Attribute>.from(
@@ -106,9 +99,8 @@ class CombatTalenDetail {
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "descriptionRaw": descriptionRaw,
+        "info": info,
         "description": description,
-        "flavorText": flavorText,
         "attrs": attrs == null
             ? null
             : List<dynamic>.from(attrs!.map((e) => e?.toJson())),
@@ -138,68 +130,64 @@ class Attribute {
 class PassiveTalenDetail {
   PassiveTalenDetail({
     required this.name,
-    required this.descriptionRaw,
-    required this.description,
+    required this.info,
   });
 
   final String name;
-  final String descriptionRaw;
-  final String description;
+  final String info;
 
   factory PassiveTalenDetail.fromJson(Map<String, dynamic> json) =>
       PassiveTalenDetail(
         name: json["name"],
-        descriptionRaw: json["descriptionRaw"],
-        description: json["description"],
+        info: json["info"],
       );
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "descriptionRaw": descriptionRaw,
-        "description": description,
+        "info": info,
       };
 }
 
 class ImageTalent {
   ImageTalent({
-    required this.filenameCombat1,
-    required this.filenameCombat2,
-    this.filenameCombatsp,
-    required this.filenameCombat3,
-    required this.filenamePassive1,
-    required this.filenamePassive2,
-    this.filenamePassive3,
-    this.filenamePassive4,
+    required this.combat1,
+    required this.combat2,
+    this.combatsp,
+    required this.combat3,
+    required this.passive1,
+    required this.passive2,
+    this.passive3,
+    this.passive4,
   });
 
-  final String filenameCombat1;
-  final String filenameCombat2;
-  final String? filenameCombatsp;
-  final String filenameCombat3;
-  final String filenamePassive1;
-  final String filenamePassive2;
-  final String? filenamePassive3;
-  final String? filenamePassive4;
+  final String combat1;
+  final String combat2;
+  final String? combatsp;
+  final String combat3;
+  final String passive1;
+  final String passive2;
+  final String? passive3;
+  final String? passive4;
 
   factory ImageTalent.fromJson(Map<String, dynamic> json) => ImageTalent(
-        filenameCombat1: json["filename_combat1"],
-        filenameCombat2: json["filename_combat2"],
-        filenameCombatsp: json["filename_combatsp"],
-        filenameCombat3: json["filename_combat3"],
-        filenamePassive1: json["filename_passive1"],
-        filenamePassive2: json["filename_passive2"],
-        filenamePassive3: json["filename_passive3"],
-        filenamePassive4: json["filename_passive4"],
+        combat1: json["combat1"],
+        combat2: json["combat2"],
+        combatsp: json["combatsp"],
+        combat3: json["combat3"],
+        passive1: json["passive1"],
+        passive2: json["passive2"],
+        passive3: json["passive3"],
+        passive4: json["passive4"],
       );
 
   Map<String, dynamic> toJson() => {
-        "filename_combat1": filenameCombat1,
-        "filename_combat2": filenameCombat2,
-        "filename_combatsp": filenameCombatsp,
-        "filename_combat3": filenameCombat3,
-        "filename_passive1": filenamePassive1,
-        "filename_passive2": filenamePassive2,
-        "filename_passive3": filenamePassive3,
-        "filename_passive4": filenamePassive4,
+        "combat1": combat1,
+        "combat2": combat2,
+        "combatsp": combatsp,
+        "combat3": combat3,
+        "passive1": passive1,
+        "passive2": passive2,
+        "passive3": passive3,
+        "passive4": passive4,
       };
 }

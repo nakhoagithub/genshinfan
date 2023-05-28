@@ -9,7 +9,6 @@ import 'package:genshinfan/objects/character.dart';
 import 'package:genshinfan/objects/craft.dart';
 import 'package:genshinfan/objects/enemy.dart';
 import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/weapon.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 
@@ -114,24 +113,6 @@ class Tools {
     return result;
   }
 
-  static String handleRefinementWeapon(String? effect, WeaponRefine? r1,
-      WeaponRefine? r2, WeaponRefine? r3, WeaponRefine? r4, WeaponRefine? r5) {
-    String result = effect ?? "";
-    RegExp rx = RegExp(r'<color=#.*?>{(.*?)}</color>');
-
-    Iterable<Match> matches = rx.allMatches(effect ?? "");
-
-    for (Match e in matches) {
-      String valueRefinement = e[0]!;
-      // int indexR =
-      //     int.parse(valueRefinement.substring(1, valueRefinement.length - 1));
-      int indexR = int.parse(e[1] ?? "0");
-      result = result.replaceAll(valueRefinement,
-          "<up>${r1!.values[indexR]}/${r2!.values[indexR]}/${r3!.values[indexR]}/${r4!.values[indexR]}/${r5!.values[indexR]}</up>");
-    }
-    return result;
-  }
-
   static String handleDescriptionAchievement(
       String description, String valueReplace) {
     String result = description;
@@ -140,6 +121,22 @@ class Tools {
     for (Match e in matches) {
       String valueParam = e[0]!;
       result = result.replaceAll(valueParam, valueReplace);
+    }
+    return result;
+  }
+
+  static String handleEffectWeapon(String effect, List<String> r1,
+      List<String> r2, List<String> r3, List<String> r4, List<String> r5) {
+    String result = effect;
+    RegExp rx = RegExp(r'{(.*?)}');
+    Iterable<Match> matches = rx.allMatches(effect);
+    for (Match e in matches) {
+      String valueRefinement = e[0]!;
+      int indexR =
+          int.parse(valueRefinement.substring(1, valueRefinement.length - 1));
+
+      result = result.replaceAll(valueRefinement,
+          "<up>${r1[indexR]}/${r2[indexR]}/${r3[indexR]}/${r4[indexR]}/${r5[indexR]}</up>");
     }
     return result;
   }
@@ -177,78 +174,144 @@ class Tools {
   }
 
   static String? getAssetWeaponType(String? weapon) {
-    if (weapon == 'WEAPON_SWORD_ONE_HAND') {
+    if (weapon == "sword".tr || weapon == 'Sword') {
       return "assets/images/weapon_sword.png";
     }
-    if (weapon == 'WEAPON_BOW') {
+    if (weapon == "bow".tr || weapon == 'Bow') {
       return "assets/images/weapon_bow.png";
     }
-    if (weapon == 'WEAPON_CLAYMORE') {
+    if (weapon == "claymore".tr || weapon == 'Claymore') {
       return "assets/images/weapon_claymore.png";
     }
-    if (weapon == 'WEAPON_CATALYST') {
+    if (weapon == "catalyst".tr || weapon == 'Catalyst') {
       return "assets/images/weapon_catalyst.png";
     }
-    if (weapon == 'WEAPON_POLE') {
+    if (weapon == "polearm".tr || weapon == 'Polearm') {
       return "assets/images/weapon_pole.png";
     }
     return null;
   }
 
+  static String? getKeyWeaponType(String? weapon) {
+    if (weapon == "sword".tr || weapon == 'Sword') {
+      return "sword";
+    }
+    if (weapon == "bow".tr || weapon == 'Bow') {
+      return "bow";
+    }
+    if (weapon == "claymore".tr || weapon == 'Claymore') {
+      return "claymore";
+    }
+    if (weapon == "catalyst".tr || weapon == 'Catalyst') {
+      return "catalyst";
+    }
+    if (weapon == "polearm".tr || weapon == 'Polearm') {
+      return "polearm";
+    }
+    return null;
+  }
+
+  static String? getEnglishWeaponType(String? weapon) {
+    if (weapon == "sword".tr || weapon == 'Sword') {
+      return "Sword";
+    }
+    if (weapon == "bow".tr || weapon == 'Bow') {
+      return "Bow";
+    }
+    if (weapon == "claymore".tr || weapon == 'Claymore') {
+      return "Claymore";
+    }
+    if (weapon == "catalyst".tr || weapon == 'Catalyst') {
+      return "Catalyst";
+    }
+    if (weapon == "polearm".tr || weapon == 'Polearm') {
+      return "Polearm";
+    }
+    return null;
+  }
+
   static String getAssetElementFromName(String? element) {
-    if (element == "ELEMENT_ANEMO" || element == "anemo".tr) {
+    if ("anemo".tr.contains(element ?? "Null") || element == "Anemo") {
       return "assets/images/element_anemo.png";
     }
-    if (element == "ELEMENT_GEO" || element == "geo".tr) {
+    if ("geo".tr.contains(element ?? "Null") || element == "Geo") {
       return "assets/images/element_geo.png";
     }
-    if (element == "ELEMENT_ELECTRO" || element == "electro".tr) {
+    if ("electro".tr.contains(element ?? "Null") || element == "Electro") {
       return "assets/images/element_electro.png";
     }
-    if (element == "ELEMENT_DENDRO" || element == "dendro".tr) {
+    if ("dendro".tr.contains(element ?? "Null") || element == "Dendro") {
       return "assets/images/element_dendro.png";
     }
-    if (element == "ELEMENT_PYRO" || element == "pyro".tr) {
+    if ("pyro".tr.contains(element ?? "Null") || element == "Pyro") {
       return "assets/images/element_pyro.png";
     }
-    if (element == "ELEMENT_HYDRO" || element == "hydro".tr) {
+    if ("hydro".tr.contains(element ?? "Null") || element == "Hydro") {
       return "assets/images/element_hydro.png";
     }
-    if (element == "ELEMENT_CRYO" || element == "cryo".tr) {
+    if ("cryo".tr.contains(element ?? "Null") || element == "Cryo") {
       return "assets/images/element_cryo.png";
     }
-    if (element == "ELEMENT_NONE" || element == "none".tr) {
+    if ("none".tr.contains(element ?? "Null") || element == "None") {
       return "";
     }
     return "";
   }
 
   static Color getColorElementCharacter(String? element) {
-    if (element == "ELEMENT_ANEMO") {
+    if ("anemo".tr.contains(element ?? "Null") || element == "Anemo") {
       return colorAnemo;
     }
-    if (element == "ELEMENT_GEO") {
+    if ("geo".tr.contains(element ?? "Null") || element == "Geo") {
       return colorGeo;
     }
-    if (element == "ELEMENT_ELECTRO") {
+    if ("electro".tr.contains(element ?? "Null") || element == "Electro") {
       return colorElectro;
     }
-    if (element == "ELEMENT_DENDRO") {
+    if ("dendro".tr.contains(element ?? "Null") || element == "Dendro") {
       return colorDendro;
     }
-    if (element == "ELEMENT_PYRO") {
+    if ("pyro".tr.contains(element ?? "Null") || element == "Pyro") {
       return colorPyro;
     }
-    if (element == "ELEMENT_HYDRO") {
+    if ("hydro".tr.contains(element ?? "Null") || element == "Hydro") {
       return colorHydro;
     }
-    if (element == "ELEMENT_CRYO") {
+    if ("cryo".tr.contains(element ?? "Null") || element == "Cryo") {
       return colorCryo;
     }
-    if (element == "ELEMENT_NONE") {
+    if ("none".tr.contains(element ?? "Null") || element == "None") {
       return const Color.fromARGB(255, 105, 48, 34);
     }
     return const Color.fromARGB(255, 105, 48, 34);
+  }
+
+  static String? getEnglishElementFromName(String? element) {
+    if ("anemo".tr.contains(element ?? "Null") || element == "Anemo") {
+      return "Anemo";
+    }
+    if ("geo".tr.contains(element ?? "Null") || element == "Geo") {
+      return "Geo";
+    }
+    if ("electro".tr.contains(element ?? "Null") || element == "Electro") {
+      return "Electro";
+    }
+    if ("dendro".tr.contains(element ?? "Null") || element == "Dendro") {
+      return "Dendro";
+    }
+    if ("pyro".tr.contains(element ?? "Null") || element == "Pyro") {
+      return "Pyro";
+    }
+    if ("hydro".tr.contains(element ?? "Null") || element == "Hydro") {
+      return "Hydro";
+    }
+    if ("cryo".tr.contains(element ?? "Null") || element == "Cryo") {
+      return "Cryo";
+    }
+    if ("none".tr.contains(element ?? "Null") || element == "None") {
+      return "None";
+    }
+    return null;
   }
 
   static String getRarityStar(String? rarity) {

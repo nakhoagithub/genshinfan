@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/objects/animal.dart';
@@ -22,23 +23,27 @@ class AnimalService {
 
   Future<void> getAnimalFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> animals = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
+    try {
+      List<dynamic> animals = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
 
-    dynamic jsonData = data[language]['animals'];
-    dynamic img = image['animals'];
-    for (var k in jsonData.keys) {
-      Animal obj = Animal.fromJson(jsonData[k]);
-      // hình ảnh
-      obj.key = k;
+      dynamic jsonData = data[language]['animals'];
+      dynamic img = image['animals'];
+      for (var k in jsonData.keys) {
+        Animal obj = Animal.fromJson(jsonData[k]);
+        // hình ảnh
+        obj.key = k;
 
-      obj.setImage(img[k]);
-      animals.add(obj.toJson());
+        obj.setImage(img[k]);
+        animals.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameAnimal}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(animals).toString());
+    } catch (e) {
+      log("$e", name: "getAnimalFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameAnimal}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(animals).toString());
   }
 }

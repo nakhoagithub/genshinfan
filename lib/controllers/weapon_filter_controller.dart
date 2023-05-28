@@ -76,14 +76,14 @@ class WeaponFilterController extends GetxController {
     weapons.clear();
     weapons.addAll(Get.find<AppController>().weapons);
     // lọc theo vũ khí
-    List<String> weaponTypes =
+    List<String> weapontypes =
         List.generate(checkWeaponFilters.length, (index) {
       if (checkWeaponFilters[index]) {
         return Config.weapons[index];
       }
       return "None";
     });
-    weapons.removeWhere((element) => !weaponTypes.contains(element.weaponType));
+    weapons.removeWhere((element) => !weapontypes.contains(element.weapontype));
 
     // lọc theo substat
     List<String> substat = List.generate(substatWeaponFilters.length, (index) {
@@ -92,7 +92,7 @@ class WeaponFilterController extends GetxController {
       }
       return "None";
     });
-    weapons.removeWhere((element) => !substat.contains(element.mainStatText));
+    weapons.removeWhere((element) => !substat.contains(element.substat));
 
     // lọc theo rarity
     List<bool> rarities = List.generate(
@@ -100,9 +100,9 @@ class WeaponFilterController extends GetxController {
     rarities.removeWhere((element) => element == false);
     weapons.removeWhere((element) {
       if (oneRarity.value) {
-        return element.rarity != rarities.length;
+        return element.rarity != rarities.length.toString();
       } else {
-        return element.rarity > rarities.length;
+        return int.parse(element.rarity) > rarities.length;
       }
     });
 
@@ -150,20 +150,18 @@ class WeaponFilterController extends GetxController {
     weapons = Get.find<WeaponController>().weapons;
 
     for (var e in weapons) {
-      if (e.mainStatText != null &&
-          e.mainStatText != "" &&
-          !substatWeaponFilter.contains(e.mainStatText)) {
-        substatWeaponFilter.add(e.mainStatText!);
+      if (!substatWeaponFilter.contains(e.substat) && e.substat != "") {
+        substatWeaponFilter.add(e.substat);
       }
     }
     substatWeaponFilters =
         List.generate(substatWeaponFilter.length, (index) => true).obs;
 
     // filter weapon
-    List<dynamic>? weaponTypes = box.read(Config.storageListWeaponWeaponFilter);
-    if (weaponTypes != null) {
+    List<dynamic>? weapontypes = box.read(Config.storageListWeaponWeaponFilter);
+    if (weapontypes != null) {
       checkWeaponFilters.value =
-          RxList.from(weaponTypes.map((element) => element as bool));
+          RxList.from(weapontypes.map((element) => element as bool));
     }
 
     // filter substat

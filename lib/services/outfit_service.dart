@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/objects/outfit.dart';
@@ -22,22 +23,26 @@ class OutfitService {
 
   Future<void> getOutfitFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> outfits = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
+    try {
+      List<dynamic> outfits = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
 
-    dynamic jsonData = data[language]['outfits'];
-    dynamic img = image['outfits'];
-    for (var k in jsonData.keys) {
-      Outfit obj = Outfit.fromJson(jsonData[k]);
-      // hình ảnh
-      obj.key = k;
-      obj.setImage(img[k]);
-      outfits.add(obj.toJson());
+      dynamic jsonData = data[language]['outfits'];
+      dynamic img = image['outfits'];
+      for (var k in jsonData.keys) {
+        Outfit obj = Outfit.fromJson(jsonData[k]);
+        // hình ảnh
+        obj.key = k;
+        obj.setImage(img[k]);
+        outfits.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameOutfit}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(outfits).toString());
+    } catch (e) {
+      log("$e", name: "getOutfitFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameOutfit}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(outfits).toString());
   }
 }

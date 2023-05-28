@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/controllers/app_controller.dart';
@@ -15,28 +16,32 @@ import 'package:path_provider/path_provider.dart';
 class WeaponService {
   Future<void> getWeaponFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> weapons = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
-    dynamic stat = json['stats'];
-    dynamic curve = json['curve'];
+    try {
+      List<dynamic> weapons = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
+      dynamic stat = json['stats'];
+      dynamic curve = json['curve'];
 
-    dynamic jsonData = data[language]['weapons'];
-    dynamic img = image['weapons'];
-    dynamic statWeapon = stat['weapons'];
-    dynamic curveWeapon = curve['weapons'];
-    for (var k in jsonData.keys) {
-      Weapon obj = Weapon.fromJson(jsonData[k]);
-      obj.key = k;
-      // hình ảnh
-      obj.setImage(img[k]);
-      obj.setStat(statWeapon[k], curveWeapon);
-      weapons.add(obj.toJson());
+      dynamic jsonData = data[language]['weapons'];
+      dynamic img = image['weapons'];
+      dynamic statWeapon = stat['weapons'];
+      dynamic curveWeapon = curve['weapons'];
+      for (var k in jsonData.keys) {
+        Weapon obj = Weapon.fromJson(jsonData[k]);
+        obj.key = k;
+        // hình ảnh
+        obj.setImage(img[k]);
+        obj.setStat(statWeapon[k], curveWeapon);
+        weapons.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameWeapon}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(weapons).toString());
+    } catch (e) {
+      log("$e", name: "getWeaponFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameWeapon}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(weapons).toString());
   }
 
   Future<List<Weapon>?> getWeapons(String language) async {

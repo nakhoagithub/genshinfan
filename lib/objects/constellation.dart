@@ -1,6 +1,5 @@
 class Constellation {
   Constellation({
-    required this.id,
     required this.name,
     required this.c1,
     required this.c2,
@@ -12,7 +11,6 @@ class Constellation {
     this.version,
   });
 
-  final int id;
   final String name;
   final ConstellationDetail c1;
   final ConstellationDetail c2;
@@ -24,7 +22,6 @@ class Constellation {
   String? version;
 
   factory Constellation.fromJson(Map<String, dynamic> json) => Constellation(
-        id: json['id'],
         name: json["name"],
         c1: ConstellationDetail.fromJson(json["c1"]),
         c2: ConstellationDetail.fromJson(json["c2"]),
@@ -39,7 +36,6 @@ class Constellation {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "name": name,
         "c1": c1.toJson(),
         "c2": c2.toJson(),
@@ -55,69 +51,65 @@ class Constellation {
 class ConstellationDetail {
   ConstellationDetail({
     required this.name,
-    required this.description,
-    required this.descriptionRaw,
+    required this.effect,
   });
 
   final String name;
-  final String description;
-  final String descriptionRaw;
+  final String effect;
 
   factory ConstellationDetail.fromJson(Map<String, dynamic> json) =>
       ConstellationDetail(
         name: json["name"],
-        description: json["description"],
-        descriptionRaw: json['descriptionRaw'],
+        effect: json["effect"],
       );
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "description": description,
-        "descriptionRaw": descriptionRaw,
+        "effect": effect,
       };
 }
 
 class ImageConstellation {
   ImageConstellation({
-    required this.filenameC1,
-    required this.filenameC2,
-    required this.filenameC3,
-    required this.filenameC4,
-    required this.filenameC5,
-    required this.filenameC6,
-    required this.filenameConstellation,
-    this.filenameConstellation2,
+    required this.c1,
+    required this.c2,
+    required this.c3,
+    required this.c4,
+    required this.c5,
+    required this.c6,
+    required this.constellation,
+    this.constellation2,
   });
 
-  final String filenameC1;
-  final String filenameC2;
-  final String filenameC3;
-  final String filenameC4;
-  final String filenameC5;
-  final String filenameC6;
-  final String filenameConstellation;
-  final String? filenameConstellation2;
+  final String c1;
+  final String c2;
+  final String c3;
+  final String c4;
+  final String c5;
+  final String c6;
+  final String constellation;
+  final String? constellation2;
 
   factory ImageConstellation.fromJson(Map<String, dynamic> json) =>
       ImageConstellation(
-        filenameC1: json["c1"],
-        filenameC2: json["c2"],
-        filenameC3: json["c3"],
-        filenameC4: json["c4"],
-        filenameC5: json["c5"],
-        filenameC6: json["c6"],
-        filenameConstellation: json["constellation"],
-        filenameConstellation2: json["constellation2"],
+        c1: json["c1"],
+        c2: json["c2"],
+        c3: json["c3"],
+        c4: json["c4"],
+        c5: json["c5"],
+        c6: json["c6"],
+        constellation: json["constellation"],
+        constellation2: json["constellation2"],
       );
 
   Map<String, dynamic> toJson() => {
-        "c1": filenameC1,
-        "c2": filenameC2,
-        "c3": filenameC3,
-        "c4": filenameC4,
-        "c5": filenameC5,
-        "c6": filenameC6,
-        "constellation": filenameConstellation,
-        "constellation2": filenameConstellation2,
+        "c1": c1,
+        "c2": c2,
+        "c3": c3,
+        "c4": c4,
+        "c5": c5,
+        "c6": c6,
+        "constellation": constellation,
+        "constellation2": constellation2,
       };
 }

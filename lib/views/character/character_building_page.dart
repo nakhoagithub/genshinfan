@@ -110,12 +110,12 @@ class _Item extends StatelessWidget {
                       : ItemGame(
                           title: character.name,
                           iconLeft: Tools.getAssetElementFromName(
-                                      character.elementType) !=
+                                      character.element) !=
                                   ""
                               ? Image.asset(Tools.getAssetElementFromName(
-                                  character.elementType))
+                                  character.element))
                               : null,
-                          linkImage: character.images?.mihoyoIcon,
+                          linkImage: character.images?.icon,
                           rarity: character.rarity.toString(),
                           onTap: () {}),
                   // : ItemCharacter(character: character, onTap: () {}),
@@ -125,14 +125,14 @@ class _Item extends StatelessWidget {
                       : ItemGame(
                           title: weapon.name,
                           iconLeft: Tools.getAssetWeaponType(
-                                      weapon.weaponType) !=
+                                      weapon.weapontype) !=
                                   null
                               ? Image.asset(
-                                  Tools.getAssetWeaponType(weapon.weaponType) ??
+                                  Tools.getAssetWeaponType(weapon.weapontype) ??
                                       "")
                               : null,
-                          linkImage: weapon.images?.mihoyoIcon ??
-                              Config.urlImage(weapon.images?.filenameGacha),
+                          linkImage: weapon.images?.icon ??
+                              Config.urlImage(weapon.images?.namegacha),
                           rarity: weapon.rarity.toString(),
                           star: true,
                           onTap: () {}),

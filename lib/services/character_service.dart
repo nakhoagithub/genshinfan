@@ -21,35 +21,40 @@ import '../objects/character.dart';
 class CharacterService {
   Future<void> getCharacterFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> characters = [];
-    dynamic data = json['data'];
-    dynamic image = json['image'];
-    dynamic stat = json['stats'];
-    dynamic curve = json['curve'];
+    try {
+      List<dynamic> characters = [];
+      dynamic data = json['data'];
+      dynamic image = json['image'];
+      dynamic stat = json['stats'];
+      dynamic curve = json['curve'];
 
-    dynamic jsonData = data[language]['characters'];
-    dynamic img = image['characters'];
-    dynamic talent = data[language]['talents'];
-    dynamic imgTalent = image['talents'];
-    dynamic statTalent = stat['talents'];
-    dynamic constellations = data[language]['constellations'];
-    dynamic imgConstellation = image['constellations'];
-    dynamic statCharacter = stat['characters'];
-    dynamic curveCharacter = curve['characters'];
-    for (var k in jsonData.keys) {
-      Character obj = Character.fromJson(jsonData[k]);
-      obj.key = k;
-      // hình ảnh
-      obj.setImage(img[k]);
-      obj.setTalent(k, talent, imgTalent, statTalent);
-      obj.setConstellation(k, constellations, imgConstellation);
-      obj.setStat(statCharacter[k], curveCharacter);
-      characters.add(obj.toJson());
+      dynamic jsonData = data[language]['characters'];
+      dynamic img = image['characters'];
+      dynamic talent = data[language]['talents'];
+      dynamic imgTalent = image['talents'];
+      dynamic statTalent = stat['talents'];
+      dynamic constellations = data[language]['constellations'];
+      dynamic imgConstellation = image['constellations'];
+      dynamic statCharacter = stat['characters'];
+      dynamic curveCharacter = curve['characters'];
+      for (var k in jsonData.keys) {
+        print(k);
+        Character obj = Character.fromJson(jsonData[k]);
+        obj.key = k;
+        // hình ảnh
+        obj.setImage(img[k]);
+        obj.setTalent(k, talent, imgTalent, statTalent);
+        obj.setConstellation(k, constellations, imgConstellation);
+        obj.setStat(statCharacter[k], curveCharacter);
+        characters.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameCharacter}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(characters).toString());
+    } catch (e) {
+      log("$e", name: "getCharacterFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameCharacter}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(characters).toString());
   }
 
   Future<List<Character>?> getCharacters(String language) async {
@@ -140,7 +145,7 @@ class CharacterService {
     }
 
     List<Character> characterUpToday = characters.where((element) {
-      if (element.associationType == "MAINACTOR") {
+      if (element.association == "MAINACTOR") {
         // nhà lữ hành
       } else {
         if (element.talent != null) {

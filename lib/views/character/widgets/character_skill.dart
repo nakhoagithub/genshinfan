@@ -23,7 +23,7 @@ class SkillCharacterView extends StatelessWidget {
     context.theme;
     CharacterController characterController = Get.find<CharacterController>();
     return Obx(() {
-      String association = characterController.character.value!.associationType;
+      String association = characterController.character.value!.association;
       List<Talent>? talentTravelers =
           characterController.character.value!.talentTravelers;
       List<Constellation>? constellationTravelers =
@@ -51,7 +51,7 @@ class SkillCharacterView extends StatelessWidget {
                     talent: characterController.character.value!.talent,
                     constellations:
                         characterController.character.value!.constellations,
-                    element: characterController.character.value!.elementType,
+                    element: characterController.character.value!.element,
                   ),
           ],
         ),
@@ -81,19 +81,19 @@ class _SkillViewAndConstellation extends StatelessWidget {
               // tấn công thường
               _Combat(
                 combat: talent!.combat1,
-                imageTalent: talent?.imageTalent?.filenameCombat1,
+                imageTalent: talent?.imageTalent?.combat1,
                 element: element,
               ),
               // E
               _Combat(
                 combat: talent!.combat2,
-                imageTalent: talent?.imageTalent?.filenameCombat2,
+                imageTalent: talent?.imageTalent?.combat2,
                 element: element,
               ),
               // Q
               _Combat(
                 combat: talent!.combat3,
-                imageTalent: talent?.imageTalent?.filenameCombat3,
+                imageTalent: talent?.imageTalent?.combat3,
                 element: element,
               ),
               // sp
@@ -101,7 +101,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
                   ? const SizedBox()
                   : _Combat(
                       combat: talent!.combatsp!,
-                      imageTalent: talent?.imageTalent?.filenameCombatsp,
+                      imageTalent: talent?.imageTalent?.combatsp,
                       element: element,
                     ),
 
@@ -117,13 +117,13 @@ class _SkillViewAndConstellation extends StatelessWidget {
 
               _Passive(
                 passive: talent!.passive1,
-                imageTalent: talent?.imageTalent?.filenamePassive1,
+                imageTalent: talent?.imageTalent?.passive1,
                 element: element,
               ),
 
               _Passive(
                 passive: talent!.passive2,
-                imageTalent: talent?.imageTalent?.filenamePassive2,
+                imageTalent: talent?.imageTalent?.passive2,
                 element: element,
               ),
 
@@ -131,7 +131,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
                   ? const SizedBox()
                   : _Passive(
                       passive: talent!.passive3!,
-                      imageTalent: talent?.imageTalent?.filenamePassive3,
+                      imageTalent: talent?.imageTalent?.passive3,
                       element: element,
                     ),
 
@@ -139,7 +139,7 @@ class _SkillViewAndConstellation extends StatelessWidget {
                   ? const SizedBox()
                   : _Passive(
                       passive: talent!.passive4!,
-                      imageTalent: talent?.imageTalent?.filenamePassive4,
+                      imageTalent: talent?.imageTalent?.passive4,
                       element: element,
                     ),
 
@@ -154,43 +154,37 @@ class _SkillViewAndConstellation extends StatelessWidget {
                         _Constellation(
                           lv: "1",
                           constellation: constellations!.c1,
-                          imageConstellation:
-                              constellations!.images?.filenameC1,
+                          imageConstellation: constellations!.images?.c1,
                           element: element,
                         ),
                         _Constellation(
                           lv: "2",
                           constellation: constellations!.c2,
-                          imageConstellation:
-                              constellations!.images?.filenameC2,
+                          imageConstellation: constellations!.images?.c2,
                           element: element,
                         ),
                         _Constellation(
                           lv: "3",
                           constellation: constellations!.c3,
-                          imageConstellation:
-                              constellations!.images?.filenameC3,
+                          imageConstellation: constellations!.images?.c3,
                           element: element,
                         ),
                         _Constellation(
                           lv: "4",
                           constellation: constellations!.c4,
-                          imageConstellation:
-                              constellations!.images?.filenameC4,
+                          imageConstellation: constellations!.images?.c4,
                           element: element,
                         ),
                         _Constellation(
                           lv: "5",
                           constellation: constellations!.c5,
-                          imageConstellation:
-                              constellations!.images?.filenameC5,
+                          imageConstellation: constellations!.images?.c5,
                           element: element,
                         ),
                         _Constellation(
                           lv: "6",
                           constellation: constellations!.c6,
-                          imageConstellation:
-                              constellations!.images?.filenameC6,
+                          imageConstellation: constellations!.images?.c6,
                           element: element,
                         ),
                       ],
@@ -384,7 +378,7 @@ class _Combat extends StatelessWidget {
             // descriptionRaw
             Container(
               margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-              child: TextCSS(combat.descriptionRaw),
+              child: TextCSS(combat.info),
             ),
           ],
         ),
@@ -462,7 +456,7 @@ class _Passive extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
             child: TextCSS(
-              passive.descriptionRaw,
+              passive.info,
               textAlign: TextAlign.start,
               style: ThemeApp.textStyle(),
             ),
@@ -552,7 +546,7 @@ class _Constellation extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
             child: TextCSS(
-              constellation.descriptionRaw,
+              constellation.effect,
               textAlign: TextAlign.start,
               style: ThemeApp.textStyle(),
             ),

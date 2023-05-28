@@ -5,10 +5,10 @@ import 'package:genshinfan/resources/utils/tools.dart';
 import 'package:get/get.dart';
 
 class InfoWeaponWidget extends StatelessWidget {
-  final String weaponType;
+  final String weapontype;
   const InfoWeaponWidget({
     super.key,
-    required this.weaponType,
+    required this.weapontype,
   });
 
   @override
@@ -30,7 +30,7 @@ class InfoWeaponWidget extends StatelessWidget {
               decoration: const BoxDecoration(shape: BoxShape.circle),
               padding: const EdgeInsets.all(2),
               child: Image.asset(
-                "${Tools.getAssetWeaponType(weaponType)}",
+                "${Tools.getAssetWeaponType(weapontype)}",
                 height: 30,
                 width: 30,
                 color: Get.theme.colorScheme.onSurface,

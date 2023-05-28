@@ -68,8 +68,8 @@ class _ImageWeapon extends StatelessWidget {
         ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: CachedNetworkImage(
-          imageUrl: weapon.images?.mihoyoIcon ??
-              Config.urlImage(weapon.images?.filenameGacha),
+          imageUrl:
+              weapon.images?.icon ?? Config.urlImage(weapon.images?.namegacha),
           fit: BoxFit.cover,
           progressIndicatorBuilder: (context, url, progress) {
             return const CircularProgressApp();
@@ -98,35 +98,24 @@ class _InformationMore extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          // tấn công
-          InfoTextWidget(
-              titleTranslate: "attack",
-              data: weapon.baseAtkValue.toStringAsFixed(0)),
-
           // đột phá tăng
-          InfoTextWidget(
-              titleTranslate: "substat", data: weapon.mainStatText ?? "..."),
-
-          // chỉ số phụ
-          InfoTextWidget(
-            titleTranslate: weapon.mainStatText ?? "...",
-            data: weapon.baseStatText ?? "...",
-            translate: false,
-          ),
+          InfoTextWidget(titleTranslate: "attack", data: "${weapon.baseatk}"),
 
           // độ hiếm
-          InfoRarityWidget(rarity: weapon.rarity.toString()),
+          InfoRarityWidget(rarity: weapon.rarity),
 
           // loại
-          InfoTextWidget(titleTranslate: "type", data: weapon.weaponText),
+          InfoTextWidget(titleTranslate: "type", data: weapon.weapontype),
+
+          // đột phá tăng
+          InfoTextWidget(titleTranslate: "substat", data: weapon.substat),
 
           // tên hiệu
-          InfoTextWidget(
-              titleTranslate: "effectname", data: weapon.effectName ?? "..."),
+          InfoTextWidget(titleTranslate: "effectname", data: weapon.effectname),
 
           // mô tả
           InfoParagraphWidget(
-              titleTranslate: "description", data: weapon.descriptionRaw),
+              titleTranslate: "description", data: weapon.description),
         ],
       ),
     );

@@ -27,26 +27,21 @@ List<int> ascensions = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 class Character {
   Character({
     this.key,
-    required this.id,
     required this.name,
-    this.fullname,
+    required this.fullname,
     required this.title,
     required this.description,
-    required this.weaponType,
-    required this.weaponText,
-    required this.bodyType,
-    required this.gender,
-    required this.qualityType,
     required this.rarity,
+    required this.element,
+    required this.weapontype,
+    required this.substat,
+    required this.gender,
+    required this.body,
+    required this.association,
+    required this.region,
+    required this.affiliation,
     required this.birthdaymmdd,
     required this.birthday,
-    required this.elementType,
-    required this.elementText,
-    required this.affiliation,
-    required this.associationType,
-    required this.region,
-    required this.substatType,
-    required this.substatText,
     required this.constellation,
     this.constellationTravelers,
     required this.cv,
@@ -56,31 +51,27 @@ class Character {
     this.talentTravelers,
     this.constellations,
     this.stats,
+    this.specialized,
     this.url,
     this.version,
   });
 
   String? key;
-  final int id;
   final String name;
   final String? fullname;
   final String title;
   final String description;
-  final String weaponType;
-  final String weaponText;
-  final String bodyType;
+  final String rarity;
+  final String element;
+  final String weapontype;
+  final String substat;
   final String gender;
-  final String qualityType;
-  final int rarity;
+  final String body;
+  final String association;
+  final String region;
+  final String affiliation;
   final String birthdaymmdd;
   final String birthday;
-  final String elementType;
-  final String elementText;
-  final String affiliation;
-  final String associationType;
-  final String region;
-  final String substatType;
-  final String substatText;
   final String constellation;
   Cv cv;
   Costs costs;
@@ -90,36 +81,28 @@ class Character {
   Constellation? constellations;
   List<Constellation>? constellationTravelers;
   List<Stat>? stats;
+  String? specialized;
   UrlObject? url;
   String? version;
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
         key: json['key'],
-        id: json['id'],
         name: json["name"],
         fullname: json["fullname"],
         title: json["title"],
         description: json["description"],
-        weaponType: json["weaponType"],
-        weaponText: json["weaponText"],
-        bodyType: json["bodyType"],
-        gender: json["gender"],
-        qualityType: json['qualityType'],
         rarity: json["rarity"],
+        element: json["element"],
+        weapontype: json["weapontype"],
+        substat: json["substat"],
+        gender: json["gender"],
+        body: json["body"],
+        association: json["association"],
+        region: json["region"],
+        affiliation: json["affiliation"],
         birthdaymmdd: json["birthdaymmdd"],
         birthday: json["birthday"],
-        elementType: json["elementType"],
-        elementText: json["elementText"],
-        affiliation: json["affiliation"],
-        associationType: json["associationType"],
-        region: json["region"],
-        substatType: json["substatType"],
-        substatText: json["substatText"],
         constellation: json["constellation"],
-        constellationTravelers: json["constellationTravelers"] == null
-            ? null
-            : List<Constellation>.from(json["constellationTravelers"]
-                .map((x) => Constellation.fromJson(x))),
         cv: Cv.fromJson(json["cv"]),
         costs: Costs.fromJson(json["costs"]),
         images: json['images'] == null
@@ -133,35 +116,35 @@ class Character {
         constellations: json['constellations'] == null
             ? null
             : Constellation.fromJson(json['constellations']),
+        constellationTravelers: json["constellationTravelers"] == null
+            ? null
+            : List<Constellation>.from(json["constellationTravelers"]
+                .map((x) => Constellation.fromJson(x))),
         stats: json["stats"] == null
             ? null
             : List<Stat>.from(json["stats"].map((x) => Stat.fromJson(x))),
+        specialized: json['specialized'],
         url: json['url'] == null ? null : UrlObject.fromJson(json['url']),
         version: json['version'],
       );
 
   Map<String, dynamic> toJson() => {
         "key": key,
-        "id": id,
         "name": name,
         "fullname": fullname,
         "title": title,
         "description": description,
-        "weaponType": weaponType,
-        "weaponText": weaponText,
-        "bodyType": bodyType,
-        "gender": gender,
-        "qualityType": qualityType,
         "rarity": rarity,
+        "element": element,
+        "weapontype": weapontype,
+        "substat": substat,
+        "gender": gender,
+        "body": body,
+        "association": association,
+        "region": region,
+        "affiliation": affiliation,
         "birthdaymmdd": birthdaymmdd,
         "birthday": birthday,
-        "elementType": elementType,
-        "elementText": elementText,
-        "affiliation": affiliation,
-        "associationType": associationType,
-        "region": region,
-        "substatType": substatType,
-        "substatText": substatText,
         "constellation": constellation,
         "constellationTravelers": constellationTravelers == null
             ? null
@@ -178,6 +161,7 @@ class Character {
         "stats": stats == null
             ? null
             : List<dynamic>.from(stats!.map((x) => x.toJson())),
+        "specialized": specialized,
         "url": url?.toJson(),
         "version": version,
       };
@@ -285,7 +269,7 @@ class Character {
   void setTalent(
       String id, dynamic talentJson, dynamic imageTalent, dynamic stat) {
     // không phải nhân vật main
-    if (associationType != "ASSOC_MAINACTOR") {
+    if (association != "MAINACTOR") {
       talent = _talent(id, talentJson, imageTalent, stat);
     } else {
       // nhân vật main
@@ -304,7 +288,7 @@ class Character {
   }
 
   void setConstellation(String id, dynamic json, dynamic imageConstellation) {
-    if (associationType != "ASSOC_MAINACTOR") {
+    if (association != "MAINACTOR") {
       constellations = Constellation.fromJson(json[id]);
       constellations?.images =
           ImageConstellation.fromJson(imageConstellation[id]);
@@ -366,6 +350,7 @@ class Character {
       listData.add(stat);
     }
     stats = listData;
+    specialized = stat['specialized'];
   }
 }
 
@@ -379,12 +364,12 @@ class Costs {
     required this.ascend6,
   });
 
-  List<Items> ascend1;
-  List<Items> ascend2;
-  List<Items> ascend3;
-  List<Items> ascend4;
-  List<Items> ascend5;
-  List<Items> ascend6;
+  final List<Items> ascend1;
+  final List<Items> ascend2;
+  final List<Items> ascend3;
+  final List<Items> ascend4;
+  final List<Items> ascend5;
+  final List<Items> ascend6;
 
   factory Costs.fromJson(Map<String, dynamic> json) => Costs(
         ascend1:
@@ -480,61 +465,57 @@ class Stat {
 }
 
 class ImageCharacter {
-  final String filenameIcon;
-  final String filenameSideIcon;
-  final String? filenameIconCard;
-  final String? filenameGachaSplash;
-  final String? filenameGacheSlice;
+  final String? nameicon;
+  final String? namesideicon;
+  final String? namegachasplash;
+  final String? namegachaslice;
   final String? card;
   final String? portrait;
-  final String mihoyoIcon;
-  final String mihoyoSideIcon;
+  final String? icon;
+  final String? sideicon;
   final String? cover1;
   final String? cover2;
   final String? hoyolabAvatar;
 
   const ImageCharacter({
-    required this.filenameIcon,
-    required this.filenameSideIcon,
-    this.filenameIconCard,
-    this.filenameGachaSplash,
-    this.filenameGacheSlice,
+    this.nameicon,
+    this.namesideicon,
+    this.namegachasplash,
+    this.namegachaslice,
     this.card,
     this.portrait,
-    required this.mihoyoIcon,
-    required this.mihoyoSideIcon,
+    this.icon,
+    this.sideicon,
     this.cover1,
     this.cover2,
     this.hoyolabAvatar,
   });
 
   factory ImageCharacter.fromJson(Map<String, dynamic> json) => ImageCharacter(
-        filenameIcon: json['filename_icon'],
-        filenameSideIcon: json['filename_sideIcon'],
-        filenameIconCard: json['filename_iconCard'],
-        filenameGachaSplash: json['filename_gachaSplash'],
-        filenameGacheSlice: json['filename_gachaSlice'],
+        nameicon: json['nameicon'],
+        namesideicon: json['namesideicon'],
+        namegachasplash: json['namegachasplash'],
+        namegachaslice: json['namegachaslice'],
         card: json['card'],
         portrait: json['portrait'],
-        mihoyoIcon: json['mihoyo_icon'],
-        mihoyoSideIcon: json['mihoyo_sideIcon'],
+        icon: json['icon'],
+        sideicon: json['sideicon'],
         cover1: json['cover1'],
         cover2: json['cover2'],
         hoyolabAvatar: json['hoyolab-avatar'],
       );
 
   Map<String, dynamic> toJson() => {
+        "nameicon": nameicon,
+        "namesideicon": namesideicon,
+        "namegachasplash": namegachasplash,
+        "namegachaslice": namegachaslice,
         "card": card,
         "portrait": portrait,
+        "icon": icon,
+        "sideicon": sideicon,
         "cover1": cover1,
         "cover2": cover2,
         "hoyolab-avatar": hoyolabAvatar,
-        "filename_icon": filenameIcon,
-        "filename_iconCard": filenameIconCard,
-        "filename_sideIcon": filenameSideIcon,
-        "filename_gachaSplash": filenameGachaSplash,
-        "filename_gachaSlice": filenameGacheSlice,
-        "mihoyo_icon": mihoyoIcon,
-        "mihoyo_sideIcon": mihoyoSideIcon,
       };
 }

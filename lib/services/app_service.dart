@@ -9,15 +9,32 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/controllers/app_controller.dart';
 import 'package:genshinfan/objects/app/api_github.dart';
+import 'package:genshinfan/objects/app/package_app.dart';
 import 'package:genshinfan/objects/app/traffic.dart';
 import 'package:genshinfan/objects/app/user.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 class AppService {
+  Future<PackageApp> getVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String appName = packageInfo.appName;
+    String packageName = packageInfo.packageName;
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
+
+    return PackageApp(
+      appName: appName,
+      packageName: packageName,
+      version: version,
+      buildNumber: buildNumber,
+    );
+  }
+
   static Future<bool> checkInternetConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -121,7 +138,7 @@ class AppService {
 
     return traffic;
   }
-  
+
   /// cần kết nối mạng để ứng dụng kết nối đến firebase
   Future<bool> isDeleteDataFirstInstall() async {
     DatabaseReference db = FirebaseDatabase.instance.ref();
@@ -137,8 +154,14 @@ class AppService {
     Dio dio = Dio();
     try {
       DatabaseReference db = FirebaseDatabase.instance.ref();
-      DataSnapshot link = await db.child('application').child("linkAPI").get();
+      PackageApp packageApp = await getVersion();
+      DataSnapshot link = await db
+          .child('application')
+          .child("dataAPI")
+          .child("buildNumber${packageApp.buildNumber}")
+          .get();
       if (link.value != null && link.value is String) {
+        log("${link.value}", name: "Link API");
         final res = await dio.get(link.value as String);
         return ApiGithub.fromJson(res.data);
       }

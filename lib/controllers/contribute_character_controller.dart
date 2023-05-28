@@ -45,7 +45,7 @@ class ContributeCharacterController extends GetxController {
     weapon.value = null;
     AppController appController = Get.find<AppController>();
     weapons.value = appController.weapons.where((p0) {
-      return p0.weaponType == value.weaponType;
+      return p0.weapontype == value.weapontype;
     }).toList();
     weapons.sort(
       (a, b) {

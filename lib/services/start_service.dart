@@ -7,7 +7,6 @@ import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 import 'package:genshinfan/controllers/start_controller.dart';
 import 'package:genshinfan/objects/app/api_github.dart';
-import 'package:genshinfan/objects/app/package_app.dart';
 import 'package:genshinfan/resources/utils/config.dart';
 import 'package:genshinfan/resources/utils/enum.dart';
 import 'package:genshinfan/services/achievement_service.dart';
@@ -26,26 +25,10 @@ import 'package:genshinfan/services/weapon_service.dart';
 import 'package:genshinfan/services/windglider_service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 class StartService {
   const StartService();
-
-  Future<PackageApp> getVersion() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String appName = packageInfo.appName;
-    String packageName = packageInfo.packageName;
-    String version = packageInfo.version;
-    String buildNumber = packageInfo.buildNumber;
-
-    return PackageApp(
-      appName: appName,
-      packageName: packageName,
-      version: version,
-      buildNumber: buildNumber,
-    );
-  }
 
   Future<bool> checkGzipData(String language) async {
     Directory? directory = await getExternalStorageDirectory();

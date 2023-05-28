@@ -77,16 +77,15 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                                         title: characterToday[index].name,
                                         iconLeft: Tools.getAssetElementFromName(
                                                     characters[index]
-                                                        .elementType) !=
+                                                        .element) !=
                                                 ""
                                             ? Image.asset(
                                                 Tools.getAssetElementFromName(
                                                     characterToday[index]
-                                                        .elementType))
+                                                        .element))
                                             : null,
-                                        linkImage: characterToday[index]
-                                            .images
-                                            ?.mihoyoIcon,
+                                        linkImage:
+                                            characterToday[index].images?.icon,
                                         rarity: characterToday[index]
                                             .rarity
                                             .toString(),
@@ -140,14 +139,13 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                                 child: ItemGame(
                                   title: characters[index].name,
                                   iconLeft: Tools.getAssetElementFromName(
-                                              characters[index].elementType) !=
+                                              characters[index].element) !=
                                           ""
                                       ? Image.asset(
                                           Tools.getAssetElementFromName(
-                                              characters[index].elementType))
+                                              characters[index].element))
                                       : null,
-                                  linkImage:
-                                      characters[index].images?.mihoyoIcon,
+                                  linkImage: characters[index].images?.icon,
                                   rarity: characters[index].rarity.toString(),
                                   onTap: () {
                                     Get.find<CharacterController>()

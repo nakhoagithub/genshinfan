@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/controllers/app_controller.dart';
@@ -36,19 +37,23 @@ class CraftService {
 
   Future<void> getCraftFromGzip(
       Directory directory, String language, dynamic json) async {
-    List<dynamic> crafts = [];
-    dynamic data = json['data'];
+    try {
+      List<dynamic> crafts = [];
+      dynamic data = json['data'];
 
-    dynamic jsonData = data[language]['crafts'];
-    for (var k in jsonData.keys) {
-      Craft obj = Craft.fromJson(jsonData[k]);
-      // hình ảnh
-      obj.key = k;
-      crafts.add(obj.toJson());
+      dynamic jsonData = data[language]['crafts'];
+      for (var k in jsonData.keys) {
+        Craft obj = Craft.fromJson(jsonData[k]);
+        // hình ảnh
+        obj.key = k;
+        crafts.add(obj.toJson());
+      }
+      File file =
+          File("${directory.path}/$language/${Config.fileNameCraft}.json");
+      await file.create(recursive: true);
+      await file.writeAsString(jsonEncode(crafts).toString());
+    } catch (e) {
+      log("$e", name: "getCraftFromGzip");
     }
-    File file =
-        File("${directory.path}/$language/${Config.fileNameCraft}.json");
-    await file.create(recursive: true);
-    await file.writeAsString(jsonEncode(crafts).toString());
   }
 }
