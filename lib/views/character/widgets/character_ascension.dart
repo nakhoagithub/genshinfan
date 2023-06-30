@@ -18,67 +18,69 @@ class CharacterAscensionView extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     CharacterController characterController = Get.find<CharacterController>();
-    Costs costs = characterController.character.value!.costs;
-    return Container(
-      margin: const EdgeInsets.all(4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // title
-          TitleOfContent(title: "ascension".tr),
+    return Obx(() {
+      Costs costs = characterController.character.value!.costs;
+      return Container(
+        margin: const EdgeInsets.all(4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // title
+            TitleOfContent(title: "ascension".tr),
 
-          // content
-          Container(
-            margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(5),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                strokeAlign: 1,
-                color: Get.theme.colorScheme.onSurface,
+            // content
+            Container(
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  strokeAlign: 1,
+                  color: Get.theme.colorScheme.onSurface,
+                ),
+              ),
+              child: ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  _ItemAscend(
+                    lv: "20",
+                    rank: "1",
+                    ascends: costs.ascend1,
+                  ),
+                  _ItemAscend(
+                    lv: "40",
+                    rank: "2",
+                    ascends: costs.ascend2,
+                  ),
+                  _ItemAscend(
+                    lv: "50",
+                    rank: "3",
+                    ascends: costs.ascend3,
+                  ),
+                  _ItemAscend(
+                    lv: "60",
+                    rank: "4",
+                    ascends: costs.ascend4,
+                  ),
+                  _ItemAscend(
+                    lv: "70",
+                    rank: "5",
+                    ascends: costs.ascend5,
+                  ),
+                  _ItemAscend(
+                    lv: "80",
+                    rank: "6",
+                    ascends: costs.ascend6,
+                  ),
+                ],
               ),
             ),
-            child: ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                _ItemAscend(
-                  lv: "20",
-                  rank: "1",
-                  ascends: costs.ascend1,
-                ),
-                _ItemAscend(
-                  lv: "40",
-                  rank: "2",
-                  ascends: costs.ascend2,
-                ),
-                _ItemAscend(
-                  lv: "50",
-                  rank: "3",
-                  ascends: costs.ascend3,
-                ),
-                _ItemAscend(
-                  lv: "60",
-                  rank: "4",
-                  ascends: costs.ascend4,
-                ),
-                _ItemAscend(
-                  lv: "70",
-                  rank: "5",
-                  ascends: costs.ascend5,
-                ),
-                _ItemAscend(
-                  lv: "80",
-                  rank: "6",
-                  ascends: costs.ascend6,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
 
