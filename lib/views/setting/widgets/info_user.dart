@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/icon_app.dart';

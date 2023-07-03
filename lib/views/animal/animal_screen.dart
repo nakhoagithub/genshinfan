@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/animal_controller.dart';
+import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/animal/widgets/animal_info.dart';

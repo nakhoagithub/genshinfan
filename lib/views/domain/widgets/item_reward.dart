@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/artifact_controller.dart';
-import 'package:genshinfan/controllers/resource_controller.dart';
-import 'package:genshinfan/objects/artifact.dart';
-import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
+import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
+import 'package:genshinfan/models/artifact.dart';
+import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 

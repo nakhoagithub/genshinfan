@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:get/get.dart';
 
 class InfoParagraphWidget extends StatelessWidget {

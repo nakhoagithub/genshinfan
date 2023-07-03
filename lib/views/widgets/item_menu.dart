@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:get/get.dart';
 
 class ItemMenu extends StatelessWidget {

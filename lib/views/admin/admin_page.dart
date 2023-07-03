@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/widgets/title_of_menu.dart';

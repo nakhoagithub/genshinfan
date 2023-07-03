@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/controllers/character_controller.dart';
+import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';

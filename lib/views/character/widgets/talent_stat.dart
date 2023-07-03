@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/objects/talent.dart';
+import 'package:genshinfan/models/talent.dart';
 import 'package:get/get.dart';
 
-import '../../../resources/utils/theme.dart';
+import '../../../utils/theme.dart';
 
 class TalentStats extends StatelessWidget {
   final CombatTalenDetail combat;

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:genshinfan/objects/app/user.dart';
+import 'package:genshinfan/models/app/user.dart';
 
 class ManageService {
   Future<List<UserApp>> getUserAppForManager() async {

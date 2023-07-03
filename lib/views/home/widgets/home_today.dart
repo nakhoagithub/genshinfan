@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/home/widgets/character_up_today.dart';
 import 'package:genshinfan/views/home/widgets/weapon_up_today.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';

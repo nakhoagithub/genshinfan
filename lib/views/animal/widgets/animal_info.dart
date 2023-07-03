@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/animal_controller.dart';
-import 'package:genshinfan/objects/animal.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
+import 'package:genshinfan/models/animal.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';

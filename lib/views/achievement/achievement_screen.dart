@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/achievement_controller.dart';
+import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
 import 'package:genshinfan/views/achievement/widgets/achievement_info.dart';
 import 'package:genshinfan/views/achievement/widgets/achievementgroup_info.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';

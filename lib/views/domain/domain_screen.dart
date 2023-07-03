@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/domain_controller.dart';
+import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/domain/widgets/domain_info.dart';

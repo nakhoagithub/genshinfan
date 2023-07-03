@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/character_controller.dart';
-import 'package:genshinfan/objects/character.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/character/controllers/character_controller.dart';
+import 'package:genshinfan/models/character.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/theme.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item.dart';

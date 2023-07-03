@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/controllers/setting_controller.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/views/setting/controllers/setting_controller.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/setting/widgets/about_app.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/setting/widgets/change_language.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/controllers/geography_controller.dart';
-import 'package:genshinfan/objects/geography.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
+import 'package:genshinfan/models/geography.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/geography/widgets/item_geography.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/contribute_character_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/contribute/controllers/contribute_character_controller.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 

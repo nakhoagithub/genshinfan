@@ -5,10 +5,10 @@ import 'dart:io';
 
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
-import 'package:genshinfan/controllers/start_controller.dart';
-import 'package:genshinfan/objects/app/api_github.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/enum.dart';
+import 'package:genshinfan/views/start/controllers/start_controller.dart';
+import 'package:genshinfan/models/app/api_github.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/enum.dart';
 import 'package:genshinfan/services/achievement_service.dart';
 import 'package:genshinfan/services/animal_service.dart';
 import 'package:genshinfan/services/app_service.dart';

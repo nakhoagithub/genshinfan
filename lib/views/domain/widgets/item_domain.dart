@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/objects/artifact.dart';
-import 'package:genshinfan/objects/domain.dart';
-import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/reward.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/models/artifact.dart';
+import 'package:genshinfan/models/domain.dart';
+import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/reward.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/theme.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:get/get.dart';
 

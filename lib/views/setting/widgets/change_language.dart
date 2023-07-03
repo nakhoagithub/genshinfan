@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/resources/utils/localization.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/utils/localization.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:get/get.dart';
 
 class ChangeLanguage extends StatelessWidget {

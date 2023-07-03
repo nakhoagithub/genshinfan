@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/objects/enemy.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/models/enemy.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:path_provider/path_provider.dart';
 
 class EnemyService {

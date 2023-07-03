@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/resource_filter_controller.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/resource/controllers/resource_filter_controller.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/checkbox_rarity.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';

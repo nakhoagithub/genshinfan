@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/contribute_character_controller.dart';
+import 'package:genshinfan/views/contribute/controllers/contribute_character_controller.dart';
 import 'package:get/get.dart';
 
 class SelectTypeSet extends StatelessWidget {

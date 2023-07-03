@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/objects/weapon.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/models/weapon.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/weapon_controller.dart';
+import '../controllers/weapon_controller.dart';
 
 class WeaponStory extends StatelessWidget {
   const WeaponStory({super.key});

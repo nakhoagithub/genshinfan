@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/artifact_controller.dart';
+import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info_item.dart';

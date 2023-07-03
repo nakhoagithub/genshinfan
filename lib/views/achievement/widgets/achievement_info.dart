@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/achievement_controller.dart';
-import 'package:genshinfan/objects/achievement.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
+import 'package:genshinfan/models/achievement.dart';
+import 'package:genshinfan/utils/theme.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:get/get.dart';
 
 class InformationAchievementList extends StatelessWidget {

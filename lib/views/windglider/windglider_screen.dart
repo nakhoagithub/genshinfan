@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/windglider_controller.dart';
+import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/windglider/widgets/windglider_info.dart';

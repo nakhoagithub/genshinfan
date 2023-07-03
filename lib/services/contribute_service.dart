@@ -3,8 +3,8 @@ import 'dart:developer';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/objects/app/character_building.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/models/app/character_building.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 
 class ContributeCharacterService {

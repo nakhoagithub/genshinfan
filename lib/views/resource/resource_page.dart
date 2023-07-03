@@ -1,9 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/controllers/resource_controller.dart';
-import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
+import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/item.dart';

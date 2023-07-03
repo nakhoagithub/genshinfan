@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/character_controller.dart';
-import 'package:genshinfan/objects/character.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/character/controllers/character_controller.dart';
+import 'package:genshinfan/models/character.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';

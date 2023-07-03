@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/artifact_controller.dart';
-import 'package:genshinfan/objects/artifact.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
+import 'package:genshinfan/models/artifact.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/info_multi_rarity_widget.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:get/get.dart';

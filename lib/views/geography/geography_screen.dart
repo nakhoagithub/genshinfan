@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/geography_controller.dart';
+import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/geography/widgets/geography_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';

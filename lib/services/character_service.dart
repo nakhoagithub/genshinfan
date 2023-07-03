@@ -5,18 +5,18 @@ import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/objects/app/character_building.dart';
-import 'package:genshinfan/objects/domain.dart';
-import 'package:genshinfan/objects/items.dart';
-import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/models/app/character_building.dart';
+import 'package:genshinfan/models/domain.dart';
+import 'package:genshinfan/models/items.dart';
+import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../objects/character.dart';
+import '../models/character.dart';
 
 class CharacterService {
   Future<void> getCharacterFromGzip(

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/controllers/app_controller.dart';
-import 'package:genshinfan/objects/craft.dart';
-import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/models/craft.dart';
+import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 

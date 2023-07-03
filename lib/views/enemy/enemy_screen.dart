@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/enemy_controller.dart';
+import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';

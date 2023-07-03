@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/craft_controller.dart';
+import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
 import 'package:genshinfan/views/craft/widgets/craft_info.dart';
 
 import 'package:genshinfan/views/widgets/backbutton.dart';

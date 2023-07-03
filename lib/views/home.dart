@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/views/achievement/achievement_page.dart';
 import 'package:genshinfan/views/achievement/achievement_screen.dart';
 import 'package:genshinfan/views/animal/animal_page.dart';

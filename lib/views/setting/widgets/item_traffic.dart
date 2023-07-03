@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/objects/app/traffic.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/models/app/traffic.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 

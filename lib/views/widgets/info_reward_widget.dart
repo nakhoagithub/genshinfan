@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/objects/resource.dart';
-import 'package:genshinfan/objects/reward.dart';
-import 'package:genshinfan/resources/utils/theme.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/reward.dart';
+import 'package:genshinfan/utils/theme.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/domain/widgets/item_reward.dart';
 import 'package:get/get.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/namecard_controller.dart';
+import 'package:genshinfan/views/namecard/controllers/namecard_controller.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/namecard/widgets/namecard_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';

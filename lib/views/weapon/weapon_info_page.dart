@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/weapon_controller.dart';
-import 'package:genshinfan/resources/utils/config.dart';
+import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_ascension.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_info.dart';

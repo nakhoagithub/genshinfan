@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:genshinfan/controllers/app_controller.dart';
+import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/views/admin/admin_page.dart';
 import 'package:genshinfan/views/admin/manage_user.dart';
 import 'package:genshinfan/views/admin/manage_character_contribution.dart';
@@ -14,12 +14,12 @@ import 'package:genshinfan/views/domain/domain_info_page.dart';
 import 'package:genshinfan/views/enemy/enemy_info_page.dart';
 import 'package:genshinfan/views/home.dart';
 import 'package:genshinfan/views/resource/resouce_info_page.dart';
-import 'package:genshinfan/views/start_page.dart';
+import 'package:genshinfan/views/start/views/start_page.dart';
 import 'package:genshinfan/views/weapon/weapon_info_page.dart';
 import 'package:get/get.dart';
-import 'resources/utils/init.dart';
-import 'resources/utils/localization.dart';
-import 'resources/utils/theme.dart';
+import 'utils/init.dart';
+import 'utils/localization.dart';
+import 'utils/theme.dart';
 import 'views/setting/setting_page.dart';
 
 void main() async {

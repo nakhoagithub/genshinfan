@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:styled_text/styled_text.dart';
 
 class TextCSS extends StatelessWidget {

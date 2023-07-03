@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/controllers/character_controller.dart';
-import 'package:genshinfan/controllers/home_controller.dart';
-import 'package:genshinfan/objects/character.dart';
-import 'package:genshinfan/resources/utils/config.dart';
-import 'package:genshinfan/resources/utils/tools.dart';
+import 'package:genshinfan/views/character/controllers/character_controller.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/models/character.dart';
+import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/item.dart';
