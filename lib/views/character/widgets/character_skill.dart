@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
-import 'package:genshinfan/models/constellation.dart';
-import 'package:genshinfan/models/talent.dart';
+import 'package:genshinfan/models/game/constellation.dart';
+import 'package:genshinfan/models/game/talent.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';

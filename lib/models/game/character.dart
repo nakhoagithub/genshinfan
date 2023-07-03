@@ -1,8 +1,8 @@
-import 'package:genshinfan/models/constellation.dart';
-import 'package:genshinfan/models/items.dart';
-import 'package:genshinfan/models/url.dart';
+import 'package:genshinfan/models/game/constellation.dart';
+import 'package:genshinfan/models/game/items.dart';
+import 'package:genshinfan/models/game/url.dart';
 
-import '../utils/tools.dart';
+import '../../utils/tools.dart';
 import 'talent.dart';
 
 List<int> levels = [

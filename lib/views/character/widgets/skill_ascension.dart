@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
-import 'package:genshinfan/models/items.dart';
-import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/game/items.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/models/resource.dart';
-import 'package:genshinfan/models/reward.dart';
+import 'package:genshinfan/models/game/resource.dart';
+import 'package:genshinfan/models/game/reward.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/domain/widgets/item_reward.dart';

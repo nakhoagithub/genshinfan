@@ -8,15 +8,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
-import 'package:genshinfan/models/domain.dart';
-import 'package:genshinfan/models/items.dart';
-import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/game/domain.dart';
+import 'package:genshinfan/models/game/items.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../models/character.dart';
+import '../models/game/character.dart';
 
 class CharacterService {
   Future<void> getCharacterFromGzip(

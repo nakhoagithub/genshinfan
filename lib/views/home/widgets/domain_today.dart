@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
-import 'package:genshinfan/models/domain.dart';
+import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/views/domain/widgets/item_domain.dart';
 import 'package:get/get.dart';

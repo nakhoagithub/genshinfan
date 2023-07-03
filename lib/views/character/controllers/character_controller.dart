@@ -3,7 +3,7 @@ import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../../models/character.dart';
+import '../../../models/game/character.dart';
 
 class CharacterController extends GetxController
     with GetTickerProviderStateMixin {

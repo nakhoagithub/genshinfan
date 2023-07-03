@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/models/talent.dart';
+import 'package:genshinfan/models/game/talent.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/theme.dart';

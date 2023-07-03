@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/models/game/windglider.dart';
 import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
-import 'package:genshinfan/models/windglider.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/item.dart';

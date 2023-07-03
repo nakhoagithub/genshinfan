@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
-import 'package:genshinfan/models/enemy.dart';
+import 'package:genshinfan/models/game/enemy.dart';
 import 'package:genshinfan/views/widgets/item_table.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';

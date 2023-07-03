@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
-import 'package:genshinfan/models/artifact.dart';
+import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/item.dart';

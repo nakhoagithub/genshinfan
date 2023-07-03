@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/models/outfit.dart';
+import 'package:genshinfan/models/game/outfit.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:path_provider/path_provider.dart';
 

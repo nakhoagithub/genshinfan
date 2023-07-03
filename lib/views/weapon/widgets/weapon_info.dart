@@ -10,7 +10,7 @@ import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
 import 'package:genshinfan/views/widgets/info_rarity_widget.dart';
 import 'package:genshinfan/views/widgets/info_text_widget.dart';
 import 'package:get/get.dart';
-import '../../../models/weapon.dart';
+import '../../../models/game/weapon.dart';
 
 class InformationWeapon extends StatelessWidget {
   const InformationWeapon({super.key});

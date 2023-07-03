@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
-import 'package:genshinfan/models/achievement.dart';
+import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/achievement/widgets/item_reward.dart';
 import 'package:get/get.dart';

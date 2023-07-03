@@ -1,4 +1,4 @@
-import 'package:genshinfan/models/reward.dart';
+import 'package:genshinfan/models/game/reward.dart';
 
 List<int> levels = [
   1,

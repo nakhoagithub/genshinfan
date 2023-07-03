@@ -1,4 +1,4 @@
-import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/game/resource.dart';
 
 class Craft {
   String? key;

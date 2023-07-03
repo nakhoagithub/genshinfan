@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
-import '../../../models/enemy.dart';
+import '../../../models/game/enemy.dart';
 
 class EnemyController extends GetxController with GetTickerProviderStateMixin {
   List<Enemy> enemies = Get.find<AppController>().enemies;

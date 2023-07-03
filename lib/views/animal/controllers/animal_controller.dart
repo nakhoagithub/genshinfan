@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
-import '../../../models/animal.dart';
+import '../../../models/game/animal.dart';
 
 class AnimalController extends GetxController with GetTickerProviderStateMixin {
   List<Animal> animals = Get.find<AppController>().animals;

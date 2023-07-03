@@ -4,11 +4,11 @@ import 'package:genshinfan/views/character/controllers/character_controller.dart
 import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
-import 'package:genshinfan/models/artifact.dart';
-import 'package:genshinfan/models/character.dart';
-import 'package:genshinfan/models/craft.dart';
-import 'package:genshinfan/models/enemy.dart';
-import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/game/artifact.dart';
+import 'package:genshinfan/models/game/character.dart';
+import 'package:genshinfan/models/game/craft.dart';
+import 'package:genshinfan/models/game/enemy.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 

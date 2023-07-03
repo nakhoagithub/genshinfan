@@ -1,4 +1,4 @@
-import 'package:genshinfan/models/items.dart';
+import 'package:genshinfan/models/game/items.dart';
 
 class Talent {
   Talent({

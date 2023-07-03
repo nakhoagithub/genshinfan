@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
-import 'package:genshinfan/models/weapon.dart';
+import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';

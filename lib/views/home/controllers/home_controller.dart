@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:genshinfan/models/app/traffic.dart';
-import 'package:genshinfan/models/domain.dart';
+import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/views/widgets/slide_layout.dart';

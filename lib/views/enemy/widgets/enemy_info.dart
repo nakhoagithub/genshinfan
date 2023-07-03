@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
-import 'package:genshinfan/models/enemy.dart';
-import 'package:genshinfan/models/reward.dart';
+import 'package:genshinfan/models/game/enemy.dart';
+import 'package:genshinfan/models/game/reward.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';

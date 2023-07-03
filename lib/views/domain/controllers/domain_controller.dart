@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/app_controller.dart';
-import 'package:genshinfan/models/domain.dart';
+import 'package:genshinfan/models/game/domain.dart';
 import 'package:get/get.dart';
 
 class DomainController extends GetxController

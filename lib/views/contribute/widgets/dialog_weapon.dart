@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/contribute/controllers/contribute_character_controller.dart';
-import 'package:genshinfan/models/weapon.dart';
+import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
 

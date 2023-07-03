@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
-import 'package:genshinfan/models/animal.dart';
+import 'package:genshinfan/models/game/animal.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/item.dart';

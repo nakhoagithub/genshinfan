@@ -1,4 +1,4 @@
-import 'package:genshinfan/models/url.dart';
+import 'package:genshinfan/models/game/url.dart';
 
 class Resource {
   Resource({

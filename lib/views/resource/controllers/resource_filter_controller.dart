@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
-import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

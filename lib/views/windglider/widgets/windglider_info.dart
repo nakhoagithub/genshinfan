@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/models/game/windglider.dart';
 import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
-import 'package:genshinfan/models/windglider.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';

@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
-import 'package:genshinfan/models/domain.dart';
+import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';

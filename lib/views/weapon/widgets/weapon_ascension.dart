@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
-import 'package:genshinfan/models/items.dart';
-import 'package:genshinfan/models/resource.dart';
+import 'package:genshinfan/models/game/items.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
 
-import '../../../models/weapon.dart';
+import '../../../models/game/weapon.dart';
 import '../../../utils/theme.dart';
 import '../../../utils/tools.dart';
 

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
-import 'package:genshinfan/models/craft.dart';
+import 'package:genshinfan/models/game/craft.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/craft/widgets/craft_recipe.dart';

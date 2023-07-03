@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
-import 'package:genshinfan/models/character.dart';
+import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/widgets/item_table.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';

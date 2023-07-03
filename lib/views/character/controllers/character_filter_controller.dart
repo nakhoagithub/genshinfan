@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:genshinfan/app_controller.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
-import 'package:genshinfan/models/character.dart';
+import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:get/get.dart';
