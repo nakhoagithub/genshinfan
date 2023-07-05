@@ -178,6 +178,7 @@ class _Item extends StatelessWidget {
                     ],
                   ),
 
+            /// version 1.4.3
             TextCSS(
               "${"sands_effect".tr}: <b>${characterBuilding.sands.tr}</b>",
               style: ThemeApp.textStyle(),
@@ -192,7 +193,6 @@ class _Item extends StatelessWidget {
             ),
 
             /// version 1.5
-
             // TextCSS(
             //   "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
             //   style: ThemeApp.textStyle(),

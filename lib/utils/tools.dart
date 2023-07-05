@@ -159,19 +159,19 @@ class Tool {
 
   static String? getAssetWeaponType(String? weapon) {
     if (weapon == "sword".tr || weapon == 'Sword') {
-      return "assets/images/weapon_sword.png";
+      return "assets/images/UI_GachaTypeIcon_Sword.png";
     }
     if (weapon == "bow".tr || weapon == 'Bow') {
-      return "assets/images/weapon_bow.png";
+      return "assets/images/UI_GachaTypeIcon_Bow.png";
     }
     if (weapon == "claymore".tr || weapon == 'Claymore') {
-      return "assets/images/weapon_claymore.png";
+      return "assets/images/UI_GachaTypeIcon_Claymore.png";
     }
     if (weapon == "catalyst".tr || weapon == 'Catalyst') {
-      return "assets/images/weapon_catalyst.png";
+      return "assets/images/UI_GachaTypeIcon_Catalyst.png";
     }
     if (weapon == "polearm".tr || weapon == 'Polearm') {
-      return "assets/images/weapon_pole.png";
+      return "assets/images/UI_GachaTypeIcon_Pole.png";
     }
     return null;
   }

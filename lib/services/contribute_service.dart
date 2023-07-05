@@ -9,6 +9,7 @@ import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 
 class ContributeCharacterService {
+  /// Version 1.5
   Future<bool> contribute(CharacterBuilding characterBuilding) async {
     DatabaseReference db =
         FirebaseDatabase.instance.ref("contributions_management");
@@ -28,6 +29,7 @@ class ContributeCharacterService {
     }
   }
 
+  /// Version 1.5
   Future<List<CharacterBuilding>> getContributeCharacterForManager() async {
     DatabaseReference db =
         FirebaseDatabase.instance.ref("contributions_management");
@@ -54,13 +56,14 @@ class ContributeCharacterService {
     return contributions;
   }
 
+  /// version 1.5
   Future<bool> addContribute(CharacterBuilding characterBuilding) async {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     try {
       await db.update({
-        "contributions/${characterBuilding.characterName}/${db.push().key}":
+        "characters_build/${characterBuilding.characterName}/${db.push().key}":
             characterBuilding.toJson(),
-        "contribution_management/${characterBuilding.key}": null,
+        "contributions_management/${characterBuilding.key}": null,
       }).timeout(const Duration(seconds: Config.seccondTimeout));
       return true;
     } catch (e) {
@@ -72,11 +75,12 @@ class ContributeCharacterService {
     }
   }
 
+  /// Version 1.5
   Future<bool> deleteContribute(CharacterBuilding characterBuilding) async {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     try {
       await db.update({
-        "contribution_management/${characterBuilding.key}": null,
+        "contributions_management/${characterBuilding.key}": null,
       }).timeout(const Duration(seconds: Config.seccondTimeout));
       return true;
     } catch (e) {

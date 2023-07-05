@@ -24,7 +24,7 @@ class ContributeCharacterBuildingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(),
-        title: Text("contribute".tr),
+        title: Text("character_building".tr),
       ),
       body: const SingleChildScrollView(
         physics: BouncingScrollPhysics(),

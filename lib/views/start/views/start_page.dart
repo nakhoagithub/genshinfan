@@ -86,7 +86,7 @@ class _LogoApp extends StatelessWidget {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Image.asset(
-            "assets/icon/ic_launcher.png",
+            "assets/icons/ic_launcher.png",
             height: w * 0.3,
             width: w * 0.3,
           ),

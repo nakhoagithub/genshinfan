@@ -42,12 +42,12 @@ class Home extends StatelessWidget {
 
     List<ItemSlide> menus = [
       ItemSlide(
-        iconMenu: Image.asset("assets/icon/play_store_512.png"),
+        iconMenu: Image.asset("assets/icons/play_store_512.png"),
         left: const HomePage(),
       ),
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_character.png",
+          "assets/images/UI_HomeWorldTabIcon_2_Character.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const CharacterPage(),
@@ -56,7 +56,7 @@ class Home extends StatelessWidget {
       ),
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_weapon.png",
+          "assets/images/UI_TheatreMechanicus_Icon_Mechanism.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const WeaponPage(),
@@ -72,7 +72,7 @@ class Home extends StatelessWidget {
       ),
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_artifact.png",
+          "assets/images/UI_BtnIcon_RelicType1.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const ArtifactPage(),
@@ -80,15 +80,16 @@ class Home extends StatelessWidget {
       ),
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_dungeon.png",
+          "assets/images/UI_BtnIcon_DungeonFactor.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const DomainPage(),
         center: const DomainScreen(),
       ),
+      
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_enemy.png",
+          "assets/images/UI_HomeWorldTabIcon_2_Monsterhouse.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const EnemyPage(),
@@ -104,7 +105,7 @@ class Home extends StatelessWidget {
       ),
       ItemSlide(
         iconMenu: Image.asset(
-          "assets/images/ic_achievement.png",
+          "assets/images/UI_AchiementIcon.png",
           color: Get.theme.colorScheme.onSurface,
         ),
         left: const AchievementGroupPage(),
