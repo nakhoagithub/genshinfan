@@ -5,12 +5,12 @@ import 'package:genshinfan/views/character/controllers/character_controller.dart
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
-import 'widgets/character_ascension.dart';
-import 'widgets/character_info.dart';
-import 'widgets/character_skill.dart';
+import '../widgets/character_ascension.dart';
+import '../widgets/character_info.dart';
+import '../widgets/character_skill.dart';
 
-class CharacterScreen extends StatelessWidget {
-  const CharacterScreen({super.key});
+class CharacterInfoPage extends StatelessWidget {
+  const CharacterInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +57,7 @@ class CharacterScreen extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             child: LinearProgressIndicator(
                               value: progress.progress,
+                              // color: ThemeApp.colorPrimary(),
                             ),
                           );
                         },
