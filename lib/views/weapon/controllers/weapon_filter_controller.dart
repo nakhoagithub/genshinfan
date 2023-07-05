@@ -110,11 +110,11 @@ class WeaponFilterController extends GetxController {
     weapons.sort(
       (a, b) {
         if (sortName.value == 0) {
-          return Tools.removeDiacritics(a.name)
-              .compareTo(Tools.removeDiacritics(b.name));
+          return Tool.removeDiacritics(a.name)
+              .compareTo(Tool.removeDiacritics(b.name));
         } else {
-          return Tools.removeDiacritics(b.name)
-              .compareTo(Tools.removeDiacritics(a.name));
+          return Tool.removeDiacritics(b.name)
+              .compareTo(Tool.removeDiacritics(a.name));
         }
       },
     );

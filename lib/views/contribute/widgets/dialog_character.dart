@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/views/contribute/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/tools.dart';
-
-import 'package:genshinfan/views/widgets/backbutton.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
@@ -52,12 +51,12 @@ class _ListCharacter extends StatelessWidget {
               height: sizeItem * 1.215,
               child: ItemGame(
                   title: characters[index].name,
-                  iconLeft: Tools.getAssetElementFromName(
-                              characters[index].element) !=
-                          ""
-                      ? Image.asset(Tools.getAssetElementFromName(
-                          characters[index].element))
-                      : null,
+                  iconLeft:
+                      Tool.getAssetElementFromName(characters[index].element) !=
+                              ""
+                          ? Image.asset(Tool.getAssetElementFromName(
+                              characters[index].element))
+                          : null,
                   linkImage: characters[index].images?.icon,
                   rarity: characters[index].rarity.toString(),
                   onTap: () {

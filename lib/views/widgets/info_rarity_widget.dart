@@ -32,7 +32,7 @@ class InfoRarityWidget extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Image.asset(
-              Tools.getRarityStar(rarity),
+              Tool.getRarityStar(rarity),
               height: 20,
             ),
           ),

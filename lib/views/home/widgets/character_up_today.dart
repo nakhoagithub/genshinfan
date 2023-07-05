@@ -67,10 +67,10 @@ class ListCharacterUpToday extends StatelessWidget {
                             height: sizeItem * 1.215,
                             child: ItemGame(
                               title: characterUpToday[index].name,
-                              iconLeft: Tools.getAssetElementFromName(
+                              iconLeft: Tool.getAssetElementFromName(
                                           characterUpToday[index].element) !=
                                       ""
-                                  ? Image.asset(Tools.getAssetElementFromName(
+                                  ? Image.asset(Tool.getAssetElementFromName(
                                       characterUpToday[index].element))
                                   : null,
                               linkImage: characterUpToday[index].images?.icon,

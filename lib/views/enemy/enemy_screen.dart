@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
@@ -19,7 +18,7 @@ class EnemyScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "enemy_information".tr,

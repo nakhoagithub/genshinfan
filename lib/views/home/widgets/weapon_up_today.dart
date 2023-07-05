@@ -65,10 +65,10 @@ class ListWeaponUpToday extends StatelessWidget {
                             height: sizeItem * 1.215,
                             child: ItemGame(
                               title: weaponUpToday[index].name,
-                              iconLeft: Tools.getAssetWeaponType(
+                              iconLeft: Tool.getAssetWeaponType(
                                           weaponUpToday[index].weapontype) !=
                                       null
-                                  ? Image.asset(Tools.getAssetWeaponType(
+                                  ? Image.asset(Tool.getAssetWeaponType(
                                           weaponUpToday[index].weapontype) ??
                                       "")
                                   : null,

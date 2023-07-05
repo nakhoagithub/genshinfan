@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
-
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/windglider/widgets/windglider_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
@@ -19,7 +17,7 @@ class WindgliderScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "windglider_information".tr,

@@ -136,7 +136,7 @@ class _ItemDomain extends StatelessWidget {
                             children: [
                               ...domainLv.recommendedelements.map((e) {
                                 return Image.asset(
-                                  Tools.getAssetElementFromName(e),
+                                  Tool.getAssetElementFromName(e),
                                   height: 30,
                                   width: 30,
                                 );
@@ -184,9 +184,9 @@ class _ItemDomain extends StatelessWidget {
                     itemCount: dataRevert.length,
                     itemBuilder: (context, index) {
                       Resource? resource =
-                          Tools.getResourceFromName(dataRevert[index].name);
+                          Tool.getResourceFromName(dataRevert[index].name);
                       Artifact? artifact =
-                          Tools.getArtifactFromName(dataRevert[index].name);
+                          Tool.getArtifactFromName(dataRevert[index].name);
                       return Center(
                         child: ItemReward(
                           size: Get.width * 0.18,
@@ -232,7 +232,7 @@ class _ItemDomain extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: domainLv.monsterlist!.length,
                           itemBuilder: (context, index) {
-                            Enemy? enemy = Tools.getEnemyFromName(
+                            Enemy? enemy = Tool.getEnemyFromName(
                                 domainLv.monsterlist![index]);
                             return enemy == null
                                 ? const SizedBox()

@@ -69,10 +69,10 @@ class _List extends StatelessWidget {
                             height: sizeItem * 1.215,
                             child: ItemGame(
                                 title: characters[index].name,
-                                iconLeft: Tools.getAssetElementFromName(
+                                iconLeft: Tool.getAssetElementFromName(
                                             characters[index].element) !=
                                         ""
-                                    ? Image.asset(Tools.getAssetElementFromName(
+                                    ? Image.asset(Tool.getAssetElementFromName(
                                         characters[index].element))
                                     : null,
                                 linkImage: characters[index].images?.icon,

@@ -119,7 +119,7 @@ class _ItemWeapon extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            Tools.getAssetWeaponType(weapon) ?? "",
+            Tool.getAssetWeaponType(weapon) ?? "",
             height: 30,
             width: 30,
             color: Get.theme.colorScheme.onSurface,

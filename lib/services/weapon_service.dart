@@ -68,7 +68,7 @@ class WeaponService {
       if (domain.domainLvs != null) {
         for (var lv in domain.domainLvs!) {
           for (var rw in lv.rewardpreview) {
-            Resource? resource = Tools.getResourceFromName(rw.name);
+            Resource? resource = Tool.getResourceFromName(rw.name);
             if (resource != null && resource.category == "AVATAR_MATERIAL") {
               nameResourceToday.add(rw.name);
             }

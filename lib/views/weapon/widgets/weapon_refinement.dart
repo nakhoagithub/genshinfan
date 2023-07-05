@@ -45,7 +45,7 @@ class WeaponRefinement extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.all(4),
                   child: TextCSS(
-                    Tools.handleEffectWeapon(effect, r1, r2, r3, r4, r5),
+                    Tool.handleEffectWeapon(effect, r1, r2, r3, r4, r5),
                     style: ThemeApp.textStyle(),
                   ),
                 ),

@@ -12,13 +12,10 @@ import 'package:genshinfan/services/contribute_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class ContributeCharacterController extends GetxController {
   GetStorage box = GetStorage();
   TextEditingController textEditingControllerAuth = TextEditingController();
-  RoundedLoadingButtonController buttonController =
-      RoundedLoadingButtonController();
   RxList<Character> characters = Get.find<AppController>().characters;
   RxString author = "".obs;
   Rx<Character?> character = Rx(null);
@@ -29,15 +26,14 @@ class ContributeCharacterController extends GetxController {
   Rx<Artifact?> a1 = Rx(null);
   Rx<Artifact?> a2 = Rx(null);
   RxInt type = 0.obs;
-  Rx<String> sandsEffect = 'option'.obs;
-  Rx<String> gobletEffect = 'option'.obs;
-  Rx<String> circletEffect = 'option'.obs;
+  RxList<String> sandsEffect = <String>[].obs;
+  RxList<String> gobletsEffect = <String>[].obs;
+  RxList<String> circletsEffect = <String>[].obs;
 
   void changeAuthor(String value) {
     author.value = value;
     textEditingControllerAuth.text = value;
     unawaited(box.write(Config.keyAuthContribute, value));
-    buttonController.reset();
   }
 
   void selectCharacter(Character value) {
@@ -56,19 +52,16 @@ class ContributeCharacterController extends GetxController {
         return a.name.compareTo(b.name);
       },
     );
-    buttonController.reset();
   }
 
   void selectWeapon(Weapon value) {
     weapon.value = value;
-    buttonController.reset();
   }
 
   void selectTypeSet(int value) {
     type.value = value;
     a1.value = null;
     a2.value = null;
-    buttonController.reset();
   }
 
   void selectA1(Artifact value) {
@@ -78,7 +71,6 @@ class ContributeCharacterController extends GetxController {
       a1.value = value;
       a2.value = null;
     }
-    buttonController.reset();
   }
 
   void selectA2(Artifact value) {
@@ -88,22 +80,18 @@ class ContributeCharacterController extends GetxController {
       a1.value = value;
       a2.value = null;
     }
-    buttonController.reset();
   }
 
-  void selectSandsEffect(String value) {
+  void selectSandsEffect(List<String> value) {
     sandsEffect.value = value;
-    buttonController.reset();
   }
 
-  void selectGobletEffect(String value) {
-    gobletEffect.value = value;
-    buttonController.reset();
+  void selectGobletEffect(List<String> value) {
+    gobletsEffect.value = value;
   }
 
-  void selectCircletEffect(String value) {
-    circletEffect.value = value;
-    buttonController.reset();
+  void selectCircletEffect(List<String> value) {
+    circletsEffect.value = value;
   }
 
   Future<void> contribute() async {
@@ -112,9 +100,9 @@ class ContributeCharacterController extends GetxController {
     String? weapon = this.weapon.value?.key;
     String? a1 = this.a1.value?.key;
     String? a2 = this.a2.value?.key;
-    String sand = sandsEffect.value;
-    String goblet = gobletEffect.value;
-    String circlet = circletEffect.value;
+    List<String> sands = sandsEffect;
+    List<String> goblets = gobletsEffect;
+    List<String> circlets = circletsEffect;
 
     String uid = Get.find<AppController>().userApp.value?.uid ?? "";
     String author = this.author.value;
@@ -129,9 +117,9 @@ class ContributeCharacterController extends GetxController {
         typeSet: type.value,
         a1: a1,
         a2: a2,
-        sands: sand,
-        goblet: goblet,
-        circlet: circlet,
+        sands: sands,
+        goblets: goblets,
+        circlets: circlets,
         author: author,
         uidAuthor: uid,
       );
@@ -139,15 +127,13 @@ class ContributeCharacterController extends GetxController {
       bool result =
           await ContributeCharacterService().contribute(characterBuilding);
       if (result) {
-        buttonController.success();
         Fluttertoast.showToast(msg: "success".tr);
         Get.back();
       } else {
-        buttonController.error();
+        Fluttertoast.showToast(msg: "error".tr);
       }
     } else {
       dialogInfo("select_full_info".tr);
-      buttonController.error();
     }
   }
 

@@ -57,7 +57,7 @@ class ItemGame extends StatelessWidget {
                       borderRadius: BorderRadius.circular(sizeItem * 0.05),
                     ),
                     child: Image.asset(
-                      Tools.getBackground(rarity),
+                      Tool.getBackground(rarity),
                       fit: BoxFit.cover,
                       height: sizeItem * 1.215,
                       width: sizeItem,
@@ -154,7 +154,7 @@ class ItemGame extends StatelessWidget {
                           child: Container(
                             margin: EdgeInsets.only(bottom: sizeItem * 0.15),
                             child: Image.asset(
-                              Tools.getRarityStar(rarity),
+                              Tool.getRarityStar(rarity),
                               height: sizeItem * 1.215 * 0.18,
                               width: sizeItem * 0.85,
                             ),

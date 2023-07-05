@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/models/game/domain.dart';
@@ -38,7 +39,6 @@ class CharacterService {
       dynamic statCharacter = stat['characters'];
       dynamic curveCharacter = curve['characters'];
       for (var k in jsonData.keys) {
-        print(k);
         Character obj = Character.fromJson(jsonData[k]);
         obj.key = k;
         // hình ảnh
@@ -135,7 +135,7 @@ class CharacterService {
       if (domain.domainLvs != null) {
         for (var lv in domain.domainLvs!) {
           for (var rw in lv.rewardpreview) {
-            Resource? resource = Tools.getResourceFromName(rw.name);
+            Resource? resource = Tool.getResourceFromName(rw.name);
             if (resource != null && resource.category == "AVATAR_MATERIAL") {
               nameResourceToday.add(rw.name);
             }
@@ -178,8 +178,36 @@ class CharacterService {
     });
   }
 
-  Future<List<CharacterBuilding>> getCharacterBuilding(String key) async {
+  /// Version 1.4.3
+  Future<List<CharacterBuildingOld>> getCharacterBuildingOld(String key) async {
     DatabaseReference db = FirebaseDatabase.instance.ref("contributions");
+
+    List<CharacterBuildingOld> characters = [];
+    try {
+      await db.child(key).get().then((value) {
+        dynamic data = value.value;
+        if (data != null) {
+          for (var key in data.keys) {
+            CharacterBuildingOld characterBuilding =
+                CharacterBuildingOld.fromJson(data[key]);
+            characterBuilding.key = key;
+            characters.add(characterBuilding);
+          }
+        }
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
+    } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+        return [];
+      }
+      log("$e", name: "getCharacterBuildingOld");
+    }
+    return characters;
+  }
+
+  /// Version 1.5
+  Future<List<CharacterBuilding>> getCharacterBuilding(String key) async {
+    DatabaseReference db = FirebaseDatabase.instance.ref("characters_build");
 
     List<CharacterBuilding> characters = [];
     try {

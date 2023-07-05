@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
@@ -9,10 +10,9 @@ import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/craft.dart';
 import 'package:genshinfan/models/game/enemy.dart';
 import 'package:genshinfan/models/game/resource.dart';
-import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 
-class Tools {
+class Tool {
   static String removeDiacritics(String str) {
     const vietnamese = 'aAeEoOuUiIdDyY';
     final vietnameseRegex = <RegExp>[
@@ -48,22 +48,6 @@ class Tools {
     } else {
       return "${(value * 100).toStringAsFixed(1)}%";
     }
-  }
-
-  static String getRole(int role) {
-    switch (role) {
-      case 1:
-        return 'admin';
-      case 5:
-        return 'censor';
-      case 10:
-        return 'member';
-    }
-    return 'member';
-  }
-
-  static bool getRoleMenuAdmin(int role) {
-    return Config.roleAdmins.contains(role);
   }
 
   static Color colorDendro = const Color(0xffa6c938);
@@ -328,6 +312,17 @@ class Tools {
         return "assets/images/ic_5s.png";
     }
     return "assets/images/ic_1s.png";
+  }
+
+  static String listToString(List<String> values) {
+    String result = "";
+    values.forEachIndexed((index, element) {
+      result += element.tr;
+      if (index < values.length - 1) {
+        result += "/";
+      }
+    });
+    return result;
   }
 
   static String? linkImageArtifact(Artifact value) {

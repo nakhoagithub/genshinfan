@@ -56,7 +56,7 @@ class ItemDomain extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: ThemeApp.textStyle(
-                      fontWeight: FontWeight.w500, fontSize: 14),
+                      fontWeight: FontWeight.w500),
                 ),
               ),
               domain.domainLvs == null
@@ -91,8 +91,8 @@ class _ItemReward extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Resource? resource = Tools.getResourceFromName(reward.name);
-    Artifact? artifact = Tools.getArtifactFromName(reward.name);
+    Resource? resource = Tool.getResourceFromName(reward.name);
+    Artifact? artifact = Tool.getArtifactFromName(reward.name);
     return Center(
       child: Container(
         height: 40,
@@ -109,12 +109,12 @@ class _ItemReward extends StatelessWidget {
           // gradient: GradientApp.getBackgroundRarity(
           //     reward.rarity ?? resource?.rarity),
           image: DecorationImage(
-              image: AssetImage(Tools.getBackgroundSquare(
-                  reward.rarity ?? resource?.rarity))),
+              image: AssetImage(
+                  Tool.getBackgroundSquare(reward.rarity ?? resource?.rarity))),
         ),
         child: CachedNetworkImage(
           imageUrl: resource != null
-              ? Config.urlImage(resource.images?.nameicon)
+              ? resource.images?.redirect ?? ""
               : artifact?.images?.flower ?? "",
           progressIndicatorBuilder: (context, url, progress) {
             return const CircularProgressApp();

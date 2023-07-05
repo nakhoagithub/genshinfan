@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
 import 'package:genshinfan/views/achievement/widgets/achievement_info.dart';
 import 'package:genshinfan/views/achievement/widgets/achievementgroup_info.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +18,7 @@ class AchievementGroupScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "achievement_information".tr,

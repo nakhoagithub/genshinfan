@@ -11,7 +11,6 @@ import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
@@ -26,7 +25,7 @@ class ManageUserCharacterContribution extends StatelessWidget {
     Get.put(ManagementContributeCharacterController());
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonApp(),
+        leading: const BackButton(),
         title: Text("manager".tr),
       ),
       body: const _Body(),
@@ -103,12 +102,12 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: character.name,
-                          iconLeft: Tools.getAssetElementFromName(
-                                      character.element) !=
-                                  ""
-                              ? Image.asset(Tools.getAssetElementFromName(
-                                  character.element))
-                              : null,
+                          iconLeft:
+                              Tool.getAssetElementFromName(character.element) !=
+                                      ""
+                                  ? Image.asset(Tool.getAssetElementFromName(
+                                      character.element))
+                                  : null,
                           linkImage: character.images?.icon,
                           rarity: character.rarity.toString(),
                           onTap: () {}),
@@ -118,13 +117,12 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: weapon.name,
-                          iconLeft: Tools.getAssetWeaponType(
-                                      weapon.weapontype) !=
-                                  null
-                              ? Image.asset(
-                                  Tools.getAssetWeaponType(weapon.weapontype) ??
+                          iconLeft:
+                              Tool.getAssetWeaponType(weapon.weapontype) != null
+                                  ? Image.asset(Tool.getAssetWeaponType(
+                                          weapon.weapontype) ??
                                       "")
-                              : null,
+                                  : null,
                           linkImage: weapon.images?.icon ??
                               Config.urlImage(weapon.images?.namegacha),
                           rarity: weapon.rarity.toString(),
@@ -135,7 +133,7 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: a1.name,
-                          linkImage: Tools.linkImageArtifact(a1),
+                          linkImage: Tool.linkImageArtifact(a1),
                           rarity: a1.rarity[a1.rarity.length - 1],
                           onTap: () {}),
                   const SizedBox(width: 10),
@@ -143,7 +141,7 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: a2.name,
-                          linkImage: Tools.linkImageArtifact(a2),
+                          linkImage: Tool.linkImageArtifact(a2),
                           rarity: a2.rarity[a2.rarity.length - 1],
                           onTap: () {}),
                 ],
@@ -167,23 +165,22 @@ class _Item extends StatelessWidget {
                         style: ThemeApp.textStyle(),
                       ),
                       Image.asset(
-                        Tools.getAssetElementFromName(
-                            characterBuilding.element),
+                        Tool.getAssetElementFromName(characterBuilding.element),
                         height: 30,
                         width: 30,
                       ),
                     ],
                   ),
             TextCSS(
-              "${"sands_effect".tr}: <b>${characterBuilding.sands.tr}</b>",
+              "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
               style: ThemeApp.textStyle(),
             ),
             TextCSS(
-              "${"goblet_effect".tr}: <b>${characterBuilding.goblet.tr}</b>",
+              "${"goblet_effect".tr}: <b>${Tool.listToString(characterBuilding.goblets)}</b>",
               style: ThemeApp.textStyle(),
             ),
             TextCSS(
-              "${"circlet_effect".tr}: <b>${characterBuilding.circlet.tr}</b>",
+              "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
               style: ThemeApp.textStyle(),
             ),
             const SizedBox(height: 20),

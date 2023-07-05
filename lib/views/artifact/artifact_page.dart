@@ -61,8 +61,9 @@ class _List extends StatelessWidget {
                           height: sizeItem * 1.215,
                           child: ItemGame(
                             title: artifacts[index].name,
-                            linkImage: Tools.linkImageArtifact(artifacts[index]),
-                            rarity: artifacts[index].rarity[artifacts[index].rarity.length - 1],
+                            linkImage: Tool.linkImageArtifact(artifacts[index]),
+                            rarity: artifacts[index]
+                                .rarity[artifacts[index].rarity.length - 1],
                             onTap: () {
                               artifactController
                                   .selectArtifact(artifacts[index]);

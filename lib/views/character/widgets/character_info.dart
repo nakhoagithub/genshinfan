@@ -50,9 +50,7 @@ class InformationCharacter extends StatelessWidget {
                       "(${character.title})",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: ThemeApp.textStyle(
-                        fontSize: 14,
-                      ),
+                      style: ThemeApp.textStyle(),
                     ),
             ),
 

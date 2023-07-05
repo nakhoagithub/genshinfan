@@ -17,7 +17,7 @@ class TextCSS extends StatelessWidget {
   Widget build(BuildContext context) {
     return StyledText(
       textHeightBehavior: const TextHeightBehavior(),
-      text: Tools.handleTextElement(text),
+      text: Tool.handleTextElement(text),
       textAlign: textAlign,
       style: style,
       tags: {

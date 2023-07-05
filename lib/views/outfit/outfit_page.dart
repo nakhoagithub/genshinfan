@@ -91,7 +91,7 @@ class _ItemOutfit extends StatelessWidget {
   Widget build(BuildContext context) {
     context.theme;
     double sizeItem = Config.sizeItem2;
-    Character? character = Tools.getCharacterFromName(outfit.character);
+    Character? character = Tool.getCharacterFromName(outfit.character);
     String linkImage = (outfit.isdefault
             ? character?.images?.icon
             : Config.urlImage(outfit.images?.namecard)) ??
@@ -128,7 +128,7 @@ class _ItemOutfit extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: ThemeApp.textStyle(
-                        fontWeight: FontWeight.w500, fontSize: 14),
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),

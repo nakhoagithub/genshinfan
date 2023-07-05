@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_controller.dart';
-import 'package:genshinfan/utils/config.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
+import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/widgets/title_of_menu.dart';
 import 'package:get/get.dart';
@@ -13,7 +11,7 @@ class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonApp(),
+        leading: const BackButton(),
         title: Text("admin".tr),
       ),
       body: SingleChildScrollView(
@@ -22,12 +20,10 @@ class AdminPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // quản lý data
-            !Config.roleAdmins
-                    .contains(Get.find<AppController>().userApp.value?.role)
+            !Role.viewDataManagement()
                 ? const SizedBox()
                 : TitleApp(title: "data_management".tr),
-            !Config.roleAdmins
-                    .contains(Get.find<AppController>().userApp.value?.role)
+            !Role.viewDataManagement()
                 ? const SizedBox()
                 : ItemMenu(
                     icon: const Icon(Icons.list_alt_rounded),
@@ -39,19 +35,17 @@ class AdminPage extends StatelessWidget {
                   ),
 
             // quản lý người dùng
-            !Config.roleAdminLV1
-                    .contains(Get.find<AppController>().userApp.value?.role)
+            !Role.viewUserManagement()
                 ? const SizedBox()
                 : TitleApp(title: "user_management".tr),
             // danh sách người dùng - quản lý quyền
-            !Config.roleAdminLV1
-                    .contains(Get.find<AppController>().userApp.value?.role)
+            !Role.viewUserManagement()
                 ? const SizedBox()
                 : ItemMenu(
                     icon: const Icon(Icons.manage_accounts_rounded),
                     title: "role_and_data_user".tr,
                     onTap: () {
-                      Get.toNamed("/manage_user");
+                      Get.toNamed("/user_page");
                     },
                   ),
           ],

@@ -32,7 +32,7 @@ class InfoRewardWidget extends StatelessWidget {
               children: [
                 ...data.map(
                   (e) {
-                    Resource? resource = Tools.getResourceFromName(e.name);
+                    Resource? resource = Tool.getResourceFromName(e.name);
                     return resource == null
                         ? const SizedBox()
                         : ItemReward(

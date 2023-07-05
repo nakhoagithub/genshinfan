@@ -123,8 +123,7 @@ class _ItemAchievementGroup extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeApp.textStyle(
-                        fontWeight: FontWeight.w500, fontSize: 14),
+                    style: ThemeApp.textStyle(fontWeight: FontWeight.w500),
                   ),
                 ),
               ),

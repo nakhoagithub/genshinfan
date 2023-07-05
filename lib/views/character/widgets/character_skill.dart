@@ -272,7 +272,7 @@ class _SelectElementTraveler extends StatelessWidget {
                 select == true ? Get.theme.colorScheme.onInverseSurface : null,
           ),
           child: Image.asset(
-            Tools.getAssetElementFromName(element),
+            Tool.getAssetElementFromName(element),
             height: 40,
             width: 40,
           ),
@@ -320,8 +320,8 @@ class _Combat extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Tools.getColorElementCharacter(element)
-                        .withOpacity(0.5),
+                    color:
+                        Tool.getColorElementCharacter(element).withOpacity(0.5),
                   ),
                   child: CachedNetworkImage(
                     imageUrl:
@@ -362,18 +362,6 @@ class _Combat extends StatelessWidget {
                 ),
               ],
             ),
-            // // description
-            // Container(
-            //   margin: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
-            //   child: Text(
-            //     combat.description,
-            //     textAlign: TextAlign.start,
-            //     style: ThemeApp.textStyle(
-            //       fontSize: 14,
-            //       fontStyle: FontStyle.italic,
-            //     ),
-            //   ),
-            // ),
 
             // descriptionRaw
             Container(
@@ -423,7 +411,7 @@ class _Passive extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color:
-                      Tools.getColorElementCharacter(element).withOpacity(0.5),
+                      Tool.getColorElementCharacter(element).withOpacity(0.5),
                 ),
                 child: CachedNetworkImage(
                   imageUrl: imageTalent == null
@@ -514,7 +502,7 @@ class _Constellation extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color:
-                      Tools.getColorElementCharacter(element).withOpacity(0.5),
+                      Tool.getColorElementCharacter(element).withOpacity(0.5),
                 ),
                 child: CachedNetworkImage(
                   imageUrl:

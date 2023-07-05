@@ -39,8 +39,8 @@ class SelectCharacter extends StatelessWidget {
                 width: sizeItem,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      // color: ThemeApp.colorText(),
-                      ),
+                    color: Get.theme.colorScheme.onSurface,
+                  ),
                   borderRadius: BorderRadius.circular(sizeItem * 0.05),
                 ),
                 child: Obx(
@@ -51,12 +51,11 @@ class SelectCharacter extends StatelessWidget {
                         ? const Icon(Icons.add, size: 35)
                         : ItemGame(
                             title: c.name,
-                            iconLeft: Tools.getAssetElementFromName(
-                                        c.element) !=
-                                    ""
-                                ? Image.asset(
-                                    Tools.getAssetElementFromName(c.element))
-                                : null,
+                            iconLeft:
+                                Tool.getAssetElementFromName(c.element) != ""
+                                    ? Image.asset(
+                                        Tool.getAssetElementFromName(c.element))
+                                    : null,
                             linkImage: c.images?.icon,
                             rarity: c.rarity.toString(),
                             onTap: () {

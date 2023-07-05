@@ -37,7 +37,7 @@ class CraftRecipe extends StatelessWidget {
             itemCount: craftIngredients.length,
             itemBuilder: (context, index) {
               Resource? resource =
-                  Tools.getResourceFromName(craftIngredients[index].name);
+                  Tool.getResourceFromName(craftIngredients[index].name);
               return Center(
                 child: ItemReward(
                   size: Get.width * 0.20,

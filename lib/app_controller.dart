@@ -128,8 +128,8 @@ class AppController extends GetxController {
           if (rarity != 0) {
             return rarity;
           }
-          return Tools.removeDiacritics(a.name)
-              .compareTo(Tools.removeDiacritics(b.name));
+          return Tool.removeDiacritics(a.name)
+              .compareTo(Tool.removeDiacritics(b.name));
         },
       );
 

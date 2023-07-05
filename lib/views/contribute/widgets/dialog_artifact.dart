@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/views/contribute/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/utils/tools.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
@@ -55,8 +55,9 @@ class _List extends StatelessWidget {
               height: sizeItem * 1.215,
               child: ItemGame(
                 title: artifacts[index].name,
-                linkImage: Tools.linkImageArtifact(artifacts[index]),
-                rarity: artifacts[index].rarity[artifacts[index].rarity.length - 1],
+                linkImage: Tool.linkImageArtifact(artifacts[index]),
+                rarity:
+                    artifacts[index].rarity[artifacts[index].rarity.length - 1],
                 onTap: () {
                   if (type == 0) {
                     Get.find<ContributeCharacterController>()

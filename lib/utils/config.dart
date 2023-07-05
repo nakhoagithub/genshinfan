@@ -1,12 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:genshinfan/models/app/role_app.dart';
 import 'package:get/get.dart';
-
-/// config role
-/// 1: Admin
-/// 2:
-/// 3:
-/// 4:
-/// 5: Duyệt đóng góp
 
 class Config {
   static const String aboutApp =
@@ -90,33 +83,31 @@ class Config {
 
   static const int seccondTimeout = 8;
 
-  // quản lý ứng dụng và quyền
-  static const List<int> roleAdminLV1 = [1, 2];
-  // quản lý khác
-  static const List<int> roleAdminLV2 = [3, 4];
-  static const List<int> roleAdmins = [1, 2, 3, 4, 5];
+  // Quyền người dùng mặc định
+  static List<int> rolesDefault = [10];
 
-  static List<DropdownMenuItem> menuRole = [
-    DropdownMenuItem(value: 1, child: Text("admin".tr)),
-    DropdownMenuItem(value: 5, child: Text("censor".tr)),
-    DropdownMenuItem(value: 10, child: Text("member".tr)),
+  static List<RoleApp> menuRole = [
+    RoleApp(role: 1, name: "admin".tr),
+    RoleApp(role: 2, name: "user_management".tr),
+    RoleApp(role: 5, name: "censor".tr),
+    RoleApp(role: 10, name: "member".tr),
   ];
 
   static List<String> elements = [
-    'ELEMENT_ANEMO',
-    'ELEMENT_GEO',
-    'ELEMENT_ELECTRO',
-    'ELEMENT_DENDRO',
-    'ELEMENT_PYRO',
-    'ELEMENT_HYDRO',
-    'ELEMENT_CRYO'
+    'Anemo',
+    'Geo',
+    'Electro',
+    'Dendro',
+    'Pyro',
+    'Hydro',
+    'Cryo'
   ];
 
   static List<String> weapons = [
-    'WEAPON_SWORD_ONE_HAND',
-    'WEAPON_BOW',
-    'WEAPON_CLAYMORE',
-    'WEAPON_CATALYST',
-    'WEAPON_POLE',
+    'Sword',
+    'Bow',
+    'Claymore',
+    'Catalyst',
+    'Polearm',
   ];
 }

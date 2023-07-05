@@ -178,6 +178,9 @@ const Map<String, String> en = {
   "delete_data_and_redownload": "Delete data and reload",
   "data_failure_wait_for_new_update":
       "The current data is corrupted, please wait for the new update!",
+  "user": "User",
+  "search": "Search",
+  "role": "Role",
 
   "note_home":
       "This is a Beta version, a test version of Genshin Fan before being officially released. In this version, new features are added and bugs are fixed, however, the product is still incomplete and may encounter minor bugs and problems.\nYour contribution in language translation in the Beta version is very important to help improve the quality of the product. You can help by providing feedback on terms and language structures in the product. This makes the product easier to use for users and also makes it easier for users in different countries and regions to use the product. In addition to the contribution of the application language, I also look forward to your contribution on how to build the character. You can go to <b>Settings</b> to contribute.\nI look forward to receiving your input to improve the product and ensure that it is used to its fullest potential. I will continue to update the Beta version and listen to your feedback to ensure that the final product will best meet your needs.",

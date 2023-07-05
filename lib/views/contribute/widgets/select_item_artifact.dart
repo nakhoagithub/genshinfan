@@ -41,8 +41,8 @@ class ContributeItemArtifact extends StatelessWidget {
                       width: sizeItem,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            // color: ThemeApp.colorText(),
-                            ),
+                          color: Get.theme.colorScheme.onSurface,
+                        ),
                         borderRadius: BorderRadius.circular(sizeItem * 0.05),
                       ),
                       child: _ItemImage(type: type),
@@ -57,7 +57,7 @@ class ContributeItemArtifact extends StatelessWidget {
                       children: [
                         TextCSS(
                           type == 0 ? a1?.set2 ?? "" : a2?.set2 ?? "",
-                          style: ThemeApp.textStyle(fontSize: 15),
+                          style: ThemeApp.textStyle(),
                         ),
                         const SizedBox(height: 4),
                         contributeCharacterController.type.value == 0
@@ -65,7 +65,7 @@ class ContributeItemArtifact extends StatelessWidget {
                             : FadeInRight(
                                 child: TextCSS(
                                   a1?.set4 ?? "",
-                                  style: ThemeApp.textStyle(fontSize: 15),
+                                  style: ThemeApp.textStyle(),
                                 ),
                               ),
                       ],
@@ -98,7 +98,7 @@ class _ItemImage extends StatelessWidget {
               ? const Icon(Icons.add, size: 35)
               : ItemGame(
                   title: a1.name,
-                  linkImage: Tools.linkImageArtifact(a1),
+                  linkImage: Tool.linkImageArtifact(a1),
                   rarity: a1.rarity[a1.rarity.length - 1],
                   onTap: () {
                     dialogContributeArtifact(type);
@@ -108,7 +108,7 @@ class _ItemImage extends StatelessWidget {
               ? const Icon(Icons.add, size: 35)
               : ItemGame(
                   title: a2.name,
-                  linkImage: Tools.linkImageArtifact(a2),
+                  linkImage: Tool.linkImageArtifact(a2),
                   rarity: a2.rarity[a2.rarity.length - 1],
                   onTap: () {
                     dialogContributeArtifact(type);

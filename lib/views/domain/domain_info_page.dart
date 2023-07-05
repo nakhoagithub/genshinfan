@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/domain/widgets/domain_info.dart';
 import 'package:genshinfan/views/domain/widgets/domain_lv.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
@@ -19,7 +18,7 @@ class DomainInfoPage extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "domain_information".tr,

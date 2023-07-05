@@ -3,10 +3,9 @@ import 'dart:developer';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:genshinfan/models/app/user.dart';
 
-class ManageService {
+class UserService {
   Future<List<UserApp>> getUserAppForManager() async {
     DatabaseReference db = FirebaseDatabase.instance.ref("users");
-
     List<UserApp> users = [];
     try {
       await db.get().then((value) {
@@ -14,7 +13,6 @@ class ManageService {
         if (data != null) {
           for (var key in data.keys) {
             UserApp user = UserApp.fromJson(data[key]);
-
             users.add(user);
           }
         }
@@ -25,11 +23,11 @@ class ManageService {
     return users;
   }
 
-  Future<bool> changePermissionForUser(String uid, int role) async {
+  Future<bool> changeRoleUser(String uid, List<int> roles) async {
     DatabaseReference db = FirebaseDatabase.instance.ref("users");
     try {
       await db.child(uid).update({
-        "role": role,
+        "roles": roles,
       });
       return true;
     } catch (e) {

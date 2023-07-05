@@ -101,7 +101,7 @@ class _InformationMore extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    Craft? craft = Tools.getCraftFromKey(resource.key);
+    Craft? craft = Tool.getCraftFromKey(resource.key);
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(top: 10),

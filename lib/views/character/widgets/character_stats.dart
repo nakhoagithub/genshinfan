@@ -102,7 +102,7 @@ class CharacterStats extends StatelessWidget {
                             verticalAlignment:
                                 TableCellVerticalAlignment.middle,
                             child: ItemTable(
-                              title: Tools.handlerSpecializedStat(
+                              title: Tool.handlerSpecializedStat(
                                   character.substat, value.specialized),
                             ),
                           ),

@@ -4,13 +4,14 @@ import 'dart:developer';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/models/app/character_building.dart';
+import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
 
 class ContributeCharacterService {
   Future<bool> contribute(CharacterBuilding characterBuilding) async {
     DatabaseReference db =
-        FirebaseDatabase.instance.ref("contribution_management");
+        FirebaseDatabase.instance.ref("contributions_management");
     try {
       await db
           .push()
@@ -29,7 +30,7 @@ class ContributeCharacterService {
 
   Future<List<CharacterBuilding>> getContributeCharacterForManager() async {
     DatabaseReference db =
-        FirebaseDatabase.instance.ref("contribution_management");
+        FirebaseDatabase.instance.ref("contributions_management");
 
     List<CharacterBuilding> contributions = [];
     try {
@@ -89,7 +90,7 @@ class ContributeCharacterService {
 
   /// xóa bài đóng góp của người dùng từ màn hình xem đóng góp, chỉ dành cho admin
   Future<bool> deleteContributeForManager(
-      CharacterBuilding characterBuilding) async {
+      CharacterBuildingOld characterBuilding) async {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     try {
       await db.update({

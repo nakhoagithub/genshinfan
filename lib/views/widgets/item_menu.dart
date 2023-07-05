@@ -78,7 +78,6 @@ class ItemMenu extends StatelessWidget {
                       child: Text(
                         "$description",
                         style: ThemeApp.textStyle(
-                          fontSize: 14,
                           fontStyle: FontStyle.italic,
                         ),
                       ),

@@ -36,7 +36,7 @@ class ItemReward extends StatelessWidget {
     String? linkImage = resource != null
         ? Config.urlImage(resource!.images?.nameicon)
         : artifact != null
-            ? Tools.linkImageArtifact(artifact!)
+            ? Tool.linkImageArtifact(artifact!)
             : null;
     return InkWell(
       onTap: () {

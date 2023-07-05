@@ -30,7 +30,7 @@ class InfoWeaponWidget extends StatelessWidget {
               decoration: const BoxDecoration(shape: BoxShape.circle),
               padding: const EdgeInsets.all(2),
               child: Image.asset(
-                "${Tools.getAssetWeaponType(weapontype)}",
+                "${Tool.getAssetWeaponType(weapontype)}",
                 height: 30,
                 width: 30,
                 color: Get.theme.colorScheme.onSurface,

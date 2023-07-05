@@ -13,9 +13,7 @@ class TitleApp extends StatelessWidget {
       margin: const EdgeInsets.only(left: 20, top: 10),
       child: Text(
         title,
-        style: ThemeApp.textStyle(
-          fontSize: 14,
-        ),
+        style: ThemeApp.textStyle(),
       ),
     );
   }

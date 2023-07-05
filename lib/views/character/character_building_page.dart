@@ -1,8 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/models/app/character_building_old.dart';
+import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/character/controllers/character_building_controller.dart';
-import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
@@ -13,7 +14,6 @@ import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
@@ -28,7 +28,7 @@ class CharacterBuildingPage extends StatelessWidget {
     Get.put(CharacterBuildingController());
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonApp(),
+        leading: const BackButton(),
         centerTitle: true,
         title: Text(
           "character_building".tr,
@@ -48,7 +48,7 @@ class _Body extends StatelessWidget {
         Get.find<CharacterBuildingController>();
     return Obx(() {
       int status = characterBuildingController.status.value;
-      List<CharacterBuilding> characters =
+      List<CharacterBuildingOld> characters =
           characterBuildingController.characters;
       return status == 1
           ? const WaitAMinute()
@@ -74,7 +74,7 @@ class _Body extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  final CharacterBuilding characterBuilding;
+  final CharacterBuildingOld characterBuilding;
   final int index;
   const _Item({
     required this.characterBuilding,
@@ -84,7 +84,6 @@ class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserApp? user = Get.find<AppController>().userApp.value;
-    int roleCurrentUser = user?.role ?? 10;
     String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
@@ -109,12 +108,12 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: character.name,
-                          iconLeft: Tools.getAssetElementFromName(
-                                      character.element) !=
-                                  ""
-                              ? Image.asset(Tools.getAssetElementFromName(
-                                  character.element))
-                              : null,
+                          iconLeft:
+                              Tool.getAssetElementFromName(character.element) !=
+                                      ""
+                                  ? Image.asset(Tool.getAssetElementFromName(
+                                      character.element))
+                                  : null,
                           linkImage: character.images?.icon,
                           rarity: character.rarity.toString(),
                           onTap: () {}),
@@ -124,13 +123,12 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: weapon.name,
-                          iconLeft: Tools.getAssetWeaponType(
-                                      weapon.weapontype) !=
-                                  null
-                              ? Image.asset(
-                                  Tools.getAssetWeaponType(weapon.weapontype) ??
+                          iconLeft:
+                              Tool.getAssetWeaponType(weapon.weapontype) != null
+                                  ? Image.asset(Tool.getAssetWeaponType(
+                                          weapon.weapontype) ??
                                       "")
-                              : null,
+                                  : null,
                           linkImage: weapon.images?.icon ??
                               Config.urlImage(weapon.images?.namegacha),
                           rarity: weapon.rarity.toString(),
@@ -141,7 +139,7 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: a1.name,
-                          linkImage: Tools.linkImageArtifact(a1),
+                          linkImage: Tool.linkImageArtifact(a1),
                           rarity: a1.rarity[a1.rarity.length - 1],
                           onTap: () {}),
                   const SizedBox(width: 10),
@@ -149,7 +147,7 @@ class _Item extends StatelessWidget {
                       ? const SizedBox()
                       : ItemGame(
                           title: a2.name,
-                          linkImage: Tools.linkImageArtifact(a2),
+                          linkImage: Tool.linkImageArtifact(a2),
                           rarity: a2.rarity[a2.rarity.length - 1],
                           onTap: () {}),
                 ],
@@ -173,12 +171,13 @@ class _Item extends StatelessWidget {
                         style: ThemeApp.textStyle(),
                       ),
                       Image.asset(
-                          Tools.getAssetElementFromName(
+                          Tool.getAssetElementFromName(
                               characterBuilding.element),
                           height: 30,
                           width: 30),
                     ],
                   ),
+
             TextCSS(
               "${"sands_effect".tr}: <b>${characterBuilding.sands.tr}</b>",
               style: ThemeApp.textStyle(),
@@ -191,14 +190,28 @@ class _Item extends StatelessWidget {
               "${"circlet_effect".tr}: <b>${characterBuilding.circlet.tr}</b>",
               style: ThemeApp.textStyle(),
             ),
+
+            /// version 1.5
+
+            // TextCSS(
+            //   "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
+            //   style: ThemeApp.textStyle(),
+            // ),
+            // TextCSS(
+            //   "${"goblet_effect".tr}: <b>${Tool.listToString(characterBuilding.goblets)}</b>",
+            //   style: ThemeApp.textStyle(),
+            // ),
+            // TextCSS(
+            //   "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
+            //   style: ThemeApp.textStyle(),
+            // ),
             const SizedBox(height: 20),
             TextCSS(
               "${"author".tr}: <b>${characterBuilding.author}</b>",
               style: ThemeApp.textStyle(),
             ),
 
-            Config.roleAdminLV1.contains(roleCurrentUser) ||
-                    uidCurrentUser == characterBuilding.uidAuthor
+            Role.isRoleAdmin() || uidCurrentUser == characterBuilding.uidAuthor
                 ? _Browse(
                     characterBuilding: characterBuilding,
                     index: index,
@@ -212,7 +225,7 @@ class _Item extends StatelessWidget {
 }
 
 class _Browse extends StatelessWidget {
-  final CharacterBuilding characterBuilding;
+  final CharacterBuildingOld characterBuilding;
   final int index;
   const _Browse({
     required this.characterBuilding,

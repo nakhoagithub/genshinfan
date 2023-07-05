@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
 import 'package:genshinfan/views/outfit/widgets/outfit_info.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +15,7 @@ class OutfitScreen extends StatelessWidget {
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "outfit_information".tr,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 import 'widgets/character_ascension.dart';
@@ -21,7 +20,7 @@ class CharacterScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "character_information".tr,

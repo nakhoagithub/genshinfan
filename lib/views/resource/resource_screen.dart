@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/resource/widgets/resource_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
@@ -16,7 +15,7 @@ class ResourceScreen extends StatelessWidget {
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "resource_information".tr,

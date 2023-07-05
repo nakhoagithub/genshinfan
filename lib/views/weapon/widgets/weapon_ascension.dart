@@ -3,7 +3,6 @@ import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/items.dart';
 import 'package:genshinfan/models/game/resource.dart';
-import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';
@@ -135,14 +134,13 @@ class _ItemAscend extends StatelessWidget {
                     ...ascends!.map(
                       (e) {
                         Resource? resource =
-                            Tools.getResourceFromName(e.name ?? "");
+                            Tool.getResourceFromName(e.name ?? "");
                         return resource == null
                             ? const SizedBox()
                             : ItemGame(
                                 size: Get.width * 0.18,
                                 title: e.count.toString(),
-                                linkImage:
-                                    Config.urlImage(resource.images?.nameicon),
+                                linkImage: resource.images?.redirect,
                                 rarity: resource.rarity,
                                 star: true,
                                 onTap: () {

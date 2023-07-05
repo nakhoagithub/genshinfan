@@ -110,16 +110,17 @@ class _ItemElement extends StatelessWidget {
       margin: const EdgeInsets.only(top: 8),
       child: Column(
         children: [
-          Image.asset(Tools.getAssetElementFromName(element),
+          Image.asset(Tool.getAssetElementFromName(element),
               height: 30, width: 30),
           ObxValue<RxList<bool>>((p0) {
             return Checkbox(
-                activeColor: ThemeApp.theme.primaryColor,
-                checkColor: Colors.white,
-                value: characterFilterController.checkElementFilters[index],
-                onChanged: (value) async {
-                  await characterFilterController.checkElementFilter(index);
-                });
+              activeColor: ThemeApp.theme.primaryColor,
+              checkColor: Colors.white,
+              value: characterFilterController.checkElementFilters[index],
+              onChanged: (value) async {
+                await characterFilterController.checkElementFilter(index);
+              },
+            );
           }, characterFilterController.checkElementFilters),
         ],
       ),
@@ -174,7 +175,7 @@ class _ItemWeapon extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            Tools.getAssetWeaponType(weapon) ?? "",
+            Tool.getAssetWeaponType(weapon) ?? "",
             height: 30,
             width: 30,
             color: Get.theme.colorScheme.onSurface,

@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:genshinfan/app_controller.dart';
-import 'package:genshinfan/views/admin/admin_page.dart';
-import 'package:genshinfan/views/admin/manage_user.dart';
+import 'package:genshinfan/views/admin/views/admin_page.dart';
+import 'package:genshinfan/views/user_manager/views/user_manager_page.dart';
+import 'package:genshinfan/views/user_manager/views/user_page.dart';
 import 'package:genshinfan/views/admin/manage_character_contribution.dart';
 import 'package:genshinfan/views/artifact/artifact_info_page.dart';
 import 'package:genshinfan/views/character/character_building_page.dart';
 import 'package:genshinfan/views/character/character_info_page.dart';
-import 'package:genshinfan/views/contribute/contribute_character_building_page.dart';
+import 'package:genshinfan/views/contribute/views/contribute_character_building_page.dart';
 import 'package:genshinfan/views/domain/domain_info_page.dart';
 import 'package:genshinfan/views/enemy/enemy_info_page.dart';
 import 'package:genshinfan/views/home.dart';
@@ -131,8 +132,13 @@ class App extends GetView<AppController> {
               transition: Transition.native,
             ),
             GetPage(
-              name: '/manage_user',
-              page: () => const ManageUser(),
+              name: '/user_page',
+              page: () => const UserPage(),
+              transition: Transition.native,
+            ),
+            GetPage(
+              name: '/user_manager_page',
+              page: () => const UserManagerPage(),
               transition: Transition.native,
             ),
           ],

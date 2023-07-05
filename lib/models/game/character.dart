@@ -278,7 +278,7 @@ class Character {
         if (e.contains("traveler")) {
           String element =
               (e as String).substring(e.indexOf("traveler") + 8, e.length);
-          element = Tools.capitalize(element);
+          element = Tool.capitalize(element);
           talents
               .add(_talent(e, talentJson, imageTalent, stat, element: element));
         }

@@ -90,10 +90,14 @@ class AppService {
             email: user.email,
             linkImage: user.photoURL,
             role: 10,
+            roles: [10],
+            active: true,
           );
+
           await db.child(user.uid).update(userApp.toJson());
           return userApp;
         } else {
+          log("${dataSnapshot.value}", name: "UserApp - login");
           return UserApp.fromJson(dataSnapshot.value as Map<dynamic, dynamic>);
         }
       }

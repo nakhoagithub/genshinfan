@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
-
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/animal/widgets/animal_info.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
@@ -18,7 +16,7 @@ class AnimalScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "animal_information".tr,

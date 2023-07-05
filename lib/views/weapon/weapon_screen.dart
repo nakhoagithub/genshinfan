@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/utils/config.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_ascension.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_info.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_refinement.dart';
@@ -23,7 +22,7 @@ class WeaponScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "weapon_information".tr,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/models/app/user.dart';
+import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/views/setting/controllers/setting_controller.dart';
-import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/setting/widgets/about_app.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/setting/widgets/change_language.dart';
 import 'package:genshinfan/views/setting/widgets/change_theme.dart';
 import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
@@ -24,7 +24,7 @@ class SettingPage extends StatelessWidget {
     context.theme;
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonApp(),
+        leading: const BackButton(),
         title: Text("setting".tr),
       ),
       body: SingleChildScrollView(
@@ -34,23 +34,22 @@ class SettingPage extends StatelessWidget {
           children: [
             TitleApp(title: "user_information".tr),
             const InfoUser(),
-            Obx(
-              () {
-                int role = Get.find<AppController>().userApp.value?.role ?? 10;
-                // nếu thuộc Config.roleAdmins thì có quyền vào menu admin
-                return !Tools.getRoleMenuAdmin(role)
-                    ? const SizedBox()
-                    : ItemMenu(
-                        icon: const Icon(Icons.admin_panel_settings_rounded,
-                            size: 20),
-                        title: "admin".tr,
-                        description: "admin_description".tr,
-                        onTap: () {
-                          Get.toNamed('/admin');
-                        },
-                      );
-              },
-            ),
+
+            Obx(() {
+              UserApp? userApp = Get.find<AppController>().userApp.value;
+              return !Role.viewMenuAdmin() || userApp == null
+                  ? const SizedBox()
+                  : ItemMenu(
+                      icon: const Icon(Icons.admin_panel_settings_rounded,
+                          size: 20),
+                      title: "admin".tr,
+                      description: "admin_description".tr,
+                      onTap: () {
+                        Get.toNamed('/admin');
+                      },
+                    );
+            }),
+
             // setting
             TitleApp(title: "setting".tr),
             ItemMenu(
@@ -59,7 +58,7 @@ class SettingPage extends StatelessWidget {
               child: const SwitchThemeApp(),
             ),
 
-            // change language
+            // Thay đổi ngôn ngữ
             ItemMenu(
               icon: const Icon(Icons.language_rounded),
               title: "change_language".tr,
@@ -73,7 +72,7 @@ class SettingPage extends StatelessWidget {
               },
             ),
 
-            // update
+            // Cập nhật dữ liệu
             Obx(
               () {
                 bool haveNewVersion =
@@ -104,6 +103,7 @@ class SettingPage extends StatelessWidget {
                 }
               },
             ),
+
             // đóng góp bản dịch
             ItemMenu(
               icon: const Icon(Icons.g_translate_rounded),

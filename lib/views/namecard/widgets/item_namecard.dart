@@ -49,7 +49,7 @@ class ItemNamecard extends StatelessWidget {
                     namecard.description,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeApp.textStyle(fontSize: 14),
+                    style: ThemeApp.textStyle(),
                   ),
                 ],
               )),

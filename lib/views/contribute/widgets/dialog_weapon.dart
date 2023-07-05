@@ -4,8 +4,8 @@ import 'package:genshinfan/views/contribute/controllers/contribute_character_con
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
@@ -58,10 +58,10 @@ class _ListWeapon extends StatelessWidget {
                       height: sizeItem * 1.215,
                       child: ItemGame(
                         title: weapons[index].name,
-                        iconLeft: Tools.getAssetWeaponType(
+                        iconLeft: Tool.getAssetWeaponType(
                                     weapons[index].weapontype) !=
                                 null
-                            ? Image.asset(Tools.getAssetWeaponType(
+                            ? Image.asset(Tool.getAssetWeaponType(
                                     weapons[index].weapontype) ??
                                 "")
                             : null,

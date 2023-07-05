@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info.dart';
 import 'package:genshinfan/views/artifact/widgets/artifact_info_item.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
@@ -18,7 +17,7 @@ class ArtifactScreen extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButtonApp(),
+          leading: const BackButton(),
           centerTitle: true,
           title: Text(
             "artifact_information".tr,

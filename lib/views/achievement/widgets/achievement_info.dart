@@ -102,7 +102,8 @@ class _ItemStage extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                Tools.handleDescriptionAchievement(stage.description, stage.progress.toString()),
+                Tool.handleDescriptionAchievement(
+                    stage.description, stage.progress.toString()),
                 style: ThemeApp.textStyle(),
               ),
             ),

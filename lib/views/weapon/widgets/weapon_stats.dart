@@ -80,7 +80,7 @@ class WeaponStats extends StatelessWidget {
                           child: ItemTable(
                             title: weapon.specialized == null
                                 ? "-"
-                                : Tools.handlerSpecializedStat(
+                                : Tool.handlerSpecializedStat(
                                     weapon.specialized, value.specialized),
                           ),
                         ),

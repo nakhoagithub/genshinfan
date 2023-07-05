@@ -3,7 +3,6 @@ import 'package:genshinfan/views/contribute/controllers/contribute_character_con
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
-import 'package:genshinfan/views/widgets/backbutton.dart';
 import 'package:genshinfan/views/contribute/widgets/button_contribute.dart';
 import 'package:genshinfan/views/contribute/widgets/select_character.dart';
 import 'package:genshinfan/views/contribute/widgets/select_circlet.dart';
@@ -24,7 +23,7 @@ class ContributeCharacterBuildingPage extends StatelessWidget {
     Get.put(ContributeCharacterController());
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButtonApp(),
+        leading: const BackButton(),
         title: Text("contribute".tr),
       ),
       body: const SingleChildScrollView(
@@ -41,7 +40,7 @@ class ContributeCharacterBuildingPage extends StatelessWidget {
             SelectGobletEffect(),
             SelectCircletEffect(),
             _Note(),
-            ButtonContributeCharacter(),
+            Center(child: ButtonContributeCharacter()),
             SizedBox(height: 50),
           ],
         ),
@@ -178,7 +177,7 @@ class _SelectElementTraveler extends StatelessWidget {
                 select == true ? Get.theme.colorScheme.onInverseSurface : null,
           ),
           child: Image.asset(
-            Tools.getAssetElementFromName(element),
+            Tool.getAssetElementFromName(element),
             height: 40,
             width: 40,
           ),

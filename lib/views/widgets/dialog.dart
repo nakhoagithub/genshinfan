@@ -140,12 +140,19 @@ dialogInfo(String message) async {
   );
 }
 
-dialogProgress(String message) async {
-  await Get.dialog(
+dialogProgress(String message, {Function? handle, Function? toPage}) async {
+  Get.dialog(
     AlertDialog(
       title: Text(message),
       content: LinearProgressIndicator(color: ThemeApp.theme.primaryColor),
     ),
     useSafeArea: true,
   );
+  if (handle != null) {
+    await handle();
+  }
+  Get.back();
+  if (toPage != null) {
+    await toPage();
+  }
 }

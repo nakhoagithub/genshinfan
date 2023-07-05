@@ -135,7 +135,6 @@ class _ArtifactItem extends StatelessWidget {
                               "${artifactItemWithType()?.description}",
                               textAlign: TextAlign.start,
                               style: ThemeApp.textStyle(
-                                fontSize: 14,
                                 fontStyle: FontStyle.italic,
                               ),
                             ),

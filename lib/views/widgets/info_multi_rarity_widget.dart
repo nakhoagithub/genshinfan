@@ -37,7 +37,7 @@ class InfoMultiRarityWidget extends StatelessWidget {
                 ...rarities.map(
                   (e) {
                     return Image.asset(
-                      Tools.getRarityStar(e),
+                      Tool.getRarityStar(e),
                       height: 20,
                     );
                   },

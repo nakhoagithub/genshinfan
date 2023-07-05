@@ -1,3 +1,4 @@
+/// Version 1.5
 class CharacterBuilding {
   String? key;
   final String characterName;
@@ -6,9 +7,9 @@ class CharacterBuilding {
   final int typeSet;
   final String a1;
   final String? a2;
-  final String sands; // đồng hồ
-  final String goblet; // ly
-  final String circlet; // nón
+  final List<String> sands; // đồng hồ
+  final List<String> goblets; // ly
+  final List<String> circlets; // nón
   final String author;
   final String uidAuthor;
 
@@ -21,8 +22,8 @@ class CharacterBuilding {
     required this.a1,
     this.a2,
     required this.sands,
-    required this.goblet,
-    required this.circlet,
+    required this.goblets,
+    required this.circlets,
     required this.author,
     required this.uidAuthor,
   });
@@ -35,9 +36,15 @@ class CharacterBuilding {
       typeSet: json['type_set'],
       a1: json['a1'],
       a2: json['a2'],
-      sands: json['sands'],
-      goblet: json['goblet'],
-      circlet: json['circlet'],
+      sands: json['sands'] == null
+          ? []
+          : List<String>.from(json["sands"].map((x) => x)),
+      goblets: json['goblets'] == null
+          ? []
+          : List<String>.from(json["sands"].map((x) => x)),
+      circlets: json['circlets'] == null
+          ? []
+          : List<String>.from(json["sands"].map((x) => x)),
       author: json['author'],
       uidAuthor: json['uid_author'],
     );
@@ -51,9 +58,9 @@ class CharacterBuilding {
       "type_set": typeSet,
       "a1": a1,
       "a2": a2,
-      "sands": sands,
-      "goblet": goblet,
-      "circlet": circlet,
+      "sands": List<dynamic>.from(sands.map((x) => x)),
+      "goblets": List<dynamic>.from(goblets.map((x) => x)),
+      "circlets": List<dynamic>.from(circlets.map((x) => x)),
       "author": author,
       "uid_author": uidAuthor,
     };
