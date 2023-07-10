@@ -5,7 +5,7 @@ import 'package:genshinfan/views/user_manager/controllers/user_controller.dart';
 import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/user_manager/views/user_search_bar.dart';
-import 'package:genshinfan/views/user_manager/views/widgets/image_user.dart';
+import 'package:genshinfan/views/user_manager/widgets/image_user.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';

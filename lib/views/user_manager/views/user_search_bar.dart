@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/user_manager/controllers/user_controller.dart';
-import 'package:genshinfan/views/user_manager/views/widgets/image_user.dart';
+import 'package:genshinfan/views/user_manager/widgets/image_user.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/user_manager/controllers/update_user_controller.dart';
-import 'package:genshinfan/views/user_manager/views/widgets/edit_role.dart';
+import 'package:genshinfan/views/user_manager/widgets/edit_role.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:get/get.dart';
 

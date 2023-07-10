@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
+import 'package:genshinfan/views/widgets/home_search_bar.dart';
 import 'package:get/get.dart';
 
 class AppLayoutController extends GetxController {
@@ -134,14 +135,22 @@ class AppLayout extends StatelessWidget {
             actions: [
               Obx(() {
                 List<int> page = appLayoutController.pageHasFilter;
-                return page.contains(appLayoutController.currentIndex.value)
+                return appLayoutController.currentIndex.value == 0
                     ? IconButton(
                         onPressed: () {
-                          appLayoutController.onClickOpenFilter();
+                          showSearch(
+                              context: context, delegate: HomeSearchBar());
                         },
-                        icon: const Icon(Icons.filter_alt_rounded),
+                        icon: const Icon(Icons.search_rounded),
                       )
-                    : const SizedBox();
+                    : page.contains(appLayoutController.currentIndex.value)
+                        ? IconButton(
+                            onPressed: () {
+                              appLayoutController.onClickOpenFilter();
+                            },
+                            icon: const Icon(Icons.filter_alt_rounded),
+                          )
+                        : const SizedBox();
               }),
 
               // IconButton(

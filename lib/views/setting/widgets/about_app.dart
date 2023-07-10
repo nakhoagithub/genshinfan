@@ -15,11 +15,12 @@ class AboutApp extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Container(
-            margin: const EdgeInsets.all(12),
-            child: TextCSS(
-              Config.aboutApp,
-              style: ThemeApp.textStyle(),
-            )),
+          margin: const EdgeInsets.all(12),
+          child: TextCSS(
+            Config.aboutApp,
+            style: ThemeApp.textStyle(),
+          ),
+        ),
       ),
     );
   }
