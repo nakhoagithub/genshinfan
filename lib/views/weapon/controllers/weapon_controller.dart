@@ -8,6 +8,7 @@ import '../../../models/game/weapon.dart';
 class WeaponController extends GetxController with GetTickerProviderStateMixin {
   GetStorage box = GetStorage();
   RxList<Weapon> weapons = <Weapon>[].obs;
+  RxList<Weapon> weaponsView = <Weapon>[].obs;
   Rx<Status> status = Status.init.obs;
   Rx<Weapon?> weapon = Rx(null);
   RxString imageGacha = "".obs;
@@ -22,6 +23,7 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() {
     weapons.addAll(Get.find<AppController>().weapons);
+    weaponsView.addAll(Get.find<AppController>().weapons);
     super.onInit();
   }
 

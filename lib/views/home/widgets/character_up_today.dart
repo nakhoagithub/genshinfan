@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
-import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/character_service.dart';
@@ -15,7 +15,7 @@ class ListCharacterUpToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Config.sizeItem3;
+    double sizeItem = Get.find<AppLayoutController>().widthItem;
     List<Character>? characterUpToday =
         CharacterService().getCharacterUpToday();
     return characterUpToday == null

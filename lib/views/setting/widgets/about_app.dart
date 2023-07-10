@@ -12,7 +12,6 @@ class AboutApp extends StatelessWidget {
     context.theme;
     return Container(
       margin: const EdgeInsets.only(left: 5, right: 5),
-      width: Get.width,
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Container(

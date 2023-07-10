@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
-import 'package:genshinfan/views/outfit/widgets/outfit_info.dart';
+import 'package:genshinfan/views/namecard/controllers/namecard_controller.dart';
+import 'package:genshinfan/views/namecard/widgets/namecard_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class OutfitScreen extends StatelessWidget {
-  const OutfitScreen({super.key});
+class NamecardInfoPage extends StatelessWidget {
+  const NamecardInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    OutfitController outfitController = Get.find<OutfitController>();
+    NamecardController namecardController = Get.find<NamecardController>();
 
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "outfit_information".tr,
+            "namecard_information".tr,
           ),
         ),
-        body: outfitController.outfit.value == null
-            ? PageEmpty(title: "select_outfit".tr)
+        body: namecardController.namecard.value == null
+            ? PageEmpty(title: "select_namecard".tr)
             : Stack(
                 children: [
                   // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: outfitController.scrollController,
+                    controller: namecardController.scrollController,
                     child: const Column(
                       children: [
-                        InformationOutfit(),
+                        InformationNamecard(),
                         SizedBox(height: 100),
                       ],
                     ),

@@ -14,6 +14,7 @@ class Config {
   static const String fileNameMaterial = 'materials';
   static const String fileNameWeapon = 'weapons';
   static const String fileNameArtifact = 'artifacts';
+  static const String fileNameFood = 'foods';
   static const String fileNameDomain = 'domains';
   static const String fileNameEnemie = 'enemies';
   static const String fileNameAchievementGroup = 'achievementGroups';
@@ -74,10 +75,6 @@ class Config {
 
   static String get urlGenshinMap =>
       "https://act.hoyolab.com/ys/app/interactive-map/index.html";
-
-  static double widthCenter = Get.width - 104;
-  static double sizeItem3 = (Get.width - 104 - 12) / 3;
-  static double sizeItem2 = (Get.width - 104 - 8) / 2;
 
   static const double marginText = 8;
 

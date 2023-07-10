@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/achievement/views/achievement_info_page.dart';
 import 'package:genshinfan/views/admin/views/admin_page.dart';
+import 'package:genshinfan/views/animal/views/animal_info_page.dart';
+import 'package:genshinfan/views/craft/views/craft_info_page.dart';
+import 'package:genshinfan/views/food/views/food_info_page.dart';
+import 'package:genshinfan/views/geography/views/geography_info_page.dart';
+import 'package:genshinfan/views/namecard/views/namecard_info_page.dart';
+import 'package:genshinfan/views/outfit/views/outfit_infor_page.dart';
 import 'package:genshinfan/views/user_manager/views/user_manager_page.dart';
 import 'package:genshinfan/views/user_manager/views/user_page.dart';
 import 'package:genshinfan/views/admin/views/manage_character_contribution.dart';
@@ -17,6 +24,7 @@ import 'package:genshinfan/views/home.dart';
 import 'package:genshinfan/views/resource/views/resouce_info_page.dart';
 import 'package:genshinfan/views/start/views/start_page.dart';
 import 'package:genshinfan/views/weapon/views/weapon_info_page.dart';
+import 'package:genshinfan/views/windglider/views/windglider_info_page.dart';
 import 'package:get/get.dart';
 import 'utils/init.dart';
 import 'utils/localization.dart';
@@ -26,10 +34,10 @@ import 'views/setting/views/setting_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitDown,
-    DeviceOrientation.portraitUp,
-  ]);
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitDown,
+  //   DeviceOrientation.portraitUp,
+  // ]);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
@@ -79,37 +87,63 @@ class App extends GetView<AppController> {
             GetPage(
               name: '/character_info',
               page: () => const CharacterInfoPage(),
-              transition: Transition.rightToLeftWithFade,
             ),
             GetPage(
               name: '/weapon_info',
               page: () => const WeaponInfoPage(),
-              transition: Transition.rightToLeftWithFade,
             ),
             GetPage(
               name: '/resource_info',
               page: () => const ResourceInfoPage(),
-              transition: Transition.rightToLeftWithFade,
             ),
             GetPage(
               name: '/artifact_info',
               page: () => const ArtifactInfoPage(),
-              transition: Transition.rightToLeftWithFade,
             ),
             GetPage(
               name: '/domain_info',
               page: () => const DomainInfoPage(),
-              transition: Transition.rightToLeftWithFade,
+            ),
+            GetPage(
+              name: '/food_info',
+              page: () => const FoodInfoPage(),
             ),
             GetPage(
               name: '/enemy_info',
               page: () => const EnemyInfoPage(),
-              transition: Transition.rightToLeftWithFade,
+            ),
+            GetPage(
+              name: '/animal_info',
+              page: () => const AnimalInfoPage(),
+            ),
+            GetPage(
+              name: '/achievement_info',
+              page: () => const AchievementInfoPage(),
+            ),
+            GetPage(
+              name: '/namecard_info',
+              page: () => const NamecardInfoPage(),
+            ),
+            GetPage(
+              name: '/craft_info',
+              page: () => const CraftInfoPage(),
+            ),
+            GetPage(
+              name: '/outfit_info',
+              page: () => const OutfitInfoPage(),
+            ),
+            GetPage(
+              name: '/geography_info',
+              page: () => const GeographyInfoPage(),
+            ),
+            GetPage(
+              name: '/windglider_info',
+              page: () => const WindgliderInfoPage(),
             ),
             GetPage(
               name: '/setting',
               page: () => const SettingPage(),
-              transition: Transition.native,
+              transition: Transition.leftToRight,
             ),
             GetPage(
               name: '/admin',

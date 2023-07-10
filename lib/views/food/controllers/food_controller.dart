@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/app_controller.dart';
-import 'package:genshinfan/models/game/resource.dart';
+import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import '../../../models/game/food.dart';
 
-class ResourceController extends GetxController
-    with GetSingleTickerProviderStateMixin {
-  GetStorage box = GetStorage();
-  List<Resource> resources = <Resource>[].obs;
-  List<Resource> resourcesView = <Resource>[].obs;
-  Rx<Resource?> resource = Rx(null);
+class FoodController extends GetxController with GetTickerProviderStateMixin {
+  List<Food> foods = Get.find<AppController>().foods;
+  Rx<Status> status = Status.init.obs;
+  Rx<Food?> food = Rx(null);
   ScrollController scrollController = ScrollController();
 
-  void selectResource(Resource resource) {
-    this.resource.value = resource;
+  void selectFood(Food value) async {
+    food.value = value;
     update();
   }
 
@@ -27,14 +25,6 @@ class ResourceController extends GetxController
       );
     }
     super.update(ids, condition);
-  }
-
-  @override
-  void onInit() {
-    resources.addAll(Get.find<AppController>().resources);
-    
-    resourcesView.addAll(Get.find<AppController>().resources);
-    super.onInit();
   }
 
   @override

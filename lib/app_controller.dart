@@ -4,7 +4,9 @@ import 'dart:developer';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/models/game/food.dart';
 import 'package:genshinfan/models/game/windglider.dart';
+import 'package:genshinfan/services/food_service.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
 import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
 import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
@@ -12,6 +14,7 @@ import 'package:genshinfan/views/character/controllers/character_controller.dart
 import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
 import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
+import 'package:genshinfan/views/food/controllers/food_controller.dart';
 import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
 import 'package:genshinfan/views/namecard/controllers/namecard_controller.dart';
 import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
@@ -70,6 +73,7 @@ class AppController extends GetxController {
   RxList<Resource> resources = <Resource>[].obs;
   RxList<Artifact> artifacts = <Artifact>[].obs;
   RxList<Domain> domains = <Domain>[].obs;
+  RxList<Food> foods = <Food>[].obs;
   RxList<Enemy> enemies = <Enemy>[].obs;
   RxList<AchievementGroup> achievementGroups = <AchievementGroup>[].obs;
   RxList<Achievement> achievements = <Achievement>[].obs;
@@ -133,9 +137,12 @@ class AppController extends GetxController {
         },
       );
 
-      // dung
+      // dungeon
       domains.value =
           await DomainService().getDomains(Localization.language) ?? [];
+
+      // thức ăn
+      foods.value = await FoodService().getFoods(Localization.language) ?? [];
 
       // quái
       enemies.value =
@@ -165,7 +172,7 @@ class AppController extends GetxController {
         },
       );
 
-      // namecard
+      // animals
       animals.value =
           await AnimalService().getAnimals(Localization.language) ?? [];
       animals.sort(
@@ -286,6 +293,7 @@ class AppBinding extends Bindings {
     Get.put(WeaponController());
     Get.put(ArtifactController());
     Get.put(DomainController());
+    Get.put(FoodController());
     Get.put(EnemyController());
     Get.put(AchievementController());
     Get.put(NamecardController());

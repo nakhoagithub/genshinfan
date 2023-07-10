@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/views/resource/widgets/resource_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class ResourceInfoPage extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
             "resource_information".tr,

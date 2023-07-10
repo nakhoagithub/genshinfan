@@ -3,6 +3,7 @@ import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/user_manager/controllers/user_controller.dart';
 import 'package:genshinfan/views/user_manager/views/widgets/image_user.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:get/get.dart';
 
 class UserSearchBar extends SearchDelegate {
@@ -31,7 +32,7 @@ class UserSearchBar extends SearchDelegate {
         onPressed: () {
           close(context, null);
         },
-        icon: const BackButton());
+        icon: const BackButtonApp());
   }
 
   @override

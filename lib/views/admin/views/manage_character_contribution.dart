@@ -11,6 +11,7 @@ import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
@@ -25,7 +26,7 @@ class ManageUserCharacterContribution extends StatelessWidget {
     Get.put(ManagementContributeCharacterController());
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: const BackButtonApp(),
         title: Text("manager".tr),
       ),
       body: const _Body(),

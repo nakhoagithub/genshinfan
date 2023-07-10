@@ -1,40 +1,39 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/models/game/windglider.dart';
-import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
+import 'package:genshinfan/views/food/controllers/food_controller.dart';
+import 'package:genshinfan/models/game/food.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
+import 'package:genshinfan/views/food/widgets/food_ingredient.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/gradient.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/info_paragraph_widget.dart';
-import 'package:genshinfan/views/widgets/info_text_multiline_widget.dart';
 import 'package:get/get.dart';
 
-class InformationWindglider extends StatelessWidget {
-  const InformationWindglider({super.key});
+class InformationFood extends StatelessWidget {
+  const InformationFood({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    WindgliderController windgliderController =
-        Get.find<WindgliderController>();
+    FoodController foodController = Get.find<FoodController>();
     return Obx(() {
-      Windglider windglider = windgliderController.windglider.value!;
+      Food food = foodController.food.value!;
       return SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Container(
           margin: const EdgeInsets.all(4),
           child: Column(
             children: [
-              _ImageWindglider(
-                linkImage: Config.urlImage(windglider.images?.nameicon),
-                rarity: windglider.rarity,
+              _ImageFood(
+                linkImage: Config.urlImage(food.images?.nameicon),
+                rarity: food.rarity,
                 size: 150,
               ),
               Center(
                 child: Text(
-                  windglider.name,
+                  food.name,
                   textAlign: TextAlign.center,
                   style: ThemeApp.textStyle(
                     fontSize: 28,
@@ -42,9 +41,8 @@ class InformationWindglider extends StatelessWidget {
                   ),
                 ),
               ),
-              _InformationMore(
-                windglider: windglider,
-              ),
+              const FoodIngredientWidget(),
+              _InformationMore(food: food),
             ],
           ),
         ),
@@ -53,11 +51,11 @@ class InformationWindglider extends StatelessWidget {
   }
 }
 
-class _ImageWindglider extends StatelessWidget {
+class _ImageFood extends StatelessWidget {
   final String? linkImage;
   final String? rarity;
   final double size;
-  const _ImageWindglider({
+  const _ImageFood({
     required this.linkImage,
     required this.rarity,
     required this.size,
@@ -89,29 +87,28 @@ class _ImageWindglider extends StatelessWidget {
 }
 
 class _InformationMore extends StatelessWidget {
-  final Windglider windglider;
-  const _InformationMore({required this.windglider});
+  final Food food;
+  const _InformationMore({required this.food});
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(top: 10),
-      width: width,
+      width: Get.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          // nguồn
-          InfoTextMultiLineWidget(
-              titleTranslate: "source", data: windglider.source),
+          // category
+          // InfoTextWidget(titleTranslate: "category", data: food),
+
+          // counttype
+          // InfoTextWidget(titleTranslate: "counttype", data: food.counttype),
 
           // description
           InfoParagraphWidget(
-              titleTranslate: "description", data: windglider.description),
-
-          InfoParagraphWidget(titleTranslate: "story", data: windglider.story),
+              titleTranslate: "description", data: food.description),
         ],
       ),
     );

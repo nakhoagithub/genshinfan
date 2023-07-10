@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BackButtonApp extends StatelessWidget {
-  final IconData? icon;
-  const BackButtonApp({
-    super.key,
-    this.icon,
-  });
+  const BackButtonApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        Navigator.maybePop(context);
-      },
-      icon: Icon(icon ?? Icons.keyboard_arrow_left_rounded),
+    return Center(
+      child: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: const Icon(Icons.keyboard_arrow_left_rounded),
+      ),
     );
   }
 }

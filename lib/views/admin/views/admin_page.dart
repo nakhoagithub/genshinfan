@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/utils/role.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/widgets/title_of_menu.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,7 @@ class AdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: const BackButtonApp(),
         title: Text("admin".tr),
       ),
       body: SingleChildScrollView(

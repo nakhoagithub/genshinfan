@@ -25,12 +25,17 @@ class ItemGeography extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          margin: const EdgeInsets.all(4),
+          margin: const EdgeInsets.all(10),
           child: Column(
             children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: Text(geography.name,
+                    style: ThemeApp.textStyle(fontWeight: FontWeight.w500)),
+              ),
               CachedNetworkImage(
                 imageUrl: Config.urlImage(geography.images?.nameimage),
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.cover,
                 progressIndicatorBuilder: (context, url, progress) {
                   return const CircularProgressApp();
                 },
@@ -38,20 +43,6 @@ class ItemGeography extends StatelessWidget {
                   return const ImageFailure();
                 },
               ),
-              Container(
-                margin: const EdgeInsets.all(8),
-                child: Text(geography.name,
-                    style: ThemeApp.textStyle(fontWeight: FontWeight.w500)),
-              ),
-              // Expanded(
-              //     child: Container(
-              //   margin: const EdgeInsets.all(4),
-              //   child: Column(
-              //     children: [
-
-              //     ],
-              //   ),
-              // )),
             ],
           ),
         ),

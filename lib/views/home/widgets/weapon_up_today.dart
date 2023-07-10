@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -15,7 +16,7 @@ class ListWeaponUpToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Config.sizeItem3;
+    double sizeItem = Get.find<AppLayoutController>().widthItem;
     List<Weapon>? weaponUpToday = WeaponService().getWeaponUpToday();
     return weaponUpToday == null
         ? const SizedBox()

@@ -1,40 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
-
-import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
-import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
+import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
+import 'package:genshinfan/views/outfit/widgets/outfit_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class EnemyScreen extends StatelessWidget {
-  const EnemyScreen({super.key});
+class OutfitInfoPage extends StatelessWidget {
+  const OutfitInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    EnemyController enemyController = Get.find<EnemyController>();
+    OutfitController outfitController = Get.find<OutfitController>();
 
     return Obx(() {
       return Scaffold(
-        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "enemy_information".tr,
+            "outfit_information".tr,
           ),
         ),
-        body: enemyController.enemy.value == null
-            ? PageEmpty(title: "select_enemy".tr)
+        body: outfitController.outfit.value == null
+            ? PageEmpty(title: "select_outfit".tr)
             : Stack(
                 children: [
+                  // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: enemyController.scrollController,
+                    controller: outfitController.scrollController,
                     child: const Column(
                       children: [
-                        InformationEnemy(),
-                        EnemyStats(),
+                        InformationOutfit(),
                         SizedBox(height: 100),
                       ],
                     ),

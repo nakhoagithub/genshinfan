@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/views/contribute/controllers/contribute_character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/tools.dart';
-import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
@@ -15,9 +14,7 @@ dialogContributeCharacter() async {
       width: Get.width,
       child: Scaffold(
         appBar: AppBar(
-          leading: const BackButtonApp(
-            icon: Icons.keyboard_arrow_down_rounded,
-          ),
+          leading: const BackButton(),
           title: Text("character".tr),
         ),
         body: const _ListCharacter(),

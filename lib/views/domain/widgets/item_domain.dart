@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/models/game/reward.dart';
-import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
@@ -24,58 +24,60 @@ class ItemDomain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Config.sizeItem2;
+    double sizeItem = width ?? Get.find<AppLayoutController>().widthItemBig;
     List<Reward> dataRevert = domain
         .domainLvs![domain.domainLvs!.length - 1].rewardpreview.reversed
         .toList();
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(sizeItem * 0.05),
+    return Center(
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         color: Get.theme.colorScheme.onInverseSurface,
-        child: Container(
-          width: width,
-          margin: const EdgeInsets.all(4),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Image.asset(
-                  "assets/images/image_dungeon.png",
-                  height: sizeItem * 0.5,
-                  width: sizeItem * 0.5,
-                  color: Get.theme.colorScheme.onSurface,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(sizeItem * 0.05),
+          child: Container(
+            width: sizeItem,
+            height: sizeItem * 1.215,
+            margin: const EdgeInsets.all(4),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Image.asset(
+                    "assets/images/image_dungeon.png",
+                    height: sizeItem * 0.5,
+                    width: sizeItem * 0.5,
+                    color: Get.theme.colorScheme.onSurface,
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  domain.name,
-                  textAlign: TextAlign.center,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: ThemeApp.textStyle(
-                      fontWeight: FontWeight.w500),
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    domain.name,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: ThemeApp.textStyle(fontWeight: FontWeight.w500),
+                  ),
                 ),
-              ),
-              domain.domainLvs == null
-                  ? const SizedBox()
-                  : Expanded(
-                      flex: 1,
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: dataRevert.length,
-                        itemBuilder: (context, index) {
-                          return _ItemReward(
-                            reward: dataRevert[index],
-                          );
-                        },
-                      ),
-                    )
-            ],
+                domain.domainLvs == null
+                    ? const SizedBox()
+                    : Expanded(
+                        flex: 1,
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: dataRevert.length,
+                          itemBuilder: (context, index) {
+                            return _ItemReward(
+                              reward: dataRevert[index],
+                            );
+                          },
+                        ),
+                      )
+              ],
+            ),
           ),
         ),
       ),

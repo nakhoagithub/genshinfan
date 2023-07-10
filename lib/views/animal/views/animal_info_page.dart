@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
 import 'package:genshinfan/views/animal/widgets/animal_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class AnimalScreen extends StatelessWidget {
-  const AnimalScreen({super.key});
+class AnimalInfoPage extends StatelessWidget {
+  const AnimalInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,8 @@ class AnimalScreen extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
             "animal_information".tr,

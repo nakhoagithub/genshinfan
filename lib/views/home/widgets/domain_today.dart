@@ -24,7 +24,7 @@ class ListDomainToday extends StatelessWidget {
         itemCount: domains.length,
         itemBuilder: (context, index) {
           return ItemDomain(
-            width: (Get.width - 146) / 2,
+            width: 110,
             domain: domains[index],
             onTap: () {
               Get.find<DomainController>().selectDomain(domains[index]);

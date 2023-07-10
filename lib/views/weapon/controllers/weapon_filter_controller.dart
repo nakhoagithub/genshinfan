@@ -147,7 +147,7 @@ class WeaponFilterController extends GetxController {
 
   @override
   void onInit() {
-    weapons = Get.find<WeaponController>().weapons;
+    weapons = Get.find<WeaponController>().weaponsView;
 
     for (var e in weapons) {
       if (!substatWeaponFilter.contains(e.substat) && e.substat != "") {

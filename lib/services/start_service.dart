@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
+import 'package:genshinfan/services/food_service.dart';
 import 'package:genshinfan/views/start/controllers/start_controller.dart';
 import 'package:genshinfan/models/app/api_github.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -56,6 +57,8 @@ class StartService {
           File("${directory.path}/$language/${Config.fileNameArtifact}.json");
       File fDomain =
           File("${directory.path}/$language/${Config.fileNameDomain}.json");
+      File fFood =
+          File("${directory.path}/$language/${Config.fileNameFood}.json");
       File fEnemy =
           File("${directory.path}/$language/${Config.fileNameEnemie}.json");
       File fAchievementGroup = File(
@@ -79,6 +82,7 @@ class StartService {
           await fWeapon.exists() &&
           await fArtifact.exists() &&
           await fDomain.exists() &&
+          await fFood.exists() &&
           await fEnemy.exists() &&
           await fAchievementGroup.exists() &&
           await fAchievement.exists() &&
@@ -154,6 +158,7 @@ class StartService {
         await WeaponService().getWeaponFromGzip(directory, language, json);
         await ArtifactService().getArtifactFromGzip(directory, language, json);
         await DomainService().getDomainFromGzip(directory, language, json);
+        await FoodService().getFoodFromGzip(directory, language, json);
         await EnemyService().getEnemyFromGzip(directory, language, json);
         await AchievementService()
             .getAchievementGroupsFromGzip(directory, language, json);

@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
-import 'package:genshinfan/views/resource/widgets/resource_info.dart';
+import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
+import 'package:genshinfan/views/geography/widgets/geography_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class ResourceScreen extends StatelessWidget {
-  const ResourceScreen({super.key});
+class GeographyInfoPage extends StatelessWidget {
+  const GeographyInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    ResourceController resourceController = Get.find<ResourceController>();
+    GeographyController geographyController = Get.find<GeographyController>();
 
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "resource_information".tr,
+            "geography_information".tr,
           ),
         ),
-        body: resourceController.resource.value == null
-            ? PageEmpty(title: "select_resource".tr)
+        body: geographyController.geography.value == null
+            ? PageEmpty(title: "select_geography".tr)
             : Stack(
                 children: [
                   // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: resourceController.scrollController,
+                    controller: geographyController.scrollController,
                     child: const Column(
                       children: [
-                        InformationResource(),
+                        InformationGeography(),
                         SizedBox(height: 100),
                       ],
                     ),

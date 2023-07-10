@@ -126,7 +126,7 @@ class ResourceFilterController extends GetxController {
 
   @override
   void onInit() {
-    resources = Get.find<ResourceController>().resources;
+    resources = Get.find<ResourceController>().resourcesView;
     for (var e in resources) {
       if (!substatResourceFilters.contains(e.materialtype) &&
           e.materialtype != "") {

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
 import 'package:genshinfan/models/game/geography.dart';
-import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/geography/widgets/item_geography.dart';
-import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -14,18 +12,7 @@ class GeographyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return SizedBox(
-      width: MediaQuery.of(context).size.width - 100,
-      child: Column(
-        children: [
-          AppBarCenter(
-            title: "geography".tr,
-            width: double.infinity,
-          ),
-          const Expanded(child: _List()),
-        ],
-      ),
-    );
+    return const _List();
   }
 }
 
@@ -35,29 +22,25 @@ class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GeographyController geographyController = Get.find<GeographyController>();
-    HomeController homeController = Get.find<HomeController>();
     return Obx(() {
       List<Geography> geographies = geographyController.geographies;
-      return SizedBox(
-        width: Config.widthCenter,
-        child: geographies.isEmpty
-            ? ListEmpty(title: "empty_geography".tr)
-            : ListView.builder(
-                padding: EdgeInsets.zero,
-                itemCount: geographies.length,
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return ItemGeography(
-                    geography: geographies[index],
-                    onTap: () {
-                      geographyController.selectGeography(geographies[index]);
-                      homeController.pageCenter();
-                    },
-                  );
-                },
-              ),
-      );
+      return geographies.isEmpty
+          ? ListEmpty(title: "empty_geography".tr)
+          : ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: geographies.length,
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ItemGeography(
+                  geography: geographies[index],
+                  onTap: () {
+                    geographyController.selectGeography(geographies[index]);
+                    Get.toNamed("/geography_info");
+                  },
+                );
+              },
+            );
     });
   }
 }

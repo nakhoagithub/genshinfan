@@ -1,12 +1,10 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
-import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
@@ -18,20 +16,7 @@ class AchievementGroupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return SizedBox(
-      width: MediaQuery.of(context).size.width - 100,
-      child: Column(
-        children: [
-          AppBarCenter(
-            title: "achievement".tr,
-            width: double.infinity,
-          ),
-          const Expanded(
-            child: _List(),
-          )
-        ],
-      ),
-    );
+    return const _List();
   }
 }
 
@@ -42,8 +27,6 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     AchievementController achievementController =
         Get.find<AchievementController>();
-    HomeController homeController = Get.find<HomeController>();
-    double sizeItem = Config.sizeItem2;
     return Obx(() {
       List<AchievementGroup> achievementGroups =
           achievementController.achievementGroups;
@@ -52,25 +35,17 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: 2,
-              childAspectRatio: sizeItem / (sizeItem * 1.215),
+              crossAxisCount: Get.find<AppLayoutController>().crossAxisCountBig(),
+              childAspectRatio: Get.find<AppLayoutController>().childAspectRatioBig(),
               children: List.generate(
                 achievementGroups.length,
-                (index) => FadeInUp(
-                  child: Center(
-                    child: SizedBox(
-                      width: sizeItem,
-                      height: sizeItem * 1.215,
-                      child: _ItemAchievementGroup(
-                        achievementGroup: achievementGroups[index],
-                        onTap: () {
-                          achievementController
-                              .selectAchievementGroup(achievementGroups[index]);
-                          homeController.pageCenter();
-                        },
-                      ),
-                    ),
-                  ),
+                (index) => _ItemAchievementGroup(
+                  achievementGroup: achievementGroups[index],
+                  onTap: () {
+                    achievementController
+                        .selectAchievementGroup(achievementGroups[index]);
+                    Get.toNamed("/achievement_info");
+                  },
                 ),
               ),
             );
@@ -89,46 +64,50 @@ class _ItemAchievementGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Config.sizeItem2;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(sizeItem * 0.05),
+    double sizeItem = Get.find<AppLayoutController>().widthItemBig;
+    return Center(
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         color: Get.theme.colorScheme.onInverseSurface,
-        child: Container(
-          margin: const EdgeInsets.all(4),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 3,
-                child: CachedNetworkImage(
-                  imageUrl: Config.urlImage(achievementGroup.images?.nameicon),
-                  fit: BoxFit.cover,
-                  height: sizeItem * 0.6,
-                  width: sizeItem * 0.6,
-                  progressIndicatorBuilder: (context, url, progress) {
-                    return const CircularProgressApp();
-                  },
-                  errorWidget: (context, url, error) {
-                    return const ImageFailure();
-                  },
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Center(
-                  child: Text(
-                    achievementGroup.name,
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: ThemeApp.textStyle(
-                        fontWeight: FontWeight.w500),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(sizeItem * 0.05),
+          child: Container(
+            width: sizeItem,
+            height: sizeItem * 1.215,
+            margin: const EdgeInsets.all(4),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        Config.urlImage(achievementGroup.images?.nameicon),
+                    fit: BoxFit.cover,
+                    height: sizeItem * 0.6,
+                    width: sizeItem * 0.6,
+                    progressIndicatorBuilder: (context, url, progress) {
+                      return const CircularProgressApp();
+                    },
+                    errorWidget: (context, url, error) {
+                      return const ImageFailure();
+                    },
                   ),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 2,
+                  child: Center(
+                    child: Text(
+                      achievementGroup.name,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: ThemeApp.textStyle(fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

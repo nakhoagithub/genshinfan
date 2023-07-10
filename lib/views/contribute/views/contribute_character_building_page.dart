@@ -11,6 +11,7 @@ import 'package:genshinfan/views/contribute/widgets/select_item_artifact.dart';
 import 'package:genshinfan/views/contribute/widgets/select_sands.dart';
 import 'package:genshinfan/views/contribute/widgets/select_type.dart';
 import 'package:genshinfan/views/contribute/widgets/select_weapon.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +24,7 @@ class ContributeCharacterBuildingPage extends StatelessWidget {
     Get.put(ContributeCharacterController());
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: const BackButtonApp(),
         title: Text("character_building".tr),
       ),
       body: const SingleChildScrollView(

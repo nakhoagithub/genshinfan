@@ -3,6 +3,7 @@ import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 
 import 'package:genshinfan/views/enemy/widgets/enemy_info.dart';
 import 'package:genshinfan/views/enemy/widgets/enemy_stats.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,7 @@ class EnemyInfoPage extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
             "enemy_information".tr,

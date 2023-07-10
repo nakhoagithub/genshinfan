@@ -9,6 +9,7 @@ class CharacterController extends GetxController
     with GetTickerProviderStateMixin {
   GetStorage box = GetStorage();
   RxList<Character> characters = <Character>[].obs;
+  RxList<Character> charactersView = <Character>[].obs;
   Rx<Status> status = Status.init.obs;
   Rx<Character?> character = Rx(null);
   RxString element = "".obs;
@@ -34,6 +35,7 @@ class CharacterController extends GetxController
   @override
   void onInit() {
     characters.addAll(Get.find<AppController>().characters);
+    charactersView.addAll(Get.find<AppController>().characters);
     super.onInit();
   }
 

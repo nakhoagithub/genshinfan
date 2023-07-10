@@ -4,7 +4,6 @@ import 'package:genshinfan/views/contribute/controllers/contribute_character_con
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
-import 'package:genshinfan/views/widgets/back_button.dart';
 
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
@@ -17,9 +16,7 @@ dialogContributeWeapon() async {
       width: Get.width,
       child: Scaffold(
         appBar: AppBar(
-          leading: const BackButtonApp(
-            icon: Icons.keyboard_arrow_down_rounded,
-          ),
+          leading: const BackButton(),
           title: Text("weapon".tr),
         ),
         body: const _ListWeapon(),

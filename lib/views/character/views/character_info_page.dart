@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/views/character/widgets/character_stats.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 import '../widgets/character_ascension.dart';
@@ -18,9 +19,8 @@ class CharacterInfoPage extends StatelessWidget {
     CharacterController characterController = Get.find<CharacterController>();
     return Obx(() {
       return Scaffold(
-        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
             "character_information".tr,

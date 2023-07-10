@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
-import 'package:genshinfan/views/geography/widgets/geography_info.dart';
+import 'package:genshinfan/views/food/controllers/food_controller.dart';
+import 'package:genshinfan/views/food/widgets/food_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class GeographyScreen extends StatelessWidget {
-  const GeographyScreen({super.key});
+class FoodInfoPage extends StatelessWidget {
+  const FoodInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    GeographyController geographyController = Get.find<GeographyController>();
+    FoodController foodController = Get.find<FoodController>();
 
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "geography_information".tr,
+            "food_information".tr,
           ),
         ),
-        body: geographyController.geography.value == null
-            ? PageEmpty(title: "select_geography".tr)
+        body: foodController.food.value == null
+            ? PageEmpty(title: "select_food".tr)
             : Stack(
                 children: [
-                  // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: geographyController.scrollController,
+                    controller: foodController.scrollController,
                     child: const Column(
                       children: [
-                        InformationGeography(),
+                        InformationFood(),
                         SizedBox(height: 100),
                       ],
                     ),

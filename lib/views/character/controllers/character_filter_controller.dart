@@ -135,7 +135,7 @@ class CharacterFilterController extends GetxController {
 
   @override
   void onInit() {
-    characters = Get.find<CharacterController>().characters;
+    characters = Get.find<CharacterController>().charactersView;
 
     // filter element
     List<dynamic>? elements =

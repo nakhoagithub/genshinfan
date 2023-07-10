@@ -1,10 +1,8 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/models/game/windglider.dart';
 import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/utils/config.dart';
-import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
@@ -15,18 +13,7 @@ class WindgliderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return SizedBox(
-      width: MediaQuery.of(context).size.width - 100,
-      child: Column(
-        children: [
-          AppBarCenter(
-            title: "windglider".tr,
-            width: double.infinity,
-          ),
-          const Expanded(child: _List()),
-        ],
-      ),
-    );
+    return const _List();
   }
 }
 
@@ -37,42 +24,30 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     WindgliderController windgliderController =
         Get.find<WindgliderController>();
-    HomeController homeController = Get.find<HomeController>();
-    double sizeItem = Config.sizeItem3;
     return Obx(() {
       List<Windglider> windgliders = windgliderController.windgliders;
-      return SizedBox(
-          width: Config.widthCenter,
-          child: windgliders.isEmpty
-              ? ListEmpty(title: "empty_windglider".tr)
-              : GridView.count(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  crossAxisCount: 3,
-                  childAspectRatio: sizeItem / (sizeItem * 1.215),
-                  children: List.generate(
-                    windgliders.length,
-                    (index) => FadeInUp(
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeItem,
-                          height: sizeItem * 1.215,
-                          child: ItemGame(
-                            title: windgliders[index].name,
-                            rarity: windgliders[index].rarity,
-                            linkImage: Config.urlImage(
-                                windgliders[index].images?.nameicon),
-                            onTap: () {
-                              windgliderController
-                                  .selectWindglider(windgliders[index]);
-                              homeController.pageCenter();
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ));
+      return windgliders.isEmpty
+          ? ListEmpty(title: "empty_windglider".tr)
+          : GridView.count(
+              physics: const BouncingScrollPhysics(),
+              padding: EdgeInsets.zero,
+              crossAxisCount: Get.find<AppLayoutController>().crossAxisCount(),
+              childAspectRatio:
+                  Get.find<AppLayoutController>().childAspectRatio(),
+              children: List.generate(
+                windgliders.length,
+                (index) => ItemGame(
+                  title: windgliders[index].name,
+                  rarity: windgliders[index].rarity,
+                  linkImage:
+                      Config.urlImage(windgliders[index].images?.nameicon),
+                  onTap: () {
+                    windgliderController.selectWindglider(windgliders[index]);
+                    Get.toNamed("/windglider_info");
+                  },
+                ),
+              ),
+            );
     });
   }
 }

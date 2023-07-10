@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -19,7 +20,7 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
     List<Character> characterToday =
         CharacterService().getCharacterBirthdayToday() ?? [];
 
-    double sizeItem = Config.sizeItem3;
+    double sizeItem = Get.find<AppLayoutController>().widthItem;
     return Container(
       margin: const EdgeInsets.only(
           top: 20, left: Config.marginText, right: Config.marginText),
@@ -153,14 +154,6 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
                                     Get.toNamed('/character_info');
                                   },
                                 ),
-                                // child: ItemCharacter(
-                                //   character: characters[index],
-                                //   onTap: () {
-                                //     Get.find<CharacterController>()
-                                //         .selectCharacter(characters[index]);
-                                //     Get.toNamed('/character_info');
-                                //   },
-                                // ),
                               ),
                             );
                           },

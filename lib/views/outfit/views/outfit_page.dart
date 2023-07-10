@@ -1,14 +1,12 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/outfit.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
-import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
@@ -20,20 +18,7 @@ class OutfitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return SizedBox(
-      width: MediaQuery.of(context).size.width - 100,
-      child: Column(
-        children: [
-          AppBarCenter(
-            title: "outfit".tr,
-            width: double.infinity,
-          ),
-          const Expanded(
-            child: _List(),
-          )
-        ],
-      ),
-    );
+    return const _List();
   }
 }
 
@@ -43,8 +28,6 @@ class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OutfitController outfitController = Get.find<OutfitController>();
-    HomeController homeController = Get.find<HomeController>();
-    double sizeItem = Config.sizeItem2;
     return Obx(() {
       List<Outfit> outfits = outfitController.outfits;
       return outfits.isEmpty
@@ -52,25 +35,19 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: 2,
-              childAspectRatio: sizeItem / (sizeItem * 1.215),
+              crossAxisCount:
+                  Get.find<AppLayoutController>().crossAxisCountBig(),
+              childAspectRatio:
+                  Get.find<AppLayoutController>().childAspectRatioBig(),
               children: List.generate(
                 outfits.length,
                 (index) {
-                  return FadeInUp(
-                    child: Center(
-                      child: SizedBox(
-                        width: sizeItem,
-                        height: sizeItem * 1.215,
-                        child: _ItemOutfit(
-                          outfit: outfits[index],
-                          onTap: () {
-                            outfitController.selectOutfit(outfits[index]);
-                            homeController.pageCenter();
-                          },
-                        ),
-                      ),
-                    ),
+                  return _ItemOutfit(
+                    outfit: outfits[index],
+                    onTap: () {
+                      outfitController.selectOutfit(outfits[index]);
+                      Get.toNamed("/outfit_info");
+                    },
                   );
                 },
               ),
@@ -90,19 +67,21 @@ class _ItemOutfit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Config.sizeItem2;
+    double sizeItem = Get.find<AppLayoutController>().widthItemBig;
     Character? character = Tool.getCharacterFromName(outfit.character);
     String linkImage = (outfit.isdefault
             ? character?.images?.icon
             : Config.urlImage(outfit.images?.namecard)) ??
         "";
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(sizeItem * 0.05),
-      child: Card(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        color: Get.theme.colorScheme.onInverseSurface,
+    return Card(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      color: Get.theme.colorScheme.onInverseSurface,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(sizeItem * 0.05),
         child: Container(
+          width: sizeItem,
+          height: sizeItem * 1.215,
           margin: const EdgeInsets.all(4),
           child: Column(
             children: [
@@ -125,10 +104,9 @@ class _ItemOutfit extends StatelessWidget {
                   child: Text(
                     outfit.name,
                     textAlign: TextAlign.center,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeApp.textStyle(
-                        fontWeight: FontWeight.w500),
+                    style: ThemeApp.textStyle(fontWeight: FontWeight.w500),
                   ),
                 ),
               ),

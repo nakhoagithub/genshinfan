@@ -1,12 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/tools.dart';
-import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
-import 'package:genshinfan/views/widgets/app_bar.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
@@ -17,26 +14,7 @@ class WeaponPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return SizedBox(
-      width: MediaQuery.of(context).size.width - 100,
-      child: Column(
-        children: [
-          AppBarCenter(
-            title: "weapon".tr,
-            width: double.infinity,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  dialogFilterWeapon();
-                },
-                icon: const Icon(Icons.filter_alt_rounded),
-              )
-            ],
-          ),
-          const Expanded(child: _List()),
-        ],
-      ),
-    );
+    return const _List();
   }
 }
 
@@ -46,50 +24,37 @@ class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WeaponController weaponController = Get.find<WeaponController>();
-    HomeController homeController = Get.find<HomeController>();
-    double sizeItem = Config.sizeItem3;
     return Obx(() {
-      List<Weapon> weapons = weaponController.weapons;
-      return SizedBox(
-          width: Config.widthCenter,
-          child: weapons.isEmpty
-              ? ListEmpty(title: "empty_weapon".tr)
-              : GridView.count(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  crossAxisCount: 3,
-                  childAspectRatio: sizeItem / (sizeItem * 1.215),
-                  children: List.generate(
-                    weapons.length,
-                    (index) => FadeInUp(
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeItem,
-                          height: sizeItem * 1.215,
-                          child: ItemGame(
-                            title: weapons[index].name,
-                            iconLeft: Tool.getAssetWeaponType(
-                                        weapons[index].weapontype) !=
-                                    null
-                                ? Image.asset(Tool.getAssetWeaponType(
-                                        weapons[index].weapontype) ??
-                                    "")
-                                : null,
-                            linkImage: weapons[index].images?.icon ??
-                                Config.urlImage(
-                                    weapons[index].images?.namegacha),
-                            rarity: weapons[index].rarity.toString(),
-                            star: true,
-                            onTap: () {
-                              weaponController.selectWeapon(weapons[index]);
-                              homeController.pageCenter();
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ));
+      List<Weapon> weapons = weaponController.weaponsView;
+      return weapons.isEmpty
+          ? ListEmpty(title: "empty_weapon".tr)
+          : GridView.count(
+              physics: const BouncingScrollPhysics(),
+              padding: EdgeInsets.zero,
+              crossAxisCount: Get.find<AppLayoutController>().crossAxisCount(),
+              childAspectRatio:
+                  Get.find<AppLayoutController>().childAspectRatio(),
+              children: List.generate(
+                weapons.length,
+                (index) => ItemGame(
+                  title: weapons[index].name,
+                  iconLeft:
+                      Tool.getAssetWeaponType(weapons[index].weapontype) != null
+                          ? Image.asset(Tool.getAssetWeaponType(
+                                  weapons[index].weapontype) ??
+                              "")
+                          : null,
+                  linkImage: weapons[index].images?.icon ??
+                      Config.urlImage(weapons[index].images?.namegacha),
+                  rarity: weapons[index].rarity.toString(),
+                  star: true,
+                  onTap: () {
+                    weaponController.selectWeapon(weapons[index]);
+                    Get.toNamed("/weapon_info");
+                  },
+                ),
+              ),
+            );
     });
   }
 }

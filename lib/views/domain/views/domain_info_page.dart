@@ -3,6 +3,7 @@ import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 
 import 'package:genshinfan/views/domain/widgets/domain_info.dart';
 import 'package:genshinfan/views/domain/widgets/domain_lv.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +17,8 @@ class DomainInfoPage extends StatelessWidget {
 
     return Obx(() {
       return Scaffold(
-        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
             "domain_information".tr,

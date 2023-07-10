@@ -6,6 +6,7 @@ import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/user_manager/views/user_search_bar.dart';
 import 'package:genshinfan/views/user_manager/views/widgets/image_user.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ class UserPage extends StatelessWidget {
     Get.put(UserController());
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: const BackButtonApp(),
         title: Text("user".tr),
         actions: [
           IconButton(

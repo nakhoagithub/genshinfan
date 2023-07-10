@@ -7,6 +7,7 @@ import 'package:genshinfan/views/weapon/widgets/weapon_info.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_refinement.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_stats.dart';
 import 'package:genshinfan/views/weapon/widgets/weapon_story.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,7 @@ class WeaponInfoPage extends StatelessWidget {
       return Scaffold(
         // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
             "weapon_information".tr,

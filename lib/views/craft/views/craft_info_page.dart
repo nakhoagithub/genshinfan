@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/namecard/controllers/namecard_controller.dart';
-import 'package:genshinfan/views/namecard/widgets/namecard_info.dart';
+import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
+import 'package:genshinfan/views/craft/widgets/craft_info.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
+
 import 'package:genshinfan/views/widgets/page_empty.dart';
 import 'package:get/get.dart';
 
-class NamecardScreen extends StatelessWidget {
-  const NamecardScreen({super.key});
+class CraftInfoPage extends StatelessWidget {
+  const CraftInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    NamecardController namecardController = Get.find<NamecardController>();
+    CraftController craftController = Get.find<CraftController>();
 
     return Obx(() {
       return Scaffold(
+        // backgroundColor: ThemeApp.colorCard(),
         appBar: AppBar(
-          leading: const BackButton(),
+          leading: const BackButtonApp(),
           centerTitle: true,
           title: Text(
-            "namecard_information".tr,
+            "craft_information".tr,
           ),
         ),
-        body: namecardController.namecard.value == null
-            ? PageEmpty(title: "select_namecard".tr)
+        body: craftController.craft.value == null
+            ? PageEmpty(title: "select_craft".tr)
             : Stack(
                 children: [
-                  // content
                   SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
-                    controller: namecardController.scrollController,
+                    controller: craftController.scrollController,
                     child: const Column(
                       children: [
-                        InformationNamecard(),
+                        InformationCraft(),
                         SizedBox(height: 100),
                       ],
                     ),
