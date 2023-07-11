@@ -5,6 +5,7 @@ import 'package:genshinfan/models/app/traffic.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/services/app_service.dart';
+import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/slide_layout.dart';
 import 'package:get/get.dart';
 import 'package:in_app_update/in_app_update.dart';
@@ -33,12 +34,19 @@ class HomeController extends GetxController {
   }
 
   void openGenshinMap() async {
-    if (await canLaunchUrl(Uri.parse(Config.urlGenshinMap))) {
-      await launchUrl(Uri.parse(Config.urlGenshinMap),
-          mode: LaunchMode.externalApplication);
-    } else {
-      log("Không thể mở liên kết ${Config.urlGenshinMap}", name: "Open URL");
-    }
+    dialogConfirm(
+      "genshin_map".tr,
+      "notification_open_genshin_map".tr,
+      () async {
+        if (await canLaunchUrl(Uri.parse(Config.urlGenshinMap))) {
+          await launchUrl(Uri.parse(Config.urlGenshinMap),
+              mode: LaunchMode.externalApplication);
+        } else {
+          log("Không thể mở liên kết ${Config.urlGenshinMap}",
+              name: "Open URL");
+        }
+      },
+    );
   }
 
   Future<void> getTraffic() async {

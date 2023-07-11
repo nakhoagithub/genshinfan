@@ -35,7 +35,7 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150,
+            height: 120,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/namecard/controllers/namecard_controller.dart';
 import 'package:genshinfan/models/game/namecard.dart';
 import 'package:genshinfan/views/namecard/widgets/item_namecard.dart';

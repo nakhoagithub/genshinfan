@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/drawer.dart';
 import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
@@ -109,24 +110,26 @@ class AppLayoutController extends GetxController {
 }
 
 class AppLayout extends StatelessWidget {
-  final VoidCallback onTapMenu;
   final List<ItemLayout> items;
   const AppLayout({
     super.key,
-    required this.onTapMenu,
     required this.items,
   });
 
   @override
   Widget build(BuildContext context) {
     AppLayoutController appLayoutController = Get.put(AppLayoutController());
+    GlobalKey<ScaffoldState> key = GlobalKey();
     return OrientationBuilder(
       builder: (context, orientation) {
         appLayoutController.widthCenter.value = Get.width - 60;
         return Scaffold(
+          key: key,
           appBar: AppBar(
             leading: IconButton(
-              onPressed: onTapMenu,
+              onPressed: () {
+                key.currentState?.openDrawer();
+              },
               icon: const Icon(Icons.menu_rounded),
             ),
             title: Obx(() {
@@ -165,6 +168,7 @@ class AppLayout extends StatelessWidget {
               _Content(items: items),
             ],
           ),
+          drawer: const DrawerApp(),
         );
       },
     );

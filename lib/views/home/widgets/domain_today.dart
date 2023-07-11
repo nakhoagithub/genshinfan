@@ -17,14 +17,13 @@ class ListDomainToday extends StatelessWidget {
         DomainService().getDomainToday("day${homeController.today}".tr) ?? [];
     return Container(
       margin: const EdgeInsets.all(4),
-      height: (132 * 1.215) + 20,
+      height: 160,
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: domains.length,
         itemBuilder: (context, index) {
           return ItemDomain(
-            width: 110,
             domain: domains[index],
             onTap: () {
               Get.find<DomainController>().selectDomain(domains[index]);

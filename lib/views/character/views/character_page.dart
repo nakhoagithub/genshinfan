@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
@@ -50,7 +48,6 @@ class _List extends StatelessWidget {
                       rarity: characters[index].rarity.toString(),
                       onTap: () {
                         characterController.selectCharacter(characters[index]);
-                        log("${characters[index].toJson()}");
                         Get.toNamed("/character_info");
                       });
                 },

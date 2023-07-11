@@ -205,6 +205,7 @@ const Map<String, String> vi = {
   "empty_food": "Không có Vũ khí",
   "ingredient": "Nguyên liệu",
   "menu": "Menu",
+  "tool": "Công cụ",
 
   "note_home":
       "Đây là phiên bản Beta, một phiên bản thử nghiệm của Genshin Fan trước khi được phát hành chính thức. Trong phiên bản này, các tính năng mới được thêm vào và các lỗi được sửa chữa, tuy nhiên, sản phẩm vẫn chưa hoàn chỉnh và có thể gặp phải những lỗi và sự cố nhỏ.\nSự đóng góp của các bạn trong việc dịch ngôn ngữ trong phiên bản Beta rất quan trọng để giúp cải thiện chất lượng sản phẩm. Các bạn có thể giúp đỡ bằng cách cung cấp phản hồi về các thuật ngữ và cấu trúc ngôn ngữ trong sản phẩm. Điều này giúp cho sản phẩm trở nên dễ sử dụng hơn đối với người dùng và cũng giúp cho các người dùng ở các quốc gia và vùng lãnh thổ khác nhau có thể sử dụng sản phẩm một cách dễ dàng hơn. Bên cạnh các đóng góp về ngôn ngữ ứng dụng, tôi cũng rất mong muốn sự đóng góp của các bạn về cách xây dựng nhân vật. Bạn có thể vào <b>Cài đặt</b> để đóng góp.\nTôi rất mong muốn nhận được sự đóng góp của các bạn để cải thiện sản phẩm và đảm bảo rằng nó sẽ được sử dụng một cách hiệu quả nhất. Tôi sẽ tiếp tục cập nhật phiên bản Beta và lắng nghe các ý kiến ​​phản hồi từ các bạn để đảm bảo rằng sản phẩm cuối cùng sẽ đáp ứng tốt nhất nhu cầu của các bạn.",

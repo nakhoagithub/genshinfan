@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/home/widgets/home_today.dart';
+import 'package:genshinfan/views/home/widgets/character_birthday_in_month.dart';
+import 'package:genshinfan/views/home/widgets/character_up_today.dart';
+import 'package:genshinfan/views/home/widgets/domain_today.dart';
+import 'package:genshinfan/views/home/widgets/today.dart';
+import 'package:genshinfan/views/home/widgets/tool.dart';
+import 'package:genshinfan/views/home/widgets/weapon_up_today.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,9 +22,12 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // hôm nay
             HomeToday(),
-            // HomeNotification(),
+            ListDomainToday(),
+            HomeTool(),
+            ListCharacterBirthdayInMonth(),
+            ListCharacterUpToday(),
+            ListWeaponUpToday(),
             SizedBox(height: 50),
           ],
         ),

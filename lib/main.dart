@@ -142,7 +142,7 @@ class App extends GetView<AppController> {
             ),
             GetPage(
               name: '/setting',
-              page: () => const SettingPage(),
+              page: () => const MenuPage(),
               transition: Transition.leftToRight,
             ),
             GetPage(

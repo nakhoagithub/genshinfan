@@ -160,9 +160,6 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       body: AppLayout(
-        onTapMenu: () {
-          Get.toNamed("/setting");
-        },
         items: items,
       ),
       // body: SlideLayout(

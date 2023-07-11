@@ -16,8 +16,8 @@ import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/title_of_menu.dart';
 import 'package:get/get.dart';
 
-class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+class MenuPage extends StatelessWidget {
+  const MenuPage({super.key});
 
   @override
   Widget build(BuildContext context) {

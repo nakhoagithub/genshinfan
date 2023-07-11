@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
 import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
 import 'package:genshinfan/models/game/geography.dart';
 import 'package:genshinfan/views/geography/widgets/item_geography.dart';
