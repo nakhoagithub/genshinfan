@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';

@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/views/achievement/views/achievement_info_page.dart';
 import 'package:genshinfan/views/admin/views/admin_page.dart';
 import 'package:genshinfan/views/animal/views/animal_info_page.dart';

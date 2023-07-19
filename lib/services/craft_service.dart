@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/game/craft.dart';
 import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';

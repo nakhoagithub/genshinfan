@@ -10,7 +10,8 @@ class HomeTool extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(4),
-      child: Wrap(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "tool".tr,
@@ -20,9 +21,11 @@ class HomeTool extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Row(
+          Wrap(
+            spacing: 8,
             children: [
-              ElevatedButton.icon(
+              // genshin map
+              OutlinedButton.icon(
                 icon: Image.asset(
                   "assets/images/UI_HomeWorldTabIcon_2_Teleport.png",
                   color: Get.theme.colorScheme.onSurface,
@@ -33,6 +36,29 @@ class HomeTool extends StatelessWidget {
                   Get.find<HomeController>().openGenshinMap();
                 },
                 label: Text("genshin_map".tr),
+              ),
+              // character building
+              OutlinedButton.icon(
+                icon: Image.asset(
+                  "assets/images/UI_BtnIcon_Wiki.png",
+                  color: Get.theme.colorScheme.onSurface,
+                  height: 30,
+                  width: 30,
+                ),
+                onPressed: () {},
+                label: Text("character_building".tr),
+              ),
+
+              // team building
+              OutlinedButton.icon(
+                icon: Image.asset(
+                  "assets/images/UI_BtnIcon_Team.png",
+                  color: Get.theme.colorScheme.onSurface,
+                  height: 30,
+                  width: 30,
+                ),
+                onPressed: () {},
+                label: Text("team_building".tr),
               ),
             ],
           ),

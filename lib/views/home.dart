@@ -13,7 +13,7 @@ import 'package:genshinfan/views/namecard/views/namecard_page.dart';
 import 'package:genshinfan/views/outfit/views/outfit_page.dart';
 import 'package:genshinfan/views/resource/views/resource_page.dart';
 import 'package:genshinfan/views/weapon/views/weapon_page.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/windglider/views/windglider_page.dart';
 import 'package:get/get.dart';
 import 'character/views/character_page.dart';

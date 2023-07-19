@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/game/outfit.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

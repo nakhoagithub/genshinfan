@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/drawer.dart';
+import 'package:genshinfan/views/drawer.dart';
 import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
@@ -183,6 +183,7 @@ class _Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("build lại menu");
     AppLayoutController appLayoutController = Get.find<AppLayoutController>();
     return SizedBox(
       width: appLayoutController.menuSize,

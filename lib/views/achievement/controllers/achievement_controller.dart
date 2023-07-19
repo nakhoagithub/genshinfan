@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/models/game/namecard.dart';
 import 'package:get/get.dart';

@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/api_github.dart';
 import 'package:genshinfan/models/app/package_app.dart';
 import 'package:genshinfan/models/app/traffic.dart';

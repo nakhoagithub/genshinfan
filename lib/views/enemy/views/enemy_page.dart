@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 import 'package:genshinfan/models/game/enemy.dart';
 import 'package:genshinfan/utils/config.dart';

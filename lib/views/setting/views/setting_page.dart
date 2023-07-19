@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/package_app.dart';
 import 'package:genshinfan/utils/localization.dart';
 import 'package:genshinfan/services/app_service.dart';

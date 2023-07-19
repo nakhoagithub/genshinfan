@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/utils/tools.dart';

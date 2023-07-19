@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';

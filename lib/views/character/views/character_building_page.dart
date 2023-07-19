@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/character/controllers/character_building_controller.dart';

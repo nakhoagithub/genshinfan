@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/outfit.dart';

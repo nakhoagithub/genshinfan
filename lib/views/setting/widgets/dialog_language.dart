@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/utils/localization.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';

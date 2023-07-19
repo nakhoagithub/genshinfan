@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';

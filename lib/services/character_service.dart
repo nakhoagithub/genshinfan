@@ -5,7 +5,7 @@ import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/app_controller.dart';
+import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';

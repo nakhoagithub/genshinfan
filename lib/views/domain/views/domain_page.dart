@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/views/domain/widgets/item_domain.dart';

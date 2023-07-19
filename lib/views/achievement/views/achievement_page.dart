@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/app_layout.dart';
+import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
 import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/utils/config.dart';
