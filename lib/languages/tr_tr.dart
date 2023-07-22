@@ -204,9 +204,6 @@ const Map<String, String> tr = {
   "data_failure_wait_for_new_update":
       "Mevcut veriler bozuk, lütfen yeni güncellemeyi bekleyin!",
 
-  "note_home":
-      "Bu bir Beta sürümüdür, Genshin Fan'ın resmi olarak yayınlanmadan önceki bir test sürümüdür. Bu sürümde yeni özellikler eklenmiş ve hatalar giderilmiştir, ancak ürün hala eksiktir ve küçük hatalar ve sorunlarla karşılaşabilir.\nBeta sürümde dil çevirisine katkınız, ürünün kalitesini artırmaya yardımcı olmak için çok önemlidir. Üründeki terimler ve dil yapıları hakkında geri bildirim sağlayarak yardımcı olabilirsiniz. Bu, ürünün kullanıcılar için kullanımını kolaylaştırdığı gibi, farklı ülke ve bölgelerdeki kullanıcıların da ürünü kullanmasını kolaylaştırır. Uygulama dilinin katkısının yanı sıra karakterin nasıl inşa edileceği konusunda da katkılarınızı bekliyorum. Katkıda bulunmak için <b>Ayarlar</b>'a gidebilirsiniz.\nÜrünü geliştirmek ve tam potansiyeline sahip olduğundan emin olmak için görüşlerinizi almak için sabırsızlanıyorum. Nihai ürünün ihtiyaçlarınızı en iyi şekilde karşılamasını sağlamak için Beta sürümünü güncellemeye ve geri bildirimlerinizi dinlemeye devam edeceğim.",
-
   // date
   "day1": "Pazartesi",
   "day2": "Salı",

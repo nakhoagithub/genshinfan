@@ -206,9 +206,6 @@ const Map<String, String> de = {
   "data_failure_wait_for_new_update":
       "Die aktuellen Daten sind beschädigt, bitte warten Sie auf das neue Update!",
 
-  "note_home":
-      "Dies ist eine Beta-Version, eine Testversion von Genshin Fan, bevor sie offiziell veröffentlicht wird. In dieser Version werden neue Funktionen hinzugefügt und Fehler behoben, das Produkt ist jedoch noch unvollständig und kann kleinere Fehler und Probleme aufweisen.\nIhr Beitrag zur Sprachübersetzung in der Beta-Version ist sehr wichtig, um zur Verbesserung der Qualität des Produkts beizutragen. Sie können helfen, indem Sie Feedback zu Begriffen und Sprachstrukturen im Produkt geben. Dies erleichtert die Verwendung des Produkts für Benutzer und erleichtert auch Benutzern in verschiedenen Ländern und Regionen die Verwendung des Produkts. Neben dem Beitrag zur Bewerbungssprache freue ich mich auch auf Ihren Beitrag zum Charakteraufbau. Sie können zu den <b>Einstellungen</b> gehen, um einen Beitrag zu leisten.\nIch freue mich auf Ihren Beitrag, um das Produkt zu verbessern und sicherzustellen, dass es sein volles Potenzial ausschöpft. Ich werde die Beta-Version weiterhin aktualisieren und auf Ihr Feedback hören, um sicherzustellen, dass das Endprodukt Ihren Anforderungen am besten entspricht.",
-
   // date
   "day1": "Montag",
   "day2": "Dienstag",

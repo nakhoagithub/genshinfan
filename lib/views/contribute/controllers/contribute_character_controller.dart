@@ -95,7 +95,10 @@ class ContributeCharacterController extends GetxController {
   }
 
   Future<void> contribute() async {
-    String? character = this.character.value?.key;
+    String? characterName = character.value?.key;
+    if (character.value?.association == "MAINACTOR") {
+      characterName = "main";
+    }
 
     String? weapon = this.weapon.value?.key;
     String? a1 = this.a1.value?.key;
@@ -108,10 +111,10 @@ class ContributeCharacterController extends GetxController {
     String author = this.author.value;
 
     if ((author.length >= 3 && author.length <= 30) &&
-        (character != null && weapon != null && a1 != null) &&
+        (characterName != null && weapon != null && a1 != null) &&
         (type.value == 1 || (type.value == 0 && a2 != null))) {
       CharacterBuilding characterBuilding = CharacterBuilding(
-        characterName: character,
+        characterName: characterName,
         element: elementOfTraveler.value,
         weapon: weapon,
         typeSet: type.value,

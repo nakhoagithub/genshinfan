@@ -173,6 +173,11 @@ class CharacterService {
 
   Character? getCharacterFromId(String key) {
     List<Character> characters = Get.find<AppController>().characters;
+    if (key == "main") {
+      return characters
+          .firstWhereOrNull((element) => element.association == "MAINACTOR");
+    }
+
     return characters.firstWhereOrNull((element) {
       return element.key == key;
     });
@@ -207,7 +212,7 @@ class CharacterService {
 
   /// Version 1.5
   Future<List<CharacterBuilding>> getCharacterBuilding(String key) async {
-    DatabaseReference db = FirebaseDatabase.instance.ref("characters_build");
+    DatabaseReference db = FirebaseDatabase.instance.ref("characters_building");
 
     List<CharacterBuilding> characters = [];
     try {

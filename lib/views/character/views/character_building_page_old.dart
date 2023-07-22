@@ -1,7 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/contribute/controllers/management_contribute_character_controller.dart';
-import 'package:genshinfan/models/app/character_building.dart';
+import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/models/app/character_building_old.dart';
+import 'package:genshinfan/utils/role.dart';
+import 'package:genshinfan/views/character/controllers/character_building_controller.dart';
+import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/weapon.dart';
@@ -18,16 +21,29 @@ import 'package:genshinfan/views/widgets/text_css.dart';
 import 'package:genshinfan/views/widgets/wait.dart';
 import 'package:get/get.dart';
 
-class ManageUserCharacterContribution extends StatelessWidget {
-  const ManageUserCharacterContribution({super.key});
+class CharacterBuildingOldPage extends StatelessWidget {
+  const CharacterBuildingOldPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ManagementContributeCharacterController());
+    Get.put(CharacterBuildingController());
     return Scaffold(
       appBar: AppBar(
         leading: const BackButtonApp(),
-        title: Text("manager".tr),
+        centerTitle: true,
+        title: Text(
+          "character_building".tr,
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size(Get.width, 20),
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 10),
+            child: Text(
+              "contribute_note".tr,
+              style: ThemeApp.textStyle(color: Colors.orange),
+            ),
+          ),
+        ),
       ),
       body: const _Body(),
     );
@@ -39,27 +55,26 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ManagementContributeCharacterController
-        managementContributeCharacterController =
-        Get.find<ManagementContributeCharacterController>();
+    CharacterBuildingController characterBuildingController =
+        Get.find<CharacterBuildingController>();
     return Obx(() {
-      int status = managementContributeCharacterController.status.value;
-      List<CharacterBuilding> contributions =
-          managementContributeCharacterController.contributeCharacters;
+      int status = characterBuildingController.status.value;
+      List<CharacterBuildingOld> characters =
+          characterBuildingController.characters;
       return status == 1
           ? const WaitAMinute()
-          : contributions.isEmpty
+          : characters.isEmpty
               ? Center(
                   child: Text("contribute_manage_empty".tr),
                 )
               : ListView.builder(
-                  physics: const BouncingScrollPhysics(),
+                  // physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: contributions.length,
+                  itemCount: characters.length,
                   itemBuilder: (context, index) {
                     return FadeInUp(
                       child: _Item(
-                        characterBuilding: contributions[index],
+                        characterBuilding: characters[index],
                         index: index,
                       ),
                     );
@@ -70,7 +85,7 @@ class _Body extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  final CharacterBuilding characterBuilding;
+  final CharacterBuildingOld characterBuilding;
   final int index;
   const _Item({
     required this.characterBuilding,
@@ -79,6 +94,8 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserApp? user = Get.find<AppController>().userApp.value;
+    String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
     Weapon? weapon = WeaponService().getWeaponFromId(characterBuilding.weapon);
@@ -97,7 +114,6 @@ class _Item extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   character == null
                       ? const SizedBox()
@@ -111,8 +127,8 @@ class _Item extends StatelessWidget {
                                   : null,
                           linkImage: character.images?.icon,
                           rarity: character.rarity.toString(),
-                          onTap: () {},
-                        ),
+                          onTap: () {}),
+                  // : ItemCharacter(character: character, onTap: () {}),
                   const SizedBox(width: 10),
                   weapon == null
                       ? const SizedBox()
@@ -166,39 +182,52 @@ class _Item extends StatelessWidget {
                         style: ThemeApp.textStyle(),
                       ),
                       Image.asset(
-                        Tool.getAssetElementFromName(characterBuilding.element),
-                        height: 30,
-                        width: 30,
-                      ),
+                          Tool.getAssetElementFromName(
+                              characterBuilding.element),
+                          height: 30,
+                          width: 30),
                     ],
                   ),
+
+            /// version 1.4.3
             TextCSS(
-              "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
+              "${"sands_effect".tr}: <b>${characterBuilding.sands.tr}</b>",
               style: ThemeApp.textStyle(),
             ),
             TextCSS(
-              "${"goblet_effect".tr}: <b>${Tool.listToString(characterBuilding.goblets)}</b>",
+              "${"goblet_effect".tr}: <b>${characterBuilding.goblet.tr}</b>",
               style: ThemeApp.textStyle(),
             ),
             TextCSS(
-              "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
+              "${"circlet_effect".tr}: <b>${characterBuilding.circlet.tr}</b>",
               style: ThemeApp.textStyle(),
             ),
+
+            /// version 1.5
+            // TextCSS(
+            //   "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
+            //   style: ThemeApp.textStyle(),
+            // ),
+            // TextCSS(
+            //   "${"goblet_effect".tr}: <b>${Tool.listToString(characterBuilding.goblets)}</b>",
+            //   style: ThemeApp.textStyle(),
+            // ),
+            // TextCSS(
+            //   "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
+            //   style: ThemeApp.textStyle(),
+            // ),
             const SizedBox(height: 20),
             TextCSS(
               "${"author".tr}: <b>${characterBuilding.author}</b>",
               style: ThemeApp.textStyle(),
             ),
-            Container(
-              height: 1,
-              width: double.infinity,
-              margin: const EdgeInsets.only(top: 10),
-              // color: ThemeApp.colorTextSecond(),
-            ),
-            _Browse(
-              characterBuilding: characterBuilding,
-              index: index,
-            ),
+
+            Role.isRoleAdmin() || uidCurrentUser == characterBuilding.uidAuthor
+                ? _Browse(
+                    characterBuilding: characterBuilding,
+                    index: index,
+                  )
+                : const SizedBox()
           ],
         ),
       ),
@@ -207,7 +236,7 @@ class _Item extends StatelessWidget {
 }
 
 class _Browse extends StatelessWidget {
-  final CharacterBuilding characterBuilding;
+  final CharacterBuildingOld characterBuilding;
   final int index;
   const _Browse({
     required this.characterBuilding,
@@ -216,58 +245,27 @@ class _Browse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ManagementContributeCharacterController
-        managementContributeCharacterController =
-        Get.find<ManagementContributeCharacterController>();
+    CharacterBuildingController characterBuildingController =
+        Get.find<CharacterBuildingController>();
     return Material(
       color: Colors.transparent,
       child: Container(
         margin: const EdgeInsets.only(top: 10),
-        child: Row(
-          children: [
-            Expanded(
-              child: InkWell(
-                onTap: () async {
-                  await dialogConfirm("delete".tr, "delete_contribute".tr,
-                      () async {
-                    await managementContributeCharacterController
-                        .deleteContribution(characterBuilding, index);
-                  });
-                },
-                borderRadius: BorderRadius.circular(50),
-                child: Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 8, bottom: 8),
-                    child: Text("delete".tr),
-                  ),
-                ),
-              ),
+        child: InkWell(
+          onTap: () async {
+            await dialogConfirm("delete".tr, "delete_contribute_to_database".tr,
+                () async {
+              await characterBuildingController.deleteContributionForManagerOld(
+                  characterBuilding, index);
+            });
+          },
+          borderRadius: BorderRadius.circular(50),
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
+              child: Text("delete".tr),
             ),
-            Container(
-              width: 1,
-              height: 16,
-              margin: const EdgeInsets.only(left: 10, right: 10),
-              // color: ThemeApp.colorText(),
-            ),
-            Expanded(
-              child: InkWell(
-                onTap: () async {
-                  await dialogConfirm(
-                      "confirm".tr, "add_contribute_to_database".tr, () async {
-                    await managementContributeCharacterController
-                        .addContribution(characterBuilding, index);
-                  });
-                },
-                borderRadius: BorderRadius.circular(50),
-                child: Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 8, bottom: 8),
-                    child: Text("ok".tr),
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -48,16 +48,16 @@ class Localization extends Translations {
     if (locale == const Locale('zh', 'CN')) return chineseSimplified;
     if (locale == const Locale('zh', 'TW')) return chineseTraditional;
     if (locale == const Locale('fr', 'FR')) return french;
-    if (locale == const Locale('tr', 'TR')) return turkish; 
-    if (locale == const Locale('de', 'DE')) return german; 
-    if (locale == const Locale('es', 'ES')) return spanish; 
-    if (locale == const Locale('id', 'ID')) return indonesian; 
-    if (locale == const Locale('it', 'IT')) return italian; 
-    if (locale == const Locale('ja', 'JP')) return japanese; 
-    if (locale == const Locale("ko", 'KR')) return korean; 
+    if (locale == const Locale('tr', 'TR')) return turkish;
+    if (locale == const Locale('de', 'DE')) return german;
+    if (locale == const Locale('es', 'ES')) return spanish;
+    if (locale == const Locale('id', 'ID')) return indonesian;
+    if (locale == const Locale('it', 'IT')) return italian;
+    if (locale == const Locale('ja', 'JP')) return japanese;
+    if (locale == const Locale("ko", 'KR')) return korean;
     if (locale == const Locale("pt", 'BR')) return portuguese;
-    if (locale == const Locale("ru", 'RU')) return russian; 
-    if (locale == const Locale("th", 'TH')) return thai; 
+    if (locale == const Locale("ru", 'RU')) return russian;
+    if (locale == const Locale("th", 'TH')) return thai;
     return english;
   }
 

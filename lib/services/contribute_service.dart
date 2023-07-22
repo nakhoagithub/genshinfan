@@ -61,7 +61,7 @@ class ContributeCharacterService {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     try {
       await db.update({
-        "characters_build/${characterBuilding.characterName}/${db.push().key}":
+        "characters_building/${characterBuilding.characterName}/${db.push().key}":
             characterBuilding.toJson(),
         "contributions_management/${characterBuilding.key}": null,
       }).timeout(const Duration(seconds: Config.seccondTimeout));
@@ -87,13 +87,33 @@ class ContributeCharacterService {
       if (e is TimeoutException) {
         Fluttertoast.showToast(msg: "timeout_exception".tr);
       }
-      log("$e", name: "addContribute");
+      log("$e", name: "deleteContribute");
+      return false;
+    }
+  }
+
+  /// version 1.5
+  /// xóa bài đóng góp của người dùng từ màn hình xem đóng góp, chỉ dành cho admin
+  Future<bool> deleteContributeForManager(
+      CharacterBuilding characterBuilding) async {
+    DatabaseReference db = FirebaseDatabase.instance.ref();
+    try {
+      await db.update({
+        "contributions_management/${characterBuilding.characterName}/${characterBuilding.key}":
+            null
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
+      return true;
+    } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
+      log("$e", name: "deleteContributeForManager");
       return false;
     }
   }
 
   /// xóa bài đóng góp của người dùng từ màn hình xem đóng góp, chỉ dành cho admin
-  Future<bool> deleteContributeForManager(
+  Future<bool> deleteContributeForManagerOld(
       CharacterBuildingOld characterBuilding) async {
     DatabaseReference db = FirebaseDatabase.instance.ref();
     try {
@@ -106,7 +126,7 @@ class ContributeCharacterService {
       if (e is TimeoutException) {
         Fluttertoast.showToast(msg: "timeout_exception".tr);
       }
-      log("$e", name: "addContribute");
+      log("$e", name: "deleteContributeForManagerOld");
       return false;
     }
   }

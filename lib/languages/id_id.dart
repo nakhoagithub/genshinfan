@@ -200,9 +200,6 @@ const Map<String, String> id = {
   "data_failure_wait_for_new_update":
       "Data saat ini rusak, harap tunggu pembaruan baru!",
 
-  "note_home":
-      "Ini adalah versi Beta, versi uji coba Genshin Fan sebelum dirilis secara resmi. Dalam versi ini, fitur baru ditambahkan dan bug diperbaiki, namun produk masih belum lengkap dan mungkin mengalami bug dan masalah kecil.\nKontribusi Anda dalam terjemahan bahasa dalam versi Beta sangat penting untuk membantu meningkatkan kualitas produk. Anda dapat membantu dengan memberikan umpan balik tentang istilah dan struktur bahasa dalam produk. Ini membuat produk lebih mudah digunakan oleh pengguna dan juga memudahkan pengguna di berbagai negara dan wilayah untuk menggunakan produk. Selain kontribusi bahasa aplikasi, saya juga mengharapkan kontribusi Anda tentang bagaimana membangun karakter. Anda dapat membuka <b>Setelan</b> untuk berkontribusi. \nSaya berharap dapat menerima masukan Anda untuk meningkatkan produk dan memastikannya digunakan secara maksimal. Saya akan terus memperbarui versi Beta dan mendengarkan umpan balik Anda untuk memastikan bahwa produk akhir akan memenuhi kebutuhan Anda dengan sebaik-baiknya.",
-
   // date
   "day1": "Senin",
   "day2": "Selasa",

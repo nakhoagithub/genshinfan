@@ -37,17 +37,6 @@ class HomeTool extends StatelessWidget {
                 },
                 label: Text("genshin_map".tr),
               ),
-              // character building
-              OutlinedButton.icon(
-                icon: Image.asset(
-                  "assets/images/UI_BtnIcon_Wiki.png",
-                  color: Get.theme.colorScheme.onSurface,
-                  height: 30,
-                  width: 30,
-                ),
-                onPressed: () {},
-                label: Text("character_building".tr),
-              ),
 
               // team building
               OutlinedButton.icon(

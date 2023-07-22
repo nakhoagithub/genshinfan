@@ -199,10 +199,7 @@ const Map<String, String> pt = {
   "delete_data_and_redownload": "Excluir dados e recarregar",
   "data_failure_wait_for_new_update":
       "Os dados atuais estão corrompidos, aguarde a nova atualização!",
-
-  "note_home":
-      "Esta é uma versão Beta, uma versão de teste do Genshin Fan antes de ser lançada oficialmente. Nesta versão, novos recursos foram adicionados e bugs corrigidos, porém, o produto ainda está incompleto e pode apresentar pequenos bugs e problemas.\nSua contribuição na tradução do idioma na versão Beta é muito importante para ajudar a melhorar a qualidade do produto. Você pode ajudar fornecendo feedback sobre termos e estruturas de linguagem no produto. Isso torna o produto mais fácil de usar para os usuários e também facilita o uso do produto por usuários em diferentes países e regiões. Além da contribuição do idioma do aplicativo, também aguardo sua contribuição sobre como construir o personagem. Você pode ir para <b>Configurações</b> para contribuir.\nEstou ansioso para receber sua opinião para melhorar o produto e garantir que ele seja usado em todo o seu potencial. Continuarei atualizando a versão Beta e ouvirei seus comentários para garantir que o produto final atenda melhor às suas necessidades.",
-
+      
   // date
   "day1": "Segunda-feira",
   "day2": "Terça-feira",

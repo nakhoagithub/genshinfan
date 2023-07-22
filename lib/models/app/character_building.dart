@@ -41,10 +41,10 @@ class CharacterBuilding {
           : List<String>.from(json["sands"].map((x) => x)),
       goblets: json['goblets'] == null
           ? []
-          : List<String>.from(json["sands"].map((x) => x)),
+          : List<String>.from(json["goblets"].map((x) => x)),
       circlets: json['circlets'] == null
           ? []
-          : List<String>.from(json["sands"].map((x) => x)),
+          : List<String>.from(json["circlets"].map((x) => x)),
       author: json['author'],
       uidAuthor: json['uid_author'],
     );

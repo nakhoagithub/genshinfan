@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/views/app_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/utils/role.dart';
@@ -49,8 +50,8 @@ class _Body extends StatelessWidget {
         Get.find<CharacterBuildingController>();
     return Obx(() {
       int status = characterBuildingController.status.value;
-      List<CharacterBuildingOld> characters =
-          characterBuildingController.characters;
+      List<CharacterBuilding> characters =
+          characterBuildingController.charactersBuilding;
       return status == 1
           ? const WaitAMinute()
           : characters.isEmpty
@@ -58,7 +59,6 @@ class _Body extends StatelessWidget {
                   child: Text("contribute_manage_empty".tr),
                 )
               : ListView.builder(
-                  // physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: characters.length,
                   itemBuilder: (context, index) {
@@ -75,7 +75,7 @@ class _Body extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  final CharacterBuildingOld characterBuilding;
+  final CharacterBuilding characterBuilding;
   final int index;
   const _Item({
     required this.characterBuilding,
@@ -179,33 +179,19 @@ class _Item extends StatelessWidget {
                     ],
                   ),
 
-            /// version 1.4.3
-            TextCSS(
-              "${"sands_effect".tr}: <b>${characterBuilding.sands.tr}</b>",
-              style: ThemeApp.textStyle(),
-            ),
-            TextCSS(
-              "${"goblet_effect".tr}: <b>${characterBuilding.goblet.tr}</b>",
-              style: ThemeApp.textStyle(),
-            ),
-            TextCSS(
-              "${"circlet_effect".tr}: <b>${characterBuilding.circlet.tr}</b>",
-              style: ThemeApp.textStyle(),
-            ),
-
             /// version 1.5
-            // TextCSS(
-            //   "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
-            //   style: ThemeApp.textStyle(),
-            // ),
-            // TextCSS(
-            //   "${"goblet_effect".tr}: <b>${Tool.listToString(characterBuilding.goblets)}</b>",
-            //   style: ThemeApp.textStyle(),
-            // ),
-            // TextCSS(
-            //   "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
-            //   style: ThemeApp.textStyle(),
-            // ),
+            TextCSS(
+              "${"sands_effect".tr}: <b>${Tool.listToString(characterBuilding.sands)}</b>",
+              style: ThemeApp.textStyle(),
+            ),
+            TextCSS(
+              "${"goblet_effect".tr}: <b>${Tool.listToString(characterBuilding.goblets)}</b>",
+              style: ThemeApp.textStyle(),
+            ),
+            TextCSS(
+              "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
+              style: ThemeApp.textStyle(),
+            ),
             const SizedBox(height: 20),
             TextCSS(
               "${"author".tr}: <b>${characterBuilding.author}</b>",
@@ -226,7 +212,7 @@ class _Item extends StatelessWidget {
 }
 
 class _Browse extends StatelessWidget {
-  final CharacterBuildingOld characterBuilding;
+  final CharacterBuilding characterBuilding;
   final int index;
   const _Browse({
     required this.characterBuilding,
