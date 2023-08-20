@@ -78,22 +78,32 @@ class Weapon {
 
   factory Weapon.fromJson(Map<String, dynamic> json) => Weapon(
         key: json['key'],
-        name: json["name"],
-        description: json["description"],
-        weapontype: json["weapontype"],
-        rarity: json["rarity"],
-        story: json['story'],
+        name: json["name"] ?? "",
+        description: json["description"] ?? "",
+        weapontype: json["weapontype"] ?? "",
+        rarity: json["rarity"] ?? "",
+        story: json['story'] ?? "",
         baseatk: json["baseatk"],
-        substat: json["substat"],
-        subvalue: json["subvalue"],
-        effectname: json["effectname"],
-        effect: json["effect"],
-        r1: List<String>.from(json["r1"].map((x) => x)),
-        r2: List<String>.from(json["r2"].map((x) => x)),
-        r3: List<String>.from(json["r3"].map((x) => x)),
-        r4: List<String>.from(json["r4"].map((x) => x)),
-        r5: List<String>.from(json["r5"].map((x) => x)),
-        weaponmaterialtype: json["weaponmaterialtype"],
+        substat: json["substat"] ?? "",
+        subvalue: json["subvalue"] ?? "",
+        effectname: json["effectname"] ?? "",
+        effect: json["effect"] ?? "",
+        r1: json["r1"] == null
+            ? []
+            : List<String>.from(json["r1"].map((x) => x)),
+        r2: json["r2"] == null
+            ? []
+            : List<String>.from(json["r2"].map((x) => x)),
+        r3: json["r3"] == null
+            ? []
+            : List<String>.from(json["r3"].map((x) => x)),
+        r4: json["r4"] == null
+            ? []
+            : List<String>.from(json["r4"].map((x) => x)),
+        r5: json["r5"] == null
+            ? []
+            : List<String>.from(json["r5"].map((x) => x)),
+        weaponmaterialtype: json["weaponmaterialtype"] ?? "",
         costs: json["costs"] == null ? null : Costs.fromJson(json["costs"]),
         images: json["images"] == null
             ? null
@@ -183,25 +193,6 @@ class Weapon {
   }
 }
 
-// class WeaponRefine {
-//   final String description;
-//   final List<String> values;
-//   const WeaponRefine({
-//     required this.description,
-//     required this.values,
-//   });
-
-//   factory WeaponRefine.fromJson(Map<String, dynamic> json) => WeaponRefine(
-//         description: json["description"],
-//         values: List<String>.from(json["values"].map((x) => x)),
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "description": description,
-//         "values": List<dynamic>.from(values.map((x) => x)),
-//       };
-// }
-
 class Costs {
   Costs({
     required this.ascend1,
@@ -220,14 +211,18 @@ class Costs {
   List<Items>? ascend6;
 
   factory Costs.fromJson(Map<String, dynamic> json) => Costs(
-        ascend1:
-            List<Items>.from(json["ascend1"].map((x) => Items.fromJson(x))),
-        ascend2:
-            List<Items>.from(json["ascend2"].map((x) => Items.fromJson(x))),
-        ascend3:
-            List<Items>.from(json["ascend3"].map((x) => Items.fromJson(x))),
-        ascend4:
-            List<Items>.from(json["ascend4"].map((x) => Items.fromJson(x))),
+        ascend1: json["ascend1"] == null
+            ? []
+            : List<Items>.from(json["ascend1"].map((x) => Items.fromJson(x))),
+        ascend2: json["ascend2"] == null
+            ? []
+            : List<Items>.from(json["ascend2"].map((x) => Items.fromJson(x))),
+        ascend3: json["ascend3"] == null
+            ? []
+            : List<Items>.from(json["ascend3"].map((x) => Items.fromJson(x))),
+        ascend4: json["ascend4"] == null
+            ? []
+            : List<Items>.from(json["ascend4"].map((x) => Items.fromJson(x))),
         ascend5: json["ascend5"] == null
             ? null
             : List<Items>.from(json["ascend5"].map((x) => Items.fromJson(x))),
@@ -252,11 +247,11 @@ class Costs {
 
 class ImageWeapon {
   final String nameicon;
- final  String namegacha;
- final  String nameawakenicon;
- final  String? image;
- final  String? icon;
- final  String? awakenicon;
+  final String namegacha;
+  final String nameawakenicon;
+  final String? image;
+  final String? icon;
+  final String? awakenicon;
 
   ImageWeapon({
     required this.nameicon,
@@ -268,9 +263,9 @@ class ImageWeapon {
   });
 
   factory ImageWeapon.fromJson(Map<String, dynamic> json) => ImageWeapon(
-         nameicon: json["nameicon"],
-        namegacha: json["namegacha"],
-        nameawakenicon: json["nameawakenicon"],
+        nameicon: json["nameicon"] ?? "",
+        namegacha: json["namegacha"] ?? "",
+        nameawakenicon: json["nameawakenicon"] ?? "",
         image: json["image"],
         icon: json["icon"],
         awakenicon: json["awakenicon"],
@@ -302,11 +297,11 @@ class Stat {
   double specialized;
 
   factory Stat.fromJson(Map<String, dynamic> json) => Stat(
-        level: json["level"],
-        ascension: json["ascension"],
-        bonus: json["bonus"],
-        attack: json["attack"].toDouble(),
-        specialized: json["specialized"].toDouble(),
+        level: json["level"] ?? 0,
+        ascension: json["ascension"] ?? 0,
+        bonus: json["bonus"] ?? false,
+        attack: json["attack"]?.toDouble() ?? 0.0,
+        specialized: json["specialized"]?.toDouble() ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {

@@ -61,8 +61,10 @@ class Food {
         delicious: json["delicious"] == null
             ? null
             : FoodQuality.fromJson(json["delicious"]),
-        ingredients: List<FoodIngredient>.from(
-            json["ingredients"].map((x) => FoodIngredient.fromJson(x))),
+        ingredients: json["ingredients"] == null
+            ? []
+            : List<FoodIngredient>.from(
+                json["ingredients"].map((x) => FoodIngredient.fromJson(x))),
         images:
             json['images'] == null ? null : ImageFood.fromJson(json['images']),
         version: json['version'] ?? "",
@@ -98,8 +100,8 @@ class FoodQuality {
   });
 
   factory FoodQuality.fromJson(Map<String, dynamic> json) => FoodQuality(
-        effect: json["effect"],
-        description: json["description"],
+        effect: json["effect"] ?? "",
+        description: json["description"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -118,8 +120,8 @@ class FoodIngredient {
   });
 
   factory FoodIngredient.fromJson(Map<String, dynamic> json) => FoodIngredient(
-        name: json["name"],
-        count: json["count"],
+        name: json["name"] ?? "",
+        count: json["count"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

@@ -39,16 +39,16 @@ class HomeTool extends StatelessWidget {
               ),
 
               // team building
-              OutlinedButton.icon(
-                icon: Image.asset(
-                  "assets/images/UI_BtnIcon_Team.png",
-                  color: Get.theme.colorScheme.onSurface,
-                  height: 30,
-                  width: 30,
-                ),
-                onPressed: () {},
-                label: Text("team_building".tr),
-              ),
+              // OutlinedButton.icon(
+              //   icon: Image.asset(
+              //     "assets/images/UI_BtnIcon_Team.png",
+              //     color: Get.theme.colorScheme.onSurface,
+              //     height: 30,
+              //     width: 30,
+              //   ),
+              //   onPressed: () {},
+              //   label: Text("team_building".tr),
+              // ),
             ],
           ),
         ],

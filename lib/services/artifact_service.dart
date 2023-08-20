@@ -11,14 +11,17 @@ import 'package:path_provider/path_provider.dart';
 class ArtifactService {
   Future<List<Artifact>?> getArtifacts(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameArtifact}.json");
-      String json = await file.readAsString();
-      List<Artifact> artifacts =
-          List<Artifact>.from(jsonDecode(json).map((e) => Artifact.fromJson(e)))
-              .toList();
-      return artifacts;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameArtifact}.json");
+        String json = await file.readAsString();
+        List<Artifact> artifacts = List<Artifact>.from(
+            jsonDecode(json).map((e) => Artifact.fromJson(e))).toList();
+        return artifacts;
+      }
+    } catch (e) {
+      log("$e", name: "getArtifacts");
     }
     return null;
   }

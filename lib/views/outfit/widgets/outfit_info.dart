@@ -55,7 +55,6 @@ class _InformationMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(top: 10),
@@ -70,10 +69,8 @@ class _InformationMore extends StatelessWidget {
                   linkImage: Config.urlImage(outfit.images?.namesplash)),
 
           // nguồn
-          outfit.source == null
-              ? const SizedBox()
-              : InfoTextMultiLineWidget(
-                  titleTranslate: "source", data: outfit.source!),
+          InfoTextMultiLineWidget(
+              titleTranslate: "source", data: outfit.source),
 
           // mô tả
           InfoParagraphWidget(

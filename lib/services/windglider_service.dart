@@ -9,13 +9,17 @@ import 'package:path_provider/path_provider.dart';
 class WindgliderService {
   Future<List<Windglider>?> getWindgliders(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameWindglider}.json");
-      String json = await file.readAsString();
-      List<Windglider> windgliders = List<Windglider>.from(
-          jsonDecode(json).map((e) => Windglider.fromJson(e))).toList();
-      return windgliders;
+    try {
+      if (directory != null) {
+        File file = File(
+            "${directory.path}/$language/${Config.fileNameWindglider}.json");
+        String json = await file.readAsString();
+        List<Windglider> windgliders = List<Windglider>.from(
+            jsonDecode(json).map((e) => Windglider.fromJson(e))).toList();
+        return windgliders;
+      }
+    } catch (e) {
+      log("$e", name: "getWindgliders");
     }
     return null;
   }

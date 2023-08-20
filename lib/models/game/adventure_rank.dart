@@ -12,10 +12,12 @@ class AdventureRank {
   });
 
   factory AdventureRank.fromJson(Map<String, dynamic> json) => AdventureRank(
-        name: json['name'],
-        exp: json["exp"],
-        unlockdescription: json['unlockdescription'],
-        reward: AdventureRankReward.fromJson(json['reward']),
+        name: json['name'] ?? "",
+        exp: json["exp"] ?? 0,
+        unlockdescription: json['unlockdescription'] ?? "",
+        reward: json['reward'] == null
+            ? const AdventureRankReward(name: "", count: 0, type: "")
+            : AdventureRankReward.fromJson(json['reward']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,9 +41,9 @@ class AdventureRankReward {
 
   factory AdventureRankReward.fromJson(Map<String, dynamic> json) =>
       AdventureRankReward(
-        name: json['name'],
-        count: json["count"],
-        type: json['type'],
+        name: json['name'] ?? "",
+        count: json["count"] ?? 0,
+        type: json['type'] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

@@ -10,9 +10,9 @@ class ImageResource {
   String nameicon;
 
   factory ImageResource.fromJson(Map<String, dynamic> json) => ImageResource(
-        redirect: json["redirect"],
+        redirect: json["redirect"] ?? "",
         fandom: json["fandom"],
-        nameicon: json["nameicon"],
+        nameicon: json["nameicon"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

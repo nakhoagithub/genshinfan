@@ -73,8 +73,8 @@ class Character {
   final String birthdaymmdd;
   final String birthday;
   final String constellation;
-  Cv cv;
-  Costs costs;
+  Cv? cv;
+  Costs? costs;
   ImageCharacter? images;
   Talent? talent;
   List<Talent>? talentTravelers;
@@ -87,24 +87,24 @@ class Character {
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
         key: json['key'],
-        name: json["name"],
+        name: json["name"] ?? "",
         fullname: json["fullname"],
-        title: json["title"],
-        description: json["description"],
-        rarity: json["rarity"],
-        element: json["element"],
-        weapontype: json["weapontype"],
-        substat: json["substat"],
-        gender: json["gender"],
-        body: json["body"],
-        association: json["association"],
-        region: json["region"],
-        affiliation: json["affiliation"],
-        birthdaymmdd: json["birthdaymmdd"],
-        birthday: json["birthday"],
-        constellation: json["constellation"],
-        cv: Cv.fromJson(json["cv"]),
-        costs: Costs.fromJson(json["costs"]),
+        title: json["title"] ?? "",
+        description: json["description"] ?? "",
+        rarity: json["rarity"] ?? "",
+        element: json["element"] ?? "",
+        weapontype: json["weapontype"] ?? "",
+        substat: json["substat"] ?? "",
+        gender: json["gender"] ?? "",
+        body: json["body"] ?? "",
+        association: json["association"] ?? "",
+        region: json["region"] ?? "",
+        affiliation: json["affiliation"] ?? "",
+        birthdaymmdd: json["birthdaymmdd"] ?? "",
+        birthday: json["birthday"] ?? "",
+        constellation: json["constellation"] ?? "",
+        cv: json["cv"] == null ? null : Cv.fromJson(json["cv"]),
+        costs: json["costs"] == null ? null : Costs.fromJson(json["costs"]),
         images: json['images'] == null
             ? null
             : ImageCharacter.fromJson(json['images']),
@@ -150,8 +150,8 @@ class Character {
             ? null
             : List<dynamic>.from(
                 constellationTravelers!.map((e) => e.toJson())),
-        "cv": cv.toJson(),
-        "costs": costs.toJson(),
+        "cv": cv?.toJson(),
+        "costs": costs?.toJson(),
         "images": images?.toJson(),
         "talent": talent?.toJson(),
         "talentTravelers": talentTravelers == null
@@ -241,20 +241,20 @@ class Character {
   Talent _talent(
       String id, dynamic talentJson, dynamic imageTalent, dynamic stat,
       {String? element}) {
-    Talent talent = Talent.fromJson(talentJson[id]);
+    Talent talent = Talent.fromJson(talentJson[id] ?? {});
     talent.element = element;
-    talent.imageTalent = ImageTalent.fromJson(imageTalent[id]);
+    talent.imageTalent = ImageTalent.fromJson(imageTalent?[id] ?? {});
 
     talent.combat1.attrs =
-        _setAttributeCombat("combat1", stat[id], talentJson[id]);
+        _setAttributeCombat("combat1", stat[id], talentJson?[id] ?? {});
     talent.combat2.attrs =
-        _setAttributeCombat("combat2", stat[id], talentJson[id]);
+        _setAttributeCombat("combat2", stat[id], talentJson?[id] ?? {});
     talent.combat3.attrs =
-        _setAttributeCombat("combat3", stat[id], talentJson[id]);
+        _setAttributeCombat("combat3", stat[id], talentJson?[id] ?? {});
 
     if (talent.combatsp != null) {
       talent.combatsp!.attrs =
-          _setAttributeCombat("combatsp", stat[id], talentJson[id]);
+          _setAttributeCombat("combatsp", stat[id], talentJson?[id] ?? {});
     }
     return talent;
   }
@@ -270,17 +270,17 @@ class Character {
       String id, dynamic talentJson, dynamic imageTalent, dynamic stat) {
     // không phải nhân vật main
     if (association != "MAINACTOR") {
-      talent = _talent(id, talentJson, imageTalent, stat);
+      talent = _talent(id, talentJson ?? {}, imageTalent ?? {}, stat ?? {});
     } else {
       // nhân vật main
       List<Talent> talents = [];
-      for (var e in talentJson.keys) {
+      for (String e in talentJson?.keys ?? {}) {
         if (e.contains("traveler")) {
-          String element =
-              (e as String).substring(e.indexOf("traveler") + 8, e.length);
+          String element = e.substring(e.indexOf("traveler") + 8, e.length);
           element = Tool.capitalize(element);
-          talents
-              .add(_talent(e, talentJson, imageTalent, stat, element: element));
+          talents.add(_talent(
+              e, talentJson ?? {}, imageTalent ?? {}, stat ?? {},
+              element: element));
         }
       }
       talentTravelers = talents;
@@ -307,8 +307,8 @@ class Character {
 
   void setStat(dynamic stat, dynamic curve) {
     List<Stat> listData = [];
-    Map<String, dynamic> base = stat['base'];
-    Map<String, dynamic> curveBase = stat['curve'];
+    Map<String, dynamic>? base = stat['base'];
+    Map<String, dynamic>? curveBase = stat['curve'];
     String spec = stat['specialized'];
     List<dynamic> promotions = stat['promotion'];
     for (int i = 0; i < levels.length; i++) {
@@ -321,21 +321,23 @@ class Character {
       // bonus
 
       // hp
-      double hp = base['hp'] * curve["$level"][curveBase['hp']];
+      double hp = (base?['hp'] ?? 0) * curve["$level"][(curveBase?['hp'] ?? 0)];
       // attack
-      double attack = base['attack'] * curve["$level"][curveBase['attack']] +
+      double attack = (base?['attack'] ?? 0) *
+              curve["$level"][(curveBase?['attack'] ?? 0)] +
           promotions[i ~/ 2]['attack'];
       // defense
-      double defense = base['defense'] * curve["$level"][curveBase['defense']] +
+      double defense = (base?['defense'] ?? 0) *
+              curve["$level"][(curveBase?['defense'] ?? 0)] +
           promotions[i ~/ 2]['defense'];
       // specialized
       double specialized =
           double.parse(promotions[i ~/ 2]['specialized'].toString());
 
       if (spec == 'FIGHT_PROP_CRITICAL') {
-        specialized += base['critrate'];
+        specialized += (base?['critrate'] ?? 0);
       } else if (spec == 'FIGHT_PROP_CRITICAL_HURT') {
-        specialized += base['critdmg'];
+        specialized += (base?['critdmg'] ?? 0);
       }
 
       Stat stat = Stat(
@@ -372,18 +374,24 @@ class Costs {
   final List<Items> ascend6;
 
   factory Costs.fromJson(Map<String, dynamic> json) => Costs(
-        ascend1:
-            List<Items>.from(json["ascend1"].map((x) => Items.fromJson(x))),
-        ascend2:
-            List<Items>.from(json["ascend2"].map((x) => Items.fromJson(x))),
-        ascend3:
-            List<Items>.from(json["ascend3"].map((x) => Items.fromJson(x))),
-        ascend4:
-            List<Items>.from(json["ascend4"].map((x) => Items.fromJson(x))),
-        ascend5:
-            List<Items>.from(json["ascend5"].map((x) => Items.fromJson(x))),
-        ascend6:
-            List<Items>.from(json["ascend6"].map((x) => Items.fromJson(x))),
+        ascend1: json["ascend1"] == null
+            ? []
+            : List<Items>.from(json["ascend1"].map((x) => Items.fromJson(x))),
+        ascend2: json["ascend2"] == null
+            ? []
+            : List<Items>.from(json["ascend2"].map((x) => Items.fromJson(x))),
+        ascend3: json["ascend3"] == null
+            ? []
+            : List<Items>.from(json["ascend3"].map((x) => Items.fromJson(x))),
+        ascend4: json["ascend4"] == null
+            ? []
+            : List<Items>.from(json["ascend4"].map((x) => Items.fromJson(x))),
+        ascend5: json["ascend5"] == null
+            ? []
+            : List<Items>.from(json["ascend5"].map((x) => Items.fromJson(x))),
+        ascend6: json["ascend6"] == null
+            ? []
+            : List<Items>.from(json["ascend6"].map((x) => Items.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -410,10 +418,10 @@ class Cv {
   final String korean;
 
   factory Cv.fromJson(Map<String, dynamic> json) => Cv(
-        english: json["english"],
-        chinese: json["chinese"],
-        japanese: json["japanese"],
-        korean: json["korean"],
+        english: json["english"] ?? "",
+        chinese: json["chinese"] ?? "",
+        japanese: json["japanese"] ?? "",
+        korean: json["korean"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -444,13 +452,13 @@ class Stat {
   double specialized;
 
   factory Stat.fromJson(Map<String, dynamic> json) => Stat(
-        level: json["level"],
-        ascension: json["ascension"],
-        bonus: json["bonus"],
-        hp: json["hp"].toDouble(),
-        attack: json["attack"].toDouble(),
-        defense: json["defense"].toDouble(),
-        specialized: json["specialized"].toDouble(),
+        level: json["level"] ?? 0,
+        ascension: json["ascension"] ?? 0,
+        bonus: json["bonus"] ?? false,
+        hp: json["hp"]?.toDouble() ?? 0.0,
+        attack: json["attack"]?.toDouble() ?? 0.0,
+        defense: json["defense"]?.toDouble() ?? 0.0,
+        specialized: json["specialized"]?.toDouble() ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -491,18 +499,18 @@ class ImageCharacter {
     this.hoyolabAvatar,
   });
 
-  factory ImageCharacter.fromJson(Map<String, dynamic> json) => ImageCharacter(
-        nameicon: json['nameicon'],
-        namesideicon: json['namesideicon'],
-        namegachasplash: json['namegachasplash'],
-        namegachaslice: json['namegachaslice'],
-        card: json['card'],
-        portrait: json['portrait'],
-        icon: json['icon'],
-        sideicon: json['sideicon'],
-        cover1: json['cover1'],
-        cover2: json['cover2'],
-        hoyolabAvatar: json['hoyolab-avatar'],
+  factory ImageCharacter.fromJson(Map<String, dynamic>? json) => ImageCharacter(
+        nameicon: json?['nameicon'],
+        namesideicon: json?['namesideicon'],
+        namegachasplash: json?['namegachasplash'],
+        namegachaslice: json?['namegachaslice'],
+        card: json?['card'],
+        portrait: json?['portrait'],
+        icon: json?['icon'],
+        sideicon: json?['sideicon'],
+        cover1: json?['cover1'],
+        cover2: json?['cover2'],
+        hoyolabAvatar: json?['hoyolab-avatar'],
       );
 
   Map<String, dynamic> toJson() => {

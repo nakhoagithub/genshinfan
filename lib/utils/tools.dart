@@ -70,20 +70,20 @@ class Tool {
       result = result.replaceAll(valueBold, content);
     }
     result = result.replaceAll("·", "✦ ");
-    result = result.replaceAll("HP", "<hp><b>HP</b></hp>");
-    result =
-        result.replaceAll("e_cryo".tr, "<cryo><b>${"e_cryo".tr}</b></cryo>");
-    result = result.replaceAll(
-        "e_hydro".tr, "<hydro><b>${"e_hydro".tr}</b></hydro>");
-    result =
-        result.replaceAll("e_pyro".tr, "<pyro><b>${"e_pyro".tr}</b></pyro>");
-    result = result.replaceAll(
-        "e_electro".tr, "<electro><b>${"e_electro".tr}</b></electro>");
-    result = result.replaceAll(
-        "e_anemo".tr, "<anemo><b>${"e_anemo".tr}</b></anemo>");
-    result = result.replaceAll("e_geo".tr, "<geo><b>${"e_geo".tr}</b></geo>");
-    result = result.replaceAll(
-        "e_dendro".tr, "<dendro><b>${"e_dendro".tr}</b></dendro>");
+    // result = result.replaceAll("HP", "<hp><b>HP</b></hp>");
+    // result =
+    //     result.replaceAll("e_cryo".tr, "<cryo><b>${"e_cryo".tr}</b></cryo>");
+    // result = result.replaceAll(
+    //     "e_hydro".tr, "<hydro><b>${"e_hydro".tr}</b></hydro>");
+    // result =
+    //     result.replaceAll("e_pyro".tr, "<pyro><b>${"e_pyro".tr}</b></pyro>");
+    // result = result.replaceAll(
+    //     "e_electro".tr, "<electro><b>${"e_electro".tr}</b></electro>");
+    // result = result.replaceAll(
+    //     "e_anemo".tr, "<anemo><b>${"e_anemo".tr}</b></anemo>");
+    // result = result.replaceAll("e_geo".tr, "<geo><b>${"e_geo".tr}</b></geo>");
+    // result = result.replaceAll(
+    //     "e_dendro".tr, "<dendro><b>${"e_dendro".tr}</b></dendro>");
     result = result.replaceAll("<color=#", "<color color=#");
     return result;
   }

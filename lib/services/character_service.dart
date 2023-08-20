@@ -39,14 +39,19 @@ class CharacterService {
       dynamic statCharacter = stat['characters'];
       dynamic curveCharacter = curve['characters'];
       for (var k in jsonData.keys) {
-        Character obj = Character.fromJson(jsonData[k]);
-        obj.key = k;
-        // hình ảnh
-        obj.setImage(img[k]);
-        obj.setTalent(k, talent, imgTalent, statTalent);
-        obj.setConstellation(k, constellations, imgConstellation);
-        obj.setStat(statCharacter[k], curveCharacter);
-        characters.add(obj.toJson());
+        try {
+          Character obj = Character.fromJson(jsonData[k]);
+          obj.key = k;
+          // hình ảnh
+          obj.setImage(img[k]);
+          obj.setTalent(k, talent, imgTalent, statTalent);
+          obj.setConstellation(k, constellations, imgConstellation);
+          obj.setStat(statCharacter[k], curveCharacter);
+          characters.add(obj.toJson());
+        } catch (e) {
+          // log("${jsonData[k]}", name: "Data");
+          log("Error: $e $k", name: "getCharacterFromGzip");
+        }
       }
       File file =
           File("${directory.path}/$language/${Config.fileNameCharacter}.json");
@@ -59,18 +64,23 @@ class CharacterService {
 
   Future<List<Character>?> getCharacters(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameCharacter}.json");
-      String json = await file.readAsString();
-      List<dynamic> dataDecode = jsonDecode(json) as List<dynamic>;
+    try {
+      if (directory != null) {
+        File file = File(
+            "${directory.path}/$language/${Config.fileNameCharacter}.json");
+        String json = await file.readAsString();
+        List<dynamic> dataDecode = jsonDecode(json) as List<dynamic>;
 
-      List<Character> characters =
-          List<Character>.from(dataDecode.map((e) => Character.fromJson(e)))
-              .toList();
+        List<Character> characters =
+            List<Character>.from(dataDecode.map((e) => Character.fromJson(e)))
+                .toList();
 
-      return characters;
+        return characters;
+      }
+    } catch (e) {
+      log("$e", name: "getCharacters");
     }
+
     return null;
   }
 

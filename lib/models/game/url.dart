@@ -5,7 +5,7 @@ class UrlObject {
   });
 
   factory UrlObject.fromJson(Map<String, dynamic> json) => UrlObject(
-        fandom: json["fandom"],
+        fandom: json["fandom"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

@@ -22,13 +22,25 @@ class Constellation {
   String? version;
 
   factory Constellation.fromJson(Map<String, dynamic> json) => Constellation(
-        name: json["name"],
-        c1: ConstellationDetail.fromJson(json["c1"]),
-        c2: ConstellationDetail.fromJson(json["c2"]),
-        c3: ConstellationDetail.fromJson(json["c3"]),
-        c4: ConstellationDetail.fromJson(json["c4"]),
-        c5: ConstellationDetail.fromJson(json["c5"]),
-        c6: ConstellationDetail.fromJson(json["c6"]),
+        name: json["name"] ?? "",
+        c1: json["c1"] == null
+            ? ConstellationDetail(name: "", effect: "")
+            : ConstellationDetail.fromJson(json["c1"]),
+        c2: json["c2"] == null
+            ? ConstellationDetail(name: "", effect: "")
+            : ConstellationDetail.fromJson(json["c2"]),
+        c3: json["c3"] == null
+            ? ConstellationDetail(name: "", effect: "")
+            : ConstellationDetail.fromJson(json["c3"]),
+        c4: json["c4"] == null
+            ? ConstellationDetail(name: "", effect: "")
+            : ConstellationDetail.fromJson(json["c4"]),
+        c5: json["c5"] == null
+            ? ConstellationDetail(name: "", effect: "")
+            : ConstellationDetail.fromJson(json["c5"]),
+        c6: json["c6"] == null
+            ? ConstellationDetail(name: "", effect: "")
+            : ConstellationDetail.fromJson(json["c6"]),
         images: json["images"] == null
             ? null
             : ImageConstellation.fromJson(json["images"]),
@@ -59,8 +71,8 @@ class ConstellationDetail {
 
   factory ConstellationDetail.fromJson(Map<String, dynamic> json) =>
       ConstellationDetail(
-        name: json["name"],
-        effect: json["effect"],
+        name: json["name"] ?? "",
+        effect: json["effect"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -92,13 +104,13 @@ class ImageConstellation {
 
   factory ImageConstellation.fromJson(Map<String, dynamic> json) =>
       ImageConstellation(
-        c1: json["c1"],
-        c2: json["c2"],
-        c3: json["c3"],
-        c4: json["c4"],
-        c5: json["c5"],
-        c6: json["c6"],
-        constellation: json["constellation"],
+        c1: json["c1"] ?? "",
+        c2: json["c2"] ?? "",
+        c3: json["c3"] ?? "",
+        c4: json["c4"] ?? "",
+        c5: json["c5"] ?? "",
+        c6: json["c6"] ?? "",
+        constellation: json["constellation"] ?? "",
         constellation2: json["constellation2"],
       );
 

@@ -19,14 +19,14 @@ class Domain {
   List<DomainLv>? domainLvs;
 
   factory Domain.fromJson(Map<String, dynamic> json) => Domain(
-        name: json["name"],
-        region: json["region"],
+        name: json["name"] ?? "",
+        region: json["region"] ?? "",
         domainentrance: json["domainentrance"],
         daysofweek: json["daysofweek"] == null
             ? null
             : List<String>.from(json["daysofweek"].map((x) => x)),
-        domaintype: json["domaintype"],
-        description: json["description"],
+        domaintype: json["domaintype"] ?? "",
+        description: json["description"] ?? "",
         domainLvs: json["domainLvs"] == null
             ? null
             : List<DomainLv>.from(
@@ -69,15 +69,19 @@ class DomainLv {
   ImageDomain? images;
 
   factory DomainLv.fromJson(Map<String, dynamic> json) => DomainLv(
-        name: json["name"],
-        recommendedlevel: json["recommendedlevel"],
+        name: json["name"] ?? "",
+        recommendedlevel: json["recommendedlevel"] ?? 0,
         recommendedelements: json["recommendedelements"] == null
             ? []
             : List<String>.from(json["recommendedelements"].map((x) => x)),
-        unlockrank: json["unlockrank"],
-        rewardpreview: List<Reward>.from(
-            json["rewardpreview"].map((x) => Reward.fromJson(x))),
-        disorder: List<String>.from(json["disorder"].map((x) => x)),
+        unlockrank: json["unlockrank"] ?? 0,
+        rewardpreview: json["rewardpreview"] == null
+            ? []
+            : List<Reward>.from(
+                json["rewardpreview"].map((x) => Reward.fromJson(x))),
+        disorder: json["disorder"] == null
+            ? []
+            : List<String>.from(json["disorder"].map((x) => x)),
         monsterlist: json["monsterlist"] == null
             ? null
             : List<String>.from(json["monsterlist"].map((x) => x)),

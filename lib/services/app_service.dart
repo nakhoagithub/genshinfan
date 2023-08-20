@@ -164,8 +164,18 @@ class AppService {
           .child("dataAPI")
           .child("buildNumber${packageApp.buildNumber}")
           .get();
+
       if (link.value != null && link.value is String) {
         log("${link.value}", name: "Link API");
+        final res = await dio.get(link.value as String);
+        return ApiGithub.fromJson(res.data);
+      } else if (link.value == null) {
+        DataSnapshot link = await db
+            .child('application')
+            .child("dataAPI")
+            .child("buildNumber")
+            .get();
+
         final res = await dio.get(link.value as String);
         return ApiGithub.fromJson(res.data);
       }

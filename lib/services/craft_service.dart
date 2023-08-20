@@ -12,25 +12,29 @@ import 'package:path_provider/path_provider.dart';
 class CraftService {
   Future<List<Craft>?> getCrafts(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameCraft}.json");
-      String json = await file.readAsString();
-      List<Craft> crafts =
-          List<Craft>.from(jsonDecode(json).map((e) => Craft.fromJson(e)))
-              .toList();
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameCraft}.json");
+        String json = await file.readAsString();
+        List<Craft> crafts =
+            List<Craft>.from(jsonDecode(json).map((e) => Craft.fromJson(e)))
+                .toList();
 
-      List<Resource> resources = Get.find<AppController>().resources;
+        List<Resource> resources = Get.find<AppController>().resources;
 
-      for (Craft craft in crafts) {
-        Resource? resource =
-            resources.firstWhereOrNull((element) => element.key == craft.key);
-        if (resource != null) {
-          craft.resource = resource;
+        for (Craft craft in crafts) {
+          Resource? resource =
+              resources.firstWhereOrNull((element) => element.key == craft.key);
+          if (resource != null) {
+            craft.resource = resource;
+          }
         }
-      }
 
-      return crafts;
+        return crafts;
+      }
+    } catch (e) {
+      log("$e", name: "getCrafts");
     }
     return null;
   }

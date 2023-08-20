@@ -27,13 +27,15 @@ class Windglider {
   }
 
   factory Windglider.fromJson(Map<String, dynamic> json) => Windglider(
-        name: json["name"],
-        description: json["description"],
-        rarity: json["rarity"],
-        story: json["story"],
-        sortorder: json["sortorder"],
+        name: json["name"] ?? "",
+        description: json["description"] ?? "",
+        rarity: json["rarity"] ?? "",
+        story: json["story"] ?? "",
+        sortorder: json["sortorder"] ?? 0,
         ishidden: json['ishidden'],
-        source: List<String>.from(json["source"].map((x) => x)),
+        source: json["source"] == null
+            ? []
+            : List<String>.from(json["source"].map((x) => x)),
         images: json['images'] == null
             ? null
             : ImageWindglider.fromJson(json['images']),
@@ -64,8 +66,8 @@ class ImageWindglider {
 
   factory ImageWindglider.fromJson(Map<String, dynamic> json) =>
       ImageWindglider(
-        nameicon: json["nameicon"],
-        namegacha: json["namegacha"],
+        nameicon: json["nameicon"] ?? "",
+        namegacha: json["namegacha"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

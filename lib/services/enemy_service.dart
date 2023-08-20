@@ -9,14 +9,18 @@ import 'package:path_provider/path_provider.dart';
 class EnemyService {
   Future<List<Enemy>?> getEnemies(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameEnemie}.json");
-      String json = await file.readAsString();
-      List<Enemy> enemies =
-          List<Enemy>.from(jsonDecode(json).map((e) => Enemy.fromJson(e)))
-              .toList();
-      return enemies;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameEnemie}.json");
+        String json = await file.readAsString();
+        List<Enemy> enemies =
+            List<Enemy>.from(jsonDecode(json).map((e) => Enemy.fromJson(e)))
+                .toList();
+        return enemies;
+      }
+    } catch (e) {
+      log("$e", name: "getEnemies");
     }
     return null;
   }

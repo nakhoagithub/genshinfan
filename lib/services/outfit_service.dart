@@ -9,14 +9,18 @@ import 'package:path_provider/path_provider.dart';
 class OutfitService {
   Future<List<Outfit>?> getOutfits(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameOutfit}.json");
-      String json = await file.readAsString();
-      List<Outfit> outfits =
-          List<Outfit>.from(jsonDecode(json).map((e) => Outfit.fromJson(e)))
-              .toList();
-      return outfits;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameOutfit}.json");
+        String json = await file.readAsString();
+        List<Outfit> outfits =
+            List<Outfit>.from(jsonDecode(json).map((e) => Outfit.fromJson(e)))
+                .toList();
+        return outfits;
+      }
+    } catch (e) {
+      log("$e", name: "getOutfits");
     }
     return null;
   }

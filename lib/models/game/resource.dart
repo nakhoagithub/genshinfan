@@ -37,18 +37,20 @@ class Resource {
 
   factory Resource.fromJson(Map<String, dynamic> json) => Resource(
         key: json['key'],
-        name: json["name"],
+        name: json["name"] ?? "",
         dupealias: json["dupealias"],
-        description: json["description"],
-        sortorder: json["sortorder"],
+        description: json["description"] ?? "",
+        sortorder: json["sortorder"] ?? 0,
         rarity: json["rarity"],
-        category: json["category"],
-        materialtype: json["materialtype"],
+        category: json["category"] ?? "",
+        materialtype: json["materialtype"] ?? "",
         dropdomain: json["dropdomain"],
         daysofweek: json["daysofweek"] == null
             ? null
             : List<String>.from(json["daysofweek"]!.map((x) => x)),
-        source: List<String>.from(json["source"].map((x) => x)),
+        source: json["source"] == null
+            ? []
+            : List<String>.from(json["source"].map((x) => x)),
         images: json['images'] == null
             ? null
             : ImageResource.fromJson(json['images']),
@@ -86,9 +88,9 @@ class ImageResource {
   final String nameicon;
 
   factory ImageResource.fromJson(Map<String, dynamic> json) => ImageResource(
-        redirect: json["redirect"],
+        redirect: json["redirect"] ?? "",
         fandom: json["fandom"],
-        nameicon: json["nameicon"],
+        nameicon: json["nameicon"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

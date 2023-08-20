@@ -9,14 +9,18 @@ import 'package:path_provider/path_provider.dart';
 class FoodService {
   Future<List<Food>?> getFoods(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameFood}.json");
-      String json = await file.readAsString();
-      List<Food> foods =
-          List<Food>.from(jsonDecode(json).map((e) => Food.fromJson(e)))
-              .toList();
-      return foods;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameFood}.json");
+        String json = await file.readAsString();
+        List<Food> foods =
+            List<Food>.from(jsonDecode(json).map((e) => Food.fromJson(e)))
+                .toList();
+        return foods;
+      }
+    } catch (e) {
+      log("$e", name: "getFoods");
     }
     return null;
   }

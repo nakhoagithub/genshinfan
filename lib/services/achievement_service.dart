@@ -9,14 +9,18 @@ import 'package:path_provider/path_provider.dart';
 class AchievementService {
   Future<List<AchievementGroup>?> getAchiementGroups(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file = File(
-          "${directory.path}/$language/${Config.fileNameAchievementGroup}.json");
-      String json = await file.readAsString();
-      List<dynamic> dataDecode = jsonDecode(json);
-      List<AchievementGroup> achievementGroups = List<AchievementGroup>.from(
-          dataDecode.map((e) => AchievementGroup.fromJson(e))).toList();
-      return achievementGroups;
+    try {
+      if (directory != null) {
+        File file = File(
+            "${directory.path}/$language/${Config.fileNameAchievementGroup}.json");
+        String json = await file.readAsString();
+        List<dynamic> dataDecode = jsonDecode(json);
+        List<AchievementGroup> achievementGroups = List<AchievementGroup>.from(
+            dataDecode.map((e) => AchievementGroup.fromJson(e))).toList();
+        return achievementGroups;
+      }
+    } catch (e) {
+      log("$e", name: "getAchiementGroups");
     }
     return null;
   }
@@ -50,16 +54,19 @@ class AchievementService {
 
   Future<List<Achievement>?> getAchiements(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file = File(
-          "${directory.path}/$language/${Config.fileNameAchievement}.json");
-      String json = await file.readAsString();
-      List<dynamic> dataDecode = jsonDecode(json);
+    try {
+      if (directory != null) {
+        File file = File(
+            "${directory.path}/$language/${Config.fileNameAchievement}.json");
+        String json = await file.readAsString();
+        List<dynamic> dataDecode = jsonDecode(json);
 
-      List<Achievement> achievements =
-          List<Achievement>.from(dataDecode.map((e) => Achievement.fromJson(e)))
-              .toList();
-      return achievements;
+        List<Achievement> achievements = List<Achievement>.from(
+            dataDecode.map((e) => Achievement.fromJson(e))).toList();
+        return achievements;
+      }
+    } catch (e) {
+      log("$e", name: "getAchiements");
     }
     return null;
   }

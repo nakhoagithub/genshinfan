@@ -25,11 +25,11 @@ class Animal {
 
   factory Animal.fromJson(Map<String, dynamic> json) => Animal(
         key: json['key'],
-        name: json["name"],
-        description: json["description"],
-        category: json["category"],
-        counttype: json["counttype"],
-        sortorder: json["sortorder"],
+        name: json["name"] ?? "",
+        description: json["description"] ?? "",
+        category: json["category"] ?? "",
+        counttype: json["counttype"] ?? "",
+        sortorder: json["sortorder"] ?? 0,
         images: json['images'] == null
             ? null
             : ImageAnimal.fromJson(json['images']),
@@ -55,7 +55,7 @@ class ImageAnimal {
   });
 
   factory ImageAnimal.fromJson(Map<String, dynamic> json) => ImageAnimal(
-        nameicon: json["nameicon"],
+        nameicon: json["nameicon"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

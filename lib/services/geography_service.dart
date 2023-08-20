@@ -9,13 +9,17 @@ import 'package:path_provider/path_provider.dart';
 class GeographyService {
   Future<List<Geography>?> getGeographies(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameGeography}.json");
-      String json = await file.readAsString();
-      List<Geography> geographies = List<Geography>.from(
-          jsonDecode(json).map((e) => Geography.fromJson(e))).toList();
-      return geographies;
+    try {
+      if (directory != null) {
+        File file = File(
+            "${directory.path}/$language/${Config.fileNameGeography}.json");
+        String json = await file.readAsString();
+        List<Geography> geographies = List<Geography>.from(
+            jsonDecode(json).map((e) => Geography.fromJson(e))).toList();
+        return geographies;
+      }
+    } catch (e) {
+      log("$e", name: "getGeographies");
     }
     return null;
   }

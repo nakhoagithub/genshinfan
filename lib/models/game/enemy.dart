@@ -51,16 +51,18 @@ class Enemy {
   List<Stat>? stats;
 
   factory Enemy.fromJson(Map<String, dynamic> json) => Enemy(
-        name: json["name"],
-        specialname: json["specialname"],
-        enemytype: json["enemytype"],
-        category: json["category"],
-        description: json["description"],
+        name: json["name"] ?? "",
+        specialname: json["specialname"] ?? "",
+        enemytype: json["enemytype"] ?? "",
+        category: json["category"] ?? "",
+        description: json["description"] ?? "",
         investigation: json["investigation"] == null
             ? null
             : Investigation.fromJson(json["investigation"]),
-        rewardpreview: List<Reward>.from(
-            json["rewardpreview"].map((x) => Reward.fromJson(x))),
+        rewardpreview: json["rewardpreview"] == null
+            ? []
+            : List<Reward>.from(
+                json["rewardpreview"].map((x) => Reward.fromJson(x))),
         images:
             json['images'] == null ? null : ImageEnemy.fromJson(json['images']),
         stats: json["stats"] == null
@@ -125,9 +127,9 @@ class Investigation {
   final String description;
 
   factory Investigation.fromJson(Map<String, dynamic> json) => Investigation(
-        name: json["name"],
-        category: json["category"],
-        description: json["description"],
+        name: json["name"] ?? "",
+        category: json["category"] ?? "",
+        description: json["description"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -167,10 +169,10 @@ class Stat {
   double defense;
 
   factory Stat.fromJson(Map<String, dynamic> json) => Stat(
-        level: json["level"],
-        hp: json["hp"].toDouble(),
-        attack: json["attack"].toDouble(),
-        defense: json["defense"].toDouble(),
+        level: json["level"] ?? 0,
+        hp: json["hp"]?.toDouble() ?? 0.0,
+        attack: json["attack"]?.toDouble() ?? 0.0,
+        defense: json["defense"]?.toDouble() ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {

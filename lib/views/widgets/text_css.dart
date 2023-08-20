@@ -30,18 +30,18 @@ class TextCSS extends StatelessWidget {
         'red': StyledTextTag(style: const TextStyle(color: Colors.red)),
         'orange': StyledTextTag(style: const TextStyle(color: Colors.orange)),
         'green': StyledTextTag(style: const TextStyle(color: Colors.green)),
-        'cryo': StyledTextTag(style: const TextStyle(color: Color(0xff67bbcf))),
-        'hydro':
-            StyledTextTag(style: const TextStyle(color: Color(0xff0b4dda))),
-        'pyro': StyledTextTag(style: const TextStyle(color: Color(0xffca4a25))),
-        'electro':
-            StyledTextTag(style: const TextStyle(color: Color(0xff9336b0))),
-        'anemo':
-            StyledTextTag(style: const TextStyle(color: Color(0xff70c7ab))),
-        'geo': StyledTextTag(style: const TextStyle(color: Color(0xfff5ac16))),
-        'dendro':
-            StyledTextTag(style: const TextStyle(color: Color(0xff51810e))),
-        'hp': StyledTextTag(style: const TextStyle(color: Color(0xffab0303))),
+        // 'cryo': StyledTextTag(style: const TextStyle(color: Color(0xff67bbcf))),
+        // 'hydro':
+        //     StyledTextTag(style: const TextStyle(color: Color(0xff0b4dda))),
+        // 'pyro': StyledTextTag(style: const TextStyle(color: Color(0xffca4a25))),
+        // 'electro':
+        //     StyledTextTag(style: const TextStyle(color: Color(0xff9336b0))),
+        // 'anemo':
+        //     StyledTextTag(style: const TextStyle(color: Color(0xff70c7ab))),
+        // 'geo': StyledTextTag(style: const TextStyle(color: Color(0xfff5ac16))),
+        // 'dendro':
+        //     StyledTextTag(style: const TextStyle(color: Color(0xff51810e))),
+        // 'hp': StyledTextTag(style: const TextStyle(color: Color(0xffab0303))),
         'up': StyledTextTag(
             style: const TextStyle(
                 color: Colors.orange, fontWeight: FontWeight.bold)),

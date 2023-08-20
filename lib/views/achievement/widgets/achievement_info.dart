@@ -49,12 +49,14 @@ class _ItemAchievement extends StatelessWidget {
                   ThemeApp.textStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
-            _ItemStage(
-              stages: achievement.stages,
-              stage: achievement.stage1,
-              divider: false,
-              index: 1,
-            ),
+            achievement.stage1 == null
+                ? const SizedBox()
+                : _ItemStage(
+                    stages: achievement.stages,
+                    stage: achievement.stage1!,
+                    divider: false,
+                    index: 1,
+                  ),
             achievement.stage2 == null
                 ? const SizedBox()
                 : _ItemStage(

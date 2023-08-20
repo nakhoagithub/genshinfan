@@ -27,12 +27,12 @@ class Geography {
 
   factory Geography.fromJson(Map<String, dynamic> json) => Geography(
         key: json['key'],
-        name: json["name"],
+        name: json["name"] ?? "",
         area: json["area"],
-        description: json["description"],
-        region: json["region"],
+        description: json["description"] ?? "",
+        region: json["region"] ?? "",
         showonlyunlocked: json["showonlyunlocked"],
-        sortorder: json["sortorder"],
+        sortorder: json["sortorder"] ?? 0,
         images: json['images'] == null
             ? null
             : ImageGeography.fromJson(json['images']),
@@ -59,7 +59,7 @@ class ImageGeography {
   });
 
   factory ImageGeography.fromJson(Map<String, dynamic> json) => ImageGeography(
-        nameimage: json["nameimage"],
+        nameimage: json["nameimage"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

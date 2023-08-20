@@ -12,7 +12,7 @@ class Reward {
   });
 
   factory Reward.fromJson(Map<String, dynamic> json) => Reward(
-        name: json["name"],
+        name: json["name"] ?? "",
         rarity: json['rarity'],
         count: json['count']?.toDouble(),
         countmax: json['countmax']?.toDouble(),

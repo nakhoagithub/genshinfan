@@ -9,14 +9,17 @@ import 'package:path_provider/path_provider.dart';
 class NamecardService {
   Future<List<Namecard>?> getNamecards(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameNamecard}.json");
-      String json = await file.readAsString();
-      List<Namecard> namecards =
-          List<Namecard>.from(jsonDecode(json).map((e) => Namecard.fromJson(e)))
-              .toList();
-      return namecards;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameNamecard}.json");
+        String json = await file.readAsString();
+        List<Namecard> namecards = List<Namecard>.from(
+            jsonDecode(json).map((e) => Namecard.fromJson(e))).toList();
+        return namecards;
+      }
+    } catch (e) {
+      log("$e", name: "getNamecards");
     }
     return null;
   }

@@ -31,8 +31,10 @@ class Artifact {
 
   factory Artifact.fromJson(Map<String, dynamic> json) => Artifact(
         key: json['key'],
-        name: json["name"],
-        rarity: List<String>.from(json["rarity"].map((x) => x)),
+        name: json["name"] ?? "",
+        rarity: json["rarity"] == null
+            ? []
+            : List<String>.from(json["rarity"].map((x) => x)),
         set1: json["1pc"],
         set2: json["2pc"],
         set4: json["4pc"],
@@ -90,10 +92,10 @@ class ArtifactDetail {
   final String story;
 
   factory ArtifactDetail.fromJson(Map<String, dynamic> json) => ArtifactDetail(
-        name: json["name"],
-        relictype: json["relictype"],
-        description: json["description"],
-        story: json['story'],
+        name: json["name"] ?? "",
+        relictype: json["relictype"] ?? "",
+        description: json["description"] ?? "",
+        story: json['story'] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -134,7 +136,7 @@ class ImageArtifact {
         plume: json["plume"],
         sands: json["sands"],
         goblet: json["goblet"],
-        circlet: json["circlet"],
+        circlet: json["circlet"] ?? "",
         nameflower: json["nameflower"],
         nameplume: json["nameplume"],
         namesands: json["namesands"],

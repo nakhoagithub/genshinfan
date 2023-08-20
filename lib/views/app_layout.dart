@@ -139,13 +139,14 @@ class AppLayout extends StatelessWidget {
               Obx(() {
                 List<int> page = appLayoutController.pageHasFilter;
                 return appLayoutController.currentIndex.value == 0
-                    ? IconButton(
-                        onPressed: () {
-                          showSearch(
-                              context: context, delegate: HomeSearchBar());
-                        },
-                        icon: const Icon(Icons.search_rounded),
-                      )
+                    ? const SizedBox()
+                    // ? IconButton(
+                    //     onPressed: () {
+                    //       showSearch(
+                    //           context: context, delegate: HomeSearchBar());
+                    //     },
+                    //     icon: const Icon(Icons.search_rounded),
+                    //   )
                     : page.contains(appLayoutController.currentIndex.value)
                         ? IconButton(
                             onPressed: () {
@@ -183,7 +184,6 @@ class _Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("build lại menu");
     AppLayoutController appLayoutController = Get.find<AppLayoutController>();
     return SizedBox(
       width: appLayoutController.menuSize,

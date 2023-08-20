@@ -25,14 +25,18 @@ List<String> levels = [
 class DomainService {
   Future<List<Domain>?> getDomains(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameDomain}.json");
-      String json = await file.readAsString();
-      List<Domain> domains =
-          List<Domain>.from(jsonDecode(json).map((e) => Domain.fromJson(e)))
-              .toList();
-      return domains;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameDomain}.json");
+        String json = await file.readAsString();
+        List<Domain> domains =
+            List<Domain>.from(jsonDecode(json).map((e) => Domain.fromJson(e)))
+                .toList();
+        return domains;
+      }
+    } catch (e) {
+      log("$e", name: "getDomains");
     }
     return null;
   }

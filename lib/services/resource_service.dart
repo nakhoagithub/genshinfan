@@ -9,14 +9,17 @@ import 'package:path_provider/path_provider.dart';
 class ResourceService {
   Future<List<Resource>?> getResources(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameMaterial}.json");
-      String json = await file.readAsString();
-      List<Resource> resources =
-          List<Resource>.from(jsonDecode(json).map((e) => Resource.fromJson(e)))
-              .toList();
-      return resources;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameMaterial}.json");
+        String json = await file.readAsString();
+        List<Resource> resources = List<Resource>.from(
+            jsonDecode(json).map((e) => Resource.fromJson(e))).toList();
+        return resources;
+      }
+    } catch (e) {
+      log("$e", name: "getResources");
     }
     return null;
   }

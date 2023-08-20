@@ -23,10 +23,12 @@ class Namecard {
 
   factory Namecard.fromJson(Map<String, dynamic> json) => Namecard(
         key: json['key'],
-        name: json["name"],
-        description: json["description"],
-        sortorder: json["sortorder"],
-        source: List<String>.from(json["source"].map((x) => x)),
+        name: json["name"] ?? "",
+        description: json["description"] ?? "",
+        sortorder: json["sortorder"] ?? 0,
+        source: json["source"] == null
+            ? []
+            : List<String>.from(json["source"].map((x) => x)),
         images: json['images'] == null
             ? null
             : ImageNamecard.fromJson(json['images']),
@@ -55,9 +57,9 @@ class ImageNamecard {
   });
 
   factory ImageNamecard.fromJson(Map<String, dynamic> json) => ImageNamecard(
-        nameicon: json["nameicon"],
+        nameicon: json["nameicon"] ?? "",
         namebanner: json["namebanner"],
-        namebackground: json["namebackground"],
+        namebackground: json["namebackground"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

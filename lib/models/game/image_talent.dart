@@ -20,12 +20,12 @@ class ImageTalent {
   String? passive4;
 
   factory ImageTalent.fromJson(Map<String, dynamic> json) => ImageTalent(
-        combat1: json["combat1"],
-        combat2: json["combat2"],
+        combat1: json["combat1"] ?? "",
+        combat2: json["combat2"] ?? "",
         combatsp: json["combatsp"],
-        combat3: json["combat3"],
-        passive1: json["passive1"],
-        passive2: json["passive2"],
+        combat3: json["combat3"] ?? "",
+        passive1: json["passive1"] ?? "",
+        passive2: json["passive2"] ?? "",
         passive3: json["passive3"],
         passive4: json["passive4"],
       );

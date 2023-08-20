@@ -21,13 +21,13 @@ class ImageConstellation {
 
   factory ImageConstellation.fromJson(Map<String, dynamic> json) =>
       ImageConstellation(
-        c1: json["c1"],
-        c2: json["c2"],
-        c3: json["c3"],
-        c4: json["c4"],
-        c5: json["c5"],
-        c6: json["c6"],
-        constellation: json["constellation"],
+        c1: json["c1"] ?? "",
+        c2: json["c2"] ?? "",
+        c3: json["c3"] ?? "",
+        c4: json["c4"] ?? "",
+        c5: json["c5"] ?? "",
+        c6: json["c6"] ?? "",
+        constellation: json["constellation"] ?? "",
         constellation2: json["constellation2"],
       );
 

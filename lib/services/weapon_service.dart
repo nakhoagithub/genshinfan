@@ -46,15 +46,20 @@ class WeaponService {
 
   Future<List<Weapon>?> getWeapons(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameWeapon}.json");
-      String json = await file.readAsString();
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameWeapon}.json");
+        String json = await file.readAsString();
 
-      List<dynamic> dataDecode = jsonDecode(json);
-      List<Weapon> weapons =
-          List<Weapon>.from(dataDecode.map((e) => Weapon.fromJson(e))).toList();
-      return weapons;
+        List<dynamic> dataDecode = jsonDecode(json);
+        List<Weapon> weapons =
+            List<Weapon>.from(dataDecode.map((e) => Weapon.fromJson(e)))
+                .toList();
+        return weapons;
+      }
+    } catch (e) {
+      log("$e", name: "getWeapons");
     }
     return null;
   }

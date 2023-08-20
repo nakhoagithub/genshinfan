@@ -9,14 +9,18 @@ import 'package:path_provider/path_provider.dart';
 class AnimalService {
   Future<List<Animal>?> getAnimals(String language) async {
     Directory? directory = await getExternalStorageDirectory();
-    if (directory != null) {
-      File file =
-          File("${directory.path}/$language/${Config.fileNameAnimal}.json");
-      String json = await file.readAsString();
-      List<Animal> animals =
-          List<Animal>.from(jsonDecode(json).map((e) => Animal.fromJson(e)))
-              .toList();
-      return animals;
+    try {
+      if (directory != null) {
+        File file =
+            File("${directory.path}/$language/${Config.fileNameAnimal}.json");
+        String json = await file.readAsString();
+        List<Animal> animals =
+            List<Animal>.from(jsonDecode(json).map((e) => Animal.fromJson(e)))
+                .toList();
+        return animals;
+      }
+    } catch (e) {
+      log("$e", name: "getAnimals");
     }
     return null;
   }

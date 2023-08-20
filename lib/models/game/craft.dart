@@ -29,14 +29,16 @@ class Craft {
 
   factory Craft.fromJson(Map<String, dynamic> json) => Craft(
         key: json['key'],
-        name: json["name"],
+        name: json["name"] ?? "",
         filter: json["filter"],
-        sortorder: json["sortorder"],
-        unlockrank: json["unlockrank"],
-        resultcount: json["resultcount"],
+        sortorder: json["sortorder"] ?? 0,
+        unlockrank: json["unlockrank"] ?? 0,
+        resultcount: json["resultcount"] ?? 0,
         moracost: json["moracost"],
-        recipe: List<CraftIngredient>.from(
-            json["recipe"].map((x) => CraftIngredient.fromJson(x))),
+        recipe: json["recipe"] == null
+            ? []
+            : List<CraftIngredient>.from(
+                json["recipe"].map((x) => CraftIngredient.fromJson(x))),
         altrecipes: json["altrecipes"] == null
             ? null
             : List<List<CraftIngredient>>.from(json["altrecipes"].map((x) =>
@@ -70,8 +72,8 @@ class CraftIngredient {
 
   factory CraftIngredient.fromJson(Map<String, dynamic> json) =>
       CraftIngredient(
-        name: json["name"],
-        count: json['count'],
+        name: json["name"] ?? "",
+        count: json['count'] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

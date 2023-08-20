@@ -28,7 +28,7 @@ class ImageArtifact {
         plume: json["plume"],
         sands: json["sands"],
         goblet: json["goblet"],
-        circlet: json["circlet"],
+        circlet: json["circlet"] ?? "",
         nameflower: json["nameflower"],
         nameplume: json["nameplume"],
         namesands: json["namesands"],

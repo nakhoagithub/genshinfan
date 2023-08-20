@@ -31,24 +31,36 @@ class Talent {
   String? element;
 
   factory Talent.fromJson(Map<String, dynamic> json) => Talent(
-        name: json["name"],
-        combat1: CombatTalenDetail.fromJson(json["combat1"]),
-        combat2: CombatTalenDetail.fromJson(json["combat2"]),
+        name: json["name"] ?? "",
+        combat1: json["combat1"] == null
+            ? CombatTalenDetail(name: "", info: "")
+            : CombatTalenDetail.fromJson(json["combat1"]),
+        combat2: json["combat2"] == null
+            ? CombatTalenDetail(name: "", info: "")
+            : CombatTalenDetail.fromJson(json["combat2"]),
         combatsp: json["combatsp"] == null
             ? null
             : CombatTalenDetail.fromJson(json["combatsp"]),
-        combat3: CombatTalenDetail.fromJson(json["combat3"]),
-        passive1: PassiveTalenDetail.fromJson(json["passive1"]),
-        passive2: PassiveTalenDetail.fromJson(json["passive2"]),
+        combat3: json["combat3"] == null
+            ? CombatTalenDetail(name: "", info: "")
+            : CombatTalenDetail.fromJson(json["combat3"]),
+        passive1: json["passive1"] == null
+            ? PassiveTalenDetail(name: "", info: "")
+            : PassiveTalenDetail.fromJson(json["passive1"]),
+        passive2: json["passive2"] == null
+            ? PassiveTalenDetail(name: "", info: "")
+            : PassiveTalenDetail.fromJson(json["passive2"]),
         passive3: json["passive3"] == null
             ? null
             : PassiveTalenDetail.fromJson(json["passive3"]),
         passive4: json["passive4"] == null
             ? null
             : PassiveTalenDetail.fromJson(json["passive4"]),
-        costs: Map.from(json["costs"]).map((k, v) =>
-            MapEntry<String, List<Items>>(
-                k, List<Items>.from(v.map((x) => Items.fromJson(x))))),
+        costs: json["costs"] == null
+            ? {}
+            : Map.from(json["costs"]).map((k, v) =>
+                MapEntry<String, List<Items>>(
+                    k, List<Items>.from(v.map((x) => Items.fromJson(x))))),
         imageTalent: json['images'] == null
             ? null
             : ImageTalent.fromJson(json['images']),
@@ -87,8 +99,8 @@ class CombatTalenDetail {
 
   factory CombatTalenDetail.fromJson(Map<String, dynamic> json) {
     return CombatTalenDetail(
-      name: json["name"],
-      info: json["info"],
+      name: json["name"] ?? "",
+      info: json["info"] ?? "",
       description: json["description"],
       attrs: json["attrs"] == null
           ? null
@@ -117,8 +129,10 @@ class Attribute {
   List<String> params;
 
   factory Attribute.fromJson(Map<String, dynamic> json) => Attribute(
-        name: json['label'],
-        params: List<String>.from(json["params"].map((x) => x)),
+        name: json['label'] ?? "",
+        params: json["params"] == null
+            ? []
+            : List<String>.from(json["params"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -138,8 +152,8 @@ class PassiveTalenDetail {
 
   factory PassiveTalenDetail.fromJson(Map<String, dynamic> json) =>
       PassiveTalenDetail(
-        name: json["name"],
-        info: json["info"],
+        name: json["name"] ?? "",
+        info: json["info"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -170,12 +184,12 @@ class ImageTalent {
   final String? passive4;
 
   factory ImageTalent.fromJson(Map<String, dynamic> json) => ImageTalent(
-        combat1: json["combat1"],
-        combat2: json["combat2"],
+        combat1: json["combat1"] ?? "",
+        combat2: json["combat2"] ?? "",
         combatsp: json["combatsp"],
-        combat3: json["combat3"],
-        passive1: json["passive1"],
-        passive2: json["passive2"],
+        combat3: json["combat3"] ?? "",
+        passive1: json["passive1"] ?? "",
+        passive2: json["passive2"] ?? "",
         passive3: json["passive3"],
         passive4: json["passive4"],
       );

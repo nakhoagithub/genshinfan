@@ -4,7 +4,7 @@ class Outfit {
   final String description;
   final bool isdefault;
   final String character;
-  final List<String>? source;
+  final List<String> source;
   ImageOutfit? images;
   String? version;
 
@@ -14,7 +14,7 @@ class Outfit {
     required this.description,
     required this.isdefault,
     required this.character,
-    this.source,
+    required this.source,
     this.images,
     this.version,
   });
@@ -25,12 +25,12 @@ class Outfit {
 
   factory Outfit.fromJson(Map<String, dynamic> json) => Outfit(
         key: json['key'],
-        name: json["name"],
-        description: json["description"],
-        isdefault: json["isdefault"],
-        character: json["character"],
+        name: json["name"] ?? "",
+        description: json["description"] ?? "",
+        isdefault: json["isdefault"] ?? false,
+        character: json["character"] ?? "",
         source: json['source'] == null
-            ? null
+            ? []
             : List<String>.from(json["source"].map((x) => x)),
         images: json['images'] == null
             ? null
@@ -44,8 +44,7 @@ class Outfit {
         "description": description,
         "isdefault": isdefault,
         "character": character,
-        "source":
-            source == null ? null : List<dynamic>.from(source!.map((x) => x)),
+        "source": List<dynamic>.from(source.map((x) => x)),
         "images": images?.toJson(),
         "version": version,
       };
@@ -63,7 +62,7 @@ class ImageOutfit {
     this.namesplash,
   });
   factory ImageOutfit.fromJson(Map<String, dynamic> json) => ImageOutfit(
-        namecard: json["namecard"],
+        namecard: json["namecard"] ?? "",
         nameicon: json["nameicon"],
         namesideicon: json["namesideicon"],
         namesplash: json["namesplash"],
