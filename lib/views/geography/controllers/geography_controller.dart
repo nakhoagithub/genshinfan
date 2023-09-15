@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/geography.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -30,7 +30,7 @@ class GeographyController extends GetxController
 
   @override
   void onInit() {
-    geographies.addAll(Get.find<AppController>().geographies);
+    geographies.addAll(Get.find<MainController>().geographies);
     super.onInit();
   }
 

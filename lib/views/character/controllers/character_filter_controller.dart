@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -70,9 +70,11 @@ class CharacterFilterController extends GetxController {
       return "None";
     });
     characters.clear();
-    characters.addAll(Get.find<AppController>().characters);
-    characters.removeWhere(
-        (e) => !elements.contains(e.element) && e.element != "none".tr);
+    characters.addAll(Get.find<MainController>().characters);
+
+    characters.removeWhere((e) =>
+        !elements.contains(Tool.getEnglishElementFromName(e.element)) &&
+        e.element != "none".tr);
 
     // lọc theo vũ khí
     List<String> weapons = List.generate(checkWeaponFilters.length, (index) {
@@ -81,7 +83,9 @@ class CharacterFilterController extends GetxController {
       }
       return "None";
     });
-    characters.removeWhere((element) => !weapons.contains(element.weapontype));
+
+    characters.removeWhere((element) =>
+        !weapons.contains(Tool.getEnglishWeaponType(element.weapontype)));
 
     // lọc theo rarity
     List<bool> rarities = List.generate(
@@ -111,7 +115,7 @@ class CharacterFilterController extends GetxController {
 
   void reset() {
     characters.clear();
-    characters.addAll(Get.find<AppController>().characters);
+    characters.addAll(Get.find<MainController>().characters);
     // reset element
     checkElementFilters.value =
         List.generate(Config.elements.length, (index) => true);

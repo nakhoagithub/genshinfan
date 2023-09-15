@@ -54,7 +54,7 @@ import 'package:genshinfan/services/windglider_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
-class AppController extends GetxController {
+class MainController extends GetxController {
   // theme app
   Rx<ThemeData> themeData = ThemeData().obs;
 
@@ -262,9 +262,6 @@ class AppController extends GetxController {
     super.onInit();
     // init theme
     themeData.value = ThemeApp.theme;
-
-    user.value = FirebaseAuth.instance.currentUser;
-    userApp.value = await AppService().checkAndInitUser();
 
     // init internet stream
     _streamConnect = connectivity.onConnectivityChanged.listen((value) async {

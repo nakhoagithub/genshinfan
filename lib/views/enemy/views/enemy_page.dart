@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 import 'package:genshinfan/models/game/enemy.dart';
 import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
@@ -30,16 +30,14 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount:
-                  Get.find<AppLayoutController>().crossAxisCount(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatio(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 enemies.length,
                 (index) => ItemGame(
                   title: enemies[index].name,
-                  linkImage:
-                      Config.urlImage(enemies[index].images?.nameicon),
+                  linkImage: Config.urlImage(enemies[index].images?.nameicon),
                   onTap: () {
                     enemyController.selectEnemy(enemies[index]);
                     Get.toNamed("/enemy_info");

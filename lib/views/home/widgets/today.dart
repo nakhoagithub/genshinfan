@@ -17,15 +17,18 @@ class HomeToday extends StatelessWidget {
         children: [
           Text(
             "${"today".tr}: ",
-            style: ThemeApp.textStyle(fontSize: 18),
-          ),
-          Text(
-            "day${homeController.today}".tr,
             style: ThemeApp.textStyle(
-                fontSize: 18,
-                color: Colors.orange,
-                fontWeight: FontWeight.bold),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          Obx(() => Text(
+                "day${homeController.today}".tr,
+                style: ThemeApp.textStyle(
+                    fontSize: 18,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold),
+              )),
           Container(
             margin: const EdgeInsets.only(left: 5),
             child: InkWell(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/resource.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -31,9 +31,8 @@ class ResourceController extends GetxController
 
   @override
   void onInit() {
-    resources.addAll(Get.find<AppController>().resources);
-    
-    resourcesView.addAll(Get.find<AppController>().resources);
+    resources.addAll(Get.find<MainController>().resources);
+    resourcesView.addAll(Get.find<MainController>().resources);
     super.onInit();
   }
 

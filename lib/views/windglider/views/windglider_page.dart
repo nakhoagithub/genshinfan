@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/models/game/windglider.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/item.dart';
@@ -31,9 +31,9 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: Get.find<AppLayoutController>().crossAxisCount(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatio(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 windgliders.length,
                 (index) => ItemGame(

@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/models/game/namecard.dart';
 import 'package:get/get.dart';
 
 class AchievementController extends GetxController {
   List<AchievementGroup> achievementGroups =
-      Get.find<AppController>().achievementGroups;
-  List<Achievement> achievements = Get.find<AppController>().achievements;
+      Get.find<MainController>().achievementGroups;
+  List<Achievement> achievements = Get.find<MainController>().achievements;
   Rx<AchievementGroup?> achievementGroup = Rx(null);
   Rx<Namecard?> namecardReward = Rx(null);
   Map<String, List<Achievement>> mapAchievementOfGroup = {};
@@ -26,7 +26,7 @@ class AchievementController extends GetxController {
     }
 
     if (value.reward != null) {
-      namecardReward.value = Get.find<AppController>()
+      namecardReward.value = Get.find<MainController>()
           .namecards
           .firstWhereOrNull((element) => element.name == value.reward!.name);
     }

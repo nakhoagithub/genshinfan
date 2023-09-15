@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
@@ -14,7 +14,7 @@ class InfoUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     return Container(
       margin: const EdgeInsets.only(left: 5, right: 5),
       child: Card(
@@ -34,7 +34,7 @@ class _Logged extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     User user = appController.user.value!;
     return Container(
       margin: const EdgeInsets.all(10),
@@ -79,7 +79,7 @@ class _Logged extends StatelessWidget {
           const Spacer(),
           IconApp(
             onTap: () async {
-              await Get.find<AppController>().logout();
+              await Get.find<MainController>().logout();
             },
             child: const Icon(Icons.logout_outlined),
           ),
@@ -98,7 +98,7 @@ class _NoLogin extends StatelessWidget {
     return InkWell(
       onTap: () async {
         dialogProgress("loading".tr);
-        await Get.find<AppController>().login();
+        await Get.find<MainController>().login();
         Get.back();
       },
       child: Container(

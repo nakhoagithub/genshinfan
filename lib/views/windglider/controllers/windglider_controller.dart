@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/windglider.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -30,7 +30,7 @@ class WindgliderController extends GetxController
 
   @override
   void onInit() {
-    windgliders.addAll(Get.find<AppController>().windgliders);
+    windgliders.addAll(Get.find<MainController>().windgliders);
     super.onInit();
   }
 

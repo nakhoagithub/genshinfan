@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/models/game/items.dart';
@@ -65,7 +65,7 @@ class WeaponService {
   }
 
   List<Weapon>? getWeaponUpToday() {
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     List<Weapon> weapons = appController.weapons;
     List<Domain> domains = Get.find<HomeController>().domainToday;
     List<String> nameResourceToday = [];
@@ -108,7 +108,7 @@ class WeaponService {
   }
 
   Weapon? getWeaponFromId(String key) {
-    List<Weapon> weapons = Get.find<AppController>().weapons;
+    List<Weapon> weapons = Get.find<MainController>().weapons;
     return weapons.firstWhereOrNull((element) {
       return element.key == key;
     });

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
 import 'package:genshinfan/models/game/craft.dart';
 import 'package:genshinfan/utils/config.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
@@ -30,17 +30,16 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount:
-                  Get.find<AppLayoutController>().crossAxisCount(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatioBig(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 crafts.length,
                 (index) => ItemGame(
                   title: crafts[index].name,
                   rarity: crafts[index].resource?.rarity ?? "1",
-                  linkImage: Config.urlImage(
-                      crafts[index].resource?.images?.nameicon),
+                  linkImage:
+                      Config.urlImage(crafts[index].resource?.images?.nameicon),
                   star: true,
                   onTap: () {
                     craftController.selectCraft(crafts[index]);

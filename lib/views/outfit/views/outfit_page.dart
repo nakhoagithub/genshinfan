@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/outfit/controllers/outfit_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/outfit.dart';
@@ -35,10 +35,9 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount:
-                  Get.find<AppLayoutController>().crossAxisCountBig(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatioBig(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 outfits.length,
                 (index) {
@@ -67,7 +66,7 @@ class _ItemOutfit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Get.find<AppLayoutController>().widthItemBig;
+    double sizeItem = Get.find<LayoutController>().widthItem.value;
     Character? character = Tool.getCharacterFromName(outfit.character);
     String linkImage = (outfit.isdefault
             ? character?.images?.icon

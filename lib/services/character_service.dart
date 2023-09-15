@@ -5,7 +5,7 @@ import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
@@ -85,7 +85,7 @@ class CharacterService {
   }
 
   List<Character>? getCharacterBirthdayInMonth() {
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     List<Character> characters = appController.characters;
     List<Character> characterBirthday = characters.where((element) {
       if (element.birthdaymmdd != "") {
@@ -109,7 +109,7 @@ class CharacterService {
   }
 
   List<Character>? getCharacterBirthdayToday() {
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     List<Character> characters = appController.characters;
     List<Character> characterBirthday = characters.where((element) {
       if (element.birthdaymmdd != "") {
@@ -136,7 +136,7 @@ class CharacterService {
   }
 
   List<Character>? getCharacterUpToday() {
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     HomeController homeController = Get.find<HomeController>();
     List<Character> characters = appController.characters;
     List<Domain> domains = homeController.domainToday;
@@ -182,7 +182,7 @@ class CharacterService {
   }
 
   Character? getCharacterFromId(String key) {
-    List<Character> characters = Get.find<AppController>().characters;
+    List<Character> characters = Get.find<MainController>().characters;
     if (key == "main") {
       return characters
           .firstWhereOrNull((element) => element.association == "MAINACTOR");

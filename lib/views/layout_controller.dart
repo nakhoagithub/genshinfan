@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
+import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
+import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
+import 'package:get/get.dart';
+
+class LayoutController extends GetxController {
+  PageController pageController =
+      PageController(initialPage: 0, keepPage: true);
+  RxInt menu = 0.obs;
+  List<int> pageHasFilter = [1, 2, 3];
+  RxString title = "Genshin Fan".obs;
+
+  // item
+  RxDouble widthItem = 1.0.obs;
+  RxDouble width = 1.0.obs;
+  RxInt crossAxisCount = 1.obs;
+  RxDouble childAspectRatio = 1.0.obs;
+
+  void selectMenu(int value) {
+    menu.value = value;
+    pageController.jumpToPage(
+      value,
+      // duration: const Duration(milliseconds: 200),
+      // curve: Curves.ease,
+    );
+  }
+
+  void onClickOpenFilter() {
+    if (menu.value == 1) {
+      dialogFilterCharacter();
+    }
+    if (menu.value == 2) {
+      dialogFilterWeapon();
+    }
+    if (menu.value == 3) {
+      dialogFilterResource();
+    }
+  }
+
+  void onChangeTitle() {
+    switch (menu.value) {
+      case 0:
+        title.value = "Genshin Fan";
+        break;
+      case 1:
+        title.value = "character".tr;
+        break;
+      case 2:
+        title.value = "weapon".tr;
+        break;
+      case 3:
+        title.value = "resource".tr;
+        break;
+      case 4:
+        title.value = "orther".tr;
+        break;
+    }
+  }
+
+  void getWithItem() {
+    double a = Get.width;
+    double b = Get.height;
+    if (a < b) {
+      widthItem.value = a / 4 - 4;
+      width.value = a;
+    } else if (a > b) {
+      widthItem.value = b / 4 - 4;
+      width.value = b;
+    } else {
+      // a == b
+      widthItem.value = a / 4 - 4;
+      width.value = a;
+    }
+
+    crossAxisCount.value = Get.width ~/ (widthItem.value + 4);
+    childAspectRatio.value = widthItem.value / (widthItem.value * 1.215);
+  }
+
+  @override
+  void onInit() {
+    getWithItem();
+    super.onInit();
+    menu.listen((p0) {
+      onChangeTitle();
+    });
+  }
+}

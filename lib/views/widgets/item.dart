@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:get/get.dart';
@@ -32,7 +32,7 @@ class ItemGame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double sizeItem = size ?? Get.find<AppLayoutController>().widthItem;
+    double sizeItem = size ?? Get.find<LayoutController>().widthItem.value;
 
     return Center(
       child: noData

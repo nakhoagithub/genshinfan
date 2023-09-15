@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -64,7 +64,7 @@ class ResourceFilterController extends GetxController {
 
   void filter() {
     resources.clear();
-    resources.addAll(Get.find<AppController>().resources);
+    resources.addAll(Get.find<MainController>().resources);
 
     // lọc theo substat
     List<String> substat =
@@ -105,7 +105,7 @@ class ResourceFilterController extends GetxController {
 
   void reset() {
     resources.clear();
-    resources.addAll(Get.find<AppController>().resources);
+    resources.addAll(Get.find<MainController>().resources);
 
     // reset substat
     selectSubstatResourceFilters.value =

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -34,8 +34,8 @@ class CharacterController extends GetxController
 
   @override
   void onInit() {
-    characters.addAll(Get.find<AppController>().characters);
-    charactersView.addAll(Get.find<AppController>().characters);
+    characters.addAll(Get.find<MainController>().characters);
+    charactersView.addAll(Get.find<MainController>().characters);
     super.onInit();
   }
 

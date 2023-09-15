@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/craft.dart';
 import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -21,7 +21,7 @@ class CraftService {
             List<Craft>.from(jsonDecode(json).map((e) => Craft.fromJson(e)))
                 .toList();
 
-        List<Resource> resources = Get.find<AppController>().resources;
+        List<Resource> resources = Get.find<MainController>().resources;
 
         for (Craft craft in crafts) {
           Resource? resource =

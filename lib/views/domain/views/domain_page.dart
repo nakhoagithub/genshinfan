@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/domain/controllers/domain_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/views/domain/widgets/item_domain.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -29,10 +29,9 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount:
-                  Get.find<AppLayoutController>().crossAxisCountBig(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatioBig(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 domains.length,
                 (index) => ItemDomain(

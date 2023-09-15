@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/namecard.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -30,7 +30,7 @@ class NamecardController extends GetxController
 
   @override
   void onInit() {
-    namecards.addAll(Get.find<AppController>().namecards);
+    namecards.addAll(Get.find<MainController>().namecards);
     super.onInit();
   }
 

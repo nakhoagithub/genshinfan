@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/character_service.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
 
@@ -20,10 +20,13 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
     List<Character> characterToday =
         CharacterService().getCharacterBirthdayToday() ?? [];
 
-    double sizeItem = Get.find<AppLayoutController>().widthItem;
+    double sizeItem = Get.find<LayoutController>().widthItem.value;
     return Container(
       margin: const EdgeInsets.only(
-          top: 20, left: Config.marginText, right: Config.marginText),
+        top: 20,
+        left: Config.marginText,
+        right: Config.marginText,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,7 +38,7 @@ class ListCharacterBirthdayInMonth extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 120,
+            height: 160,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),

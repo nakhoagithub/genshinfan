@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
@@ -16,7 +16,7 @@ import 'package:get_storage/get_storage.dart';
 class ContributeCharacterController extends GetxController {
   GetStorage box = GetStorage();
   TextEditingController textEditingControllerAuth = TextEditingController();
-  RxList<Character> characters = Get.find<AppController>().characters;
+  RxList<Character> characters = Get.find<MainController>().characters;
   RxString author = "".obs;
   Rx<Character?> character = Rx(null);
   RxString elementOfTraveler = "".obs;
@@ -39,7 +39,7 @@ class ContributeCharacterController extends GetxController {
   void selectCharacter(Character value) {
     character.value = value;
     weapon.value = null;
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     weapons.value = appController.weapons.where((p0) {
       return p0.weapontype == value.weapontype;
     }).toList();
@@ -107,7 +107,7 @@ class ContributeCharacterController extends GetxController {
     List<String> goblets = gobletsEffect;
     List<String> circlets = circletsEffect;
 
-    String uid = Get.find<AppController>().userApp.value?.uid ?? "";
+    String uid = Get.find<MainController>().userApp.value?.uid ?? "";
     String author = this.author.value;
 
     if ((author.length >= 3 && author.length <= 30) &&
@@ -142,7 +142,7 @@ class ContributeCharacterController extends GetxController {
 
   @override
   void onInit() {
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     author.value = box.read(Config.keyAuthContribute) ??
         appController.userApp.value?.name ??
         "";
@@ -158,7 +158,7 @@ class ContributeCharacterController extends GetxController {
       },
     );
     // xóa các artifact không có bộ 2 và 4
-    artifacts.addAll(Get.find<AppController>().artifacts);
+    artifacts.addAll(Get.find<MainController>().artifacts);
     artifacts.removeWhere((element) => element.set1 != null);
     // sắp xếp theo độ hiếm
     artifacts.sort(

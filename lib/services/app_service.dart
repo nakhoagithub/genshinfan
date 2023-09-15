@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/api_github.dart';
 import 'package:genshinfan/models/app/package_app.dart';
 import 'package:genshinfan/models/app/traffic.dart';
@@ -55,7 +55,7 @@ class AppService {
       );
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
-      Get.find<AppController>().userApp.value = await checkAndInitUser();
+      Get.find<MainController>().userApp.value = await checkAndInitUser();
       return userCredential;
     } catch (e) {
       log("$e", name: "login");
@@ -64,7 +64,7 @@ class AppService {
   }
 
   Future<void> logout() async {
-    Get.find<AppController>().userApp.value = null;
+    Get.find<MainController>().userApp.value = null;
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
     try {
@@ -95,6 +95,7 @@ class AppService {
           );
 
           await db.child(user.uid).update(userApp.toJson());
+          Get.find<MainController>().userApp.value = userApp;
           return userApp;
         } else {
           log("${dataSnapshot.value}", name: "UserApp - login");
@@ -159,7 +160,7 @@ class AppService {
     try {
       DatabaseReference db = FirebaseDatabase.instance.ref();
       PackageApp packageApp = await getVersion();
-      DataSnapshot link = await db
+      DataSnapshot? link = await db
           .child('application')
           .child("dataAPI")
           .child("buildNumber${packageApp.buildNumber}")
@@ -176,8 +177,10 @@ class AppService {
             .child("buildNumber")
             .get();
 
-        final res = await dio.get(link.value as String);
-        return ApiGithub.fromJson(res.data);
+        if (link.value != null && link.value is String) {
+          final res = await dio.get(link.value as String);
+          return ApiGithub.fromJson(res.data);
+        }
       }
     } catch (e) {
       log("$e", name: "AppService getAPI");

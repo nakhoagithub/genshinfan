@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
@@ -37,7 +37,7 @@ class MenuPage extends StatelessWidget {
             const InfoUser(),
 
             Obx(() {
-              UserApp? userApp = Get.find<AppController>().userApp.value;
+              UserApp? userApp = Get.find<MainController>().userApp.value;
               return !Role.viewMenuAdmin() || userApp == null
                   ? const SizedBox()
                   : ItemMenu(
@@ -96,8 +96,8 @@ class MenuPage extends StatelessWidget {
               icon: const Icon(Icons.person_outline_rounded),
               title: "character_building".tr,
               onTap: () {
-                if (Get.find<AppController>().userApp.value != null ||
-                    Get.find<AppController>().user.value != null) {
+                if (Get.find<MainController>().userApp.value != null ||
+                    Get.find<MainController>().user.value != null) {
                   Get.toNamed('/contribute_character_building');
                 } else {
                   dialogInfo("required_login".tr);

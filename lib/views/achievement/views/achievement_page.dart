@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
 import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
@@ -35,8 +35,9 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: Get.find<AppLayoutController>().crossAxisCountBig(),
-              childAspectRatio: Get.find<AppLayoutController>().childAspectRatioBig(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
+              childAspectRatio:
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 achievementGroups.length,
                 (index) => _ItemAchievementGroup(
@@ -64,7 +65,7 @@ class _ItemAchievementGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Get.find<AppLayoutController>().widthItemBig;
+    double sizeItem = Get.find<LayoutController>().widthItem.value;
     return Center(
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,

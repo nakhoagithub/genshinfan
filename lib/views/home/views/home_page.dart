@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/views/home/widgets/character_birthday_in_month.dart';
 import 'package:genshinfan/views/home/widgets/character_up_today.dart';
 import 'package:genshinfan/views/home/widgets/domain_today.dart';
 import 'package:genshinfan/views/home/widgets/today.dart';
-import 'package:genshinfan/views/home/widgets/tool.dart';
 import 'package:genshinfan/views/home/widgets/weapon_up_today.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+
+    Get.put(HomeController());
     context.theme;
     return Container(
       padding: const EdgeInsets.all(4),
@@ -24,7 +33,7 @@ class HomePage extends StatelessWidget {
           children: [
             HomeToday(),
             ListDomainToday(),
-            HomeTool(),
+            // HomeTool(),
             ListCharacterBirthdayInMonth(),
             ListCharacterUpToday(),
             ListWeaponUpToday(),
@@ -34,4 +43,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

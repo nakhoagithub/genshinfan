@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -22,8 +22,8 @@ class WeaponController extends GetxController with GetTickerProviderStateMixin {
 
   @override
   void onInit() {
-    weapons.addAll(Get.find<AppController>().weapons);
-    weaponsView.addAll(Get.find<AppController>().weapons);
+    weapons.addAll(Get.find<MainController>().weapons);
+    weaponsView.addAll(Get.find<MainController>().weapons);
     super.onInit();
   }
 

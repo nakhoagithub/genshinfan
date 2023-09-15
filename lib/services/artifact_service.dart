@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
@@ -55,7 +55,7 @@ class ArtifactService {
     if (key == null) {
       return null;
     }
-    List<Artifact> artifacts = Get.find<AppController>().artifacts;
+    List<Artifact> artifacts = Get.find<MainController>().artifacts;
     return artifacts.firstWhereOrNull((element) {
       return element.key == key;
     });

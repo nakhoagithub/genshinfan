@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -31,9 +31,9 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: Get.find<AppLayoutController>().crossAxisCount(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatio(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 weapons.length,
                 (index) => ItemGame(

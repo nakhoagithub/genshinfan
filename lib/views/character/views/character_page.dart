@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/tools.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
-class CharacterPage extends StatelessWidget {
+class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
 
   @override
+  State<CharacterPage> createState() => _CharacterPageState();
+}
+
+class _CharacterPageState extends State<CharacterPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     context.theme;
     return const _List();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _List extends StatelessWidget {
@@ -30,9 +40,9 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: Get.find<AppLayoutController>().crossAxisCount(),
+              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
-                  Get.find<AppLayoutController>().childAspectRatio(),
+                  Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
                 characters.length,
                 (index) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:get/get.dart';
 
 class SwitchThemeApp extends StatelessWidget {
@@ -8,7 +8,7 @@ class SwitchThemeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     return ObxValue(
       (data) {
         return Switch(

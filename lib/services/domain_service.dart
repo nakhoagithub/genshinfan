@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -99,7 +99,7 @@ class DomainService {
   }
 
   List<Domain>? getDomainToday(String today) {
-    AppController appController = Get.find<AppController>();
+    MainController appController = Get.find<MainController>();
     List<Domain> domains = appController.domains;
 
     List<Domain> domainToday = domains.where((element) {

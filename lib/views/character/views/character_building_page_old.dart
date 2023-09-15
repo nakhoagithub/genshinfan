@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/character/controllers/character_building_controller.dart';
@@ -94,7 +94,7 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserApp? user = Get.find<AppController>().userApp.value;
+    UserApp? user = Get.find<MainController>().userApp.value;
     String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);

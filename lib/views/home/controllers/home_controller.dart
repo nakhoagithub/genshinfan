@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/traffic.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -12,6 +14,8 @@ import 'package:in_app_update/in_app_update.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
+  RxBool loading = false.obs;
+
   StreamController<ScreenPosition> homeStream = StreamController();
   RxBool haveNewVesion = false.obs;
   Rx<Traffic?> traffic = Rx(null);
@@ -20,18 +24,6 @@ class HomeController extends GetxController {
   RxInt month = 0.obs;
   RxBool hasBirthday = false.obs;
   RxList<Domain> domainToday = <Domain>[].obs;
-
-  void pageLeft() {
-    homeStream.sink.add(ScreenPosition.left);
-  }
-
-  void pageCenter() {
-    homeStream.sink.add(ScreenPosition.center);
-  }
-
-  void pageRight() {
-    homeStream.sink.add(ScreenPosition.right);
-  }
 
   void openGenshinMap() async {
     dialogConfirm(
@@ -77,6 +69,11 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+    loading.value = true;
+    MainController mainController = Get.find<MainController>();
+    mainController.user.value = FirebaseAuth.instance.currentUser;
+    unawaited(AppService().checkAndInitUser());
+
     DateTime dateTime = DateTime.now();
     today.value = dateTime.weekday;
     day.value = dateTime.day;
@@ -84,6 +81,7 @@ class HomeController extends GetxController {
 
     unawaited(getTraffic());
     unawaited(checkUpdateApp());
+    loading.value = false;
   }
 
   @override

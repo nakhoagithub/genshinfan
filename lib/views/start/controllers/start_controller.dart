@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/package_app.dart';
 import 'package:genshinfan/utils/localization.dart';
 import 'package:genshinfan/services/app_service.dart';
@@ -20,7 +20,7 @@ class StartController extends GetxController {
 
   Rx<int> redownload = 0.obs;
 
-  AppController appController = Get.find<AppController>();
+  MainController appController = Get.find<MainController>();
 
   void _setLog(DataAppStatus dataAppStatus) {
     switch (dataAppStatus) {
@@ -81,7 +81,7 @@ class StartController extends GetxController {
   }
 
   Future<void> _getDataToHome() async {
-    await Get.find<AppController>().getData();
+    await Get.find<MainController>().getData();
     setProgress(1, 1, DataAppStatus.success);
     // đợi chút xíu rồi chuyển màn hình
     await Future.delayed(const Duration(milliseconds: 1000));

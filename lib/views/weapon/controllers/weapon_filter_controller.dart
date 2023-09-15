@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -74,7 +74,7 @@ class WeaponFilterController extends GetxController {
 
   void filter() {
     weapons.clear();
-    weapons.addAll(Get.find<AppController>().weapons);
+    weapons.addAll(Get.find<MainController>().weapons);
     // lọc theo vũ khí
     List<String> weapontypes =
         List.generate(checkWeaponFilters.length, (index) {
@@ -83,7 +83,8 @@ class WeaponFilterController extends GetxController {
       }
       return "None";
     });
-    weapons.removeWhere((element) => !weapontypes.contains(element.weapontype));
+    weapons.removeWhere((element) =>
+        !weapontypes.contains(Tool.getEnglishWeaponType(element.weapontype)));
 
     // lọc theo substat
     List<String> substat = List.generate(substatWeaponFilters.length, (index) {
@@ -122,7 +123,7 @@ class WeaponFilterController extends GetxController {
 
   void reset() {
     weapons.clear();
-    weapons.addAll(Get.find<AppController>().weapons);
+    weapons.addAll(Get.find<MainController>().weapons);
     // reset weapon
     checkWeaponFilters.value =
         List.generate(Config.weapons.length, (index) => true);

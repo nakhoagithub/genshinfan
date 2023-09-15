@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/utils/localization.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
@@ -47,7 +47,7 @@ class DialogLanguage extends StatelessWidget {
                         // }));
                         dialogConfirm("notification".tr,
                             "notification_change_language".tr, () async {
-                          await Get.find<AppController>()
+                          await Get.find<MainController>()
                               .updateLanguage(languageCode, countryCode);
                         });
                       },

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:get/get.dart';
 
 class Role {
   /// Quyền quản trị cao nhất
   static bool isRoleAdmin() {
-    List<int>? roles = Get.find<AppController>().userApp.value?.roles;
+    List<int>? roles = Get.find<MainController>().userApp.value?.roles;
     if (roles?.contains(1) == true) {
       return true;
     }
@@ -14,7 +14,7 @@ class Role {
 
   /// Quyền quản lý người dùng
   static bool isRoleUserManager() {
-    List<int>? roles = Get.find<AppController>().userApp.value?.roles;
+    List<int>? roles = Get.find<MainController>().userApp.value?.roles;
     if (roles?.contains(2) == true) {
       return true;
     }
@@ -23,7 +23,7 @@ class Role {
 
   /// Quyền kiểm duyệt bài đăng
   static bool isRoleSensor() {
-    List<int>? roles = Get.find<AppController>().userApp.value?.roles;
+    List<int>? roles = Get.find<MainController>().userApp.value?.roles;
     if (roles?.contains(5) == true) {
       return true;
     }
@@ -32,7 +32,7 @@ class Role {
 
   /// Người dùng
   static bool isRoleMember() {
-    List<int>? roles = Get.find<AppController>().userApp.value?.roles;
+    List<int>? roles = Get.find<MainController>().userApp.value?.roles;
     if (roles?.contains(10) == true) {
       return true;
     }

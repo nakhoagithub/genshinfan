@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/achievement/views/achievement_info_page.dart';
 import 'package:genshinfan/views/admin/views/admin_page.dart';
 import 'package:genshinfan/views/animal/views/animal_info_page.dart';
@@ -21,7 +21,7 @@ import 'package:genshinfan/views/character/views/character_info_page.dart';
 import 'package:genshinfan/views/contribute/views/contribute_character_building_page.dart';
 import 'package:genshinfan/views/domain/views/domain_info_page.dart';
 import 'package:genshinfan/views/enemy/views/enemy_info_page.dart';
-import 'package:genshinfan/views/home.dart';
+import 'package:genshinfan/views/layout.dart';
 import 'package:genshinfan/views/resource/views/resouce_info_page.dart';
 import 'package:genshinfan/views/start/views/start_page.dart';
 import 'package:genshinfan/views/weapon/views/weapon_info_page.dart';
@@ -46,13 +46,13 @@ void main() async {
   runApp(const App());
 }
 
-class App extends GetView<AppController> {
+class App extends GetView<MainController> {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AppController appController = Get.put(AppController());
-    return GetBuilder<AppController>(
+    MainController appController = Get.put(MainController());
+    return GetBuilder<MainController>(
       init: appController,
       initState: (_) {},
       builder: (_) {
@@ -82,7 +82,7 @@ class App extends GetView<AppController> {
             ),
             GetPage(
               name: '/home',
-              page: () => const Home(),
+              page: () => const Layout(),
               binding: AppBinding(),
             ),
             GetPage(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/craft.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -30,7 +30,7 @@ class CraftController extends GetxController
 
   @override
   void onInit() {
-    crafts.addAll(Get.find<AppController>().crafts);
+    crafts.addAll(Get.find<MainController>().crafts);
     super.onInit();
   }
 

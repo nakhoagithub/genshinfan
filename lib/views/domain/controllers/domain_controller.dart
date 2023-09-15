@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_controller.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:get/get.dart';
 
 class DomainController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  List<Domain> domains = Get.find<AppController>().domains;
+  List<Domain> domains = Get.find<MainController>().domains;
   Rx<Domain?> domain = Rx(null);
   ScrollController scrollController = ScrollController();
 

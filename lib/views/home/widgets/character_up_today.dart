@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/app_layout.dart';
 import 'package:genshinfan/views/character/controllers/character_controller.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/character_service.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:get/get.dart';
@@ -15,7 +15,7 @@ class ListCharacterUpToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    double sizeItem = Get.find<AppLayoutController>().widthItem;
+    double sizeItem = Get.find<LayoutController>().widthItem.value;
     List<Character>? characterUpToday =
         CharacterService().getCharacterUpToday();
     return characterUpToday == null
@@ -49,7 +49,7 @@ class ListCharacterUpToday extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 120,
+                  height: 140,
                   child: SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
