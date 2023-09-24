@@ -212,7 +212,7 @@ const Map<String, String> vi = {
       "Giao diện này sẽ không được dùng nữa trong một vài phiên bản tới.",
 
   "home": "Trang chủ",
-  "orther": "Thêm",
+  "change_today": "Thay đổi thứ trong tuần",
 
   // date
   "day1": "Thứ 2",

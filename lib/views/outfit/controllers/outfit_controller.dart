@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/outfit.dart';
 import 'package:get/get.dart';
@@ -9,34 +8,14 @@ class OutfitController extends GetxController
   GetStorage box = GetStorage();
   List<Outfit> outfits = <Outfit>[].obs;
   Rx<Outfit?> outfit = Rx(null);
-  ScrollController scrollController = ScrollController();
 
   void selectOutfit(Outfit outfit) {
     this.outfit.value = outfit;
-    update();
-  }
-
-  @override
-  void update([List<Object>? ids, bool condition = true]) async {
-    if (scrollController.hasClients) {
-      await scrollController.animateTo(
-        scrollController.position.minScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.ease,
-      );
-    }
-    super.update(ids, condition);
   }
 
   @override
   void onInit() {
     outfits.addAll(Get.find<MainController>().outfits);
     super.onInit();
-  }
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
   }
 }

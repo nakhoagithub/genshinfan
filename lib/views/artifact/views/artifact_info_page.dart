@@ -29,12 +29,11 @@ class ArtifactInfoPage extends StatelessWidget {
         ),
         body: artifactController.artifact.value == null
             ? PageEmpty(title: "select_artifact".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: artifactController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationArtifact(),
                         InformationItemArtifact(),

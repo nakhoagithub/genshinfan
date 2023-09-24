@@ -7,6 +7,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
+import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/models/game/domain.dart';
@@ -226,13 +227,16 @@ class CharacterService {
 
     List<CharacterBuilding> characters = [];
     try {
-      await db.child(key).get().then((value) {
+      await db.child(key).get().then((value) async {
         dynamic data = value.value;
         if (data != null) {
           for (var key in data.keys) {
+            UserApp? u = await CharacterService()
+                .getAuthorCharacterBuilding("ZqexhwyZfrZOii5ygA3z8fF53SC3");
             CharacterBuilding characterBuilding =
                 CharacterBuilding.fromJson(data[key]);
             characterBuilding.key = key;
+            characterBuilding.userAuthor = u;
             characters.add(characterBuilding);
           }
         }
@@ -245,5 +249,26 @@ class CharacterService {
       log("$e", name: "getCharacterBuilding");
     }
     return characters;
+  }
+
+  /// Version 1.5
+  Future<UserApp?> getAuthorCharacterBuilding(String uid) async {
+    DatabaseReference db = FirebaseDatabase.instance.ref("users");
+
+    UserApp? user;
+    try {
+      await db.child(uid).get().then((value) {
+        dynamic data = value.value;
+        if (data != null) {
+          user = UserApp.fromJson(data);
+        }
+      }).timeout(const Duration(seconds: Config.seccondTimeout));
+    } catch (e) {
+      if (e is TimeoutException) {
+        Fluttertoast.showToast(msg: "timeout_exception".tr);
+      }
+      log("$e", name: "getCharacterBuilding");
+    }
+    return user;
   }
 }

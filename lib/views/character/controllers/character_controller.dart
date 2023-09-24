@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/utils/enum.dart';
 import 'package:get/get.dart';
@@ -13,7 +12,6 @@ class CharacterController extends GetxController
   Rx<Status> status = Status.init.obs;
   Rx<Character?> character = Rx(null);
   RxString element = "".obs;
-  ScrollController scrollController = ScrollController();
 
   void selectCharacter(Character value) async {
     character.value = value;
@@ -25,7 +23,6 @@ class CharacterController extends GetxController
     } else {
       element.value = character.value?.element ?? "";
     }
-    update();
   }
 
   void selectElement(String? element) async {
@@ -37,23 +34,5 @@ class CharacterController extends GetxController
     characters.addAll(Get.find<MainController>().characters);
     charactersView.addAll(Get.find<MainController>().characters);
     super.onInit();
-  }
-
-  @override
-  void update([List<Object>? ids, bool condition = true]) async {
-    if (scrollController.hasClients) {
-      await scrollController.animateTo(
-        scrollController.position.minScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.ease,
-      );
-    }
-    super.update(ids, condition);
-  }
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
   }
 }

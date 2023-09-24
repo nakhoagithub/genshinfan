@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/models/game/namecard.dart';

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/traffic.dart';
 import 'package:genshinfan/models/game/domain.dart';
+import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/services/app_service.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
@@ -20,10 +21,21 @@ class HomeController extends GetxController {
   RxBool haveNewVesion = false.obs;
   Rx<Traffic?> traffic = Rx(null);
   RxInt today = 0.obs;
+  RxString todaySelected = "".obs;
   RxInt day = 0.obs;
   RxInt month = 0.obs;
   RxBool hasBirthday = false.obs;
   RxList<Domain> domainToday = <Domain>[].obs;
+
+  List<String> todays = [
+    "day1".tr,
+    "day2".tr,
+    "day3".tr,
+    "day4".tr,
+    "day5".tr,
+    "day6".tr,
+    "day7".tr,
+  ];
 
   void openGenshinMap() async {
     dialogConfirm(
@@ -66,6 +78,12 @@ class HomeController extends GetxController {
     }
   }
 
+  void getDomainToday() {
+    domainToday.clear();
+    domainToday.value =
+        DomainService().getDomainToday(todaySelected.value) ?? [];
+  }
+
   @override
   void onInit() async {
     super.onInit();
@@ -76,9 +94,11 @@ class HomeController extends GetxController {
 
     DateTime dateTime = DateTime.now();
     today.value = dateTime.weekday;
+    todaySelected.value = "day${today.value}".tr;
     day.value = dateTime.day;
     month.value = dateTime.month;
 
+    getDomainToday();
     unawaited(getTraffic());
     unawaited(checkUpdateApp());
     loading.value = false;

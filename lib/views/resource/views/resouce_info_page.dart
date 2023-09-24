@@ -25,13 +25,12 @@ class ResourceInfoPage extends StatelessWidget {
         ),
         body: resourceController.resource.value == null
             ? PageEmpty(title: "select_resource".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: resourceController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationResource(),
                         SizedBox(height: 100),

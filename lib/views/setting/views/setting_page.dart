@@ -92,18 +92,6 @@ class MenuPage extends StatelessWidget {
 
             // đóng góp build nhân vật
             TitleApp(title: "contribute".tr),
-            ItemMenu(
-              icon: const Icon(Icons.person_outline_rounded),
-              title: "character_building".tr,
-              onTap: () {
-                if (Get.find<MainController>().userApp.value != null ||
-                    Get.find<MainController>().user.value != null) {
-                  Get.toNamed('/contribute_character_building');
-                } else {
-                  dialogInfo("required_login".tr);
-                }
-              },
-            ),
 
             // đóng góp bản dịch
             ItemMenu(

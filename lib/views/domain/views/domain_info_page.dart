@@ -26,13 +26,12 @@ class DomainInfoPage extends StatelessWidget {
         ),
         body: domainController.domain.value == null
             ? PageEmpty(title: "select_domain".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: domainController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationDomain(),
                         InformationDomainLv(),

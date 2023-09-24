@@ -24,12 +24,11 @@ class FoodInfoPage extends StatelessWidget {
         ),
         body: foodController.food.value == null
             ? PageEmpty(title: "select_food".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: foodController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationFood(),
                         SizedBox(height: 100),

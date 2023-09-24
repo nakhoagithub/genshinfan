@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/models/app/user.dart';
+import 'package:genshinfan/utils/role.dart';
+import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/user_manager/controllers/user_controller.dart';
 import 'package:genshinfan/views/user_manager/widgets/image_user.dart';
@@ -71,7 +73,10 @@ class _ItemUserSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: ImageUser(linkImage: user.linkImage),
-      title: Text(user.name ?? ""),
+      title: Text(
+        user.name ?? "",
+        style: ThemeApp.textStyle(color: Role.colorForRole(user.roles)),
+      ),
       subtitle: Text(user.email ?? ""),
       onTap: () {
         Get.find<UserController>().selectUser(user);

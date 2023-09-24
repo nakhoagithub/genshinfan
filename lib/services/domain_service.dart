@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/main_controller.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:get/get.dart';
@@ -108,7 +107,6 @@ class DomainService {
       }).toList();
       return daysofweeks != null && daysofweeks.isNotEmpty;
     }).toList();
-    Get.find<HomeController>().domainToday.value = domainToday;
     return domainToday;
   }
 }

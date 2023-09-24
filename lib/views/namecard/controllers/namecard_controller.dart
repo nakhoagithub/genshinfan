@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/game/namecard.dart';
 import 'package:get/get.dart';
@@ -9,34 +8,14 @@ class NamecardController extends GetxController
   GetStorage box = GetStorage();
   List<Namecard> namecards = <Namecard>[].obs;
   Rx<Namecard?> namecard = Rx(null);
-  ScrollController scrollController = ScrollController();
 
   void selectNamecard(Namecard namecard) {
     this.namecard.value = namecard;
-    update();
-  }
-
-  @override
-  void update([List<Object>? ids, bool condition = true]) async {
-    if (scrollController.hasClients) {
-      await scrollController.animateTo(
-        scrollController.position.minScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.ease,
-      );
-    }
-    super.update(ids, condition);
   }
 
   @override
   void onInit() {
     namecards.addAll(Get.find<MainController>().namecards);
     super.onInit();
-  }
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
   }
 }

@@ -26,12 +26,11 @@ class CraftInfoPage extends StatelessWidget {
         ),
         body: craftController.craft.value == null
             ? PageEmpty(title: "select_craft".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: craftController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationCraft(),
                         SizedBox(height: 100),

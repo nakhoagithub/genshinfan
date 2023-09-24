@@ -285,9 +285,9 @@ class MainController extends GetxController {
 class AppBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(ResourceController());
     Get.put(CharacterController());
     Get.put(WeaponController());
+    Get.put(ResourceController());
     Get.put(ArtifactController());
     Get.put(DomainController());
     Get.put(FoodController());

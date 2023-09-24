@@ -81,10 +81,9 @@ class CharacterInfoPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SingleChildScrollView(
-                    controller: characterController.scrollController,
-                    physics: const BouncingScrollPhysics(),
-                    child: const Column(
+                  const SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationCharacter(),
                         SkillCharacterView(),

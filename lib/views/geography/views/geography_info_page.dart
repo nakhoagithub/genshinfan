@@ -24,13 +24,12 @@ class GeographyInfoPage extends StatelessWidget {
         ),
         body: geographyController.geography.value == null
             ? PageEmpty(title: "select_geography".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: geographyController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationGeography(),
                         SizedBox(height: 100),

@@ -5,9 +5,9 @@ import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
 import 'package:get/get.dart';
 
 class LayoutController extends GetxController {
-  PageController pageController =
-      PageController(initialPage: 0, keepPage: true);
+  RxBool loading = false.obs;
   RxInt menu = 0.obs;
+  PageController? pageController;
   List<int> pageHasFilter = [1, 2, 3];
   RxString title = "Genshin Fan".obs;
 
@@ -22,7 +22,7 @@ class LayoutController extends GetxController {
 
   void selectMenu(int value) {
     menu.value = value;
-    pageController.jumpToPage(
+    pageController?.jumpToPage(
       value,
       // duration: const Duration(milliseconds: 200),
       // curve: Curves.ease,
@@ -56,7 +56,7 @@ class LayoutController extends GetxController {
         title.value = "resource".tr;
         break;
       case 4:
-        title.value = "orther".tr;
+        title.value = "other".tr;
         break;
     }
   }
@@ -87,8 +87,12 @@ class LayoutController extends GetxController {
 
   @override
   void onInit() {
+    loading.value = true;
+    pageController = PageController(initialPage: menu.value, keepPage: true);
     getWithItem();
+    loading.value = false;
     super.onInit();
+    
     menu.listen((p0) {
       onChangeTitle();
     });

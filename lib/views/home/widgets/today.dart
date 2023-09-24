@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/views/home/widgets/dialog_change_today.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:get/get.dart';
 
@@ -22,13 +23,28 @@ class HomeToday extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Obx(() => Text(
-                "day${homeController.today}".tr,
-                style: ThemeApp.textStyle(
-                    fontSize: 18,
-                    color: Colors.orange,
-                    fontWeight: FontWeight.bold),
-              )),
+          InkWell(
+            borderRadius: BorderRadius.circular(4),
+            onTap: () {
+              dialogChangeToday();
+            },
+            child: Row(
+              children: [
+                const SizedBox(width: 5),
+                Obx(() => Text(
+                      homeController.todaySelected.value,
+                      style: ThemeApp.textStyle(
+                          fontSize: 18,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold),
+                    )),
+                const Icon(
+                  Icons.arrow_drop_down_rounded,
+                  color: Colors.orange,
+                )
+              ],
+            ),
+          ),
           Container(
             margin: const EdgeInsets.only(left: 5),
             child: InkWell(

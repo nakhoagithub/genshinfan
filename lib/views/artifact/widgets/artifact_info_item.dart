@@ -91,7 +91,7 @@ class _ArtifactItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
-          // color: ThemeApp.colorText(),
+          color: Get.theme.colorScheme.onSurface,
         ),
       ),
       child: Column(

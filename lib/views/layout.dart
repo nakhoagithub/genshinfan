@@ -3,19 +3,22 @@ import 'package:genshinfan/views/character/views/character_page.dart';
 import 'package:genshinfan/views/drawer.dart';
 import 'package:genshinfan/views/home/views/home_page.dart';
 import 'package:genshinfan/views/layout_controller.dart';
-import 'package:genshinfan/views/orther/views/orther_page.dart';
+import 'package:genshinfan/views/other/views/other_page.dart';
 import 'package:genshinfan/views/resource/views/resource_page.dart';
 import 'package:genshinfan/views/weapon/views/weapon_page.dart';
+import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:get/get.dart';
 
 class ItemMenuLayout {
-  final Widget icon;
+  final String icon;
   final String title;
   final String keyPage;
+  final VoidCallback? onTap;
   const ItemMenuLayout({
     required this.icon,
     required this.title,
     required this.keyPage,
+    this.onTap,
   });
 }
 
@@ -25,7 +28,7 @@ class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    LayoutController layoutController = Get.put(LayoutController());
+    LayoutController layoutController = Get.find<LayoutController>();
     GlobalKey<ScaffoldState> key = GlobalKey();
 
     return Scaffold(
@@ -98,7 +101,9 @@ class Layout extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/images/UI_HomeWorldTabIcon_2_Character.png",
-                color: currentIndex == 1 ? Get.theme.primaryColor : null,
+                color: currentIndex == 1
+                    ? Get.theme.primaryColor
+                    : Get.theme.colorScheme.onSurface.withOpacity(0.7),
                 height: 40,
                 width: 40,
               ),
@@ -107,7 +112,9 @@ class Layout extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/images/UI_TheatreMechanicus_Icon_Mechanism.png",
-                color: currentIndex == 2 ? Get.theme.primaryColor : null,
+                color: currentIndex == 2
+                    ? Get.theme.primaryColor
+                    : Get.theme.colorScheme.onSurface.withOpacity(0.7),
                 height: 40,
                 width: 40,
               ),
@@ -116,7 +123,9 @@ class Layout extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/images/UI_Icon_Activity_DoubleReward.png",
-                color: currentIndex == 3 ? Get.theme.primaryColor : null,
+                color: currentIndex == 3
+                    ? Get.theme.primaryColor
+                    : Get.theme.colorScheme.onSurface.withOpacity(0.7),
                 height: 40,
                 width: 40,
               ),
@@ -125,11 +134,13 @@ class Layout extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Image.asset(
                 "assets/images/UI_Icon_BP_StoryTab.png",
-                color: currentIndex == 4 ? Get.theme.primaryColor : null,
+                color: currentIndex == 4
+                    ? Get.theme.primaryColor
+                    : Get.theme.colorScheme.onSurface.withOpacity(0.7),
                 height: 40,
                 width: 40,
               ),
-              label: "orther".tr,
+              label: "other".tr,
             ),
           ],
         );
@@ -152,22 +163,23 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LayoutController layoutController = Get.find<LayoutController>();
-    return OrientationBuilder(builder: (p0, p1) {
-      layoutController.getWithItem();
-      print("chạy cái này");
-      return PageView(
-        onPageChanged: (value) {
-          layoutController.menu.value = value;
-        },
-        controller: layoutController.pageController,
-        children: const [
-          HomePage(),
-          CharacterPage(),
-          WeaponPage(),
-          ResourcePage(),
-          OrtherPage(),
-        ],
-      );
+    return Obx(() {
+      bool loading = layoutController.loading.value;
+      return loading
+          ? const CircularProgressApp()
+          : PageView(
+              onPageChanged: (value) {
+                layoutController.menu.value = value;
+              },
+              controller: layoutController.pageController,
+              children: const [
+                HomePage(),
+                CharacterPage(),
+                WeaponPage(),
+                ResourcePage(),
+                OtherPage(),
+              ],
+            );
     });
   }
 }

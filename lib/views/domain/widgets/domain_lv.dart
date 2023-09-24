@@ -53,6 +53,7 @@ class _ItemDomain extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           strokeAlign: 1,
+          color: Get.theme.colorScheme.onSurface,
         ),
       ),
       child: Container(

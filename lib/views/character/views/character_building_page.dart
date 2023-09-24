@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/character/controllers/character_building_controller.dart';
-import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/weapon.dart';
@@ -14,6 +14,7 @@ import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/services/artifact_service.dart';
 import 'package:genshinfan/services/character_service.dart';
 import 'package:genshinfan/services/weapon_service.dart';
+import 'package:genshinfan/views/user_manager/widgets/image_user.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item.dart';
@@ -47,29 +48,78 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     CharacterBuildingController characterBuildingController =
         Get.find<CharacterBuildingController>();
-    return Obx(() {
-      int status = characterBuildingController.status.value;
-      List<CharacterBuilding> characters =
-          characterBuildingController.charactersBuilding;
-      return status == 1
-          ? const WaitAMinute()
-          : characters.isEmpty
-              ? Center(
-                  child: Text("contribute_manage_empty".tr),
-                )
-              : ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: characters.length,
-                  itemBuilder: (context, index) {
-                    return FadeInUp(
-                      child: _Item(
-                        characterBuilding: characters[index],
-                        index: index,
-                      ),
-                    );
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Obx(() {
+        int status = characterBuildingController.status.value;
+        List<CharacterBuilding> characters =
+            characterBuildingController.charactersBuilding;
+        return status == 1
+            ? const WaitAMinute()
+            : characters.isEmpty
+                ? Center(
+                    child: Text("contribute_manage_empty".tr),
+                  )
+                : ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: characters.length,
+                    itemBuilder: (context, index) {
+                      return FadeInUp(
+                        child: _Item(
+                          characterBuilding: characters[index],
+                          index: index,
+                        ),
+                      );
+                    },
+                  );
+      }),
+    );
+  }
+}
+
+class _InfoAuthor extends StatelessWidget {
+  final CharacterBuilding characterBuilding;
+  final int index;
+  const _InfoAuthor({required this.characterBuilding, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    CharacterBuildingController characterBuildingController =
+        Get.find<CharacterBuildingController>();
+    User? user = Get.find<MainController>().user.value;
+    String uidCurrentUser = user?.uid ?? "";
+    return Container(
+      margin: const EdgeInsets.only(top: 5, bottom: 10),
+      child: Row(
+        children: [
+          ImageUser(linkImage: characterBuilding.userAuthor?.linkImage),
+          const SizedBox(width: 5),
+          Text(
+            "Nguyễn Anh Khoa",
+            style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
+          ),
+          const Spacer(),
+          Role.isRoleAdmin() || uidCurrentUser == characterBuilding.uidAuthor
+              ? IconButton(
+                  onPressed: () async {
+                    await dialogConfirm(
+                        "delete".tr, "delete_contribute_to_database".tr,
+                        () async {
+                      await characterBuildingController
+                          .deleteContributionForManager(
+                              characterBuilding, index);
+                    });
                   },
-                );
-    });
+                  icon: const Icon(
+                    Icons.delete_rounded,
+                    color: Colors.red,
+                  ),
+                )
+              : const SizedBox()
+        ],
+      ),
+    );
   }
 }
 
@@ -83,8 +133,6 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserApp? user = Get.find<MainController>().userApp.value;
-    String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);
     Weapon? weapon = WeaponService().getWeaponFromId(characterBuilding.weapon);
@@ -99,6 +147,7 @@ class _Item extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            _InfoAuthor(characterBuilding: characterBuilding, index: index),
             SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
@@ -191,56 +240,7 @@ class _Item extends StatelessWidget {
               "${"circlet_effect".tr}: <b>${Tool.listToString(characterBuilding.circlets)}</b>",
               style: ThemeApp.textStyle(),
             ),
-            const SizedBox(height: 20),
-            TextCSS(
-              "${"author".tr}: <b>${characterBuilding.author}</b>",
-              style: ThemeApp.textStyle(),
-            ),
-
-            Role.isRoleAdmin() || uidCurrentUser == characterBuilding.uidAuthor
-                ? _Browse(
-                    characterBuilding: characterBuilding,
-                    index: index,
-                  )
-                : const SizedBox()
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Browse extends StatelessWidget {
-  final CharacterBuilding characterBuilding;
-  final int index;
-  const _Browse({
-    required this.characterBuilding,
-    required this.index,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    CharacterBuildingController characterBuildingController =
-        Get.find<CharacterBuildingController>();
-    return Material(
-      color: Colors.transparent,
-      child: Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: InkWell(
-          onTap: () async {
-            await dialogConfirm("delete".tr, "delete_contribute_to_database".tr,
-                () async {
-              await characterBuildingController.deleteContributionForManager(
-                  characterBuilding, index);
-            });
-          },
-          borderRadius: BorderRadius.circular(50),
-          child: Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 8, bottom: 8),
-              child: Text("delete".tr),
-            ),
-          ),
         ),
       ),
     );

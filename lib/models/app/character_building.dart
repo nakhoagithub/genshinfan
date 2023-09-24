@@ -1,3 +1,5 @@
+import 'package:genshinfan/models/app/user.dart';
+
 /// Version 1.5
 class CharacterBuilding {
   String? key;
@@ -13,6 +15,8 @@ class CharacterBuilding {
   final String author;
   final String uidAuthor;
 
+  UserApp? userAuthor;
+
   CharacterBuilding({
     this.key,
     required this.characterName,
@@ -26,6 +30,7 @@ class CharacterBuilding {
     required this.circlets,
     required this.author,
     required this.uidAuthor,
+    this.userAuthor,
   });
 
   factory CharacterBuilding.fromJson(Map<dynamic, dynamic> json) {

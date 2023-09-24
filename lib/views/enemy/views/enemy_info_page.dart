@@ -27,13 +27,12 @@ class EnemyInfoPage extends StatelessWidget {
         ),
         body: enemyController.enemy.value == null
             ? PageEmpty(title: "select_enemy".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: enemyController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         // thông tin
                         InformationEnemy(),

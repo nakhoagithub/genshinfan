@@ -42,7 +42,8 @@ class _List extends StatelessWidget {
           : GridView.count(
               physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
-              crossAxisCount: Get.find<LayoutController>().crossAxisCount.value,
+              crossAxisCount:
+                  Get.find<LayoutController>().crossAxisCount.value,
               childAspectRatio:
                   Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(

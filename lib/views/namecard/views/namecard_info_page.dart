@@ -24,13 +24,12 @@ class NamecardInfoPage extends StatelessWidget {
         ),
         body: namecardController.namecard.value == null
             ? PageEmpty(title: "select_namecard".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: namecardController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationNamecard(),
                         SizedBox(height: 100),

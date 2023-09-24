@@ -95,7 +95,6 @@ class AppService {
           );
 
           await db.child(user.uid).update(userApp.toJson());
-          Get.find<MainController>().userApp.value = userApp;
           return userApp;
         } else {
           log("${dataSnapshot.value}", name: "UserApp - login");

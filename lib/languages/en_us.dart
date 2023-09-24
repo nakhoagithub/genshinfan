@@ -192,7 +192,7 @@ const Map<String, String> en = {
       "This interface will be deprecated in the next few versions.",
 
   "home": "Home",
-  "orther": "Orther",
+  "change_today": "Change the day of the week",
 
   // cần dịch
   "character": "Character",

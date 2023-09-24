@@ -56,10 +56,9 @@ class WeaponInfoPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: weaponController.scrollController,
-                    child: const Column(
+                  const SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationWeapon(),
                         WeaponAscensionView(),

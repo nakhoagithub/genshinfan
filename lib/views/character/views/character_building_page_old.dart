@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/utils/role.dart';
 import 'package:genshinfan/views/character/controllers/character_building_controller.dart';
-import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/weapon.dart';
@@ -94,7 +94,7 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserApp? user = Get.find<MainController>().userApp.value;
+    User? user = Get.find<MainController>().user.value;
     String uidCurrentUser = user?.uid ?? "";
     Character? character =
         CharacterService().getCharacterFromId(characterBuilding.characterName);

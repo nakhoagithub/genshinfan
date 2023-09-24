@@ -24,13 +24,12 @@ class OutfitInfoPage extends StatelessWidget {
         ),
         body: outfitController.outfit.value == null
             ? PageEmpty(title: "select_outfit".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: outfitController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationOutfit(),
                         SizedBox(height: 100),

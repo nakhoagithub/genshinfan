@@ -107,12 +107,15 @@ class ContributeCharacterController extends GetxController {
     List<String> goblets = gobletsEffect;
     List<String> circlets = circletsEffect;
 
-    String uid = Get.find<MainController>().userApp.value?.uid ?? "";
+    String uid = Get.find<MainController>().user.value?.uid ?? "";
     String author = this.author.value;
 
     if ((author.length >= 3 && author.length <= 30) &&
         (characterName != null && weapon != null && a1 != null) &&
-        (type.value == 1 || (type.value == 0 && a2 != null))) {
+        (type.value == 1 || (type.value == 0 && a2 != null)) &&
+        sands.isNotEmpty &&
+        goblets.isNotEmpty &&
+        circlets.isNotEmpty) {
       CharacterBuilding characterBuilding = CharacterBuilding(
         characterName: characterName,
         element: elementOfTraveler.value,
