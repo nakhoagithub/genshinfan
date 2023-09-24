@@ -24,12 +24,11 @@ class AnimalInfoPage extends StatelessWidget {
         ),
         body: animalController.animal.value == null
             ? PageEmpty(title: "select_animal".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: animalController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationAnimal(),
                         SizedBox(height: 100),

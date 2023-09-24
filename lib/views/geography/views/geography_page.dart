@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/views/geography/controllers/geography_controller.dart';
 import 'package:genshinfan/models/game/geography.dart';
 import 'package:genshinfan/views/geography/widgets/item_geography.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +12,13 @@ class GeographyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return const _List();
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButtonApp(),
+        title: Text("geography".tr),
+      ),
+      body: const _List(),
+    );
   }
 }
 

@@ -4,6 +4,7 @@ import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/services/domain_service.dart';
 import 'package:genshinfan/views/domain/widgets/item_domain.dart';
+import 'package:genshinfan/views/layout_controller.dart';
 import 'package:get/get.dart';
 
 class ListDomainToday extends StatelessWidget {
@@ -25,6 +26,7 @@ class ListDomainToday extends StatelessWidget {
         itemBuilder: (context, index) {
           return ItemDomain(
             domain: domains[index],
+            width: Get.find<LayoutController>().widthItem3.value,
             onTap: () {
               Get.find<DomainController>().selectDomain(domains[index]);
               Get.toNamed('/domain_info');

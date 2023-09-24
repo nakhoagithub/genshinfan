@@ -191,6 +191,9 @@ const Map<String, String> en = {
   "contribute_note":
       "This interface will be deprecated in the next few versions.",
 
+  "home": "Home",
+  "orther": "Orther",
+
   // cần dịch
   "character": "Character",
   "artifact": "Artifact",

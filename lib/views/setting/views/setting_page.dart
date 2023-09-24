@@ -10,9 +10,9 @@ import 'package:genshinfan/views/setting/widgets/change_theme.dart';
 import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
 import 'package:genshinfan/views/setting/widgets/info_user.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
-import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/setting/widgets/item_traffic.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
+import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/widgets/title_of_menu.dart';
 import 'package:get/get.dart';
 

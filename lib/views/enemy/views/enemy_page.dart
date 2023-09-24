@@ -3,6 +3,7 @@ import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
 import 'package:genshinfan/models/game/enemy.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/layout_controller.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,13 @@ class EnemyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return const _List();
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButtonApp(),
+        title: Text("enemy".tr),
+      ),
+      body: const _List(),
+    );
   }
 }
 

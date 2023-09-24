@@ -27,13 +27,12 @@ class AchievementInfoPage extends StatelessWidget {
         ),
         body: achievementController.achievementGroup.value == null
             ? PageEmpty(title: "select_achievement".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   // content
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: achievementController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationAchievementGroup(),
                         InformationAchievementList(),

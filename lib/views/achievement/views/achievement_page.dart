@@ -5,18 +5,25 @@ import 'package:genshinfan/models/game/achievement.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/views/layout_controller.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
-class AchievementGroupPage extends StatelessWidget {
-  const AchievementGroupPage({super.key});
+class AchievementPage extends StatelessWidget {
+  const AchievementPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return const _List();
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButtonApp(),
+        title: Text("achievement".tr),
+      ),
+      body: const _List(),
+    );
   }
 }
 

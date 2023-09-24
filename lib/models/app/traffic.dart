@@ -18,7 +18,7 @@ class Traffic {
       trafficInMonth: json['trafficInMonth'],
       online: json['online'],
     );
-  }
+  } 
 
   Map<String, dynamic> toJon() {
     return {

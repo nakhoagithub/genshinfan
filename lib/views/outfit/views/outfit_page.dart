@@ -7,6 +7,7 @@ import 'package:genshinfan/models/game/outfit.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/theme.dart';
 import 'package:genshinfan/utils/tools.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
 import 'package:genshinfan/views/widgets/image_failure.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
@@ -18,7 +19,13 @@ class OutfitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return const _List();
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButtonApp(),
+        title: Text("outfit".tr),
+      ),
+      body: const _List(),
+    );
   }
 }
 

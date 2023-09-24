@@ -12,7 +12,6 @@ class AchievementController extends GetxController {
   Rx<Namecard?> namecardReward = Rx(null);
   Map<String, List<Achievement>> mapAchievementOfGroup = {};
   RxList<Achievement> achievementOfGroup = <Achievement>[].obs;
-  ScrollController scrollController = ScrollController();
 
   void selectAchievementGroup(AchievementGroup value) {
     achievementGroup.value = value;
@@ -30,20 +29,6 @@ class AchievementController extends GetxController {
           .namecards
           .firstWhereOrNull((element) => element.name == value.reward!.name);
     }
-
-    update();
-  }
-
-  @override
-  void update([List<Object>? ids, bool condition = true]) async {
-    if (scrollController.hasClients) {
-      await scrollController.animateTo(
-        scrollController.position.minScrollExtent,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.ease,
-      );
-    }
-    super.update(ids, condition);
   }
 
   @override
@@ -58,11 +43,5 @@ class AchievementController extends GetxController {
     }
 
     super.onInit();
-  }
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
   }
 }

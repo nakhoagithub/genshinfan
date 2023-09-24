@@ -12,10 +12,13 @@ class LayoutController extends GetxController {
   RxString title = "Genshin Fan".obs;
 
   // item
-  RxDouble widthItem = 1.0.obs;
   RxDouble width = 1.0.obs;
+  RxDouble widthItem = 1.0.obs;
   RxInt crossAxisCount = 1.obs;
   RxDouble childAspectRatio = 1.0.obs;
+  RxDouble widthItem3 = 1.0.obs;
+  RxInt crossAxisCount3 = 1.obs;
+  RxDouble childAspectRatio3 = 1.0.obs;
 
   void selectMenu(int value) {
     menu.value = value;
@@ -62,19 +65,24 @@ class LayoutController extends GetxController {
     double a = Get.width;
     double b = Get.height;
     if (a < b) {
-      widthItem.value = a / 4 - 4;
+      widthItem.value = a / 4 - 8;
       width.value = a;
+      widthItem3.value = a / 3 - 8;
     } else if (a > b) {
-      widthItem.value = b / 4 - 4;
+      widthItem.value = b / 4 - 8;
       width.value = b;
+      widthItem3.value = b / 3 - 8;
     } else {
       // a == b
-      widthItem.value = a / 4 - 4;
+      widthItem.value = a / 4 - 8;
       width.value = a;
+      widthItem3.value = a / 3 - 8;
     }
 
     crossAxisCount.value = Get.width ~/ (widthItem.value + 4);
     childAspectRatio.value = widthItem.value / (widthItem.value * 1.215);
+    crossAxisCount3.value = Get.width ~/ (widthItem3.value + 4);
+    childAspectRatio3.value = widthItem3.value / (widthItem3.value * 1.215);
   }
 
   @override

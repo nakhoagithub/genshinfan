@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
-import 'package:genshinfan/views/home/widgets/character_birthday_in_month.dart';
-import 'package:genshinfan/views/home/widgets/character_up_today.dart';
-import 'package:genshinfan/views/home/widgets/domain_today.dart';
-import 'package:genshinfan/views/home/widgets/today.dart';
-import 'package:genshinfan/views/home/widgets/weapon_up_today.dart';
+import 'package:genshinfan/views/home/views/widgets/character_birthday_in_month.dart';
+import 'package:genshinfan/views/home/views/widgets/character_up_today.dart';
+import 'package:genshinfan/views/home/views/widgets/domain_today.dart';
+import 'package:genshinfan/views/home/views/widgets/today.dart';
+import 'package:genshinfan/views/home/views/widgets/weapon_up_today.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {

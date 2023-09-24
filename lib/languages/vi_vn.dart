@@ -31,15 +31,15 @@ const Map<String, String> vi = {
   "weapon": "Vũ Khí",
   "teyvat_resource": "Sản vật Teyvat",
   "food": "Thức Ăn",
-  "artifact": "Thánh Di Vật",
-  "domain": "Bí Cảnh",
-  "animal": "Động Vật",
-  "enemy": "Kẻ Địch",
-  "achievement": "Thành Tựu",
+  "artifact": "Thánh di vật",
+  "domain": "Bí cảnh",
+  "animal": "Động vật",
+  "enemy": "Kẻ địch",
+  "achievement": "Thành tựu",
   "windglider": "Cánh",
-  "forging_recipe": "Công Thức Rèn",
-  "namecard": "Danh Thiếp",
-  "outfit": "Trang Phục",
+  "forging_recipe": "Công thức rèn",
+  "namecard": "Danh thiếp",
+  "outfit": "Trang phục",
   "select_character": "Vui lòng chọn nhân vật",
   "element": "Nguyên tố",
   "rarity": "Độ hiếm",
@@ -210,6 +210,9 @@ const Map<String, String> vi = {
 
   "contribute_note":
       "Giao diện này sẽ không được dùng nữa trong một vài phiên bản tới.",
+
+  "home": "Trang chủ",
+  "orther": "Thêm",
 
   // date
   "day1": "Thứ 2",

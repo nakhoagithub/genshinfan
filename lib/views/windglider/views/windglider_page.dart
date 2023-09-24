@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/models/game/windglider.dart';
 import 'package:genshinfan/views/layout_controller.dart';
+import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:genshinfan/views/windglider/controllers/windglider_controller.dart';
 import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/views/widgets/item.dart';
@@ -13,7 +14,13 @@ class WindgliderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.theme;
-    return const _List();
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButtonApp(),
+        title: Text("widglider".tr),
+      ),
+      body: const _List(),
+    );
   }
 }
 

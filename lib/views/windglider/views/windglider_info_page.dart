@@ -26,12 +26,11 @@ class WindgliderInfoPage extends StatelessWidget {
         ),
         body: windgliderController.windglider.value == null
             ? PageEmpty(title: "select_windglider".tr)
-            : Stack(
+            : const Stack(
                 children: [
                   SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    controller: windgliderController.scrollController,
-                    child: const Column(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
                       children: [
                         InformationWindglider(),
                         SizedBox(height: 100),
