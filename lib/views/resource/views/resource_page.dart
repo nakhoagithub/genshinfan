@@ -7,14 +7,24 @@ import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
-class ResourcePage extends StatelessWidget {
+class ResourcePage extends StatefulWidget {
   const ResourcePage({super.key});
 
   @override
+  State<ResourcePage> createState() => _ResourcePageState();
+}
+
+class _ResourcePageState extends State<ResourcePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     context.theme;
     return const _List();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _List extends StatelessWidget {

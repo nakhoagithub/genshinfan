@@ -8,14 +8,24 @@ import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/list_empty.dart';
 import 'package:get/get.dart';
 
-class WeaponPage extends StatelessWidget {
+class WeaponPage extends StatefulWidget {
   const WeaponPage({super.key});
 
   @override
+  State<WeaponPage> createState() => _WeaponPageState();
+}
+
+class _WeaponPageState extends State<WeaponPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     context.theme;
     return const _List();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _List extends StatelessWidget {

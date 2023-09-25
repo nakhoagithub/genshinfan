@@ -17,7 +17,7 @@ class WindgliderPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButtonApp(),
-        title: Text("widglider".tr),
+        title: Text("windglider".tr),
       ),
       body: const _List(),
     );
