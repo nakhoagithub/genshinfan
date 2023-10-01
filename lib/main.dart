@@ -12,7 +12,6 @@ import 'package:genshinfan/views/admin/views/admin_page.dart';
 import 'package:genshinfan/views/animal/views/animal_info_page.dart';
 import 'package:genshinfan/views/animal/views/animal_page.dart';
 import 'package:genshinfan/views/artifact/views/artifact_page.dart';
-import 'package:genshinfan/views/character/views/character_building_page_old.dart';
 import 'package:genshinfan/views/craft/views/craft_info_page.dart';
 import 'package:genshinfan/views/craft/views/craft_page.dart';
 import 'package:genshinfan/views/domain/views/domain_page.dart';
@@ -213,11 +212,6 @@ class App extends GetView<MainController> {
               GetPage(
                 name: '/character_building',
                 page: () => const CharacterBuildingPage(),
-                transition: Transition.rightToLeftWithFade,
-              ),
-              GetPage(
-                name: '/character_building_old',
-                page: () => const CharacterBuildingOldPage(),
                 transition: Transition.rightToLeftWithFade,
               ),
               GetPage(

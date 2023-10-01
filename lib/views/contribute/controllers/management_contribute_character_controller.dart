@@ -7,7 +7,8 @@ class ManagementContributeCharacterController extends GetxController {
   RxInt status = 0.obs;
   RxList<CharacterBuilding> contributeCharacters = <CharacterBuilding>[].obs;
 
-  Future<void> addContribution(CharacterBuilding characterBuilding, int index) async {
+  Future<void> addContribution(
+      CharacterBuilding characterBuilding, int index) async {
     bool result =
         await ContributeCharacterService().addContribute(characterBuilding);
     if (result) {
@@ -19,8 +20,8 @@ class ManagementContributeCharacterController extends GetxController {
 
   Future<void> deleteContribution(
       CharacterBuilding characterBuilding, int index) async {
-    bool result =
-        await ContributeCharacterService().deleteContribute(characterBuilding);
+    bool result = await ContributeCharacterService()
+        .deleteContributeManager(characterBuilding);
     if (result) {
       contributeCharacters.removeAt(index);
     } else {

@@ -38,12 +38,28 @@ class Tool {
     return str;
   }
 
+  static bool isInterger(String? value) {
+    if (value == null || value.isEmpty) {
+      return false;
+    }
+
+    return int.tryParse(value) != null;
+  }
+
+  static bool isNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return false;
+    }
+
+    return double.tryParse(value) != null;
+  }
+
   static String capitalize(String value) {
     return "${value[0].toUpperCase()}${value.substring(1).toLowerCase()}";
   }
 
   static String handlerSpecializedStat(String? specialized, double value) {
-    if (specialized == "FIGHT_PROP_ELEMENT_MASTERY") {
+    if (specialized == "FIGHT_PROP_ELEMENT_MASTERY".tr) {
       return value.toStringAsFixed(1);
     } else {
       return "${(value * 100).toStringAsFixed(1)}%";

@@ -81,7 +81,7 @@ class _Logged extends StatelessWidget {
             onTap: () async {
               await Get.find<MainController>().logout();
             },
-            child: const Icon(Icons.logout_outlined),
+            icon: const Icon(Icons.logout_outlined),
           ),
         ],
       ),

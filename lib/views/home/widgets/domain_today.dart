@@ -7,7 +7,7 @@ import 'package:genshinfan/views/layout_controller.dart';
 import 'package:get/get.dart';
 
 class ListDomainToday extends StatelessWidget {
-  const ListDomainToday({super.key});
+  const   ListDomainToday({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:genshinfan/main_controller.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/models/game/items.dart';
 import 'package:genshinfan/models/game/resource.dart';
@@ -64,12 +63,11 @@ class WeaponService {
     return null;
   }
 
-  List<Weapon>? getWeaponUpToday() {
+  List<Weapon>? getWeaponUpToday(List<Domain> domainsToday) {
     MainController appController = Get.find<MainController>();
     List<Weapon> weapons = appController.weapons;
-    List<Domain> domains = Get.find<HomeController>().domainToday;
     List<String> nameResourceToday = [];
-    for (var domain in domains) {
+    for (var domain in domainsToday) {
       if (domain.domainLvs != null) {
         for (var lv in domain.domainLvs!) {
           for (var rw in lv.rewardpreview) {

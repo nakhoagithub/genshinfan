@@ -21,7 +21,7 @@ class _WeaponPageState extends State<WeaponPage>
   Widget build(BuildContext context) {
     super.build(context);
     context.theme;
-    return const _List();
+    return Container(padding: const EdgeInsets.all(4), child: const _List());
   }
 
   @override

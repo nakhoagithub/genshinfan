@@ -89,15 +89,18 @@ class _InfoAuthor extends StatelessWidget {
         Get.find<CharacterBuildingController>();
     User? user = Get.find<MainController>().user.value;
     String uidCurrentUser = user?.uid ?? "";
+
     return Container(
       margin: const EdgeInsets.only(top: 5, bottom: 10),
       child: Row(
         children: [
           ImageUser(linkImage: characterBuilding.userAuthor?.linkImage),
           const SizedBox(width: 5),
-          Text(
-            "Nguyễn Anh Khoa",
-            style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
+          Expanded(
+            child: Text(
+              characterBuilding.author,
+              style: ThemeApp.textStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           const Spacer(),
           Role.isRoleAdmin() || uidCurrentUser == characterBuilding.uidAuthor
@@ -106,9 +109,8 @@ class _InfoAuthor extends StatelessWidget {
                     await dialogConfirm(
                         "delete".tr, "delete_contribute_to_database".tr,
                         () async {
-                      await characterBuildingController
-                          .deleteContributionForManager(
-                              characterBuilding, index);
+                      await characterBuildingController.deleteContribution(
+                          characterBuilding, index);
                     });
                   },
                   icon: const Icon(

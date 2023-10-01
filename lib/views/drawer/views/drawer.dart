@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/models/app/user.dart';
 import 'package:genshinfan/utils/role.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
-import 'package:genshinfan/views/setting/controllers/setting_controller.dart';
-import 'package:genshinfan/views/setting/widgets/about_app.dart';
-import 'package:genshinfan/views/setting/widgets/change_language.dart';
-import 'package:genshinfan/views/setting/widgets/change_theme.dart';
-import 'package:genshinfan/views/setting/widgets/dialog_language.dart';
-import 'package:genshinfan/views/setting/widgets/info_user.dart';
+import 'package:genshinfan/views/drawer/controllers/setting_controller.dart';
+import 'package:genshinfan/views/drawer/widgets/about_app.dart';
+import 'package:genshinfan/views/drawer/widgets/change_language.dart';
+import 'package:genshinfan/views/drawer/widgets/change_theme.dart';
+import 'package:genshinfan/views/drawer/widgets/dialog_language.dart';
+import 'package:genshinfan/views/drawer/widgets/info_user.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
-import 'package:genshinfan/views/setting/widgets/item_traffic.dart';
+import 'package:genshinfan/views/drawer/widgets/item_traffic.dart';
 import 'package:genshinfan/views/widgets/dialog.dart';
 import 'package:genshinfan/views/widgets/item_menu.dart';
 import 'package:genshinfan/views/widgets/title_of_menu.dart';
 import 'package:get/get.dart';
 
-class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+class DrawerMenu extends StatelessWidget {
+  const DrawerMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,9 @@ class MenuPage extends StatelessWidget {
         leading: const BackButtonApp(),
         title: Text("menu".tr),
       ),
+      
       body: SingleChildScrollView(
+        
         physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +78,7 @@ class MenuPage extends StatelessWidget {
             Obx(
               () {
                 bool haveNewVersion =
-                    Get.find<HomeController>().haveNewVesion.value;
+                    Get.find<MainController>().haveNewVesion.value;
                 return ItemMenu(
                   icon: const Icon(Icons.update_rounded, size: 20),
                   title: "update".tr,

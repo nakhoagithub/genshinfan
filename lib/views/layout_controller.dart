@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/character/widgets/dialog_filter.dart';
+import 'package:genshinfan/views/home/views/search_bar.dart';
 import 'package:genshinfan/views/resource/widgets/dialog_filter.dart';
 import 'package:genshinfan/views/weapon/widgets/dialog_filter.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,41 @@ class LayoutController extends GetxController {
   PageController? pageController;
   List<int> pageHasFilter = [1, 2, 3];
   RxString title = "Genshin Fan".obs;
+  List<List<Widget>> actions = [
+    [
+      IconButton(
+        onPressed: () {
+          showSearch(context: Get.context!, delegate: HomeSearch());
+        },
+        icon: const Icon(Icons.search_rounded),
+      )
+    ],
+    [
+      IconButton(
+        onPressed: () {
+          dialogFilterCharacter();
+        },
+        icon: const Icon(Icons.filter_alt_rounded),
+      )
+    ],
+    [
+      IconButton(
+        onPressed: () {
+          dialogFilterWeapon();
+        },
+        icon: const Icon(Icons.filter_alt_rounded),
+      )
+    ],
+    [
+      IconButton(
+        onPressed: () {
+          dialogFilterResource();
+        },
+        icon: const Icon(Icons.filter_alt_rounded),
+      )
+    ],
+    []
+  ];
 
   // item
   RxDouble width = 1.0.obs;
@@ -27,18 +63,6 @@ class LayoutController extends GetxController {
       // duration: const Duration(milliseconds: 200),
       // curve: Curves.ease,
     );
-  }
-
-  void onClickOpenFilter() {
-    if (menu.value == 1) {
-      dialogFilterCharacter();
-    }
-    if (menu.value == 2) {
-      dialogFilterWeapon();
-    }
-    if (menu.value == 3) {
-      dialogFilterResource();
-    }
   }
 
   void onChangeTitle() {
@@ -92,7 +116,7 @@ class LayoutController extends GetxController {
     getWithItem();
     loading.value = false;
     super.onInit();
-    
+
     menu.listen((p0) {
       onChangeTitle();
     });

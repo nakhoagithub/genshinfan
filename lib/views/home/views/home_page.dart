@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genshinfan/views/home/controllers/home_controller.dart';
+import 'package:genshinfan/views/home/controllers/search_controller.dart';
 import 'package:genshinfan/views/home/widgets/character_birthday_in_month.dart';
 import 'package:genshinfan/views/home/widgets/character_up_today.dart';
 import 'package:genshinfan/views/home/widgets/domain_today.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage>
     super.build(context);
 
     Get.put(HomeController());
+    Get.put(SearchAppController());
     context.theme;
     return Container(
       padding: const EdgeInsets.all(4),
@@ -31,10 +33,10 @@ class _HomePageState extends State<HomePage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ListCharacterBirthdayInMonth(),
             HomeToday(),
             ListDomainToday(),
             // HomeTool(),
-            ListCharacterBirthdayInMonth(),
             ListCharacterUpToday(),
             ListWeaponUpToday(),
             SizedBox(height: 50),

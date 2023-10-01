@@ -18,30 +18,33 @@ class _OtherPageState extends State<OtherPage>
   Widget build(BuildContext context) {
     super.build(context);
     context.theme;
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.all(4),
-            child: Text(
-              "other".tr,
-              style:
-                  ThemeApp.textStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return Container(
+      margin: const EdgeInsets.all(4),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.all(4),
+              child: Text(
+                "other".tr,
+                style: ThemeApp.textStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          const _List(),
-          Container(
-            margin: const EdgeInsets.all(4),
-            child: Text(
-              "tool".tr,
-              style:
-                  ThemeApp.textStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            const _List(),
+            Container(
+              margin: const EdgeInsets.all(4),
+              child: Text(
+                "tool".tr,
+                style: ThemeApp.textStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          const _ListTool(),
-        ],
+            const _ListTool(),
+          ],
+        ),
       ),
     );
   }
@@ -137,10 +140,13 @@ class _ItemMenu extends StatelessWidget {
             margin: const EdgeInsets.all(8),
             child: Column(
               children: [
-                Image.asset(
-                  item.icon,
-                  color: Get.theme.colorScheme.onSurface,
-                ),
+                item.widget ??
+                    Image.asset(
+                      item.icon ?? "",
+                      color: Get.theme.colorScheme.onSurface.withOpacity(0.7),
+                      height: item.sizeIcon,
+                      width: item.sizeIcon,
+                    ),
                 Expanded(
                   child: Center(
                     child: Text(

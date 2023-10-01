@@ -40,16 +40,6 @@ class CharacterInfoPage extends StatelessWidget {
                 height: 24,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (characterController.character.value != null) {
-                  Get.toNamed("/character_building_old");
-                } else {
-                  Fluttertoast.showToast(msg: "select_character".tr);
-                }
-              },
-              icon: const Icon(Icons.keyboard_arrow_right_rounded),
-            )
           ],
         ),
         body: characterController.character.value == null

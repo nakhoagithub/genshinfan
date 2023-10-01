@@ -35,7 +35,7 @@ dialogChangeToday() async {
                     selected: e == homeController.todaySelected.value,
                     onSelected: (value) {
                       homeController.todaySelected.value = e;
-                      homeController.getDomainToday();
+                      homeController.changeDate();
                     },
                   );
                 }),

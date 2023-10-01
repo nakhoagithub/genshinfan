@@ -64,6 +64,15 @@ class OtherController extends GetxController {
   ];
 
   List<ItemMenuLayout> menusTool = [
+    // ItemMenuLayout(
+    //   icon: "assets/images/UI_Icon_Search.png",
+    //   sizeIcon: 50,
+    //   title: "search".tr,
+    //   keyPage: "",
+    //   onTap: () {
+    //     Get.toNamed("/search_page");
+    //   },
+    // ),
     ItemMenuLayout(
       icon: "assets/images/UI_HomeWorldTabIcon_2_Teleport.png",
       title: "genshin_map".tr,

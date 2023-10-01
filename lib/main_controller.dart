@@ -66,6 +66,7 @@ class MainController extends GetxController {
   Connectivity connectivity = Connectivity();
   StreamSubscription<ConnectivityResult>? _streamConnect;
   RxBool hasInternet = false.obs;
+  RxBool haveNewVesion = false.obs;
 
   // data
   RxList<Character> characters = <Character>[].obs;
@@ -215,7 +216,6 @@ class MainController extends GetxController {
 
       windgliders.value =
           await WindgliderService().getWindgliders(Localization.language) ?? [];
-
       return true;
     } catch (e) {
       log("$e", name: "AppController - getData");

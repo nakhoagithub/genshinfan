@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/main_controller.dart';
 import 'package:genshinfan/views/character/views/character_page.dart';
 import 'package:genshinfan/views/drawer.dart';
 import 'package:genshinfan/views/home/views/home_page.dart';
@@ -7,15 +8,20 @@ import 'package:genshinfan/views/other/views/other_page.dart';
 import 'package:genshinfan/views/resource/views/resource_page.dart';
 import 'package:genshinfan/views/weapon/views/weapon_page.dart';
 import 'package:genshinfan/views/widgets/circular_progress.dart';
+import 'package:genshinfan/views/widgets/icon_app.dart';
 import 'package:get/get.dart';
 
 class ItemMenuLayout {
-  final String icon;
+  final String? icon;
+  final double? sizeIcon;
+  final Widget? widget;
   final String title;
   final String keyPage;
   final VoidCallback? onTap;
   const ItemMenuLayout({
-    required this.icon,
+    this.icon,
+    this.sizeIcon,
+    this.widget,
     required this.title,
     required this.keyPage,
     this.onTap,
@@ -34,33 +40,30 @@ class Layout extends StatelessWidget {
     return Scaffold(
       key: key,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            key.currentState?.openDrawer();
-          },
-          icon: const Icon(Icons.menu_rounded),
-        ),
+        scrolledUnderElevation: 0,
+        leading: Obx(() {
+          bool notification = Get.find<MainController>().haveNewVesion.value;
+          return IconApp(
+            onTap: () {
+              key.currentState?.openDrawer();
+            },
+            icon: const Icon(Icons.menu_rounded),
+            notification: notification,
+          );
+        }),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     key.currentState?.openDrawer();
+        //   },
+        //   icon: const Icon(Icons.menu_rounded),
+        // ),
         title: const Text("GenshinFan"),
         actions: [
           Obx(() {
-            List<int> page = layoutController.pageHasFilter;
-            return layoutController.menu.value == 0
-                ? const SizedBox()
-                // ? IconButton(
-                //     onPressed: () {
-                //       showSearch(
-                //           context: context, delegate: HomeSearchBar());
-                //     },
-                //     icon: const Icon(Icons.search_rounded),
-                //   )
-                : page.contains(layoutController.menu.value)
-                    ? IconButton(
-                        onPressed: () {
-                          layoutController.onClickOpenFilter();
-                        },
-                        icon: const Icon(Icons.filter_alt_rounded),
-                      )
-                    : const SizedBox();
+            int menu = layoutController.menu.value;
+            return Wrap(
+              children: [...layoutController.actions[menu]],
+            );
           }),
 
           // IconButton(
@@ -145,14 +148,6 @@ class Layout extends StatelessWidget {
           ],
         );
       }),
-      // body: SlideLayout(
-      //   items: menus,
-      //   streamChangeScreen: homeController.homeStream,
-      //   iconBackgroundColor: Get.theme.colorScheme.onInverseSurface,
-      //   iconColor: Get.theme.colorScheme.onSurface,
-      //   indicatorColor: Get.theme.colorScheme.tertiary,
-      //   actionBottomLeftBar: actionBottomLeftBar,
-      // ),
     );
   }
 }

@@ -6,9 +6,7 @@ import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:genshinfan/main_controller.dart';
-import 'package:genshinfan/models/app/character_building_old.dart';
 import 'package:genshinfan/models/app/user.dart';
-import 'package:genshinfan/views/home/controllers/home_controller.dart';
 import 'package:genshinfan/models/app/character_building.dart';
 import 'package:genshinfan/models/game/domain.dart';
 import 'package:genshinfan/models/game/items.dart';
@@ -29,7 +27,7 @@ class CharacterService {
       dynamic image = json['image'];
       dynamic stat = json['stats'];
       dynamic curve = json['curve'];
-
+      // dynamic index = json['index'][language]['characters'];
       dynamic jsonData = data[language]['characters'];
       dynamic img = image['characters'];
       dynamic talent = data[language]['talents'];
@@ -86,13 +84,14 @@ class CharacterService {
   }
 
   List<Character>? getCharacterBirthdayInMonth() {
+    DateTime dateTime = DateTime.now();
     MainController appController = Get.find<MainController>();
     List<Character> characters = appController.characters;
     List<Character> characterBirthday = characters.where((element) {
       if (element.birthdaymmdd != "") {
         String mm = element.birthdaymmdd
             .substring(0, element.birthdaymmdd.indexOf("/"));
-        if (int.parse(mm) == Get.find<HomeController>().month.value) {
+        if (int.parse(mm) == dateTime.month) {
           return true;
         }
       }
@@ -101,8 +100,13 @@ class CharacterService {
 
     characterBirthday.sort(
       (a, b) {
-        String aDay = a.birthdaymmdd.substring(a.birthdaymmdd.indexOf("/"));
-        String bDay = b.birthdaymmdd.substring(b.birthdaymmdd.indexOf("/"));
+        String aDay = a.birthdaymmdd.substring(a.birthdaymmdd.indexOf("/") + 1);
+        String bDay = b.birthdaymmdd.substring(b.birthdaymmdd.indexOf("/") + 1);
+
+        if (Tool.isInterger(aDay) && Tool.isInterger(bDay)) {
+          return int.parse(aDay).compareTo(int.parse(bDay));
+        }
+
         return aDay.compareTo(bDay);
       },
     );
@@ -110,6 +114,7 @@ class CharacterService {
   }
 
   List<Character>? getCharacterBirthdayToday() {
+    DateTime dateTime = DateTime.now();
     MainController appController = Get.find<MainController>();
     List<Character> characters = appController.characters;
     List<Character> characterBirthday = characters.where((element) {
@@ -118,8 +123,7 @@ class CharacterService {
             .substring(0, element.birthdaymmdd.indexOf("/"));
         String dd = element.birthdaymmdd
             .substring(element.birthdaymmdd.indexOf("/") + 1);
-        if (int.parse(mm) == Get.find<HomeController>().month.value &&
-            int.parse(dd) == Get.find<HomeController>().day.value) {
+        if (int.parse(mm) == dateTime.month && int.parse(dd) == dateTime.day) {
           return true;
         }
       }
@@ -136,13 +140,11 @@ class CharacterService {
     return characterBirthday;
   }
 
-  List<Character>? getCharacterUpToday() {
+  List<Character>? getCharacterUpToday(List<Domain> domainsToday) {
     MainController appController = Get.find<MainController>();
-    HomeController homeController = Get.find<HomeController>();
     List<Character> characters = appController.characters;
-    List<Domain> domains = homeController.domainToday;
     List<String> nameResourceToday = [];
-    for (var domain in domains) {
+    for (var domain in domainsToday) {
       if (domain.domainLvs != null) {
         for (var lv in domain.domainLvs!) {
           for (var rw in lv.rewardpreview) {
@@ -194,33 +196,6 @@ class CharacterService {
     });
   }
 
-  /// Version 1.4.3
-  Future<List<CharacterBuildingOld>> getCharacterBuildingOld(String key) async {
-    DatabaseReference db = FirebaseDatabase.instance.ref("contributions");
-
-    List<CharacterBuildingOld> characters = [];
-    try {
-      await db.child(key).get().then((value) {
-        dynamic data = value.value;
-        if (data != null) {
-          for (var key in data.keys) {
-            CharacterBuildingOld characterBuilding =
-                CharacterBuildingOld.fromJson(data[key]);
-            characterBuilding.key = key;
-            characters.add(characterBuilding);
-          }
-        }
-      }).timeout(const Duration(seconds: Config.seccondTimeout));
-    } catch (e) {
-      if (e is TimeoutException) {
-        Fluttertoast.showToast(msg: "timeout_exception".tr);
-        return [];
-      }
-      log("$e", name: "getCharacterBuildingOld");
-    }
-    return characters;
-  }
-
   /// Version 1.5
   Future<List<CharacterBuilding>> getCharacterBuilding(String key) async {
     DatabaseReference db = FirebaseDatabase.instance.ref("characters_building");
@@ -231,10 +206,10 @@ class CharacterService {
         dynamic data = value.value;
         if (data != null) {
           for (var key in data.keys) {
-            UserApp? u = await CharacterService()
-                .getAuthorCharacterBuilding("ZqexhwyZfrZOii5ygA3z8fF53SC3");
             CharacterBuilding characterBuilding =
                 CharacterBuilding.fromJson(data[key]);
+            UserApp? u = await CharacterService()
+                .getAuthorCharacterBuilding(characterBuilding.uidAuthor);
             characterBuilding.key = key;
             characterBuilding.userAuthor = u;
             characters.add(characterBuilding);
