@@ -31,8 +31,8 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     AnimalController animalController = Get.find<AnimalController>();
     return Obx(() {
-      List<Animal> enemies = animalController.animals;
-      return enemies.isEmpty
+      List<Animal> animals = animalController.animals;
+      return animals.isEmpty
           ? ListEmpty(title: "empty_animal".tr)
           : GridView.count(
               physics: const BouncingScrollPhysics(),
@@ -41,12 +41,12 @@ class _List extends StatelessWidget {
               childAspectRatio:
                   Get.find<LayoutController>().childAspectRatio.value,
               children: List.generate(
-                enemies.length,
+                animals.length,
                 (index) => ItemGame(
-                  title: enemies[index].name,
-                  linkImage: Config.urlImage(enemies[index].images?.nameicon),
+                  title: animals[index].name,
+                  linkImage: Config.urlImage(animals[index].images?.nameicon),
                   onTap: () {
-                    animalController.selectAnimal(enemies[index]);
+                    animalController.selectAnimal(animals[index]);
                     Get.toNamed("/animal_info");
                   },
                 ),

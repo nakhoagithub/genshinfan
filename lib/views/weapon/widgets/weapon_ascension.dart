@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/views/weapon/controllers/weapon_controller.dart';
 import 'package:genshinfan/models/game/items.dart';
-import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/views/widgets/item.dart';
 import 'package:genshinfan/views/widgets/title_of_content.dart';
 import 'package:get/get.dart';

@@ -27,7 +27,7 @@ class CharacterService {
       dynamic image = json['image'];
       dynamic stat = json['stats'];
       dynamic curve = json['curve'];
-      // dynamic index = json['index'][language]['characters'];
+
       dynamic jsonData = data[language]['characters'];
       dynamic img = image['characters'];
       dynamic talent = data[language]['talents'];

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:genshinfan/models/game/animal.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
+import 'package:genshinfan/models/game/enemy.dart';
+import 'package:genshinfan/models/game/food.dart';
+import 'package:genshinfan/models/game/resource.dart';
 import 'package:genshinfan/models/game/weapon.dart';
 import 'package:genshinfan/utils/tools.dart';
 import 'package:genshinfan/views/home/controllers/search_controller.dart';
+import 'package:genshinfan/views/home/widgets/search_animal.dart';
 import 'package:genshinfan/views/home/widgets/search_artifact.dart';
 import 'package:genshinfan/views/home/widgets/search_character.dart';
+import 'package:genshinfan/views/home/widgets/search_enemy.dart';
+import 'package:genshinfan/views/home/widgets/search_food.dart';
+import 'package:genshinfan/views/home/widgets/search_resource.dart';
 import 'package:genshinfan/views/home/widgets/search_weapon.dart';
 import 'package:genshinfan/views/widgets/back_button.dart';
 import 'package:get/get.dart';
@@ -48,24 +56,67 @@ class HomeSearch extends SearchDelegate {
         searchAppController.searchCharacter(valueSearch);
     List<Weapon> weapons = searchAppController.searchWeapon(valueSearch);
     List<Artifact> artifacts = searchAppController.searchArtifact(valueSearch);
-    // Future.delayed(const Duration(milliseconds: 200), () {
-    //   characters = ;
-    //   weapons = ;
-    // });
+    List<Food> foods = searchAppController.searchFood(valueSearch);
+    List<Resource> resources = searchAppController.searchResource(valueSearch);
+    List<Enemy> enemies = searchAppController.searchEnemies(valueSearch);
+    List<Animal> animals = searchAppController.searchAnimal(valueSearch);
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          ListCharacter(characters: characters),
-          ListWeapon(weapons: weapons),
-          ListArtifact(artifacts: artifacts)
-        ],
-      ),
+      child: query == ""
+          ? const SizedBox()
+          : Column(
+              children: [
+                ListCharacter(characters: characters),
+                ListWeapon(weapons: weapons),
+                ListArtifact(artifacts: artifacts),
+                ListResource(resources: resources),
+                ListFood(foods: foods),
+                ListAnimal(animals: animals),
+                ListEnemy(enemies: enemies),
+                const SizedBox(height: 100),
+              ],
+            ),
     );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Container();
+    List<String> recomments = Get.find<SearchAppController>().recomments;
+    List<String> searchs = recomments.where((element) {
+      final result = Tool.removeDiacritics(element.toLowerCase());
+      final input = Tool.removeDiacritics(query.toLowerCase());
+      return result.contains(input);
+    }).toList();
+    return Scrollbar(
+      controller: Get.find<SearchAppController>().scrollController,
+      child: ListView.builder(
+        itemCount: searchs.length,
+        itemBuilder: (context, index) {
+          return _ItemRecommentSearch(
+              value: searchs[index],
+              onTap: () {
+                query = searchs[index];
+                showSuggestions(context);
+              });
+        },
+      ),
+    );
+  }
+}
+
+class _ItemRecommentSearch extends StatelessWidget {
+  final String value;
+  final VoidCallback onTap;
+  const _ItemRecommentSearch({
+    required this.value,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(value),
+      onTap: onTap,
+    );
   }
 }

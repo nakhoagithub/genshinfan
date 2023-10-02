@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 import 'package:genshinfan/services/food_service.dart';
+import 'package:genshinfan/services/index_service.dart';
 import 'package:genshinfan/views/start/controllers/start_controller.dart';
 import 'package:genshinfan/models/app/api_github.dart';
 import 'package:genshinfan/utils/config.dart';
@@ -77,6 +78,8 @@ class StartService {
           File("${directory.path}/$language/${Config.fileNameGeography}.json");
       File fWindglider =
           File("${directory.path}/$language/${Config.fileNameWindglider}.json");
+      File fIndex =
+          File("${directory.path}/$language/${Config.fileNameIndex}.json");
       if (await fCharacter.exists() &&
           await fResource.exists() &&
           await fWeapon.exists() &&
@@ -91,7 +94,8 @@ class StartService {
           await fCraft.exists() &&
           await fOutfit.exists() &&
           await fGeography.exists() &&
-          await fWindglider.exists()) {
+          await fWindglider.exists() &&
+          await fIndex.exists()) {
         return true;
       }
     } catch (e) {
@@ -172,6 +176,7 @@ class StartService {
             .getGeographyFromGzip(directory, language, json);
         await WindgliderService()
             .getWindgliderFromGzip(directory, language, json);
+        await IndexService().getIndexFromGzip(directory, language, json);
         return true;
       } catch (e) {
         log("$e", name: "StartService extractData");

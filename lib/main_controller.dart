@@ -5,8 +5,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:genshinfan/models/game/food.dart';
+import 'package:genshinfan/models/game/index_all.dart';
 import 'package:genshinfan/models/game/windglider.dart';
 import 'package:genshinfan/services/food_service.dart';
+import 'package:genshinfan/services/index_service.dart';
 import 'package:genshinfan/views/achievement/controllers/achievement_controller.dart';
 import 'package:genshinfan/views/animal/controllers/animal_controller.dart';
 import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
@@ -84,6 +86,7 @@ class MainController extends GetxController {
   RxList<Outfit> outfits = <Outfit>[].obs;
   RxList<Geography> geographies = <Geography>[].obs;
   RxList<Windglider> windgliders = <Windglider>[].obs;
+  Rx<IndexAll?> index = Rx(null);
 
   Future<bool> getData() async {
     try {
@@ -216,6 +219,9 @@ class MainController extends GetxController {
 
       windgliders.value =
           await WindgliderService().getWindgliders(Localization.language) ?? [];
+
+      index.value = await IndexService().getIndexAll(Localization.language);
+
       return true;
     } catch (e) {
       log("$e", name: "AppController - getData");
