@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:genshinfan/views/artifact/controllers/artifact_controller.dart';
-import 'package:genshinfan/views/character/controllers/character_controller.dart';
-import 'package:genshinfan/views/craft/controllers/craft_controller.dart';
-import 'package:genshinfan/views/enemy/controllers/enemy_controller.dart';
-import 'package:genshinfan/views/resource/controllers/resource_controller.dart';
+import 'package:genshinfan/src/artifact/controllers/artifact_controller.dart';
+import 'package:genshinfan/src/character/controllers/character_controller.dart';
+import 'package:genshinfan/src/craft/controllers/craft_controller.dart';
+import 'package:genshinfan/src/enemy/controllers/enemy_controller.dart';
+import 'package:genshinfan/src/resource/controllers/resource_controller.dart';
 import 'package:genshinfan/models/game/artifact.dart';
 import 'package:genshinfan/models/game/character.dart';
 import 'package:genshinfan/models/game/craft.dart';
