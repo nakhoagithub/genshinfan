@@ -158,25 +158,25 @@ class StartService {
         // giải nén dữ liệu
         await CharacterService()
             .getCharacterFromGzip(directory, language, json);
-        await ResourceService().getResourceFromGzip(directory, language, json);
-        await WeaponService().getWeaponFromGzip(directory, language, json);
-        await ArtifactService().getArtifactFromGzip(directory, language, json);
-        await DomainService().getDomainFromGzip(directory, language, json);
-        await FoodService().getFoodFromGzip(directory, language, json);
-        await EnemyService().getEnemyFromGzip(directory, language, json);
-        await AchievementService()
-            .getAchievementGroupsFromGzip(directory, language, json);
-        await AchievementService()
-            .getAchievementsFromGzip(directory, language, json);
-        await NamecardService().getNamecardFromGzip(directory, language, json);
-        await AnimalService().getAnimalFromGzip(directory, language, json);
-        await CraftService().getCraftFromGzip(directory, language, json);
-        await OutfitService().getOutfitFromGzip(directory, language, json);
-        await GeographyService()
-            .getGeographyFromGzip(directory, language, json);
-        await WindgliderService()
-            .getWindgliderFromGzip(directory, language, json);
-        await IndexService().getIndexFromGzip(directory, language, json);
+        // await ResourceService().getResourceFromGzip(directory, language, json);
+        // await WeaponService().getWeaponFromGzip(directory, language, json);
+        // await ArtifactService().getArtifactFromGzip(directory, language, json);
+        // await DomainService().getDomainFromGzip(directory, language, json);
+        // await FoodService().getFoodFromGzip(directory, language, json);
+        // await EnemyService().getEnemyFromGzip(directory, language, json);
+        // await AchievementService()
+        //     .getAchievementGroupsFromGzip(directory, language, json);
+        // await AchievementService()
+        //     .getAchievementsFromGzip(directory, language, json);
+        // await NamecardService().getNamecardFromGzip(directory, language, json);
+        // await AnimalService().getAnimalFromGzip(directory, language, json);
+        // await CraftService().getCraftFromGzip(directory, language, json);
+        // await OutfitService().getOutfitFromGzip(directory, language, json);
+        // await GeographyService()
+        //     .getGeographyFromGzip(directory, language, json);
+        // await WindgliderService()
+        //     .getWindgliderFromGzip(directory, language, json);
+        // await IndexService().getIndexFromGzip(directory, language, json);
         return true;
       } catch (e) {
         log("$e", name: "StartService extractData");

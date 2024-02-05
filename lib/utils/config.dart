@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:genshinfan/models/app/role_app.dart';
 import 'package:get/get.dart';
 

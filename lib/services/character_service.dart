@@ -42,10 +42,10 @@ class CharacterService {
           Character obj = Character.fromJson(jsonData[k]);
           obj.key = k;
           // hình ảnh
-          obj.setImage(img[k]);
-          obj.setTalent(k, talent, imgTalent, statTalent);
-          obj.setConstellation(k, constellations, imgConstellation);
-          obj.setStat(statCharacter[k], curveCharacter);
+          // obj.setImage(img[k]);
+          // obj.setTalent(k, talent, imgTalent, statTalent);
+          // obj.setConstellation(k, constellations, imgConstellation);
+          // obj.setStat(statCharacter[k], curveCharacter);
           characters.add(obj.toJson());
         } catch (e) {
           // log("${jsonData[k]}", name: "Data");

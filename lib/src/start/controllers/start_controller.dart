@@ -85,7 +85,8 @@ class StartController extends GetxController {
     setProgress(1, 1, DataAppStatus.success);
     // đợi chút xíu rồi chuyển màn hình
     await Future.delayed(const Duration(milliseconds: 1000));
-    Get.offAllNamed("/home");
+    // Get.offAllNamed("/home");
+    print("xong to home");
   }
 
   Future<void> deleteFileDataAndRedownload() async {
@@ -152,11 +153,11 @@ class StartController extends GetxController {
 
   @override
   void onInit() async {
+    super.onInit();
     startService = const StartService();
     PackageApp packageApp = await AppService().getVersion();
     version.value = packageApp.version;
     unawaited(AppService().setTraffic());
-    super.onInit();
   }
 
   @override

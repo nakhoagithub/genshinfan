@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:genshinfan/main_controller.dart';
+import 'package:genshinfan/utils/config.dart';
 import 'package:genshinfan/utils/init.dart';
 import 'package:genshinfan/utils/localization.dart';
 import 'package:genshinfan/utils/theme.dart';
@@ -44,7 +45,7 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: Config.firebaseOptionsDev);
   // SystemChrome.setPreferredOrientations([
   //   DeviceOrientation.portraitDown,
   //   DeviceOrientation.portraitUp,
