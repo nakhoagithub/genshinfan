@@ -2,8 +2,6 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-    id "com.google.gms.google-services"
-    id "com.google.firebase.crashlytics"
 }
 
 def localProperties = new Properties()
@@ -22,11 +20,6 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
-}
-
-dependencies {
-  implementation platform('com.google.firebase:firebase-bom:32.0.0')
-  implementation 'com.google.firebase:firebase-analytics'
 }
 
 android {
@@ -78,3 +71,5 @@ android {
 flutter {
     source '../..'
 }
+
+dependencies {}
