@@ -5,6 +5,18 @@ class Config {
   static const String aboutApp =
       '<green><b>Genshin Fan</b></green>\n\n<orange><b>Declaration Information</b></orange>\n- The <b>Genshin Fan</b> application is a game database application </b>Genshin Impact</b>.\n- All data is extracted from the Internet and this application has no affiliation or endorsement from miHoYo - Genshin Impact.\n\n<orange><b>Permissions and Security</b></orange>\nThe application receives some information from the user when the user is logged in, such as name and email address.\n\n<orange><b>Thank you</b></orange>\nMany thanks to <b>theBowja (Github)</b> as the main source of data for the app.\n\n<orange><b>Author and Developer:</b></orange> KanThin (Nguyen Anh Khoa - Vietnam).\n\n<orange><b>Contact:</b></orange> dev.nakhoa@gmail.com\n\n<orange><b>Author translation:</b></orange>\n- Turkish: Alberivh on twitter\n- Russian: SipTik and vasyasher120@gmail.com\n- German: Inkognito';
 
+   static const FirebaseOptions firebaseOptionsDev = FirebaseOptions(
+    apiKey: "AIzaSyCPbVEDr0Wt3N9RJ7zLutO8mZl3x6Avuh0",
+    authDomain: "genshin-fan---dev.firebaseapp.com",
+    databaseURL:
+        "https://genshin-fan---dev-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "genshin-fan---dev",
+    storageBucket: "genshin-fan---dev.appspot.com",
+    messagingSenderId: "641778761808",
+    appId: "1:641778761808:web:e207bac2901bf61335d155",
+    measurementId: "G-5K32T7J811",
+  );
+
   static const String darkMode = 'darkMode';
   static const String languageApp = 'languageApp';
   static const String storageContentSHA = 'contentSHA';
