@@ -24,15 +24,15 @@ class CharacterBuildingController extends GetxController {
 
   @override
   void onInit() async {
-    status.value = 1;
-    Character? character = Get.find<CharacterController>().character.value;
-    String key = Get.find<CharacterController>().character.value?.key ?? "";
-    if (character?.association == "MAINACTOR") {
-      key = "main";
-    }
-    charactersBuilding.value =
-        await CharacterService().getCharacterBuilding(key);
-    status.value = 2;
     super.onInit();
+    status.value = 1;
+    // Character? character = Get.find<CharacterController>().character.value;
+    // int key = Get.find<CharacterController>().character.value?.key ?? 0;
+    // if (character?.association == "MAINACTOR") {
+    //   key = "main";
+    // }
+    // charactersBuilding.value =
+    //     await CharacterService().getCharacterBuilding(key);
+    // status.value = 2;
   }
 }

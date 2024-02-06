@@ -40,7 +40,6 @@ class CharacterService {
       for (var k in jsonData.keys) {
         try {
           Character obj = Character.fromJson(jsonData[k]);
-          obj.key = k;
           // hình ảnh
           // obj.setImage(img[k]);
           // obj.setTalent(k, talent, imgTalent, statTalent);

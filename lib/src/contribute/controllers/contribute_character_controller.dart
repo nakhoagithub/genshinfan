@@ -95,7 +95,7 @@ class ContributeCharacterController extends GetxController {
   }
 
   Future<void> contribute() async {
-    String? characterName = character.value?.key;
+    int characterName = character.value?.key;
     if (character.value?.association == "MAINACTOR") {
       characterName = "main";
     }

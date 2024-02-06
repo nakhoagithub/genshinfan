@@ -26,67 +26,76 @@ List<int> ascensions = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 
 class Character {
   Character({
-    this.key,
+    required this.id,
     required this.name,
     required this.fullname,
     required this.title,
     required this.description,
-    required this.rarity,
-    required this.element,
-    required this.weapontype,
-    required this.substat,
+    required this.weaponType,
+    required this.weaponText,
+    required this.bodyType,
     required this.gender,
-    required this.body,
-    required this.association,
-    required this.region,
-    required this.affiliation,
+    required this.qualityType,
+    required this.rarity,
     required this.birthdaymmdd,
     required this.birthday,
+    required this.elementType,
+    required this.elementText,
+    required this.affiliation,
+    required this.associationType,
+    required this.region,
+    required this.substatType,
+    required this.substatText,
     required this.constellation,
-    this.constellationTravelers,
-    required this.cv,
-    required this.costs,
+    this.cv,
+    this.costs,
     this.images,
+    this.url,
+    this.stats,
+    this.version,
+    this.constellationTravelers,
     this.talent,
     this.talentTravelers,
     this.constellations,
-    this.stats,
     this.specialized,
-    this.url,
-    this.version,
   });
 
-  String? key;
+  final int id;
   final String name;
-  final String? fullname;
+  final String fullname;
   final String title;
   final String description;
-  final String rarity;
-  final String element;
-  final String weapontype;
-  final String substat;
+  final String weaponType;
+  final String weaponText;
+  final String bodyType;
   final String gender;
-  final String body;
-  final String association;
-  final String region;
-  final String affiliation;
+  final String qualityType;
+  final int rarity;
   final String birthdaymmdd;
   final String birthday;
+  final String elementType;
+  final String elementText;
+  final String affiliation;
+  final String associationType;
+  final String region;
+  final String substatType;
+  final String substatText;
   final String constellation;
   Cv? cv;
   Costs? costs;
   ImageCharacter? images;
+  UrlObject? url;
+  List<Stat>? stats;
+  String? version;
+
   Talent? talent;
   List<Talent>? talentTravelers;
   Constellation? constellations;
   List<Constellation>? constellationTravelers;
-  List<Stat>? stats;
   String? specialized;
-  UrlObject? url;
-  String? version;
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
-        key: json['key'],
+        id: json['id'] ?? 0,
         name: json["name"] ?? "",
         fullname: json["fullname"],
         title: json["title"] ?? "",
