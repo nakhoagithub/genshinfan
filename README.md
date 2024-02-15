@@ -1,5 +1,2 @@
-# genshinfan
-
-Genshin Fan - Power by Anh Khoa
-
 ## STOP WORKING
+Genshin Fan - Power by Anh Khoa
